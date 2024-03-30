@@ -12,8 +12,16 @@
 	font-family: "Roboto Slab", sans-serif !important;
 }
 
-.btn-green {
+.bg-green {
 	background-color: var(--dark_secondary) !important;
+}
+
+.border-green {
+	border: var(--dark_secondary) 2px solid;
+}
+
+.text-green {
+	color: var(--dark_secondary);
 }
 
 .c-red {
@@ -71,9 +79,9 @@ ul.header.nav .nav-link::after {
   color: transparent;
   background: var(--primary);
   height: 1px;
-	transition: all .2s;
+	transition: all .3s;
 }
 
-ul.header.nav .nav-link:not(.active):hover::after {
+ul.header.nav .nav-link:not(.active, .bg-green):hover::after {
 	width: 100%;
 }
