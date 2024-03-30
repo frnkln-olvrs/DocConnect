@@ -2,12 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap');
 
 :root {
-	--primary: #952323;
-	--dark-color: rgb(6, 6, 6);
+	--primary: #dc3545;
+	--white: whitesmoke;
+	--secondary: #b0eacd;
+	--dark_secondary: #21bf73;
 }
 
-.d-name, .d-name span{
+.d-name, .d-name span {
 	font-family: "Roboto Slab", sans-serif !important;
+}
+
+.btn-green {
+	background-color: var(--dark_secondary) !important;
+}
+
+.c-red {
+	color: var(--primary);
 }
 
 * {

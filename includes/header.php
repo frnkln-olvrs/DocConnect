@@ -10,6 +10,6 @@
       <li class="nav-item"><a href="#" class="nav-link">Our Doctors</a></li>
       <li class="nav-item"><a href="#" class="nav-link">Appointment</a></li>
       <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-      <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Login</a></li>
+      <li class="nav-item"><a href="#" class="nav-link active btn-green" aria-current="page">Login</a></li>
     </ul>
 </header>
