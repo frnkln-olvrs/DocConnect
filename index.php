@@ -31,8 +31,30 @@
     </div>
   </section>
 
+  <section id="services" class="padding-medium mt-xl-5">
+    <div class="p-3 pb-md-4 mx-auto text-center">
+      <p class="fs-5 text-muted text-uppercase mx-5">What we do</p>
+      <h1 class="display-6 fw-normal">Providing medical care for the </br> sickest in our University</h1>
+    </div>
+
+    <div>
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>10 users included</li>
+            <li>2 GB of storage</li>
+            <li>Email support</li>
+            <li>Help center access</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="info" class="padding-medium mt-xl-5 mx-5">
-    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <div class="p-3 pb-md-4 mx-auto text-center">
       <h1 class="display-4 fw-normal">Telemedicine</h1>
       <p class="fs-5 text-muted">Bridging the gap between distance and healthcare accessibility.</p>
     </div>
