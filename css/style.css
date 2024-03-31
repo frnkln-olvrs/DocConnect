@@ -85,3 +85,8 @@ ul.header.nav .nav-link::after {
 ul.header.nav .nav-link:not(.active, .bg-green):hover::after {
 	width: 100%;
 }
+
+/* ABOUT */
+section#about {
+	background-color: #eeeeee;
+}
