@@ -31,40 +31,6 @@
     </div>
   </section>
 
-  <section id="about" class="padding-medium mt-xl-5 py-2">
-    <div class="container mb-4 pt-2">
-      <div class="row align-items-center justify-content-center mt-xl-5">
-        <div class="col-md-6 mt-5 mt-md-0">
-          <div class="mb-3">
-            <p class="text-secondary ">Learn more about us</p>
-            <h2 class="display-6 fw-semibold">About Us</h2>
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae nam commodi dolore vitae?
-            Numquam minima cum asperiores deleniti possimus provident, officia itaque esse eius, delectus incidunt
-            laudantium adipisci laboriosam!
-          </p>
-          <div class="d-flex align-items-center mb-4">
-            <i class='bx bxs-message-square-check c-red'></i>
-            <p class="ps-3 m-0">Engage with a worldwide community of inquisitive and imaginative individuals.</p>
-          </div>
-          <div class="d-flex align-items-center mb-4">
-            <i class='bx bxs-message-square-check c-red'></i>
-            <p class="ps-3 m-0">Learn a skill of your choice from the experts around the world from various industries</p>
-          </div>
-          <div class="d-flex align-items-center mb-4">
-            <i class='bx bxs-message-square-check c-red'></i>
-            <p class="ps-3 m-0">Learn a skill of your choice from the experts around the world from various industries</p>
-          </div>
-          <a href="about.html" class="btn bg-green px-5 py-3 mt-4 link-light">Learn more</a>
-        </div>
-        <div class="offset-md-1 col-md-4">
-          <img src="./img/billboard-img.png" alt="img" class="img-fluid rounded-circle">
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="info" class="padding-medium mt-xl-5 mx-5">
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
       <h1 class="display-4 fw-normal">Telemedicine</h1>
@@ -148,6 +114,40 @@
               <button type="button" class="w-100 btn btn-lg btn-outline-light">Book Appointment</button>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="padding-medium mt-xl-5 py-2">
+    <div class="container mb-4 pt-2">
+      <div class="row align-items-center justify-content-center mt-xl-5">
+        <div class="col-md-6 mt-5 mt-md-0">
+          <div class="mb-3">
+            <p class="text-secondary ">Learn more about us</p>
+            <h2 class="display-6 fw-semibold">About Us</h2>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae nam commodi dolore vitae?
+            Numquam minima cum asperiores deleniti possimus provident, officia itaque esse eius, delectus incidunt
+            laudantium adipisci laboriosam!
+          </p>
+          <div class="d-flex align-items-center mb-4">
+            <i class='bx bxs-message-square-check c-red'></i>
+            <p class="ps-3 m-0">Engage with a worldwide community of inquisitive and imaginative individuals.</p>
+          </div>
+          <div class="d-flex align-items-center mb-4">
+            <i class='bx bxs-message-square-check c-red'></i>
+            <p class="ps-3 m-0">Learn a skill of your choice from the experts around the world from various industries</p>
+          </div>
+          <div class="d-flex align-items-center mb-4">
+            <i class='bx bxs-message-square-check c-red'></i>
+            <p class="ps-3 m-0">Learn a skill of your choice from the experts around the world from various industries</p>
+          </div>
+          <a href="#" class="btn bg-green px-5 py-3 mt-4 link-light">Learn more</a>
+        </div>
+        <div class="offset-md-1 col-md-4">
+          <img src="./img/billboard-img.png" alt="img" class="img-fluid rounded-circle">
         </div>
       </div>
     </div>
