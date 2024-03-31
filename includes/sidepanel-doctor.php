@@ -13,7 +13,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../doctor/appointments.php">
                     <img src="../images/frankprofile.jpg" alt="" height="25" width="25" class="rounded rounded-circle border border-2 border-primary">
                     Appointments
                 </a>

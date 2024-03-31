@@ -31,31 +31,31 @@ include '../includes/head.php';
                     <div class="d-flex flex-nowrap justify-content-between">
                         <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
                             <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Monday</p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">01/04/2024 9:30AM - 12:00PM</p>
+                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">01/04/2024 <br> 9:30AM - 12:00PM</p>
                         </div>
                         <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
                             <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Tuesday</p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">02/04/2024 9:30AM - 12:00PM</p>
+                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">02/04/2024 <br> 9:30AM - 12:00PM</p>
                         </div>
                         <div class="p-2 border border-1 border-secondary-subtle  mx-1 flex-grow-1 ">
                             <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Wednesday</p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">03/04/2024 9:30AM - 12:00PM</p>
+                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">03/04/2024 <br> 9:30AM - 12:00PM</p>
                         </div>
                         <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
                             <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Thursday </p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">04/04/2024 9:30AM - 12:00PM</p>
+                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">04/04/2024 <br> 9:30AM - 12:00PM</p>
                         </div>
                         <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
                             <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Friday </p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">05/04/2024 9:30AM - 12:00PM</p>
+                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">05/04/2024 <br> 9:30AM - 12:00PM</p>
                         </div>
                         <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
                             <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Saturday </p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">06/04/2024 Not Available</p>
+                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">06/04/2024 <br> Not Available</p>
                         </div>
                         <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
                             <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Sunday </p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">07/04/2024 Not Available</p>
+                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">07/04/2024 <br> Not Available</p>
                         </div>
                     </div>
                 </div>
