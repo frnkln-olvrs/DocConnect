@@ -18,16 +18,16 @@ include '../includes/head.php';
                 <div class="p-3 mt-4 mb-3 border border-1 bg-white">
                     <?php
                     $appointments = array(
-                        array("John Doe", "10:00 AM", "10:30 AM", "2024-04-01", "09123456789", "https://meet.google.com/abcdefgh", "Complete"),
-                        array("Jane Smith", "02:30 PM", "03:00 PM", "2024-04-02", "09129876543", "https://meet.google.com/ijklmnop", "Complete"),
-                        array("Michael Johnson", "09:15 AM", "09:45 AM", "2024-04-03", "09123456789", "https://meet.google.com/qrstuvwxyz", "Complete"),
-                        array("Emily Brown", "11:45 AM", "12:15 PM", "2024-04-04", "09121234567", "https://meet.google.com/12345678", "Incomplete"),
-                        array("David Lee", "03:00 PM", "03:30 PM", "2024-04-05", "09127654321", "https://meet.google.com/abcdefgh", "Incomplete"),
-                        array("Sarah Wilson", "08:30 AM", "09:00 AM", "2024-04-06", "09123456789", "https://meet.google.com/ijklmnop", "Incomplete"),
-                        array("Matthew Taylor", "01:15 PM", "01:45 PM", "2024-04-07", "09129876543", "https://meet.google.com/qrstuvwxyz", "Incomplete"),
-                        array("Alice Anderson", "09:00 AM", "09:30 AM", "2024-04-08", "09122334455", "https://meet.google.com/abcdefgh", "Incomplete"),
-                        array("Christopher Martinez", "04:30 PM", "05:00 PM", "2024-04-09", "09121122334", "https://meet.google.com/ijklmnop", "Incomplete"),
-                        array("Olivia White", "10:45 AM", "11:15 AM", "2024-04-10", "09123456789", "https://meet.google.com/qrstuvwxyz", "Incomplete")
+                        array("John Doe", "10:00 AM", "10:30 AM", "2024-04-01", "09123456789", "https://meet.google.com/abcdefgh", "Completed"),
+                        array("Jane Smith", "02:30 PM", "03:00 PM", "2024-04-02", "09129876543", "https://meet.google.com/ijklmnop", "Completed"),
+                        array("Michael Johnson", "09:15 AM", "09:45 AM", "2024-04-03", "09123456789", "https://meet.google.com/qrstuvwxyz", "Completed"),
+                        array("Emily Brown", "11:45 AM", "12:15 PM", "2024-04-04", "09121234567", "https://meet.google.com/12345678", "Ongoing"),
+                        array("David Lee", "03:00 PM", "03:30 PM", "2024-04-05", "09127654321", "https://meet.google.com/abcdefgh", "Upcoming"),
+                        array("Sarah Wilson", "08:30 AM", "09:00 AM", "2024-04-06", "09123456789", "https://meet.google.com/ijklmnop", "Upcoming"),
+                        array("Matthew Taylor", "01:15 PM", "01:45 PM", "2024-04-07", "09129876543", "https://meet.google.com/qrstuvwxyz", "Upcoming"),
+                        array("Alice Anderson", "09:00 AM", "09:30 AM", "2024-04-08", "09122334455", "https://meet.google.com/abcdefgh", "Upcoming"),
+                        array("Christopher Martinez", "04:30 PM", "05:00 PM", "2024-04-09", "09121122334", "https://meet.google.com/ijklmnop", "Upcoming"),
+                        array("Olivia White", "10:45 AM", "11:15 AM", "2024-04-10", "09123456789", "https://meet.google.com/qrstuvwxyz", "Upcoming")
                     );
                     ?>
                     <table class="table">
