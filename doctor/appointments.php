@@ -39,7 +39,7 @@ include '../includes/head.php';
                                 <th scope="col">End Time</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Contact</th>
-                                <th scope="col">Link</th>
+                                <th scope="col">Meeting Link</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -55,7 +55,7 @@ include '../includes/head.php';
                                     <td><?= $appointment[2] ?></td>
                                     <td><?= $appointment[3] ?></td>
                                     <td><?= $appointment[4] ?></td>
-                                    <td> Join Meeting: <a href="<?= $appointment[5] ?>"><?= $appointment[5] ?></a></td>
+                                    <td> Join: <a href="<?= $appointment[5] ?>"><?= $appointment[5] ?></a></td>
                                     <td><?= $appointment[6] ?></td>
                                     <td><a href="">Update</a></td>
                                 </tr>
