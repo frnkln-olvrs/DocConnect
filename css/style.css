@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap');
+
+:root {
+	--primary: #dc3545;
+	--white: whitesmoke;
+	--secondary: #b0eacd;
+	--dark_secondary: #21bf73;
+}
+
+.d-name, .d-name span {
+	font-family: "Roboto Slab", sans-serif !important;
+}
+
+.bg-green {
+	background-color: var(--dark_secondary) !important;
+}
+
+.border-green {
+	border: var(--dark_secondary) 2px solid;
+}
+
+.text-green {
+	color: var(--dark_secondary);
+}
+
+.c-red {
+	color: var(--primary);
+}
+
+* {
+	font-family: "Oswald", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	text-decoration: none !important;
+	transition: .1s linear;
+}
+
+html {
+	overflow-x: hidden;
+	scroll-padding-top: 9rem;
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: whitesmoke;
+}
+
+/* MAIN */
+section.main {
+	min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	border-image: fill 0 linear-gradient(to right, #ad2634, #00000000);
+  background: url(../img/bg-1.png) no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+}
+
+/* HEADER NAVLINKS */
+ul.header.nav .nav-link {
+	position: relative;
+}
+
+ul.header.nav .nav-link::after {
+	position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: var(--primary);
+  height: 1px;
+	transition: all .3s;
+}
+
+ul.header.nav .nav-link:not(.active, .bg-green):hover::after {
+	width: 100%;
+}
+
+/* ABOUT */
+section#about {
+	background-color: #eeeeee;
+}
