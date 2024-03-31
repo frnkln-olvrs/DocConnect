@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -64,7 +63,4 @@ include '../includes/head.php';
         </div>
     </div>
 </body>
-
 </html>
-=======
->>>>>>> parent of 9593c05 (2)
