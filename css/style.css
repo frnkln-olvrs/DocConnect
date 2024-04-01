@@ -28,6 +28,11 @@
 	color: var(--primary);
 }
 
+/* DIRTY WHITE BG */
+section#about {
+	background-color: #eeeeee;
+}
+
 * {
 	font-family: "Oswald", sans-serif;
 	margin: 0;
@@ -86,7 +91,12 @@ ul.header.nav .nav-link:not(.active, .bg-green):hover::after {
 	width: 100%;
 }
 
-/* ABOUT */
-section#about {
-	background-color: #eeeeee;
+/* INDEX SERVICES */
+section#services img {
+	width: 100%;
+}
+
+section#services .card {
+	min-height: 220px;
+	margin-top: -40px;
 }

@@ -25,29 +25,55 @@
           </div>
         </div>
         <div class="col-md-6 mt-5">
-          <img src="./img/billboard-img.png" alt="img" class="img-fluid rounded-circle">
+          <img src="./assets/images/billboard-img.png" alt="img" class="img-fluid rounded-circle">
         </div>
       </div>
     </div>
   </section>
 
-  <section id="services" class="padding-medium mt-xl-5">
+  <section id="services" class="padding-medium mt-xl-5 mx-5">
     <div class="p-3 pb-md-4 mx-auto text-center">
       <p class="fs-5 text-muted text-uppercase mx-5">What we do</p>
       <h1 class="display-6 fw-normal">Providing medical care for the </br> sickest in our University</h1>
     </div>
 
     <div>
-      <div class="card mb-4 rounded-3 shadow-sm">
-        <div class="card-body">
-          <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>10 users included</li>
-            <li>2 GB of storage</li>
-            <li>Email support</li>
-            <li>Help center access</li>
-          </ul>
-          <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+      <div class="row row-cols-1 row-cols-md-3">
+        <div class="col">
+          <img src="./assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
+          <div class="card mx-3 rounded-3 shadow-sm">
+            <div class="card-body d-flex flex-column justify-content-between shadow-sm">
+              <div>
+                <h3 class="card-title pricing-card-title">Second Opinions</h3>
+                <p class="fs-6 text-muted">Seek expert medical opinions from specialists across various fields without the need for in-person visits.</p>
+              </div>
+              <button type="button" class="w-100 btn btn-outline-primary">Read More</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <img src="./assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
+          <div class="card mx-3 rounded-3 shadow-sm">
+            <div class="card-body d-flex flex-column justify-content-between shadow-sm">
+              <div>
+                <h3 class="card-title pricing-card-title">Accessibility</h3>
+                <p class="fs-6 text-muted">Reach healthcare providers easily, even in remote or underserved areas, ensuring equitable access to medical care.</p>
+              </div>
+              <button type="button" class="w-100 btn btn-outline-primary">Read More</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <img src="./assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
+          <div class="card mx-3 rounded-3 shadow-sm">
+            <div class="card-body d-flex flex-column justify-content-between shadow-sm">
+              <div>
+                <h3 class="card-title pricing-card-title">Patient Portal</h3>
+                <p class="fs-6 text-muted">Manage appointments, view medical records, and communicate securely with healthcare providers through a user-friendly online portal.</p>
+              </div>
+              <button type="button" class="w-100 btn btn-outline-primary">Read More</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -169,7 +195,7 @@
           <a href="#" class="btn bg-green px-5 py-3 mt-4 link-light">Learn more</a>
         </div>
         <div class="offset-md-1 col-md-4">
-          <img src="./img/billboard-img.png" alt="img" class="img-fluid rounded-circle">
+          <img src="./assets/images/billboard-img.png" alt="img" class="img-fluid rounded-circle">
         </div>
       </div>
     </div>
