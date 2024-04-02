@@ -2,7 +2,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo $title ?></title>
-  <link rel="icon" href="./img/wmsu_logo.png">
+  <link rel="icon" href="../assets/images/logo.png">
 
   <!-- bootstrap-5 -->
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">

@@ -2,11 +2,11 @@
 <html lang="en">
 <?php 
   $title = 'Home';
-	include './includes/head.php';
+	include '../includes/head.php';
 ?>
 <body>
   <?php 
-    require_once ('./includes/header.php');
+    require_once ('../includes/header.php');
   ?>
   <section class="main">
     <div class="container">
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="col-md-6 mt-5">
-          <img src="./assets/images/billboard-img.png" alt="img" class="img-fluid rounded-circle">
+          <img src="../assets/images/billboard-img.png" alt="img" class="img-fluid rounded-circle">
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
     <div>
       <div class="row row-cols-1 row-cols-md-3">
         <div class="col">
-          <img src="./assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
+          <img src="../assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
           <div class="card mx-3 rounded-3 shadow-sm">
             <div class="card-body d-flex flex-column justify-content-between shadow-sm">
               <div>
@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="col">
-          <img src="./assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
+          <img src="../assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
           <div class="card mx-3 rounded-3 shadow-sm">
             <div class="card-body d-flex flex-column justify-content-between shadow-sm">
               <div>
@@ -64,7 +64,7 @@
           </div>
         </div>
         <div class="col">
-          <img src="./assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
+          <img src="../assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
           <div class="card mx-3 rounded-3 shadow-sm">
             <div class="card-body d-flex flex-column justify-content-between shadow-sm">
               <div>
@@ -195,7 +195,7 @@
           <a href="#" class="btn bg-green px-5 py-3 mt-4 link-light">Learn more</a>
         </div>
         <div class="offset-md-1 col-md-4">
-          <img src="./assets/images/billboard-img.png" alt="img" class="img-fluid rounded-circle">
+          <img src="../assets/images/billboard-img.png" alt="img" class="img-fluid rounded-circle">
         </div>
       </div>
     </div>
