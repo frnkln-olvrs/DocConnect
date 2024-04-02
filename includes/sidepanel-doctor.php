@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block border-end sidebar collapse min-vh-100 bg-white">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block border-end sidebar collapse min-vh-100">
     <div class="position-sticky pt-3">
         <div class="pt-1 pb-2 mb-2 border-bottom d-flex align-items-center flex-column">
             <img src="../images/frankprofile.jpg" alt="" height="100" width="100" class="rounded rounded-circle border border-2 border-primary mb-2">
@@ -8,31 +8,25 @@
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="../doctor/index.php">
-                    <img src="../images/frankprofile.jpg" alt="" height="25" width="25" class="rounded rounded-circle border border-2 border-primary">
+                    <i class='bx bxs-user-detail me-2'></i>
                     Profile
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../doctor/appointments.php">
-                    <img src="../images/frankprofile.jpg" alt="" height="25" width="25" class="rounded rounded-circle border border-2 border-primary">
-                    Appointments
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <img src="../images/frankprofile.jpg" alt="" height="25" width="25" class="rounded rounded-circle border border-2 border-primary">
+                <a class="nav-link" href="../doctor/patients.php">
+                    <i class='bx bx-group me-2'></i>
                     Patients
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <img src="../images/frankprofile.jpg" alt="" height="25" width="25" class="rounded rounded-circle border border-2 border-primary">
+                    <i class='bx bx-chat me-2'></i>
                     Chats
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <img src="../images/frankprofile.jpg" alt="" height="25" width="25" class="rounded rounded-circle border border-2 border-primary">
+                    <i class='bx bx-cog me-2'></i>
                     Settings
                 </a>
             </li>
