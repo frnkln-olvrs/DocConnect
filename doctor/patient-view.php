@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$title = 'Patients';
+$title = 'Patient View';
 include '../includes/head.php';
 ?>
 
@@ -53,7 +53,7 @@ include '../includes/head.php';
                         <p class="m-0 p-0 fs-6 text-dark">- Hyperlipidemia (diagnosed in 2015)</p>
                     </div>
                     <div class="col-6 mb-3">
-                        <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Allegies</p>
+                        <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Allergies</p>
                         <p class="m-0 p-0 fs-6 text-dark">- Peanuts (anaphylactic reaction)</p>
                     </div>
                     <div class=" col-6 mb-3">
