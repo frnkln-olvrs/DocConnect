@@ -15,7 +15,7 @@ include '../includes/head.php';
             require_once('../includes/sidepanel-doctor.php');
             ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="p-3 mt-4 mb-3 border border-1">
+                <div class="mt-4 mb-3">
                     <p class="m-0 p-0 fs-5 text-dark fw-semibold">Dr. John Doe</p>
                     <p class="m-0 p-0 hs-6 text-secondary mb-3">Medical Practitioner</p>
                     <div class="pt-2 mb-3 border-top">
@@ -23,7 +23,7 @@ include '../includes/head.php';
                         <p class="m-0 p-0 fs-6 text-dark">As a medical practitioner, I provide compassionate healthcare with expertise in diagnosing, treating, and preventing illnesses and injuries. My patient-centered approach emphasizes trust, communication, and personalized treatment plans. I am dedicated to staying updated on medical advancements to ensure the highest standard of care. I'm passionate about health education and disease prevention, aiming to empower patients for long-term wellness.</p>
                     </div>
                 </div>
-                <div class="p-3 mt-4 mb-3 border border-1">
+                <div class="mt-4 mb-3">
                     <div class="mb-2 d-flex flex-row justify-content-between">
                         <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Availability for this Week</p>
                         <a href="" class="m-0 p-0 fs-6 fw-normal text-primary text-decoration-underline mb-2">Update Schedule</a>
