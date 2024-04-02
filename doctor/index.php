@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$title = 'Home';
+$title = 'Profile';
 include '../includes/head.php';
 ?>
 

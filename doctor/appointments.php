@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$title = 'Home';
+$title = 'Appointments';
 include '../includes/head.php';
 ?>
 
@@ -36,7 +36,6 @@ include '../includes/head.php';
                                 <th scope="col">#</th>
                                 <th scope="col">Patient Name</th>
                                 <th scope="col">Start Time</th>
-                                <th scope="col">End Time</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Contact</th>
                                 <th scope="col">Meeting Link</th>
@@ -52,8 +51,7 @@ include '../includes/head.php';
                                     <td><?= $key + 1 ?></td>
                                     <td><?= $appointment[0] ?></td>
                                     <td><?= $appointment[1] ?></td>
-                                    <td><?= $appointment[2] ?></td>
-                                    <td><?= $appointment[3] ?></td>
+                                    <td><?= date("F j, Y", strtotime($appointment[3])) ?></td>
                                     <td><?= $appointment[4] ?></td>
                                     <td> Join: <a href="<?= $appointment[5] ?>"><?= $appointment[5] ?></a></td>
                                     <td><?= $appointment[6] ?></td>
