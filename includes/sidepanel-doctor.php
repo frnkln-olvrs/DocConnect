@@ -7,7 +7,13 @@
         </div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../doctor/index.php">
+                <a class="nav-link" href="../doctor/index.php">
+                    <i class='bx bx-bar-chart-square me-2'></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../doctor/profile.php">
                     <i class='bx bxs-user-detail me-2'></i>
                     Profile
                 </a>
