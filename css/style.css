@@ -17,7 +17,7 @@
 }
 
 .border-green {
-	border: var(--dark_secondary) 2px solid;
+	border: var(--dark_secondary) 2px solid !important;
 }
 
 .text-green {

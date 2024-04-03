@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="col">
-          <img src="../assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
+          <img src="../assets/images/sevices_img2.jpeg" alt="sevices_img1.jpeg" class="rounded-2 border-green border-5">
           <div class="card mx-3 rounded-3 shadow-sm">
             <div class="card-body d-flex flex-column justify-content-between shadow-sm">
               <div>
@@ -64,7 +64,7 @@
           </div>
         </div>
         <div class="col">
-          <img src="../assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
+          <img src="../assets/images/sevices_img3.jpeg" alt="sevices_img1.jpeg" class="rounded-2">
           <div class="card mx-3 rounded-3 shadow-sm">
             <div class="card-body d-flex flex-column justify-content-between shadow-sm">
               <div>
