@@ -100,3 +100,14 @@ section#services .card {
 	min-height: 220px;
 	margin-top: -40px;
 }
+
+@media (max-width:450px) {
+	section.main .img {
+		display: none;
+	}
+
+	section#services .card {
+		min-height: 220px;
+		margin-top: -90px;
+	}
+}
