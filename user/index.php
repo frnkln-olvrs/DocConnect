@@ -31,7 +31,61 @@
     </div>
   </section>
 
-  <section id="services" class="padding-medium mt-xl-5 mx-5">
+  <section id="features" class="mt-xl-5 mx-5">
+    <div class="p-3 pb-md-4 mx-auto text-center">
+      <p class="fs-5 text-muted text-uppercase mx-5">Key Features</p>
+      <h1 class="display-6 fw-normal">Experience the Benefits of <br> Our Telecommunication Health Services</h1>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-4">
+      <div class="col mb-3">
+        <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
+          <div class="card-body d-flex flex-column justify-content-between shadow-sm">
+            <div class="align-content-center text-center">
+              <i class='bx bx-plus-medical p-3 mb-3 border-green text-green rounded-circle shadow-sm fs-3'></i>
+              <h3 class="card-title pricing-card-title">Enhanced Patient Engagement and Satisfaction</h3>
+              <p class="fs-6 text-muted">Empower patients to participate in their healthcare journey through telecommunication health services.</p>
+            </div>  
+          </div>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
+          <div class="card-body d-flex flex-column justify-content-between shadow-sm">
+            <div class="align-content-center text-center">
+              <i class='bx bx-plus-medical p-3 mb-3 border border-2 border-primary text-primary rounded-circle shadow-sm fs-3'></i>
+              <h3 class="card-title pricing-card-title">Enhanced Patient Engagement and Satisfaction</h3>
+              <p class="fs-6 text-muted">Empower patients to participate in their healthcare journey through telecommunication health services.</p>
+            </div>  
+          </div>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
+          <div class="card-body d-flex flex-column justify-content-between shadow-sm">
+            <div class="align-content-center text-center">
+              <i class='bx bx-plus-medical p-3 mb-3 border-green text-green rounded-circle shadow-sm fs-3'></i>
+              <h3 class="card-title pricing-card-title">Enhanced Patient Engagement and Satisfaction</h3>
+              <p class="fs-6 text-muted">Empower patients to participate in their healthcare journey through telecommunication health services.</p>
+            </div>  
+          </div>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
+          <div class="card-body d-flex flex-column justify-content-between shadow-sm">
+            <div class="align-content-center text-center">
+              <i class='bx bx-plus-medical p-3 mb-3 border border-2 border-primary text-primary rounded-circle shadow-sm fs-3'></i>
+              <h3 class="card-title pricing-card-title">Enhanced Patient Engagement and Satisfaction</h3>
+              <p class="fs-6 text-muted">Empower patients to participate in their healthcare journey through telecommunication health services.</p>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="mt-xl-5 mx-5">
     <div class="p-3 pb-md-4 mx-auto text-center">
       <p class="fs-5 text-muted text-uppercase mx-5">What we do</p>
       <h1 class="display-6 fw-normal">Providing medical care for the <br> sickest in our University</h1>
