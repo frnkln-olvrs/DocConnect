@@ -15,16 +15,9 @@ include '../includes/head.php';
             require_once('../includes/sidepanel-doctor.php');
             ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mb-4">
-                <div class="my-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Patient Information</a></li>
-                            <li class="breadcrumb-item"><a href="#">Results</a></li>
-                            <li class="breadcrumb-item"><a href="#">Files</a></li>
-                            <li class="breadcrumb-item"><a href="#">Meeting Record</a></li>
-                        </ol>
-                    </nav>
-                </div>
+                <?php
+                require_once('../includes/breadcrumb-patient.php');
+                ?>
                 <div class="p-0 m-0 row">
                     <div class="col-12 mb-3 border-bottom">
                         <p class="m-0 p-0 fs-5 text-dark fw-semibold">Jane Smith</p>
@@ -65,19 +58,6 @@ include '../includes/head.php';
                         <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Immunizations</p>
                         <p class="m-0 p-0 fs-6 text-dark">- Influenza Vaccine</p>
                         <p class="m-0 p-0 fs-6 text-dark">- Tetanus-diphtheria-pertussis</p>
-                    </div>
-                    <div class="col-12 pt-2 border-top">
-                        <p class="m-0 p-0 fs-6 text-dark fw-semibold mb-2">Prescriptions</p>
-                        <div class="mb-2">
-                            <p class="m-0 p-0 fs-6 text-secondary">Drug: <span class="text-dark">Amoxicillin</span></p>
-                            <p class="m-0 p-0 fs-6 text-secondary">Dosage: <span class="text-dark">10 mg</span></p>
-                            <p class="m-0 p-0 fs-6 text-secondary">Instruction: <span class="text-dark">Take 1 capsule orally every 8 hours for 10 days.</span></p>
-                        </div>
-                        <div class="mb-2">
-                            <p class="m-0 p-0 fs-6 text-secondary">Drug: <span class="text-dark">Loratadine</span></p>
-                            <p class="m-0 p-0 fs-6 text-secondary">Dosage: <span class="text-dark">500 mg</span></p>
-                            <p class="m-0 p-0 fs-6 text-secondary">Instruction: <span class="text-dark">Take 1 tablet orally once daily as needed for allergy symptoms.</span></p>
-                        </div>
                     </div>
                 </div>
             </main>
