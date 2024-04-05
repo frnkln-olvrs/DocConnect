@@ -61,10 +61,14 @@
               <input type="password" class="form-control" id="password-login" placeholder="Password">
               <label for="password-login">Password</label>
             </div>
+            <div class="text-end">
+              <a href="#" class="p-0 text-black text-decoration-none">Forget Password</a>
+            </div>
+            
             <div class="form-group">
               <button id="logIn" class="btn btn-primary login" type="submit" name="login">Log In</button>
             </div>
-            <p class="text-center">New Here? <span id="goRight" class="login off text-secondary" name="signup">Sign Up!</span></p>
+            <p class="text-center">New Here? <span id="goRight" class="login off text-secondary" name="signup" style="cursor: pointer;">Sign Up!</span></p>
           </form>
         </div>
       </div>
