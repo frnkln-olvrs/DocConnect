@@ -43,9 +43,9 @@
               </label>
             </div>
             <div class="form-group">
-              <button id="signUp" class="btn btn-primary signup" type="submit" name="signup">Sign up</button>
-              <button id="goLeft" class="btn btn-secondary signup off">Log In</button> 
+              <button id="signUp" class="btn text-white signup" type="submit" name="signup">Sign up</button>
             </div>
+            <p class="text-center">New Here? <span id="goLeft" class="signup off text-secondary"  style="cursor: pointer;">Log In</span> </p>
           </form>
         </div>
       </div>
@@ -66,7 +66,7 @@
             </div>
             
             <div class="form-group">
-              <button id="logIn" class="btn btn-primary login" type="submit" name="login">Log In</button>
+              <button id="logIn" class="btn text-white login" type="submit" name="login">Log In</button>
             </div>
             <p class="text-center">New Here? <span id="goRight" class="login off text-secondary" name="signup" style="cursor: pointer;">Sign Up!</span></p>
           </form>
