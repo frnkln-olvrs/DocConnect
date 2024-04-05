@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap');
 /* Variable Declarations */
 :root {
-  --theme-signup: #f40303;
+  --theme-signup: #21bf73;
   --theme-signup-darken: #0288D1;
   --theme-signup-background: #2C3034;
-  --theme-login: #673AB7;
+  --theme-login: #dc3545;
   --theme-login-darken: #512DA8;
   --theme-login-background: #f9f9f9;
   --theme-dark: #212121;
   --theme-light: #e3e3e3;
-  --font-default: 'Roboto', sans-serif;
+  --font-default: "Oswald", sans-serif;
   --success: #5cb85c;
   --error: #d9534f;
 }

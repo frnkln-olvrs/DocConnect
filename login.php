@@ -6,7 +6,6 @@
 	include './includes/head.php';
 ?>
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.3/paper-full.min.js"></script>
   <link rel="stylesheet" href="./css/login.css">
 </head>
@@ -19,57 +18,58 @@
     </div>
   </div>
   
-  <div id="slideBox">
-    <div class="topLayer">
-      <div class="left">
+  <div id="slideBox" class="container bg-white">
+    <div class="row topLayer">
+      <div class="col-md-6 p-0">
         <div class="content">
           <h2>Sign Up</h2>
           <form id="form-signup" method="post" onsubmit="return false;">
-            <div class="form-element form-stack">
-              <label for="email" class="form-label">Email</label>
-              <input id="email" type="email" name="email">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="email" placeholder="name@example.com">
+              <label for="email">Email address</label>
             </div>
-            <div class="form-element form-stack">
-              <label for="username-signup" class="form-label">Username</label>
-              <input id="username-signup" type="text" name="username">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="username-signup" placeholder="Username">
+              <label for="username-signup">Username</label>
             </div>
-            <div class="form-element form-stack">
-              <label for="password-signup" class="form-label">Password</label>
-              <input id="password-signup" type="password" name="password">
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="password-signup" placeholder="Password">
+              <label for="password-signup">Password</label>
             </div>
-            <div class="form-element form-checkbox">
-              <input id="confirm-terms" type="checkbox" name="confirm" value="yes" class="checkbox">
-              <label for="confirm-terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" value="yes" id="confirm-terms">
+              <label class="form-check-label" for="confirm-terms">
+                I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+              </label>
             </div>
-            <div class="form-element form-submit">
-              <button id="signUp" class="signup" type="submit" name="signup">Sign up</button>
-              <button id="goLeft" class="signup off">Log In</button> 
+            <div class="form-group">
+              <button id="signUp" class="btn btn-primary signup" type="submit" name="signup">Sign up</button>
+              <button id="goLeft" class="btn btn-secondary signup off">Log In</button> 
             </div>
           </form>
         </div>
       </div>
-      <div class="right">
+      <div class="col-md-6 p-0">
         <div class="content">
           <h2>Login</h2>
           <form id="form-login" method="post" onsubmit="return false;">
-            <div class="form-element form-stack">
-              <label for="username-login" class="form-label">Username</label>
-              <input id="username-login" type="text" name="username">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="username-login" placeholder="Username">
+              <label for="username-login">Username</label>
             </div>
-            <div class="form-element form-stack">
-              <label for="password-login" class="form-label">Password</label>
-              <input id="password-login" type="password" name="password">
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="password-login" placeholder="Password">
+              <label for="password-login">Password</label>
             </div>
-            <div class="form-element form-submit">
-              <button id="logIn" class="login" type="submit" name="login">Log In</button>
-              <button id="goRight" class="login off" name="signup">Sign Up</button>
+            <div class="form-group">
+              <button id="logIn" class="btn btn-primary login" type="submit" name="login">Log In</button>
             </div>
+            <p class="text-center">New Here? <span id="goRight" class="login off text-secondary" name="signup">Sign Up!</span></p>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <script></script>
 
   <script src="./js/login.js"></script>
 </body>

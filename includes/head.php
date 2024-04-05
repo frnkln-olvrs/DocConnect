@@ -14,6 +14,9 @@
   <!-- boxicon -->
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
   
   <link rel="stylesheet" href="../css/custom.min.css">
   <link rel="stylesheet" href="../css/style.css">
