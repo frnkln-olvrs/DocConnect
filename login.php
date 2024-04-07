@@ -62,7 +62,7 @@
               <label for="password-login">Password</label>
             </div>
             <div class="text-end">
-              <a href="#" class="p-0 text-black text-decoration-none">Forget Password</a>
+              <a href="#" class="p-0 text-black text-decoration-none">Forgot Password?</a>
             </div>
             
             <div class="form-group">

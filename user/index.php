@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-  $title = 'Home';
+  $title = 'DocConnect';
 	include '../includes/head.php';
 ?>
 <body>
@@ -43,7 +43,7 @@
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
               <i class='bx bx-plus-medical p-3 mb-3 border-green text-green rounded-circle shadow-sm fs-3'></i>
-              <h3 class="card-title pricing-card-title">Enhanced Patient Engagement and Satisfaction</h3>
+              <h4 class="card-title pricing-card-title">Enhanced Patient Engagement and Satisfaction</h4>
               <p class="fs-6 text-muted">Empower patients to participate in their healthcare journey through telecommunication health services.</p>
             </div>  
           </div>
@@ -54,7 +54,7 @@
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
               <i class='bx bxs-capsule p-3 mb-3 border border-2 border-primary text-primary rounded-circle shadow-sm fs-3'></i>
-              <h3 class="card-title pricing-card-title">Remote Consultations</h3>
+              <h4 class="card-title pricing-card-title">Remote Consultations</h4>
               <p class="fs-6 text-muted">Access healthcare professionals from anywhere, eliminating the need for in-person visits.</p>
             </div>  
           </div>
@@ -65,7 +65,7 @@
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
               <i class='bx bx-plus-medical p-3 mb-3 border-green text-green rounded-circle shadow-sm fs-3'></i>
-              <h3 class="card-title pricing-card-title">Specialized Telehealth Services</h3>
+              <h4 class="card-title pricing-card-title">Specialized Telehealth Services</h4>
               <p class="fs-6 text-muted">Collaborative care coordination between your primary care provider and specialists for comprehensive treatment plans.</p>
             </div>  
           </div>
@@ -76,7 +76,7 @@
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
               <i class='bx bx-plus-medical p-3 mb-3 border border-2 border-primary text-primary rounded-circle shadow-sm fs-3'></i>
-              <h3 class="card-title pricing-card-title">Scalable Telehealth Solutions for Healthcare Providers</h3>
+              <h4 class="card-title pricing-card-title">Scalable Telehealth Solutions for Healthcare Providers</h4>
               <p class="fs-6 text-muted">Customizable telehealth platforms tailored to the needs of individual healthcare practices.</p>
             </div>  
           </div>
@@ -85,50 +85,52 @@
     </div>
   </section>
 
-  <section id="services" class="mt-xl-5 mx-5">
-    <div class="p-3 pb-md-4 mx-auto text-center">
-      <p class="fs-5 text-muted text-uppercase mx-5">What we do</p>
-      <h1 class="display-6 fw-normal">Providing medical care for the <br> sickest in our University</h1>
-    </div>
-
-    <div class="row row-cols-1 row-cols-md-3">
-      <div class="col mb-4">
-        <img src="../assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
-        <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
-          <div class="card-body d-flex flex-column justify-content-between shadow-sm">
-            <div>
-              <h3 class="card-title pricing-card-title">Second Opinions</h3>
-              <p class="fs-6 text-muted">Seek expert medical opinions from specialists across various fields without the need for in-person visits.</p>
-            </div>
-            <button type="button" class="w-100 btn btn-outline-primary">Read More</button>
-          </div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <img src="../assets/images/sevices_img2.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
-        <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
-          <div class="card-body d-flex flex-column justify-content-between shadow-sm">
-            <div>
-              <h3 class="card-title pricing-card-title">Accessibility</h3>
-              <p class="fs-6 text-muted">Reach healthcare providers easily, even in remote or underserved areas, ensuring equitable access to medical care.</p>
-            </div>
-              <button type="button" class="w-100 btn btn-outline-primary">Read More</button>
-          </div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <img src="../assets/images/sevices_img3.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
-        <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
-          <div class="card-body d-flex flex-column justify-content-between shadow-sm">
-            <div>
-              <h3 class="card-title pricing-card-title">Patient Portal</h3>
-              <p class="fs-6 text-muted">Manage appointments, view medical records, and communicate securely with healthcare providers through a user-friendly online portal.</p>
-            </div>
-            <button type="button" class="w-100 btn btn-outline-primary">Read More</button>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section id="services" class="padding-medium mt-xl-5 py-2">
+   <div class="container mb-4 pt-2">
+     <div class="p-3 pb-md-4 mx-auto text-center">
+       <p class="fs-5 text-muted text-uppercase mx-5">What we do</p>
+       <h1 class="display-6 fw-normal">Providing medical care for the <br> sickest in our University</h1>
+     </div>
+ 
+     <div class="row row-cols-1 row-cols-md-3">
+       <div class="col mb-4">
+         <img src="../assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
+         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
+           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
+             <div>
+               <h3 class="card-title pricing-card-title">Second Opinions</h3>
+               <p class="fs-6 text-muted">Seek expert medical opinions from specialists across various fields without the need for in-person visits.</p>
+             </div>
+             <button type="button" class="w-100 btn btn-outline-primary">Read More</button>
+           </div>
+         </div>
+       </div>
+       <div class="col mb-4">
+         <img src="../assets/images/sevices_img2.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
+         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
+           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
+             <div>
+               <h3 class="card-title pricing-card-title">Accessibility</h3>
+               <p class="fs-6 text-muted">Reach healthcare providers easily, even in remote or underserved areas, ensuring equitable access to medical care.</p>
+             </div>
+               <button type="button" class="w-100 btn btn-outline-primary">Read More</button>
+           </div>
+         </div>
+       </div>
+       <div class="col mb-4">
+         <img src="../assets/images/sevices_img3.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
+         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
+           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
+             <div>
+               <h3 class="card-title pricing-card-title">Patient Portal</h3>
+               <p class="fs-6 text-muted">Manage appointments, view medical records, and communicate securely with healthcare providers through a user-friendly online portal.</p>
+             </div>
+             <button type="button" class="w-100 btn btn-outline-primary">Read More</button>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
   </section>
 
 
@@ -254,9 +256,9 @@
     </div>
   </section>
 
-<footer class="pt-4 my-md-5 pt-md-5 border-top">
-  <h1 class="d-flex justify-content-center">FOOTER</h1>
-</footer>
+  <?php 
+    require_once ('../includes/footer.php');
+  ?>
 
 </body>
 </html>

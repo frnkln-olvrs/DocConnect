@@ -29,7 +29,8 @@
 }
 
 /* DIRTY WHITE BG */
-section#about {
+section#about,
+section#services {
 	background-color: #eeeeee;
 }
 

@@ -8,7 +8,7 @@
     <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
     <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
     <li class="nav-item"><a href="#" class="nav-link">Our Doctors</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">Appointment</a></li>
+    <li class="nav-item"><a href="./appointment.php" class="nav-link">Appointment</a></li>
     <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
     <li class="nav-item"><a href="#" class="nav-link ms-2 bg-green text-white" aria-current="page">Login</a></li>
   </ul>
