@@ -4,32 +4,73 @@
   $title = 'Appointment';
 	include '../includes/head.php';
 ?>
-<body>
+<body class="pt-5">
   <?php 
     require_once ('../includes/header.php');
   ?>
 
-<section id="info" class="padding-medium mt-xl-5 mx-5">
-    <div class="p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal">Telemedicine</h1>
-      <p class="fs-5 text-muted">Bridging the gap between distance and healthcare accessibility.</p>
-    </div>
-
+  <section id="info" class="padding-medium mt-5 mx-5">
     <div class="row mb-3">
       <div class="col-sm-12 col-md-8">
-        <div class="row row-cols-1">
-          <div class="col mb-4">
-            <div class="border border-success shadow-sm rounded-2 p-3">
-              <div class="row">
-                <div class="col-4 d-flex align-items-sm-start align-items-center justify-content-center">
-                  <i class='bx bx-plus-medical p-3 bg-green text-white rounded-1 fs-3'></i>
+        <div class="border border-dark-subtle shadow-sm rounded-2 p-3">
+          <p class="fs-5">Select Date - <span class="text-muted fs-6">April 2024</span></p>
+          <div class="row row-cols-3 row-cols-md-6">
+
+            <div class="col mb-3">
+              <label>
+                <input class="radio-input shadow-none" type="radio" name="date">
+                <div class="radio-tile p-2 d-flex justify-content-around me-2">
+                  <span class="radio-label">WED</span>
+                  <span class="radio-label">10</span>
                 </div>
-                <div class="col-8">
-                  <h3 class="fw-normal">Doctor on Call</h3>
-                  <p class="fs-6 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae nam commodi dolore vitae?</p>
-                </div>
-              </div>
+              </label>
             </div>
+            <div class="col mb-3">
+              <label>
+                <input class="radio-input" type="radio" name="date">
+                <div class="radio-tile p-2 d-flex justify-content-around me-2">
+                  <span class="radio-label">THU</span>
+                  <span class="radio-label">11</span>
+                </div>
+              </label>
+            </div>
+            <div class="col mb-3">
+              <label>
+                <input class="radio-input" type="radio" name="date">
+                <div class="radio-tile p-2 d-flex justify-content-around me-2">
+                  <span class="radio-label">FRI</span>
+                  <span class="radio-label">12</span>
+                </div>
+              </label>
+            </div>
+            <div class="col mb-3">
+              <label>
+                <input class="radio-input" type="radio" name="date">
+                <div class="radio-tile p-2 d-flex justify-content-around me-2">
+                  <span class="radio-label">SAT</span>
+                  <span class="radio-label">13</span>
+                </div>
+              </label>
+            </div>
+            <div class="col mb-3">
+              <label>
+                <input class="radio-input" type="radio" name="date">
+                <div class="radio-tile p-2 d-flex justify-content-around me-2">
+                  <span class="radio-label">SUN</span>
+                  <span class="radio-label">14</span>
+                </div>
+              </label>
+            </div>
+            <div class="col mb-3">
+              <label>
+                <input class="radio-input" type="radio" name="date">
+                <div class="radio-tile p-2 d-flex justify-content-around me-2">
+                  <span class="radio-label">MON</span>
+                  <span class="radio-label">15</span>
+                </div>
+              </label>
+            </div>
+
           </div>
         </div>
       </div>
