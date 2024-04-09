@@ -111,4 +111,12 @@ section#services .card {
 		min-height: 220px;
 		margin-top: -90px;
 	}
+
+	section#about .row {
+		flex-direction: column-reverse;
+	}
+
+	section#about img {
+		margin-bottom: -125px;
+	}
 }
