@@ -38,7 +38,7 @@
     </div>
 
     <div class="row row-cols-1 row-cols-md-4">
-      <div class="col mb-3">
+      <div class="col p-0 mb-3">
         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
@@ -49,7 +49,7 @@
           </div>
         </div>
       </div>
-      <div class="col mb-3">
+      <div class="col p-0 mb-3">
         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
@@ -60,7 +60,7 @@
           </div>
         </div>
       </div>
-      <div class="col mb-3">
+      <div class="col p-0 mb-3">
         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
@@ -71,7 +71,7 @@
           </div>
         </div>
       </div>
-      <div class="col mb-3">
+      <div class="col p-0 mb-3">
         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">

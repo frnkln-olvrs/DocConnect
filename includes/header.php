@@ -14,7 +14,7 @@
   </ul>
 </header> -->
 
-<header class="navbar fixed-top p-3 navbar-expand-lg navbar-dark bg-white">
+<header class="navbar fixed-top p-3 navbar-expand-lg navbar-dark bg-white shadow-sm">
 	<div class="container-fluid">
 		<a class="navbar-brand d-flex align-items-center text-dark text-decoration-none" href="../index.php">
       <img src="../assets/images/logo.png" alt="Logo" height="35">
