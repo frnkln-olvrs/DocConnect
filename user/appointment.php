@@ -121,6 +121,25 @@
             </div>
           </div>
 
+          <hr>
+
+          <div>
+            <div class="row">
+              <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
+                <i class='bx bx-phone xx-large-font text-green pt-md-2 ps-md-2'></i>
+              </div>
+              <div class="col-12 col-md-11">
+                <p class="fs-5 mb-0 xx">Mobile Number</p>
+                <p class="fs-6 fw-light text-muted">Enter the number on which you wish to recieve checkup related information</p>
+                <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
+      
+                  <input type="number" class="form-control border border-dark" placeholder="09" aria-label="mobile_no" aria-describedby="mobile_no">
+      
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
