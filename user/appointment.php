@@ -20,43 +20,43 @@
               <label>
                 <input class="radio-input shadow-none" type="radio" name="date">
                 <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">WED</span>
+                  <span class="radio-label fw-bold">WED</span>
                   <span class="radio-label">10</span>
                 </div>
               </label>
               <label>
                 <input class="radio-input shadow-none" type="radio" name="date">
                 <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">WED</span>
-                  <span class="radio-label">10</span>
+                  <span class="radio-label fw-bold">THU</span>
+                  <span class="radio-label">11</span>
                 </div>
               </label>
               <label>
                 <input class="radio-input shadow-none" type="radio" name="date">
                 <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">WED</span>
-                  <span class="radio-label">10</span>
+                  <span class="radio-label fw-bold">FRI</span>
+                  <span class="radio-label">12</span>
                 </div>
               </label>
               <label>
                 <input class="radio-input shadow-none" type="radio" name="date">
                 <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">WED</span>
-                  <span class="radio-label">10</span>
+                  <span class="radio-label fw-bold">SAT</span>
+                  <span class="radio-label">13</span>
                 </div>
               </label>
               <label>
                 <input class="radio-input shadow-none" type="radio" name="date">
                 <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">WED</span>
-                  <span class="radio-label">10</span>
+                  <span class="radio-label fw-bold">SUN</span>
+                  <span class="radio-label">14</span>
                 </div>
               </label>
               <label>
                 <input class="radio-input shadow-none" type="radio" name="date">
                 <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">WED</span>
-                  <span class="radio-label">10</span>
+                  <span class="radio-label fw-bold">MON</span>
+                  <span class="radio-label">15</span>
                 </div>
               </label>
   
@@ -65,6 +65,61 @@
 
           <hr>
 
+          <div>
+            <p class="fs-5">Select Time</p>
+            <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start">
+  
+              <label>
+                <input class="radio-input shadow-none" type="radio" name="time">
+                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
+                  <span class="radio-label">07-08 AM</span>
+                </div>
+              </label>
+              <label>
+                <input class="radio-input shadow-none" type="radio" name="time">
+                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
+                  <span class="radio-label">08-09 AM</span>
+                </div>
+              </label>
+              <label>
+                <input class="radio-input shadow-none" type="radio" name="time">
+                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
+                  <span class="radio-label">09-10 AM</span>
+                </div>
+              </label>
+              <label>
+                <input class="radio-input shadow-none" type="radio" name="time">
+                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
+                  <span class="radio-label">10-11 AM</span>
+                </div>
+              </label>
+              <label>
+                <input class="radio-input shadow-none" type="radio" name="time">
+                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
+                  <span class="radio-label">01-02 PM</span>
+                </div>
+              </label>
+              <label>
+                <input class="radio-input shadow-none" type="radio" name="time">
+                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
+                  <span class="radio-label">02-03 PM</span>
+                </div>
+              </label>
+              <label>
+                <input class="radio-input shadow-none" type="radio" name="time">
+                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
+                  <span class="radio-label">03-04 PM</span>
+                </div>
+              </label>
+              <label>
+                <input class="radio-input shadow-none" type="radio" name="time">
+                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
+                  <span class="radio-label">04-05 PM</span>
+                </div>
+              </label>
+  
+            </div>
+          </div>
 
         </div>
       </div>

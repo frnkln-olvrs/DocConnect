@@ -161,6 +161,11 @@ section#services .card {
   position: relative;
 }
 
+.radio-tile.time {
+  width: 100px;
+  min-height: 45px;
+}
+
 .radio-tile:hover {
   border-color: var(--primary);
 }
