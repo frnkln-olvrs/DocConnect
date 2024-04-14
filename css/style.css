@@ -203,11 +203,7 @@ section#services .card {
 /* CHAT.PHP CHAT SECTION */
 section#chat {
   height: calc(100vh - 77px);
-  margin-top: 30px; /* This will shift the #chat section down by 30px */
-}
-
-section#chat .bx::before {
-  width: 25px;
+  margin-top: 30px;
 }
 
 @media (max-width:450px) {
