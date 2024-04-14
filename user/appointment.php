@@ -9,13 +9,13 @@
     require_once ('../includes/header.php');
   ?>
 
-  <section id="info" class="padding-medium mt-5 mx-5">
+  <section id="appointment" class="padding-medium mt-5 mx-5">
     <div class="row mb-3">
       <div class="col-sm-12 col-md-8">
         <div class="border border-dark-subtle shadow-sm rounded-2 p-3 mb-4 mb-md-0">
           <div>
             <p class="fs-5">Select Date - <span class="text-muted fs-6">April 2024</span></p>
-            <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start">
+            <div class="d-flex flex-row flex-wrap justify-content-between justify-content-md-start">
   
               <label>
                 <input class="radio-input shadow-none" type="radio" name="date">
@@ -60,10 +60,15 @@
                 </div>
               </label>
               
-            </div>
-            <div class="d-flex flex-column mt-2">
-              <label for="extra_date mb-2">Other date:</label>
-              <input type="date" name="extra_date" class="mt-2 px-2 py-1 bg-white border border-primary rounded-1 w-25 ">
+              <label>
+                <input class="radio-input shadow-none" type="radio" name="date">
+                <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2 w-100">
+                  <div class="d-flex flex-column">
+                    <span class="radio-label align-self-start fw-bold">Other date:</span>
+                    <input type="date" name="extra_date" class="fs-6 px-2 py-1 bg-white border border-primary rounded-1 text-black-50 w-100">
+                  </div>
+                </div>
+              </label>
             </div>
           </div>
 
