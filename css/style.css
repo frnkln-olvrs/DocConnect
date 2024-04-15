@@ -202,8 +202,12 @@ section#services .card {
 
 /* CHAT.PHP CHAT SECTION */
 section#chat {
-  height: calc(100vh - 77px);
+  height: calc(100vh - 79px);
   margin-top: 30px;
+}
+
+section#chat .body {
+  height: calc(100% - 116px);
 }
 
 @media (max-width:450px) {

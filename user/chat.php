@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php 
+<?php
   $title = 'Appointment';
 	include '../includes/head.php';
 ?>
 <body class="pt-5">
-  <?php 
+  <?php
     require_once ('../includes/header.php');
   ?>
 
@@ -34,20 +34,21 @@
           </div>
         </div>
 
-        <div class="body bg-dark">
+        <div class="body bg-light p-2">
           dasd
         </div>
 
-        <div class="chat_input p-2">
-          <input type="text" name="" id="">
+        <div class="chat_input d-flex justify-content-end align-items-center p-2 ">
+          <input type="text" name="" id="" class="p-2 rounded-1 w-100 fs-6">
+          <i class='bx bx-send text-light ps-3 pe-1 fs-4' ></i>
         </div>
       </div>
     </div>
   </section>
 
-  <?php 
+  <!-- <?php
     require_once ('../includes/footer.php');
-  ?>
+  ?> -->
 
 </body>
 </html>
