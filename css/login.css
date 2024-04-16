@@ -15,6 +15,14 @@
   --error: #d9534f;
 }
 
+.link-primary {
+  color: var(--theme-login) !important;
+}
+
+.link-primary:hover {
+  color: var(--theme-login-darken) !important;
+}
+
 /* Body Styles */
 body {
   margin: 0;
@@ -26,20 +34,26 @@ body {
 }
 
 /* Background Styles */
+
 .backRight {
-  position: absolute;
   right: 0;
-  width: 50%;
-  height: 100%;
   background: var(--theme-signup);
 }
 
 .backLeft {
-  position: absolute;
   left: 0;
+  background: var(--theme-login);
+}
+
+.backRight,
+.backLeft {
+  position: absolute;  
   width: 50%;
   height: 100%;
-  background: var(--theme-login);
+  background: url(../assets/images/bg-1.png) no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
 #back {
@@ -193,7 +207,6 @@ input {
 
 /* Checkbox Styles */
 .checkbox {
-  -webkit-appearance: none;
   outline: none;
   background-color: var(--theme-light);
   border: 1px solid var(--theme-light);

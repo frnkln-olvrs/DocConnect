@@ -20,8 +20,14 @@
   
   <div id="slideBox" class="container bg-white">
     <div class="row topLayer">
-      <div class="col-md-6 p-0">
+      <div class="col-6 p-0">
         <div class="content">
+          <div class="d-flex justify-content-center m-0" >
+            <a href="./index.php" class="d-flex align-items-center text-dark text-decoration-none" >
+              <img src="./assets/images/logo.png" alt="Logo" height="35">
+              <h1 class="fs-4 link-primary m-0 d-name">Doc<span class="link-dark">Connect</span></h1>
+            </a>
+          </div>
           <h2>Sign Up</h2>
           <form id="form-signup" method="post" onsubmit="return false;">
             <div class="form-floating mb-3">
@@ -49,8 +55,14 @@
           </form>
         </div>
       </div>
-      <div class="col-md-6 p-0">
+      <div class="col-6 p-0">
         <div class="content">
+          <div class="d-flex justify-content-center m-0" >
+            <a href="./index.php" class="d-flex align-items-center text-dark text-decoration-none" >
+              <img src="./assets/images/logo.png" alt="Logo" height="35">
+              <h1 class="fs-4 link-primary m-0 d-name">Doc<span class="link-dark">Connect</span></h1>
+            </a>
+          </div>
           <h2>Login</h2>
           <form id="form-login" method="post" onsubmit="return false;">
             <div class="form-floating mb-3">
