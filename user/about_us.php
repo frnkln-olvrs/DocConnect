@@ -35,7 +35,7 @@
               <h2>Contact Us</h2>
               <span>Reach out for assistance</span>
             </div>
-            <img title="Telecommunication Health Services" src="https://scontent.fmnl2-2.fna.fbcdn.net/v/t39.30808-6/259491083_10159459430354346_2287767386916744942_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH4Nc11eBk5Exu5JZY39FdEoNOG5E5elGGg04bkTl6UYceF_IMsXkBglu4dSOAY4yFkEdvmrzZyW_0kLtwDtdfb&_nc_ohc=5gyvGDVQtnkAb4p7462&_nc_ht=scontent.fmnl2-2.fna&oh=00_AfBSLltGSHpg-LcaKJMnjqEDJQqwOW8Su2HN35N5OOjJIQ&oe=66241DE8" alt="" style="width: 450px;">
+            <img title="Telecommunication Health Services" src="../assets/images/about_us_img.jpeg" alt="" style="width: 450px;">
           </div>
         </div>
       </div>
