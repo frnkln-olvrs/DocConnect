@@ -36,11 +36,25 @@
 
         <div class="body d-flex flex-column justify-content-end bg-light p-2">
           <div class="d-flex align-items-end mb-2">
-            <div class="bg-secondary-subtle p-2 me-3 rounded-5">
+            <div class="bg-secondary-subtle p-2 me-3 mb-2 rounded-5">
               <i class='bx bxs-bot fs-3 text-primary'></i>
             </div>
-            <div id="chat_text" class="bg-secondary-subtle p-2 rounded-3">
-              <p class="fw-light mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae nam commodi dolore vitae?</p>
+            <div>
+              <div id="chat_text" class="bg-secondary-subtle p-2 mb-2 rounded-3">
+                <p class="fw-light mb-0">Hello! Welcome to WMSU's Health Services. How can I assist you today?</p>
+              </div>
+              <div id="chat_text" class="bg-secondary-subtle p-2 mb-2 rounded-3">
+                <p class="fw-light mb-0">We offer a variety of telecommunication health services for students. You can choose from the options below.</p>
+              </div>
+              <div id="chat_text" class="bg-secondary-subtle p-2 mb-2 rounded-3">
+                <p class="fw-light mb-0">Please choose one of the following options by typing the number corresponding to your choice:</p>
+                <button class="fw-light btn btn-light rounded-1 mb-0 w-100 p-1 mt-2">Schedule an Appointment</button>
+                <button class="fw-light btn btn-light rounded-1 mb-0 w-100 p-1 mt-2">Speak with a Counselor</button>
+                <button class="fw-light btn btn-light rounded-1 mb-0 w-100 p-1 mt-2">Get Medical Advice</button>
+                <button class="fw-light btn btn-light rounded-1 mb-0 w-100 p-1 mt-2">Health Resources</button>
+                <button class="fw-light btn btn-light rounded-1 mb-0 w-100 p-1 mt-2">Emergency Services</button>
+                <button class="fw-light btn btn-light rounded-1 mb-0 w-100 p-1 mt-2">Feedback and Suggestions</button>
+              </div>
             </div>
           </div>
           <div class="d-flex justify-content-end align-items-end">

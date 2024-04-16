@@ -207,11 +207,12 @@ section#chat {
 }
 
 section#chat .body {
+  overflow-y: scroll;
   height: calc(100% - 133px);
 }
 
 section#chat #chat_text {
-  max-width: 575px;
+  max-width: 75%;
 }
 
 @media (max-width:450px) {
