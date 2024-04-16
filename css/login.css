@@ -37,7 +37,7 @@ body {
 
 .backRight {
   right: 0;
-  background: var(--theme-signup);
+  border-image: fill 0 linear-gradient(to right, #21bf73a4, #21bf73a4);
 }
 
 .backLeft {
