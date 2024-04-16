@@ -17,6 +17,10 @@
 
   <!-- JQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+  <!-- Calendar -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css">
   
   <link rel="stylesheet" href="../css/custom.min.css">
   <link rel="stylesheet" href="../css/style.css">
