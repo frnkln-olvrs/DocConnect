@@ -1,4 +1,4 @@
-<footer class="py-4 pt-md-5 border-top">
+<footer class="py-4 pt-md-5 border-top shadow-lg">
   <section class="contact-area" id="contact">
     <div class="container">
       <div class="row justify-content-center">
@@ -7,7 +7,7 @@
             <div class="d-flex justify-content-center m-0">
               <a href="./index.php" class="d-flex align-items-center text-dark text-decoration-none mb-3">
                 <img src="../assets/images/logo.png" alt="Logo" style="height: 60px;">
-                <h1 class="fs-1 link-primary m-0 d-name">Doc<span class="link-dark">Connect</span></h1>
+                <h1 class="fs-1 link-primary m-0 d-name">Doc<span class="link-dark mx-0">Connect</span></h1>
               </a>
             </div>
             <p class="lead">DocConnect offers free telecommunication health services to all university students. Our services include virtual consultations with licensed healthcare professionals, mental health support, and access to a variety of health resources.</p>
