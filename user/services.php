@@ -121,6 +121,10 @@
           </ul>
         </div>
       </div>
+
+      <h5>Chat with Us:</h5>
+      <p>click here -> <a href="./chat_bot">chat</a></p>
+      
   
     </div>
   </section>
