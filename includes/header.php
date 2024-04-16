@@ -13,7 +13,7 @@
 			<ul class="navbar-nav mb-2 mb-lg-0 header nav nav-pills">
         <li class="nav-item"><a href="./about_us" class="nav-link text-primary">About Us</a></li>
         <li class="nav-item"><a href="./services" class="nav-link text-primary">Services</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-primary">Our Doctors</a></li>
+        <li class="nav-item"><a href="./doctors" class="nav-link text-primary">Our Doctors</a></li>
         <li class="nav-item"><a href="./appointment" class="nav-link text-primary">Appointment</a></li>
         <li class="nav-item"><a href="#" class="nav-link text-primary">Contact</a></li>
         <li class="nav-item"><a href="../login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white" aria-current="page">Login</a></li>
