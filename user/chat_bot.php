@@ -36,7 +36,7 @@
 
         <div class="body d-flex flex-column justify-content-end bg-light p-2">
           <div class="d-flex align-items-end mb-2">
-            <div class="bg-secondary-subtle p-2 me-3 mb-2 rounded-5">
+            <div class="bg-secondary-subtle p-2 me-2 me-md-3 mb-2 rounded-5">
               <i class='bx bxs-bot fs-3 text-primary'></i>
             </div>
             <div>
@@ -61,7 +61,7 @@
             <div id="chat_text" class="bg-secondary-subtle p-2 rounded-3">
               <p class="fw-light mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae nam commodi dolore vitae?</p>
             </div>
-            <div class="bg-secondary-subtle p-2 ms-3 rounded-5">
+            <div class="bg-secondary-subtle p-2 ms-2 ms-md-3 rounded-5">
               <i class='bx bxs-bot fs-3 text-primary'></i>
             </div>
           </div>

@@ -247,7 +247,7 @@
             <i class='bx bxs-message-square-check c-red'></i>
             <p class="ps-3 m-0">Learn a skill of your choice from the experts around the world from various industries</p>
           </div>
-          <a href="#" class="btn bg-green px-5 py-3 mt-4 link-light">Learn more</a>
+          <a href="./about_us" class="btn bg-green px-5 py-3 mt-4 link-light">Learn more</a>
         </div>
         <div class="offset-md-1 col-md-4">
           <img src="../assets/images/billboard-img.png" alt="img" class="img-fluid rounded-circle">

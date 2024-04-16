@@ -11,7 +11,7 @@
 
 		<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 			<ul class="navbar-nav mb-2 mb-lg-0 header nav nav-pills">
-        <li class="nav-item"><a href="#about" class="nav-link text-primary">About Us</a></li>
+        <li class="nav-item"><a href="./about_us" class="nav-link text-primary">About Us</a></li>
         <li class="nav-item"><a href="#" class="nav-link text-primary">Services</a></li>
         <li class="nav-item"><a href="#" class="nav-link text-primary">Our Doctors</a></li>
         <li class="nav-item"><a href="./appointment" class="nav-link text-primary">Appointment</a></li>
