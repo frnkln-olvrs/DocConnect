@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-  $title = 'Appointment';
+  $title = 'Massage';
 	include '../includes/head.php';
 ?>
 <body class="pt-5">
@@ -14,12 +14,12 @@
       <div id="chat_sidepanel" class="d-flex flex-column flex-shrink-0 bg-light h-100 border-end border-primary" style="width: 4.5rem;">
         <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
           <li class="nav-item">
-            <a href="#" class="nav-link active py-3 border-bottom rounded-0" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="chatbot">
+            <a href="./chat_bot" class="nav-link py-3 border-bottom rounded-0" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="chatbot">
               <i class='bx bxs-bot fs-3'></i>
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link py-3 border-bottom rounded-0" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="chatdoc">
+            <a href="./chat_user" class="nav-link active py-3 border-bottom rounded-0" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="chatdoc">
               <i class='bx bxs-user-plus fs-3'></i>
             </a>
           </li>
@@ -29,7 +29,7 @@
       <div id="chat_box" class="w-100">
         <div class="head border-bottom bg-green py-3 px-2">
           <div class="d-flex justify-content-between align-items-center">
-            <span class="ms-2 text-light" >Chat with Bot</span>
+            <span class="ms-2 text-light" >Chat with Doc</span>
             <i class='bx bx-dots-horizontal-rounded fs-3 text-light me-3' ></i>
           </div>
         </div>
