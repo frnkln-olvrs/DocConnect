@@ -138,12 +138,53 @@
                 <i class='bx bx-phone xx-large-font text-green pt-md-2 ps-md-2'></i>
               </div>
               <div class="col-12 col-md-11">
-                <p class="fs-5 mb-0 xx">Mobile Number</p>
+                <p class="fs-5 mb-0">Mobile Number</p>
                 <p class="fs-6 fw-light text-muted">Enter the number on which you wish to recieve checkup related information</p>
                 <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
       
-                  <input type="number" class="form-control border border-dark" placeholder="09" aria-label="mobile_no" aria-describedby="mobile_no" value="09">
+                  <input type="number" class="form-control border border-dark" placeholder="+63" aria-label="mobile_no" aria-describedby="mobile_no" value="+63">
       
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          <div>
+            <div class="row">
+              <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
+                <i class='bx bx-mail-send xx-large-font text-green pt-md-2 ps-md-2' ></i>
+              </div>
+              <div class="col-12 col-md-11">
+                <p class="fs-5 mb-0">Email Address</p>
+                <p class="fs-6 fw-light text-muted">Enter the email address on which you wish to recieve checkup related information</p>
+                <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
+      
+                  <input type="email" class="form-control border border-dark" placeholder="example@email.com" aria-label="mobile_no" aria-describedby="mobile_no">
+      
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          <div>
+            <div class="row">
+              <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
+                <i class='bx bx-mail-send xx-large-font text-green pt-md-2 ps-md-2' ></i>
+              </div>
+              <div class="col-12 col-md-11">
+                <p class="fs-5 mb-2">Select Doctor</p>
+                <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
+      
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
                 </div>
               </div>
             </div>

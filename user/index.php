@@ -11,17 +11,16 @@
   <section class="main">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-md-6 pe-5 mt-5 mt-md-0">
-          <h2 class="display-1 text-uppercase text-light">Connectivity that Heals</h2>
-          <p class="fs-4 my-4 pb-2">Revolutionizing Healthcare Through Telecommunications</p>
-          <div>
-            <form id="form" class="d-flex align-items-center position-relative ">
-              <input type="text" name="email" placeholder="What are you trying to learn?" class="form-control bg-white border-0 rounded-1 shadow-none px-4 py-3 w-100">
-              <button class="btn bg-green rounded-2 px-3 py-2 position-absolute align-items-center m-1 end-0">
-                <i class='bx bx-search text-white' width="22px" height="22px"></i>
-              </button>
-            </form>
-
+        <div class="col-md-6 pe-3 pe-md-5 mt-5 mt-md-0">
+          <h2 class="display-1 text-uppercase text-light text-center text-md-start">Connectivity that Heals</h2>
+          <p class="fs-4 my-4 pb-2 text-white text-center text-md-start">Revolutionizing Healthcare Through Telecommunications</p>
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <a class="btn btn-outline-light fs-5 text-capitalize me-3" href="./appointment">
+              book an appointment
+            </a>
+            <a class="btn btn-outline-light fs-5 text-capitalize" href="./chat_user">
+              chat with us
+            </a>
           </div>
         </div>
         <div class="img col-md-6 mt-5">
@@ -220,7 +219,7 @@
           </div>
           <div>
             <div>
-              <button type="button" class="w-100 btn btn-lg btn-outline-light mt-2">Book Appointment</button>
+              <a href="./appointment" type="button" class="w-100 btn btn-lg btn-outline-light mt-2">Book Appointment</a>
             </div>
           </div>
         </div>

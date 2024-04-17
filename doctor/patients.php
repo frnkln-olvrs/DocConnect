@@ -36,7 +36,7 @@ include '../includes/head.php';
                                 <a class="card-header fs-5" href="./patient-view.php">
                                     <p class="text-dark m-0">
                                         <?= $name[0] ?>
-                                        <img src="../images/frankprofile.jpg" alt="" height="32" width="32" class="float-end rounded-circle border border-primary">
+                                        <img src="../assets/images/profile_img.jpg" alt="" height="32" width="32" class="float-end rounded-circle border border-primary">
                                     </p>
                                 </a>
                                 <div class="card-body d-flex flex-column">
