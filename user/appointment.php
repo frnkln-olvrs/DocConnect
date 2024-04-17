@@ -13,6 +13,40 @@
     <div class="row mb-3">
       <div class="col-sm-12 col-md-8">
         <div class="border border-dark-subtle shadow-sm rounded-2 p-3 mb-4 mb-md-0">
+
+          <div>
+            <div class="row">
+              <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
+                <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i>
+              </div>
+              <div class="col-12 col-md-11">
+                <p class="fs-5 mb-2">Select Doctor *</p>
+                <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
+      
+                  <select class="form-select fw-light " aria-label="Default select example">
+                    <option selected>Select doctor specialty</option>
+                    <option value="1">Pediatrician</option>
+                    <option value="2">Family Medicine</option>
+                    <option value="3">Internal Medicine</option>
+                  </select>
+                </div>
+
+                <ul class="pt-3 ps-0 w-75">
+                  <li class="d-flex justify-content-between border-bottom border-dark mb-2">
+                    <b>Dr. Emily Parker</b>
+                    <p>Wed-Fri / Apr. 10-12</p>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <b>Dr. Sarah Johnson</b>
+                    <p>Thu-Sat / Apr. 11-13</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
           <div>
             <p class="fs-5">Select Date - <span class="text-muted fs-6">April 2024</span></p>
             <div class="d-flex flex-row flex-wrap justify-content-between justify-content-md-start">
@@ -170,25 +204,10 @@
 
           <hr>
 
-          <div>
-            <div class="row">
-              <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
-                <i class='bx bx-mail-send xx-large-font text-green pt-md-2 ps-md-2' ></i>
-              </div>
-              <div class="col-12 col-md-11">
-                <p class="fs-5 mb-2">Select Doctor</p>
-                <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
-      
-                  <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-              </div>
-            </div>
+          <div class="w-100 d-flex justify-content-end ">
+            <button type="button" class="w-50 w-md-25 btn btn-outline-dark  mt-2">Set Appointment</button>
           </div>
+
         </div>
       </div>
 
@@ -206,11 +225,11 @@
               <a href="https://meet.google.com/por-udiy-etd" class="mb-2 link-light">https://meet.google.com/por-udiy-etd</a>
             </div>
           </div>
-          <div>
+          <!-- <div>
             <div>
               <button type="button" class="w-100 btn btn-lg btn-outline-light mt-2">Enter Meeting</button>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
