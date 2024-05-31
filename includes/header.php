@@ -15,7 +15,7 @@
         <li class="nav-item"><a href="./services" class="nav-link text-primary">Services</a></li>
         <li class="nav-item"><a href="./doctors" class="nav-link text-primary">Our Doctors</a></li>
         <li class="nav-item"><a href="./appointment" class="nav-link text-primary">Appointment</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-primary">Contact</a></li>
+        <li class="nav-item"><a href="./contact" class="nav-link text-primary">Contact</a></li>
         <li class="nav-item"><a href="../login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white" aria-current="page">Login</a></li>
 			</ul>
 		</div>
