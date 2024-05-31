@@ -67,61 +67,96 @@
       <div class="sec-title">
         <h2 class="text-center text-light">Our Services</h2>
       </div>
-      <div class="d-flex align-items-start mb-3">
-        <i class='bx bx-right-arrow-alt fs-2'></i>
-        <p class="ps-3 fs-5 fw-light m-0">
-          <span class="fw-bold">Remote Consultations: </span>
-          Access medical consultations with licensed healthcare professionals via video
-          conferencing or telephone, eliminating the need for in-person appointments.
-        </p>
-      </div>
-      <div class="d-flex align-items-start mb-3">
-        <i class='bx bx-right-arrow-alt fs-2'></i>
-        <p class="ps-3 fs-5 fw-light m-0">
-          <span class="fw-bold">Diagnostic Assessments: </span>
-          Receive comprehensive diagnostic evaluations remotely, including virtual 
-          examinations, symptom assessments, and medical history reviews.
-        </p>
-      </div>
-      <div class="d-flex align-items-start mb-3">
-        <i class='bx bx-right-arrow-alt fs-2'></i>
-        <p class="ps-3 fs-5 fw-light m-0">
-          <span class="fw-bold">Healthcare Management: </span>
-          Benefit from personalized healthcare management plans tailored to your unique 
-          needs, including medication management, lifestyle recommendations, and ongoing 
-          support.
-        </p>
-      </div>
-      <div class="d-flex align-items-start mb-3">
-        <i class='bx bx-right-arrow-alt fs-2'></i>
-        <p class="ps-3 fs-5 fw-light m-0">
-          <span class="fw-bold">Telemedicine Technologies: </span>
-          We utilize state-of-the-art telemedicine technologies to ensure secure, confidential, 
-          and efficient communication between patients and healthcare providers.
-        </p>
-      </div>
+      <ul>
+        <div class="d-flex align-items-start mb-3">
+          <li class="ps-3 fs-5 fw-light m-0">
+            <span class="fw-bold">Remote Consultations: </span>
+            Access medical consultations with licensed healthcare professionals via video
+            conferencing or telephone, eliminating the need for in-person appointments.
+          </li>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+          <li class="ps-3 fs-5 fw-light m-0">
+            <span class="fw-bold">Diagnostic Assessments: </span>
+            Receive comprehensive diagnostic evaluations remotely, including virtual 
+            examinations, symptom assessments, and medical history reviews.
+          </li>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+          <li class="ps-3 fs-5 fw-light m-0">
+            <span class="fw-bold">Healthcare Management: </span>
+            Benefit from personalized healthcare management plans tailored to your unique 
+            needs, including medication management, lifestyle recommendations, and ongoing 
+            support.
+          </li>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+          <li class="ps-3 fs-5 fw-light m-0">
+            <span class="fw-bold">Telemedicine Technologies: </span>
+            We utilize state-of-the-art telemedicine technologies to ensure secure, confidential, 
+            and efficient communication between patients and healthcare providers.
+          </li>
+        </div>
+
+      </ul>
 
     </div>
   </section>
 
   <section class="choose px-3 px-md-5 mt-4">
-    <div class="d-flex">
-      <div class="img">
-        <img src="../assets/images/about_us_img.jpeg" class="w-100 rounded-3">
+    <div class="row mb-5">
+      <div class="col-4">
+        <div class="h-100 rounded-2 d-flex align-items-center justify-content-center overflow-hidden">
+          <img src="../assets/images/about_us_img.jpeg" alt="Image" class="img-fluid" style="height: 100%; width: 100%; object-fit: cover;">
+        </div>
       </div>
-      <div class="info">
-      <div class="sec-title">
-        <h2 class="text-center text-dark">Why Choose Us</h2>
-      </div>
-      <div class="d-flex align-items-start mb-3">
-        <i class='bx bx-right-arrow-alt fs-2'></i>
-        <p class="ps-3 fs-5 fw-light m-0">
-          <span class="fw-bold">Convenience: </span>
-          Say goodbye to long wait times and travel hassles. With Telecommunication 
-          Health Services, you can access quality healthcare from anywhere with an 
-          internet connection or telephone service.
-        </p>
-      </div>
+
+      <div class="col-8">
+        <div class="sec-title">
+          <h2 class="text-center text-dark">Why Choose Us</h2>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+          <ul>
+            <li class="ps-3 fs-5 fw-light m-0">
+              <span class="fw-bold">Convenience: </span>
+              Say goodbye to long wait times and travel hassles. With Telecommunication 
+              Health Services, you can access quality healthcare from anywhere with an 
+              internet connection or telephone service.
+            </li>
+          </ul>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+          <ul>
+            <li class="ps-3 fs-5 fw-light m-0">
+              <span class="fw-bold">Convenience: </span>
+              Say goodbye to long wait times and travel hassles. With Telecommunication 
+              Health Services, you can access quality healthcare from anywhere with an 
+              internet connection or telephone service.
+            </li>
+          </ul>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+          <ul>
+            <li class="ps-3 fs-5 fw-light m-0">
+              <span class="fw-bold">Convenience: </span>
+              Say goodbye to long wait times and travel hassles. With Telecommunication 
+              Health Services, you can access quality healthcare from anywhere with an 
+              internet connection or telephone service.
+            </li>
+          </ul>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+          <ul>
+            <li class="ps-3 fs-5 fw-light m-0">
+              <span class="fw-bold">Convenience: </span>
+              Say goodbye to long wait times and travel hassles. With Telecommunication 
+              Health Services, you can access quality healthcare from anywhere with an 
+              internet connection or telephone service.
+            </li>
+          </ul>
+        </div>
+        
+        
       </div>
     </div>
   </section>
