@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-  $title = 'DocConnect';
+  $title = 'DocConnect | Contacts';
 	include '../includes/head.php';
 ?>
 <body>
@@ -20,8 +20,33 @@
     </div>
   </section>
 
-  <section>
-    
+  <section id="contacts" class="mt-xl-5 mx-5">
+    <dic class="container border-1 p-1">
+      <div class="row align-items-start">
+        <div class="col-12 col-md-6">
+          <div class="box-1 border border-1 d-flex flex-column justify-content-center p-4">
+            <i class='bx bxs-phone-call'></i>
+            <h4 class="text-center mb-3">Talk to Doctors</h4>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, vitae, sed quia quis totam blanditiis nisi, nam aperiam consequuntur possimus similique. Nihil ipsum omnis ex mollitia nulla accusantium quidem expedita!</p>
+            <a href="#">+63 912 345 6789</a>
+            <a href="#" class="align-content-center">
+              <h5>More info here</h5>
+              <i class='bx bxs-chevron-down'></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <div class="box-1 border border-1 d-flex flex-column justify-content-center p-4">
+            <i class='bx bxs-phone-call'></i>
+            <h4 class="text-center mb-3">Talk to Doctors</h4>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, vitae, sed quia quis totam blanditiis nisi, nam aperiam consequuntur possimus similique. Nihil ipsum omnis ex mollitia nulla accusantium quidem expedita!</p>
+            <a href="#">+63 912 345 6789</a>
+          </div>
+        </div>
+
+      </div>
+    </dic>
   </section>
 
   <?php 
