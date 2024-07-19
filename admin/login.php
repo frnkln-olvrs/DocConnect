@@ -5,10 +5,10 @@
   $title = 'Admin Login';
 	include './includes/admin_head.php';
 ?>
-<body class="p-5">
+<body class="p-5 bg-danger">
 
   <h1 class="text-center">Admin Loin!!!</h1>
-  <form>
+  <form class="bg-white p-5">
   <!-- Email input -->
   <div data-mdb-input-init class="form-outline mb-4">
     <input type="email" id="form2Example1" class="form-control" />
