@@ -9,7 +9,7 @@
     require_once ('../includes/header.php');
   ?>
 
-  <section class="main">
+  <section class="main contact">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6 pe-3 pe-md-5 mt-5 mt-md-0">
@@ -24,7 +24,7 @@
     <dic class="container border-1 p-1">
       <div class="row align-items-start">
         <div class="col-12 col-md-6">
-          <div class="box-1 border border-1 d-flex flex-column justify-content-center p-4">
+          <div class="box-1 bg-white shadow border border-1 d-flex flex-column justify-content-center p-4">
             <i class='bx bxs-phone-call'></i>
             <h4 class="text-center mb-3">Talk to Doctors</h4>
             <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, vitae, sed quia quis totam blanditiis nisi, nam aperiam consequuntur possimus similique. Nihil ipsum omnis ex mollitia nulla accusantium quidem expedita!</p>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="col-12 col-md-6">
-          <div class="box-1 border border-1 d-flex flex-column justify-content-center p-4">
+          <div class="box-1 shadow bg-white border border-1 d-flex flex-column justify-content-center p-4">
             <i class='bx bxs-phone-call'></i>
             <h4 class="text-center mb-3">Talk to Doctors</h4>
             <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, vitae, sed quia quis totam blanditiis nisi, nam aperiam consequuntur possimus similique. Nihil ipsum omnis ex mollitia nulla accusantium quidem expedita!</p>

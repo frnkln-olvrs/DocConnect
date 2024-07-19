@@ -8,6 +8,10 @@
 	--dark_secondary: #21bf73;
 }
 
+a:hover {
+  color: initial;
+}
+
 .x-large-font {
   font-size: x-large !important;
 }
@@ -218,6 +222,15 @@ section#chat #chat_text {
 /* ABOUT US SECTION */
 section.about-section {
   margin-top: 100px;
+}
+
+/* CONTACT SECTION */
+section.main.contact {
+  min-height: 75vh;
+}
+
+section#contacts .box-1 {
+  margin-top: -110px;
 }
 
 /* FOOTER CONTENT */
