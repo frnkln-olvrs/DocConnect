@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap');
+
+:root {
+	--primary: #dc3545;
+	--white: whitesmoke;
+	--secondary: #b0eacd;
+	--dark_secondary: #21bf73;
+}
+
+a:hover {
+  color: initial;
+}
+
+.x-large-font {
+  font-size: x-large !important;
+}
+
+.xx-large-font {
+  font-size: xx-large !important;
+}
+
+.xxx-large-font {
+  font-size: xxx-large !important;
+}
+
+.d-name, .d-name span {
+	font-family: "Roboto Slab", sans-serif !important;
+}
+
+.bg-green {
+	background-color: var(--dark_secondary) !important;
+}
+
+.border-green {
+	border: var(--dark_secondary) 2px solid !important;
+}
+
+.text-green {
+	color: var(--dark_secondary);
+}
+
+.c-red {
+	color: var(--primary);
+}
+
+/* DIRTY WHITE BG */
+section#about,
+section#services {
+	background-color: #eeeeee;
+}
+
+* {
+	font-family: "Oswald", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	text-decoration: none !important;
+	transition: .1s linear;
+}
+
+html {
+	overflow-x: hidden;
+	scroll-padding-top: 9rem;
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: whitesmoke;
+}
+
+.login-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+}
