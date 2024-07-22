@@ -73,8 +73,19 @@
               <input type="password" class="form-control" id="password-login" placeholder="Password">
               <label for="password-login">Password</label>
             </div>
-            <div class="text-end">
-              <a href="#" class="p-0 text-black text-decoration-none">Forgot Password?</a>
+            <div class="row mb-4">
+              <div class="col d-flex justify-content-start">
+                <!-- Checkbox -->
+                <div class="login-form form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="remember_btn" checked/>
+                  <label class="form-check-label" for="remember_btn">Remember me</label>
+                </div>
+              </div>
+        
+              <div class="col d-flex justify-content-end">
+                <!-- Simple link -->
+                <a href="#!" class="c-red">Forgot password?</a>
+              </div>
             </div>
             
             <div class="form-group">

@@ -23,6 +23,13 @@
   color: var(--theme-login-darken) !important;
 }
 
+.form-control:focus,
+.form-check-input:focus,
+.btn:focus {
+  box-shadow: none;
+  outline: none;
+}
+
 /* Body Styles */
 body {
   margin: 0;

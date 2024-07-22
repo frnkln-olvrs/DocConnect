@@ -44,6 +44,14 @@ a:hover {
 	color: var(--primary);
 }
 
+.form-control:focus,
+.form-check-input:focus,
+.btn:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+
 /* DIRTY WHITE BG */
 section#about,
 section#services {
@@ -81,4 +89,9 @@ body {
 .login-form {
   width: 100%;
   max-width: 400px;
+}
+
+.form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
 }

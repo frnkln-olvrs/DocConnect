@@ -31,12 +31,12 @@
 
       <div class="col d-flex justify-content-end">
         <!-- Simple link -->
-        <a href="#!">Forgot password?</a>
+        <a href="#!" class="c-red">Forgot password?</a>
       </div>
     </div>
 
     <!-- Submit button -->
-    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button>
+    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-danger btn-block mb-4">Sign in</button>
     </div>
   </form>
 </body>
