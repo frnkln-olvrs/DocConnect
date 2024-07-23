@@ -84,7 +84,7 @@
         
               <div class="col d-flex justify-content-end">
                 <!-- Simple link -->
-                <a href="#!" class="c-red">Forgot password?</a>
+                <a href="#!" class="link-dark text-decoration-none">Forgot password?</a>
               </div>
             </div>
             
