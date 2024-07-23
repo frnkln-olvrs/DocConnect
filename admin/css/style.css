@@ -96,3 +96,9 @@ body {
   background-color: var(--primary);
   border-color: var(--primary);
 }
+
+
+/* DASHBOARD PAGE */
+#dashboard {
+	margin-left: 250px;
+}
