@@ -100,5 +100,6 @@ body {
 
 /* DASHBOARD PAGE */
 #dashboard {
-	margin-left: 250px;
+	margin: 10px;
+	margin-left: 260px;
 }
