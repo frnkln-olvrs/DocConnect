@@ -1,4 +1,4 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 bg-light border-end border-2 position-absolute" style="width: 250px; height: calc(100% - 67.7px)">
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light border-end border-2 position-absolute" style="width: 220px; height: calc(100% - 67.7px)">
   <ul class="nav nav-pills flex-column mb-auto">
     <li>
       <a href="#" class="nav-link active" aria-current="page">

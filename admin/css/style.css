@@ -97,9 +97,13 @@ body {
   border-color: var(--primary);
 }
 
-
 /* DASHBOARD PAGE */
 #dashboard {
-	margin: 10px;
-	margin-left: 260px;
+	margin: 20px;
+	margin-left: 240px;
+}
+
+#dashboard .bx {
+	font-size: 75px;
+	opacity: 0.5;
 }
