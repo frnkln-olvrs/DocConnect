@@ -2,7 +2,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo $title ?></title>
-  <link rel="icon" href="../../assets/images/logo.png">
+  <link rel="icon" href="../assets/images/logo.png">
 
   <!-- bootstrap-5 -->
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -17,6 +17,11 @@
 
   <!-- JQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+  <!-- Shield UI -->
+  <link id="themecss" rel="stylesheet" type="text/css" href="//www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+  <script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
 
   <link rel="stylesheet" href="../css/custom.min.css">
   <link rel="stylesheet" href="./css/style.css">
