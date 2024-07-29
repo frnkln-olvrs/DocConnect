@@ -61,66 +61,43 @@
             akjshdkajsd
           </div>
         </div>
+        
         <div class="col-md-8">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3>Multiple Line Series</h3>
+          <!-- Chart 1 - Bootstrap Brain Component -->
+<section class="py-3 py-md-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-9 col-xl-8">
+        <div class="card widget-card border-light shadow-sm">
+          <div class="card-body p-4">
+            <div class="d-block d-sm-flex align-items-center justify-content-between mb-3">
+              <div class="mb-3 mb-sm-0">
+                <h5 class="card-title widget-card-title">Sales Overview</h5>
+              </div>
+              <div>
+                <select class="form-select text-secondary border-light-subtle">
+                  <option value="1">March 2023</option>
+                  <option value="2">April 2023</option>
+                  <option value="3">May 2023</option>
+                  <option value="4">June 2023</option>
+                </select>
+              </div>
             </div>
-            <div id="chart2" class="panel-body">
-            </div>
+            <div id="bsb-chart-1"></div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
         </div>
       </div>
     </div>
   </section>
 
   <script type="text/javascript">
-    jQuery(function ($) {
-        var data1 = [12, 3, 4, 2, 12, 3, 4, 17, 22, 34, 54, 67];
-        var data2 = [3, 9, 12, 14, 22, 32, 45, 12, 67, 45, 55, 7];
-        var data3 = [23, 19, 11, 134, 242, 352, 435, 22, 637, 445, 555, 57];
-            
-        $(function () {            
-            $("#chart1").shieldChart({
-                exportOptions: {
-                    image: false,
-                    print: false
-                },
-                axisY: {
-                    title: {
-                        text: "Break-Down for selected quarter"
-                    }
-                },               
-                dataSeries: [{
-                    seriesType: "line",                    
-                    data: data1
-                }]
-            });
-
-            $("#chart2").shieldChart({
-                exportOptions: {
-                    image: false,
-                    print: false
-                },
-                axisY: {
-                    title: {
-                        text: "Break-Down for selected quarter"
-                    }
-                },               
-                dataSeries: [{
-                    seriesType: "line",
-                    data: data2
-                }, {
-                    seriesType: "line",
-                    data: data3
-                }]
-            });
-
-       
-        });
-      
-    });
-</script>
+    
+  </script>
 
 </body>
 </html>
