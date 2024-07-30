@@ -63,40 +63,35 @@
         </div>
         
         <div class="col-md-8">
-          <!-- Chart 1 - Bootstrap Brain Component -->
-<section class="py-3 py-md-5">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-9 col-xl-8">
-        <div class="card widget-card border-light shadow-sm">
-          <div class="card-body p-4">
-            <div class="d-block d-sm-flex align-items-center justify-content-between mb-3">
-              <div class="mb-3 mb-sm-0">
-                <h5 class="card-title widget-card-title">Sales Overview</h5>
-              </div>
-              <div>
-                <select class="form-select text-secondary border-light-subtle">
-                  <option value="1">March 2023</option>
-                  <option value="2">April 2023</option>
-                  <option value="3">May 2023</option>
-                  <option value="4">June 2023</option>
-                </select>
-              </div>
-            </div>
-            <div id="bsb-chart-1"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
         </div>
       </div>
     </div>
   </section>
 
   <script type="text/javascript">
-    
+const xValues = [50,60,70,80,90,100,110,120,130,140,150];
+const yValues = [7,8,8,9,9,9,10,11,14,14,15];
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 6, max:16}}],
+    }
+  }
+});
   </script>
 
 </body>
