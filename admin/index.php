@@ -71,24 +71,37 @@
 
   <script type="text/javascript">
     const xValues = [50,60,70,80,90,100,110,120,130,140,150];
-    const yValues = [7,8,8,9,9,7,10,11,14,14,15];
+
+    const yValues1 = [100,200,400,600,500,200,200,110,140,140,150];
+    const yValues2 = [500,600,350,280,599,600,113,120,130,130,140];
 
     new Chart("myChart", {
       type: "line",
       data: {
         labels: xValues,
-        datasets: [{
-          fill: false,
-          lineTension: 0,
-          backgroundColor: "rgba(0,0,255,1.0)",
-          borderColor: "rgba(0,0,255,0.1)",
-          data: yValues
-        }]
+        datasets: [
+          {
+            label: 'Face to face',
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "rgba(255,0,0,1.0)",
+            borderColor: "rgba(255,0,0,0.1)",
+            data: yValues1
+          },
+          {
+            label: 'Online',
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "rgba(0,128,0,1.0)",
+            borderColor: "rgba(0,128,0,0.1)",
+            data: yValues2
+          }
+        ]
       },
       options: {
-        legend: {display: false},
+        legend: {display: true},
         scales: {
-          yAxes: [{ticks: {min: 6, max:16}}],
+          yAxes: [{ticks: {min: 0, max:600}}],
         }
       }
     });
