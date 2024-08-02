@@ -63,49 +63,27 @@
         </div>
         
         <div class="col-md-8">
-          <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+          
+          <nav>
+		      	<div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+		      		<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Campus</button>
+		      		<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Type</button>
+		      	</div>
+		      </nav>
+		      <div class="tab-content p-3 border bg-light" id="nav-tabContent">
+		      	<div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <canvas id="campusChart" style="width:100%;max-width:700px"></canvas>
+		      	</div>
+		      	<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <canvas id="typeChart" style="width:100%;max-width:700px"></canvas>
+		      	</div>
+		      </div>
         </div>
       </div>
     </div>
   </section>
-
-  <script type="text/javascript">
-    const xValues = [50,60,70,80,90,100,110,120,130,140,150];
-
-    const yValues1 = [100,200,400,600,500,200,200,110,140,140,150];
-    const yValues2 = [500,600,350,280,599,600,113,120,130,130,140];
-
-    new Chart("myChart", {
-      type: "line",
-      data: {
-        labels: xValues,
-        datasets: [
-          {
-            label: 'Face to face',
-            fill: false,
-            lineTension: 0,
-            backgroundColor: "rgba(255,0,0,1.0)",
-            borderColor: "rgba(255,0,0,0.1)",
-            data: yValues1
-          },
-          {
-            label: 'Online',
-            fill: false,
-            lineTension: 0,
-            backgroundColor: "rgba(0,128,0,1.0)",
-            borderColor: "rgba(0,128,0,0.1)",
-            data: yValues2
-          }
-        ]
-      },
-      options: {
-        legend: {display: true},
-        scales: {
-          yAxes: [{ticks: {min: 0, max:600}}],
-        }
-      }
-    });
-  </script>
+		
+  <script src="./js/index-lineChart.js"></script>
 
 </body>
 </html>
