@@ -2,6 +2,9 @@
 <?php 
   $title = 'Admin | Users';
 	include './includes/admin_head.php';
+  function getCurrentPage() {
+    return basename($_SERVER['PHP_SELF']);
+  }
 ?>
 <body>
   <?php 
