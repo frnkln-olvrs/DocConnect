@@ -14,19 +14,19 @@
     require_once ('./includes/admin_sidepanel.php');
   ?>
 
-  <section id="dashboard">
+  <section id="users">
     <h1 class="text-center my-3">Users</h1>
 
     <div class="container text-center mt-5 px-5">
       <ul class="list-group">
         <a href="#">
-          <li class="list-group-item my-2 py-2 px-5 border-0">
-            <div class="row align-items-center">
+          <li class="list-group-item my-2 p-2 border-0">
+            <div class="row align-items-center justify-content-center">
               <div class="col-1">
-                <i class='bx bx-user-pin' ></i>
+                <i class='bx bx-user-pin text-danger' ></i>
               </div>
-              <div class="col-10">
-                Doctors Accounts
+              <div class="col-10 text-start ms-3 w-25">
+                <p class="fs-3 mb-0">Doctors Accounts</p>
               </div>
               <div class="col-1">
                 <i class='bx bx-chevron-right'></i>
@@ -36,13 +36,13 @@
         </a>
 
         <a href="#">
-          <li class="list-group-item my-2 p-3">
-            <div class="row">
+          <li class="list-group-item my-2 p-2 border-0">
+            <div class="row align-items-center justify-content-center">
               <div class="col-1">
-                <i class='bx bx-user'></i>
+                <i class='bx bx-user text-danger'></i>
               </div>
-              <div class="col-10">
-                Patients Accounts
+              <div class="col-10 text-start ms-3 w-25">
+                <p class="fs-3 mb-0">Patients Accounts</p>
               </div>
               <div class="col-1">
                 <i class='bx bx-chevron-right'></i>

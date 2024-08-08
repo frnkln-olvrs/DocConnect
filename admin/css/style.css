@@ -97,13 +97,20 @@ body {
   border-color: var(--primary);
 }
 
-/* DASHBOARD PAGE */
-#dashboard {
+#dashboard,
+#users {
 	margin: 20px;
 	margin-left: 240px;
 }
 
+/* DASHBOARD PAGE */
 #dashboard .bx {
 	font-size: 75px;
 	opacity: 0.5;
+}
+
+/* USERS PAGE */
+#users .bx {
+	color: rgb(69, 69, 69);
+	font-size: 75px;
 }
