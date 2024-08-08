@@ -98,7 +98,8 @@ body {
 }
 
 #dashboard,
-#users {
+#users,
+#campus {
 	margin: 20px;
 	margin-left: 240px;
 }
