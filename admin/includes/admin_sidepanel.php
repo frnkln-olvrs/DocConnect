@@ -2,7 +2,7 @@
   <ul class="nav nav-pills flex-column mb-auto">
     <li>
       <a href="./index" class="nav-link <?php echo getCurrentPage() == 'index.php' ? 'active' : 'link-dark'; ?>" aria-current="page">
-        <i class='bx bx-home-alt me-2'></i>
+        <i class='bx bxs-dashboard me-2' ></i>
         Dashboard
       </a>
     </li>

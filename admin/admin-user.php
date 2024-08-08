@@ -22,14 +22,14 @@
         <a href="#" class="d-flex justify-content-center">
           <li class="list-group-item my-2 p-2 border-0 w-75">
             <div class="row align-items-center justify-content-center">
-              <div class="col-1">
+              <div class="col-2 p-0">
                 <i class='bx bx-user-pin text-danger' ></i>
               </div>
-              <div class="col-10 text-start ms-3 w-50">
+              <div class="col-9 text-start w-75">
                 <p class="fs-3 mb-0">Doctors Accounts</p>
               </div>
-              <div class="col-1">
-                <i class='bx bx-chevron-right'></i>
+              <div class="col-1 p-0">
+                <i class='bx bx-chevron-right fs-1'></i>
               </div>
             </div>
           </li>
@@ -38,14 +38,14 @@
         <a href="#" class="d-flex justify-content-center">
           <li class="list-group-item my-2 p-2 border-0 w-75">
             <div class="row align-items-center justify-content-center">
-              <div class="col-1">
+              <div class="col-2 p-0">
                 <i class='bx bx-user text-danger'></i>
               </div>
-              <div class="col-10 text-start ms-3 w-50">
+              <div class="col-9 text-start w-75">
                 <p class="fs-3 mb-0">Patients Accounts</p>
               </div>
-              <div class="col-1">
-                <i class='bx bx-chevron-right'></i>
+              <div class="col-1 p-0">
+                <i class='bx bx-chevron-right fs-1'></i>
               </div>
             </div>
           </li>
