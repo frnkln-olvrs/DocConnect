@@ -25,12 +25,33 @@
       <h2>Campus A</h2>
     </div>
 
+    <div class="row row-cols-1 row-cols-md-2 mx-1 mx-md-5">
+      <div class="col">
+        <i class='bx bx-map'></i> <!-- Address Icon -->
+      </div>
+      <div class="col">
+        <i class='bx bx-phone'></i> <!-- Contact Number Icon -->
+      </div>
+      <div class="col">
+        <i class='bx bx-envelope'></i> <!-- Email Icon -->
+      </div>
+      <div class="col">
+        <i class='bx bx-map-alt'></i> <!-- Campus Map Icon -->
+      </div>
+      <div class="col">
+        <i class='bx bx-building'></i> <!-- Facilities Icon -->
+      </div>
+      <div class="col">
+        <i class='bx bx-book-content'></i> <!-- Programs Offered Icon -->
+      </div>
+    </div>
+
     <i class='bx bx-map'></i> <!-- Address Icon -->
-<i class='bx bx-phone'></i> <!-- Contact Number Icon -->
-<i class='bx bx-envelope'></i> <!-- Email Icon -->
-<i class='bx bx-map-alt'></i> <!-- Campus Map Icon -->
-<i class='bx bx-building'></i> <!-- Facilities Icon -->
-<i class='bx bx-book-content'></i> <!-- Programs Offered Icon -->
+    <i class='bx bx-phone'></i> <!-- Contact Number Icon -->
+    <i class='bx bx-envelope'></i> <!-- Email Icon -->
+    <i class='bx bx-map-alt'></i> <!-- Campus Map Icon -->
+    <i class='bx bx-building'></i> <!-- Facilities Icon -->
+    <i class='bx bx-book-content'></i> <!-- Programs Offered Icon -->
 
   </section>
 
