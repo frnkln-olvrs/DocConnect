@@ -26,8 +26,9 @@
     </div>
 
     <div class="row row-cols-1 row-cols-md-2 mx-1 mx-md-5">
-      <div class="col">
+      <div class="col d-flex">
         <i class='bx bx-map'></i> <!-- Address Icon -->
+        <p>Location</p>
       </div>
       <div class="col">
         <i class='bx bx-phone'></i> <!-- Contact Number Icon -->
