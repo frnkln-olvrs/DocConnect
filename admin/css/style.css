@@ -79,6 +79,11 @@ body {
 	background-color: whitesmoke;
 }
 
+/* SIDEPANEL */
+div.sidepanel {
+	margin-top: 64px;
+}
+
 /* LOGIN PAGE */
 .login-body {
   display: flex;
@@ -101,8 +106,11 @@ body {
 #users,
 #campus {
 	margin: 20px;
-	margin-left: 240px;
+	margin-top: 0;
+	padding-top: 64px;
+	padding-left: 240px; /* Replaced margin-left with padding-left */
 }
+
 
 /* DASHBOARD PAGE */
 #dashboard .bx {

@@ -15,7 +15,7 @@
   ?>
 
   <section id="dashboard">
-    <h1 class="text-center my-3">Overview</h1>
+    <h1 class="text-center">Overview</h1>
 
     <div class="container">
       <div class="row mx-5 mb-4">
