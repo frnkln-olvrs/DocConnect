@@ -1,7 +1,7 @@
 <html lang="en">
 <?php
   $title = 'Campuses | Campus A';
-	include './includes/admin_head.php';
+  include './includes/admin_head.php';
   function getCurrentPage() {
     return basename($_SERVER['PHP_SELF']);
   }
@@ -14,10 +14,14 @@
     require_once ('./includes/admin_sidepanel.php');
   ?>
 
-  <section id="campus">
-    <h1 class="text-center my-3">Campuses</h1>
+  <section id="campus" class="">
+    <div class="d-flex justify-content-between align-items-center">
+      <a href="./campus" class="btn btn-secondary text-white"><i class='bx bx-chevron-left'></i></a>
+      <h1 class="text-center m-0">Campus A</h1>
+      <a href="edit_campus" class="btn btn-primary text-white">Edit</a>
+    </div>
 
-    <div class="d-flex justify-content-center w-100 h-50">
+    <div class="d-flex justify-content-center w-100 h-50 mt-3">
       <img src="../assets/images/bg-1.png" alt="" class="w-75 rounded-2 shadow-lg">
     </div>
 
