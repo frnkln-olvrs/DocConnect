@@ -1,4 +1,4 @@
-<header class="p-3 border-bottom bg-green shadow-sm position-fixed w-100 z-3">
+<header class="p-3 border-bottom bg-green shadow-sm position-fixed w-100 z-3 border-bottom-0">
   <div class="mx-1 mx-lg-3">
     <div class="d-flex flex-wrap justify-content-between">
     <a class="d-flex align-items-center text-dark text-decoration-none" href="./index">
