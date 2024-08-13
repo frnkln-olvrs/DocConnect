@@ -128,3 +128,8 @@ div.sidepanel {
 	border-bottom: solid 2.5px var(--secondary) !important;
 	border-top: solid 2.5px var(--secondary) !important;
 }
+
+/* CAMPUS PAGE */
+#campus .fs-5 {
+	font-size: 17.5px !important;
+}
