@@ -15,7 +15,10 @@
   ?>
 
   <section id="campus">
-    <h1 class="text-center my-3">Campuses</h1>
+  <div class="d-flex justify-content-between align-items-center my-3">
+      <h1 class="text-center m-0">Campuses</h1>
+      <a href="add_campus" class="btn btn-success text-white">Add Campus</a>
+    </div>
 
     <div class="row row-cols-1 row-cols-md-2 mx-1 mx-md-5">
       <div class="col p-0 mb-3">

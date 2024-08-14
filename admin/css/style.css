@@ -104,7 +104,8 @@ div.sidepanel {
 
 #dashboard,
 #users,
-#campus {
+#campus,
+#add_campus {
 	margin: 20px;
 	margin-top: 0;
 	padding-top: 64px;
