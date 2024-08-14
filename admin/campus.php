@@ -15,9 +15,9 @@
   ?>
 
   <section id="campus">
-  <div class="d-flex justify-content-between align-items-center my-3">
+    <div class="d-flex justify-content-center position-relative my-3">
       <h1 class="text-center m-0">Campuses</h1>
-      <a href="add_campus" class="btn btn-success text-white">Add Campus</a>
+      <a href="add_campus" class="btn btn-success text-white position-absolute end-0">Add Campus</a>
     </div>
 
     <div class="row row-cols-1 row-cols-md-2 mx-1 mx-md-5">
