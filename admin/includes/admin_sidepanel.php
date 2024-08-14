@@ -19,7 +19,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link link-dark">
+      <a href="./appointment" class="nav-link <?php echo getCurrentPage() == 'appointment.php' ? 'active' : 'link-dark'; ?>">
         <i class='bx bx-calendar me-2' ></i>
         Appointment
       </a>
