@@ -25,7 +25,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link link-dark">
+      <a href="./analytics" class="nav-link <?php echo getCurrentPage() == 'analytics.php' ? 'active' : 'link-dark'; ?>">
         <i class='bx bx-chart me-2' ></i>
         Analytics & Reports
       </a>
