@@ -86,7 +86,7 @@
     </div>
   </section>
 		
-  <script src="./js/index-lineChart.js"></script>
+  <script src="./js/analytics-lineChart.js"></script>
 
 </body>
 </html>
