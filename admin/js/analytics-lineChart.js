@@ -1,3 +1,13 @@
+document.getElementById('yearSelect').addEventListener('change', function() {
+  const yearMap = {
+    '1': '2021-2022',
+    '2': '2022-2023',
+    '3': '2023-2024'
+  };
+  const selectedYear = yearMap[this.value];
+  updateChart(campusChart, data[selectedYear].campus);
+  updateTypeChart(typeChart, data[selectedYear].type);
+});
 
 const xValues = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov'];
 
@@ -15,8 +25,8 @@ const data = {
   },
   "2022-2023": {
     campus: {
-      camp_a: [150, 300, 400, 450, 500, 500, 575, 600, 490, 450, 500],
-      camp_b: [200, 190, 150, 180, 209, 260, 330, 250, 290, 230, 240],
+      camp_a: [160, 300, 200, 450, 500, 500, 575, 420, 490, 450, 500],
+      camp_b: [200, 190, 150, 180, 109, 260, 430, 250, 210, 230, 240],
       camp_c: [178, 330, 350, 550, 730, 350, 550, 750, 920, 1000, 1010]
     },
     type: {
