@@ -40,19 +40,15 @@
       </div>
 
       <div class="col">
-        <canvas id="doughnutChart" class="chart" role="img""></canvas>
+        <canvas id="doughnutChart" class="chart" role="img"></canvas>
       </div>
     </div>
   </section>
 
   <script src="./js/analytics-lineChart.js"></script>
   <script>
-    const data = {
-      labels: [
-        'Red',
-        'Blue',
-        'Yellow'
-      ],
+    const doughnutData = {
+      labels: ['Red', 'Blue', 'Yellow'],
       datasets: [{
         label: 'My First Dataset',
         data: [300, 50, 100],
@@ -65,10 +61,10 @@
       }]
     };
   
-    const ctx = document.getElementById('doughnutChart').getContext('2d');
-    const doughnutChart = new Chart(ctx, {
+    const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+    const doughnutChart = new Chart(doughnutCtx, {
       type: 'doughnut',
-      data: data,
+      data: doughnutData,
       options: {
         legend: {
           display: true
@@ -79,8 +75,9 @@
           }
         }
       }
-      });
+    });
   </script>
+
 
 </body>
 </html>
