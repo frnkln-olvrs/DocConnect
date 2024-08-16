@@ -85,7 +85,13 @@ div.sidepanel {
 }
 
 /* CHARTS */
-.chart {
+#dashboard .chart {
+  min-height: 300px;
+  width:100%;
+  max-width:800px
+}
+
+#analytics .chart {
   min-height: 300px;
   width:100%;
   max-width:700px
