@@ -81,10 +81,10 @@
             </select>
 
             <div class="tab-pane fade active show" id="nav-campus" role="tabpanel" aria-labelledby="nav-campus-tab">
-              <canvas id="campusChart" style="width:100%;max-width:700px"></canvas>
+              <canvas id="campusChart" class="chart" role="img"></canvas>
             </div>
             <div class="tab-pane fade" id="nav-type" role="tabpanel" aria-labelledby="nav-type-tab">
-              <canvas id="typeChart" style="width:100%;max-width:700px"></canvas>
+              <canvas id="typeChart" class="chart" role="img"></canvas>
             </div>
           </div>
         </div>

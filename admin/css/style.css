@@ -84,6 +84,13 @@ div.sidepanel {
 	margin-top: 64px;
 }
 
+/* CHARTS */
+.chart {
+  min-height: 300px;
+  width:100%;
+  max-width:700px
+}
+
 /* LOGIN PAGE */
 .login-body {
   display: flex;
