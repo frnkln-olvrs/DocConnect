@@ -14,7 +14,7 @@
     require_once ('./includes/admin_sidepanel.php');
   ?>
 
-  <section id="analytics">
+<section id="analytics">
     <div class="row row-cols-1 row-cols-md-2">
       <div class="col">
         <nav>
@@ -29,25 +29,58 @@
             <option value="2">2022-2023</option>
             <option value="3">2023-2024</option>
           </select>
-    
+
           <div class="tab-pane fade active show" id="nav-campus" role="tabpanel" aria-labelledby="nav-campus-tab">
-            <canvas id="campusChart" style="width:100%;max-width:700px"></canvas>
+            <canvas id="campusChart" class="chart" role="img"></canvas>
           </div>
           <div class="tab-pane fade" id="nav-type" role="tabpanel" aria-labelledby="nav-type-tab">
-            <canvas id="typeChart" style="width:100%;max-width:700px"></canvas>
+            <canvas id="typeChart" class="chart" role="img"></canvas>
           </div>
         </div>
       </div>
 
       <div class="col">
-          <canvas id="myDonutChart" style="width:100%;max-width:700px"></canvas>
-
+        <canvas id="doughnutChart" class="chart" role="img""></canvas>
       </div>
     </div>
-
   </section>
 
-  <script src="./js/analytics-lineChart.js"></script> 
-  <script src="./js/analytics-donutChart.js"></script>
+  <script src="./js/analytics-lineChart.js"></script>
+  <script>
+    const data = {
+      labels: [
+        'Red',
+        'Blue',
+        'Yellow'
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [300, 50, 100],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
+      }]
+    };
+  
+    const ctx = document.getElementById('doughnutChart').getContext('2d');
+    const doughnutChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: data,
+      options: {
+        legend: {
+          display: true
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+      });
+  </script>
+
 </body>
 </html>
