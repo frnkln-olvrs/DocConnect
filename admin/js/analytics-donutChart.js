@@ -19,11 +19,6 @@ const doughnutChart = new Chart(doughnutCtx, {
   options: {
     legend: {
       display: true
-    },
-    scales: {
-      y: {
-        beginAtZero: true
-      }
     }
   }
 });
