@@ -6,11 +6,10 @@
         <h1 class="fs-4 link-light m-0 d-name">Doc<span class="link-light">Connect</span></h1>
 		  </a>
 
-      <div class="d-flex">
+      <div class="d-flex align-items-center justify-content-between">
         <div class="dropdown me-3">
           <a href="#" class="dropdown-toggle text-decoration-none text-dark" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="far fa-bell fa-lg"></i>
-            <i class='bx bx-bell'></i>
+            <i class='bx bx-bell fs-5 text-white'></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end p-2" aria-labelledby="notificationDropdown">
             <li class="dropdown-item d-flex align-items-center">
@@ -35,6 +34,7 @@
             </li>
           </ul>
         </div>
+
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="./../assets/images/profile_img.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
