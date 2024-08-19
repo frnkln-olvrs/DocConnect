@@ -17,7 +17,7 @@
   <section id="analytics">
     <div class="row mx-4">
       <!-- First Column -->
-      <div class="col-12 col-md-6 d-flex flex-column justify-content-center py-2 px-0 border border-danger-subtle shadow-lg">
+      <div class="col-12 col-md-6 d-flex flex-column justify-content-center py-2 px-0 border border-danger-subtle shadow-lg rounded-1">
         <nav>
           <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-campus-tab" data-bs-toggle="tab" data-bs-target="#nav-campus" type="button" role="tab" aria-controls="nav-campus" aria-selected="true">Campus</button>
@@ -30,7 +30,7 @@
             <option value="2">2022-2023</option>
             <option value="3">2023-2024</option>
           </select>
-    
+
           <div class="tab-pane fade active show" id="nav-campus" role="tabpanel" aria-labelledby="nav-campus-tab">
             <canvas id="campusChart" class="chart" role="img"></canvas>
           </div>
@@ -39,12 +39,12 @@
           </div>
         </div>
       </div>
-    
+
       <!-- Spacer Column -->
       <div class="col-12 col-md-1 p-0 m-0"></div>
-    
+
       <!-- Second Column -->
-      <div class="col-12 col-md-5 d-flex justify-content-center p-3 border border-danger-subtle shadow-lg">
+      <div class="col-12 col-md-5 d-flex justify-content-center p-3 border border-danger-subtle shadow-lg rounded-1">
         <canvas id="doughnutChart" class="chart" role="img" style="max-height: 451px;"></canvas>
       </div>
     </div>

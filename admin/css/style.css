@@ -51,12 +51,17 @@ a:hover {
   outline: none;
 }
 
-
-/* DIRTY WHITE BG */
-section#about,
-section#services {
-	background-color: #eeeeee;
+/* dropdown-toggle::after */
+.dropdown-toggle::after {
+  display: none;
 }
+/* .notification.dropdown-toggle::after {
+  display: none;
+}
+
+.acc.dropdown-toggle::after {
+  color: var(--white);
+} */
 
 * {
 	font-family: "Oswald", sans-serif;
@@ -66,7 +71,7 @@ section#services {
 	outline: none;
 	border: none;
 	text-decoration: none !important;
-	transition: .1s linear;
+	transition: none !important;
 }
 
 html {
