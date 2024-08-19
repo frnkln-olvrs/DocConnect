@@ -15,12 +15,47 @@
             <li class="dropdown-item d-flex align-items-center">
               <i class='bx bx-check-circle me-2 fs-2 text-success'></i>
               <div>
-                <div class="fw-bold">Lorem, ipsum dolor.</div>
+                <div class="fw-bold">Operation Successful</div>
+                <small class="text-muted">Your request was processed successfully.</small>
+              </div>
+            </li>
+            <li class="dropdown-item d-flex align-items-center">
+              <i class='bx bx-x-circle me-2 fs-2 text-danger'></i>
+              <div>
+                <div class="fw-bold">Operation Failed</div>
+                <small class="text-muted">There was an error processing your request.</small>
+              </div>
+            </li>
+            <li class="dropdown-item d-flex align-items-center">
+              <i class='bx bx-error-circle me-2 fs-2 text-warning' ></i>
+              <div>
+                <div class="fw-bold">Warning</div>
+                <small class="text-muted">Please check the details carefully.</small>
+              </div>
+            </li>
+            <li class="dropdown-item d-flex align-items-center">
+              <i class='bx bx-info-circle me-2 fs-2 text-info' ></i>
+              <div>
+                <div class="fw-bold">Information</div>
+                <small class="text-muted">Here is some important information.</small>
+              </div>
+            </li>
+            <li class="dropdown-item d-flex align-items-center">
+              <i class='bx bx-alarm me-2 fs-2 text-warning' ></i>
+              <div>
+                <div class="fw-bold">Reminder.</div>
+                <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
+              </div>
+            </li>
+            <li class="dropdown-item d-flex align-items-center">
+              <i class='bx bx-envelope me-2 fs-2 text-blue' ></i>
+              <div>
+                <div class="fw-bold">LMessage</div>
                 <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
               </div>
             </li>
 
-            <li class="dropdown-item d-flex align-items-center">
+            <!-- <li class="dropdown-item d-flex align-items-center">
               <div>
                 <div class="fw-bold">Lorem, ipsum dolor.</div>
                 <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
@@ -34,7 +69,7 @@
                 <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
               </div>
               <div class="ms-auto text-danger">Failed</div>
-            </li>
+            </li> -->
             <!-- Add more notifications as needed -->
             <li class="dropdown-item text-center fw-bold text-primary">
               <a href="#">Show All Activities</a>

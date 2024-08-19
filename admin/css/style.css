@@ -44,6 +44,10 @@ a:hover {
 	color: var(--primary);
 }
 
+.text-blue {
+  color: cornflowerblue !important;
+}
+
 .form-control:focus,
 .form-check-input:focus,
 .btn:focus {
