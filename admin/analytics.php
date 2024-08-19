@@ -48,6 +48,8 @@
         <canvas id="doughnutChart" class="chart" role="img" style="max-height: 451px;"></canvas>
       </div>
     </div>
+
+    
   </section>
 
   <script src="./js/analytics-lineChart.js"></script>

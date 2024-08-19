@@ -48,6 +48,14 @@ a:hover {
   color: cornflowerblue !important;
 }
 
+hr {
+  margin: 2px 0;
+  color: inherit;
+  background-color: currentColor;
+  border: 0;
+  opacity: 0.25;
+}
+
 .form-control:focus,
 .form-check-input:focus,
 .btn:focus {
