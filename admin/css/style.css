@@ -96,6 +96,12 @@ body {
 	background-color: whitesmoke;
 }
 
+/* DROPDOWN */ 
+.dropdown-menu {
+  max-height: 370px !important;
+  overflow-y: scroll;
+}
+
 /* SIDEPANEL */
 div.sidepanel {
 	margin-top: 64px;
