@@ -8,12 +8,19 @@
 
       <div class="d-flex align-items-center justify-content-between">
         <div class="dropdown me-3">
-          <a href="#" class="dropdown-toggle text-decoration-none text-dark" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <a href="#" class="notification dropdown-toggle text-decoration-none text-dark" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <i class='bx bx-bell fs-5 text-white'></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end p-2" aria-labelledby="notificationDropdown">
             <li class="dropdown-item d-flex align-items-center">
-              <span class="icon me-2"></span>
+              <i class='bx bx-check-circle me-2 fs-2 text-success'></i>
+              <div>
+                <div class="fw-bold">Lorem, ipsum dolor.</div>
+                <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
+              </div>
+            </li>
+
+            <li class="dropdown-item d-flex align-items-center">
               <div>
                 <div class="fw-bold">Lorem, ipsum dolor.</div>
                 <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
@@ -36,8 +43,8 @@
         </div>
 
         <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="./../assets/images/profile_img.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+          <a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="./../assets/images/profile_img.jpg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light">
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" href="#">New project...</a></li>
