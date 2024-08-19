@@ -19,30 +19,30 @@ const data = {
       camp_c: [78, 230, 250, 450, 630, 250, 450, 650, 820, 900, 910]
     },
     type: {
-      yCampus1: [50, 200, 300, 350, 400, 400, 475, 500, 390, 350, 400],
-      yCampus2: [100, 90, 50, 80, 109, 160, 230, 150, 190, 130, 140]
+      yCampus1: [110, 300, 500, 450, 400, 400, 475, 500, 390, 350, 400],
+      yCampus2: [100, 90, 50, 100, 109, 160, 230, 190, 290, 130, 140]
     }
   },
   "2022-2023": {
     campus: {
       camp_a: [160, 300, 200, 450, 500, 500, 575, 420, 490, 450, 500],
       camp_b: [200, 190, 150, 180, 109, 260, 430, 250, 210, 230, 240],
-      camp_c: [178, 330, 350, 550, 730, 350, 550, 750, 920, 1000, 1010]
+      camp_c: [178, 330, 350, 650, 730, 350, 550, 750, 920, 1000, 1010]
     },
     type: {
-      yCampus1: [150, 300, 400, 450, 500, 500, 575, 600, 490, 450, 500],
-      yCampus2: [200, 190, 150, 180, 209, 260, 330, 250, 290, 230, 240]
+      yCampus1: [10, 300, 400, 450, 500, 500, 575, 600, 490, 450, 500],
+      yCampus2: [200, 190, 150, 180, 209, 260, 330, 250, 190, 200, 240]
     }
   },
   "2023-2024": {
     campus: {
       camp_a: [250, 400, 500, 550, 600, 600, 675, 700, 590, 550, 600],
       camp_b: [300, 290, 250, 280, 309, 360, 430, 350, 390, 330, 340],
-      camp_c: [278, 430, 450, 650, 830, 450, 650, 850, 1020, 1100, 1110]
+      camp_c: [278, 130, 450, 650, 330, 450, 650, 850, 1020, 1100, 1110]
     },
     type: {
       yCampus1: [250, 400, 500, 550, 600, 600, 675, 700, 590, 550, 600],
-      yCampus2: [300, 290, 250, 280, 309, 360, 430, 350, 390, 330, 340]
+      yCampus2: [200, 290, 250, 280, 309, 260, 330, 200, 390, 430, 340]
     }
   }
 };
@@ -69,24 +69,24 @@ const campusChart = new Chart("campusChart", {
         label: 'Campus A',
         fill: false,
         lineTension: 0,
-        backgroundColor: "rgba(255,0,0,1.0)",
-        borderColor: "rgba(255,0,0,0.1)",
+        backgroundColor: "#dc3545",
+        borderColor: "#dc35451a",
         data: data["2021-2022"].campus.camp_a
       },
       {
         label: 'Campus B',
         fill: false,
         lineTension: 0,
-        backgroundColor: "rgba(0,128,0,1.0)",
-        borderColor: "rgba(0,128,0,0.1)",
+        backgroundColor: "#36A2EB",
+        borderColor: "#36A2EB1a",
         data: data["2021-2022"].campus.camp_b
       },
       {
         label: 'Campus C',
         fill: false,
         lineTension: 0,
-        backgroundColor: "rgba(0,0,255,1.0)",
-        borderColor: "rgba(0,0,255,0.1)",
+        backgroundColor: "#21bf73",
+        borderColor: "#21bf731a",
         data: data["2021-2022"].campus.camp_c
       }
     ]
@@ -108,16 +108,16 @@ const typeChart = new Chart("typeChart", {
         label: 'Face to face',
         fill: false,
         lineTension: 0,
-        backgroundColor: "rgba(255,0,0,1.0)",
-        borderColor: "rgba(255,0,0,0.1)",
+        backgroundColor: "#dc3545",
+        borderColor: "#dc35451a",
         data: data["2021-2022"].type.yCampus1
       },
       {
         label: 'Online',
         fill: false,
         lineTension: 0,
-        backgroundColor: "rgba(0,128,0,1.0)",
-        borderColor: "rgba(0,128,0,0.1)",
+        backgroundColor: "#21bf73",
+        borderColor: "#21bf731a",
         data: data["2021-2022"].type.yCampus2
       }
     ]

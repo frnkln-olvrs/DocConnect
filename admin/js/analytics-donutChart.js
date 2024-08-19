@@ -1,12 +1,12 @@
 const doughnutData = {
-  labels: ['Red', 'Blue', 'Yellow'],
+  labels: ['Campus A', 'Campus B', 'Campus C'],
   datasets: [{
-    label: 'My First Dataset',
-    data: [300, 50, 100],
+    label: 'Campus Dataset',
+    data: [240, 400, 100],
     backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
+      '#dc3545',
+      '#36A2EB',
+      '#21bf73'
     ],
     hoverOffset: 4
   }]

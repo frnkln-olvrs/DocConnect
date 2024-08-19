@@ -15,9 +15,10 @@
   ?>
 
   <section id="analytics">
-    <div class="row mx-4">
+
+    <div class="row justify-content-center">
       <!-- First Column -->
-      <div class="col-12 col-md-6 d-flex flex-column justify-content-center py-2 px-0 border border-danger-subtle shadow-lg rounded-1">
+      <div class="col-12 col-lg-6 d-flex flex-column justify-content-center py-2 px-0 border border-danger-subtle shadow-lg rounded-1 me-lg-3">
         <nav>
           <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-campus-tab" data-bs-toggle="tab" data-bs-target="#nav-campus" type="button" role="tab" aria-controls="nav-campus" aria-selected="true">Campus</button>
@@ -40,11 +41,8 @@
         </div>
       </div>
 
-      <!-- Spacer Column -->
-      <div class="col-12 col-md-1 p-0 m-0"></div>
-
       <!-- Second Column -->
-      <div class="col-12 col-md-5 d-flex justify-content-center p-3 border border-danger-subtle shadow-lg rounded-1">
+      <div class="col-12 col-lg-5 d-flex justify-content-center p-3 border border-danger-subtle shadow-lg rounded-1 ms-lg-3">
         <canvas id="doughnutChart" class="chart" role="img" style="max-height: 451px;"></canvas>
       </div>
     </div>
