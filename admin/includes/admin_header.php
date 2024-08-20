@@ -14,7 +14,12 @@
           <ul class="notification dropdown-menu dropdown-menu-end px-0" aria-labelledby="notificationDropdown">
             <li class="header mx-3 d-flex align-items-center justify-content-between">
               <h4>Notification</h4>
-              <i class='bx bx-dots-horizontal-rounded fs-4' ></i>
+              <div class="dropdown">
+                <i class='bx bx-dots-horizontal-rounded fs-4' id="dotsDropdown" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dotsDropdown">
+                  <li><a class="dropdown-item" href="#">Mark all as read</a></li>
+                </ul>
+              </div>
             </li>
 
             <hr class="mx-3">
@@ -61,22 +66,6 @@
                 <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
               </div>
             </li>
-  
-            <!-- <li class="dropdown-item d-flex align-items-center">
-              <div>
-                <div class="fw-bold">Lorem, ipsum dolor.</div>
-                <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
-              </div>
-              <div class="ms-auto text-success">Success</div>
-            </li>
-            <li class="dropdown-item d-flex align-items-center">
-              <span class="icon me-2"></span>
-              <div>
-                <div class="fw-bold">Lorem, ipsum dolor.</div>
-                <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
-              </div>
-              <div class="ms-auto text-danger">Failed</div>
-            </li> -->
 
             <hr class="mx-3">
 
@@ -103,3 +92,24 @@
     </div>
   </div>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const notificationDropdown = document.getElementById('notificationDropdown');
+    const dotsDropdown = document.getElementById('dotsDropdown');
+    
+    // Prevent the notification dropdown from closing when clicking on the dots dropdown
+    dotsDropdown.addEventListener('click', function (event) {
+      event.stopPropagation();
+    });
+  
+    document.addEventListener('click', function (event) {
+      // Check if the click is outside of the notification dropdown and dots dropdown
+      if (!notificationDropdown.contains(event.target) && !dotsDropdown.contains(event.target)) {
+        // Close the notification dropdown if clicked outside
+        const bootstrapDropdown = new bootstrap.Dropdown(notificationDropdown);
+        bootstrapDropdown.hide();
+      }
+    });
+  });
+</script>
