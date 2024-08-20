@@ -98,15 +98,12 @@
     const notificationDropdown = document.getElementById('notificationDropdown');
     const dotsDropdown = document.getElementById('dotsDropdown');
     
-    // Prevent the notification dropdown from closing when clicking on the dots dropdown
     dotsDropdown.addEventListener('click', function (event) {
       event.stopPropagation();
     });
-  
+
     document.addEventListener('click', function (event) {
-      // Check if the click is outside of the notification dropdown and dots dropdown
       if (!notificationDropdown.contains(event.target) && !dotsDropdown.contains(event.target)) {
-        // Close the notification dropdown if clicked outside
         const bootstrapDropdown = new bootstrap.Dropdown(notificationDropdown);
         bootstrapDropdown.hide();
       }
