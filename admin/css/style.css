@@ -107,6 +107,11 @@ div.sidepanel {
 	margin-top: 64px;
 }
 
+.sidepanel a:not(.active):hover {
+  color: var(--primary) !important;
+  transition: .25s ease-in-out;
+}
+
 /* CHARTS */
 #dashboard .chart {
   min-height: 300px;
