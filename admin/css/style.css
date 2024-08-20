@@ -3,6 +3,7 @@
 
 :root {
 	--primary: #dc3545;
+  --primary-light: #fb5c6c;
 	--white: whitesmoke;
 	--secondary: #b0eacd;
 	--dark_secondary: #21bf73;
@@ -108,6 +109,23 @@ body {
 
 .notification.dropdown-menu li:hover {
   color: inherit !important;
+  cursor: pointer;
+}
+
+.notification.dropdown-menu::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+}
+
+.notification.dropdown-menu::-webkit-scrollbar-track {
+  background: var(--white);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.notification.dropdown-menu::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 50px; 
+  border: 2px solid var(--white);
 }
 
 /* SIDEPANEL */
