@@ -11,7 +11,7 @@
           <a href="#" class="notification dropdown-toggle text-decoration-none text-dark" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <i class='bx bx-bell fs-5 text-white'></i>
           </a>
-          <ul class="notification dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
+          <ul class="notification dropdown-menu dropdown-menu-end px-0" aria-labelledby="notificationDropdown">
             <li class="dropdown-item d-flex align-items-center">
               <i class='bx bx-check-circle me-2 fs-2 text-success'></i>
               <div>

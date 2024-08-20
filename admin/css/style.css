@@ -97,9 +97,9 @@ body {
 	background-color: whitesmoke;
 }
 
-/* DROPDOWN */
+/* Notification DROPDOWN */
 .notification.dropdown-menu {
-  max-height: 370px !important;
+  max-height: 375px !important;
   overflow-y: scroll;
 }
 
@@ -112,8 +112,14 @@ body {
   cursor: pointer;
 }
 
+/* Notification DROPDOWN */
+.notification.dropdown-menu {
+  max-height: 375px !important;
+  overflow-y: auto;
+}
+
 .notification.dropdown-menu::-webkit-scrollbar {
-  width: 8px; /* Adjust the width as needed */
+  width: 8px;
 }
 
 .notification.dropdown-menu::-webkit-scrollbar-track {
@@ -126,6 +132,15 @@ body {
   background: var(--primary-light);
   border-radius: 50px; 
   border: 2px solid var(--white);
+}
+
+.notification.dropdown-menu li:hover i {
+  color: var(--dark_secondary) !important;
+}
+
+.notification.dropdown-menu li:hover {
+  color: inherit !important;
+  cursor: pointer;
 }
 
 /* SIDEPANEL */
