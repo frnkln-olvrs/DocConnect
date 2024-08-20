@@ -12,6 +12,13 @@
             <i class='bx bx-bell fs-5 text-white'></i>
           </a>
           <ul class="notification dropdown-menu dropdown-menu-end px-0" aria-labelledby="notificationDropdown">
+            <li class="header mx-3 d-flex align-items-center justify-content-between">
+              <h4>Notification</h4>
+              <i class='bx bx-dots-horizontal-rounded fs-4' ></i>
+            </li>
+
+            <hr class="mx-3">
+
             <li class="dropdown-item d-flex align-items-center">
               <i class='bx bx-check-circle me-2 fs-2 text-success'></i>
               <div>
@@ -71,7 +78,7 @@
               <div class="ms-auto text-danger">Failed</div>
             </li> -->
 
-            <hr>
+            <hr class="mx-3">
 
             <li class="dropdown-item text-center fw-bold text-primary">
               <a href="#">Show All Activities</a>

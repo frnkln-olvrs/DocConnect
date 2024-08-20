@@ -138,8 +138,27 @@ body {
   color: var(--dark_secondary) !important;
 }
 
+.notification.dropdown-menu li:active i.bx,
+.notification.dropdown-menu li:active div.fw-bold,
+.notification.dropdown-menu li:active small.text-muted {
+  color: white !important;
+}
+
 .notification.dropdown-menu li:hover {
   color: inherit !important;
+  cursor: pointer;
+}
+
+.notification.dropdown-menu .header {
+  pointer-events: none;
+}
+
+.notification.dropdown-menu .header i.bx {
+  pointer-events: auto;
+}
+
+.notification.dropdown-menu .header i.bx:hover {
+  color: var(--dark_secondary) !important;
   cursor: pointer;
 }
 
