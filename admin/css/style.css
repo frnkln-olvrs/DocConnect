@@ -96,10 +96,18 @@ body {
 	background-color: whitesmoke;
 }
 
-/* DROPDOWN */ 
-.dropdown-menu {
+/* DROPDOWN */
+.notification.dropdown-menu {
   max-height: 370px !important;
   overflow-y: scroll;
+}
+
+.notification.dropdown-menu li:hover i {
+  color: var(--dark_secondary) !important;
+}
+
+.notification.dropdown-menu li:hover {
+  color: inherit !important;
 }
 
 /* SIDEPANEL */
