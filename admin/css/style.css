@@ -162,6 +162,22 @@ body {
   cursor: pointer;
 }
 
+/* fix problem mark all as read dropdown */
+/* .dropdown-item.mark-all {
+  position: relative;
+  z-index: 1;
+}
+
+.dropdown-item.mark-all:hover {
+  background-color: #c11717;
+  cursor: pointer;
+}
+
+.dropdown .dropdown-menu {
+  position: absolute;
+  z-index: 2;
+} */
+
 /* SIDEPANEL */
 div.sidepanel {
 	margin-top: 64px;

@@ -4,7 +4,7 @@
       <a class="d-flex align-items-center text-dark text-decoration-none" href="./index">
         <img src="../assets/images/logo.png" class="me-2" alt="Logo" height="32">
         <h1 class="fs-4 link-light m-0 d-name">Doc<span class="link-light">Connect</span></h1>
-		  </a>
+      </a>
 
       <div class="d-flex align-items-center justify-content-between">
         <div class="dropdown me-3">
@@ -17,7 +17,7 @@
               <div class="dropdown">
                 <i class='bx bx-dots-horizontal-rounded fs-4' id="dotsDropdown" data-bs-toggle="dropdown" aria-expanded="false"></i>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dotsDropdown">
-                  <li><a class="dropdown-item" href="#">Mark all as read</a></li>
+                  <li><a class="dropdown-item mark-all" href="#">Mark all as read</a></li>
                 </ul>
               </div>
             </li>
@@ -39,30 +39,30 @@
               </div>
             </li>
             <li class="dropdown-item d-flex align-items-center">
-              <i class='bx bx-error-circle me-2 fs-2 text-warning' ></i>
+              <i class='bx bx-error-circle me-2 fs-2 text-warning'></i>
               <div>
                 <div class="fw-bold">Warning</div>
                 <small class="text-muted">Please check the details carefully.</small>
               </div>
             </li>
             <li class="dropdown-item d-flex align-items-center">
-              <i class='bx bx-info-circle me-2 fs-2 text-info' ></i>
+              <i class='bx bx-info-circle me-2 fs-2 text-info'></i>
               <div>
                 <div class="fw-bold">Information</div>
                 <small class="text-muted">Here is some important information.</small>
               </div>
             </li>
             <li class="dropdown-item d-flex align-items-center">
-              <i class='bx bx-alarm me-2 fs-2 text-warning' ></i>
+              <i class='bx bx-alarm me-2 fs-2 text-warning'></i>
               <div>
                 <div class="fw-bold">Reminder</div>
                 <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
               </div>
             </li>
             <li class="dropdown-item d-flex align-items-center">
-              <i class='bx bx-envelope me-2 fs-2 text-blue' ></i>
+              <i class='bx bx-envelope me-2 fs-2 text-blue'></i>
               <div>
-                <div class="fw-bold">LMessage</div>
+                <div class="fw-bold">Message</div>
                 <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
               </div>
             </li>
@@ -100,13 +100,6 @@
     
     dotsDropdown.addEventListener('click', function (event) {
       event.stopPropagation();
-    });
-
-    document.addEventListener('click', function (event) {
-      if (!notificationDropdown.contains(event.target) && !dotsDropdown.contains(event.target)) {
-        const bootstrapDropdown = new bootstrap.Dropdown(notificationDropdown);
-        bootstrapDropdown.hide();
-      }
     });
   });
 </script>
