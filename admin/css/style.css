@@ -64,6 +64,18 @@ hr {
   outline: none;
 }
 
+.btn-outline-primary:hover {
+  color: var(--white) !important;
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  letter-spacing: 1px;
+  transition: linear .1s !important;
+}
+
+.btn-outline-primary:focus {
+  box-shadow: none !important;
+}
+
 /* dropdown-toggle::after */
 .dropdown-toggle::after {
   display: none;

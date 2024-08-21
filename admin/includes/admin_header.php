@@ -69,8 +69,10 @@
 
             <hr class="mx-3">
 
-            <li class="dropdown-item text-center fw-bold text-primary">
-              <a href="#">Show All Activities</a>
+            <li class="show-all dropdown-item bg-white">
+              <a href="#">
+                <button type="button" class="btn btn-outline-primary w-100">Show All Activities</button>
+              </a>
             </li>
           </ul>
         </div>
