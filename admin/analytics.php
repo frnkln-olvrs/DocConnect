@@ -18,7 +18,9 @@
 
     <div class="row justify-content-center">
       <!-- First Column -->
-      <div class="col-12 col-lg-6 d-flex flex-column justify-content-center py-2 px-0 border border-danger-subtle shadow-lg rounded-1 me-lg-3">
+      <div class="col-12 col-lg-6 d-flex flex-column justify-content-center py-2 px-0 border border-danger-subtle shadow-lg rounded-1 me-lg-3 mb-lg-0 mb-3">
+        <h4 class="mx-3">Total Email Senders</h4>
+        <hr class="mx-4 mb-3">
         <nav>
           <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-campus-tab" data-bs-toggle="tab" data-bs-target="#nav-campus" type="button" role="tab" aria-controls="nav-campus" aria-selected="true">Campus</button>
@@ -42,8 +44,12 @@
       </div>
 
       <!-- Second Column -->
-      <div class="col-12 col-lg-5 d-flex justify-content-center p-3 border border-danger-subtle shadow-lg rounded-1 ms-lg-3">
-        <canvas id="doughnutChart" class="chart" role="img" style="max-height: 451px;"></canvas>
+      <div class="col-12 col-lg-5 d-flex flex-column justify-content-start p-3 border border-danger-subtle shadow-lg rounded-1 ms-lg-3">
+        <h4>Total Email Senders</h4>
+        <hr class="mx-2">
+        <div class="d-flex justify-content-center align-items-center flex-grow-1">
+          <canvas id="doughnutChart" class="chart" role="img" style="max-height: 451px;"></canvas>
+        </div>
       </div>
     </div>
 
