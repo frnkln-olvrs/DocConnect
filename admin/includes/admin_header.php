@@ -70,7 +70,7 @@
             <hr class="mx-3">
 
             <li class="show-all dropdown-item bg-white">
-              <a href="#">
+              <a href="./notifications">
                 <button type="button" class="btn btn-outline-primary w-100">Show All Activities</button>
               </a>
             </li>
