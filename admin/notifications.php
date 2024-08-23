@@ -22,8 +22,8 @@
         <li class="header mx-3 d-flex align-items-center justify-content-between">
           <h4>Notification</h4>
           <div class="dropdown">
-            <button class="btn btn-link p-0" type="button" id="mark-all" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bx bx-dots-horizontal-rounded fs-3"></i>
+            <button class="btn btn-link btn-light p-0" type="button" id="mark-all" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bx bx-dots-horizontal-rounded fs-3 link-dark"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="mark-all">
               <li><a class="dropdown-item" href="#">Mark all as read</a></li>
