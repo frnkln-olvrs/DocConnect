@@ -33,12 +33,60 @@
           </div>
         </li>
 
+        <hr>
+
         <div class="list-group rounded-0">
-          <a href="#" class="list-group-item list-group-item-action border-0">The current link item</a>
-          <a href="#" class="list-group-item list-group-item-action border-0">A second link item</a>
-          <a href="#" class="list-group-item list-group-item-action border-0">A third link item</a>
-          <a href="#" class="list-group-item list-group-item-action border-0">A fourth link item</a>
-          <a href="#" class="list-group-item list-group-item-action border-0" tabindex="-1" aria-disabled="true">A disabled link item</a>
+          <a href="#" class="list-group-item list-group-item-action border-0">
+            <li class="d-flex align-items-center">
+              <i class='bx bx-check-circle me-3 fs-1 text-success'></i>
+              <div>
+                <div class="fw-bold fs-4">Operation Successful</div>
+                <small class="text-muted">Your request was processed successfully.</small>
+              </div>
+            </li>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action border-0">
+            <li class="d-flex align-items-center">
+              <i class='bx bx-x-circle me-3 fs-1 text-danger'></i>
+              <div>
+                <div class="fw-bold fs-4">Operation Failed</div>
+                <small class="text-muted">There was an error processing your request.</small>
+              </div>
+            </li>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action border-0">
+            <li class="d-flex align-items-center">
+              <i class='bx bx-error-circle me-3 fs-1 text-warning'></i>
+              <div>
+                <div class="fw-bold fs-4">Warning</div>
+                <small class="text-muted">Please check the details carefully.</small>
+              </div>
+            </li>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action border-0">
+            <li class="d-flex align-items-center">
+              <i class='bx bx-info-circle me-3 fs-1 text-info'></i>
+              <div>
+                <div class="fw-bold fs-4">Information</div>
+                <small class="text-muted">Here is some important information.</small>
+              </div>
+            </li>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action border-0">
+            <li class="d-flex align-items-center">
+              <i class='bx bx-alarm me-3 fs-1 text-warning'></i>
+              <div>
+                <div class="fw-bold fs-4">Reminder</div>
+                <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
+              </div>
+            </li>
+          </a>
+
+          <hr class="my-3">
+
+          <a href="./notifications">
+            <button type="button" class="btn btn-outline-primary w-100">See previous notification</button>
+          </a>
         </div>
       </div>
     </div>
