@@ -10,6 +10,7 @@ class Account
     public $middlename;
     public $lastname;
     public $gender;
+    public $birthdate;
     public $contact;
     public $account_image;
     public $address;
@@ -41,6 +42,7 @@ class Account
                 $this->email = $accountData['email'];
                 $this->verification_status = $accountData['verification_status'];
                 $this->gender = $accountData['gender'];
+                $this->birthdate = $accountData['birthdate'];
                 $this->contact = $accountData['contact'];
                 $this->address = $accountData['address'];
                 $this->account_image = $accountData['account_image'];
@@ -52,11 +54,17 @@ class Account
 
     function add()
     {
-        $sql = "INSERT INTO account (email, ) VALUES (:email, );";
+        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, gender, birthdate, user_role) VALUES (:email, :password, :firstname, :middlename, :lastname, :gender, :birthdate, :user_role);";
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':email', $this->email);
-
+        $query->bindParam(':password', $this->password);
+        $query->bindParam(':firstname', $this->firstname);
+        $query->bindParam(':middlename', $this->middlename);
+        $query->bindParam(':lastname', $this->lastname);
+        $query->bindParam(':gender', $this->gender);
+        $query->bindParam(':birthdate', $this->birthdate);
+        $query->bindParam(':user_role', $this->user_role);
 
         if ($query->execute()) {
             return true;
@@ -64,4 +72,6 @@ class Account
             return false;
         }
     }
+
+
 }
