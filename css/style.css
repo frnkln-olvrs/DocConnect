@@ -50,6 +50,75 @@ section#services {
 	background-color: #eeeeee;
 }
 
+/* dropdown-toggle::after */
+.dropdown-toggle::after {
+  display: none;
+}
+
+/* Notification DROPDOWN */
+.notification.dropdown-menu {
+  max-height: 375px !important;
+  overflow-y: scroll;
+}
+
+.notification.dropdown-menu li:hover i {
+  color: var(--dark_secondary) !important;
+}
+
+.notification.dropdown-menu li:hover {
+  color: inherit !important;
+  cursor: pointer;
+}
+
+.notification.dropdown-menu {
+  max-height: 375px !important;
+  overflow-y: auto;
+}
+
+.notification.dropdown-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.notification.dropdown-menu::-webkit-scrollbar-track {
+  background: var(--white);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.notification.dropdown-menu::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 50px; 
+  border: 2px solid var(--white);
+}
+
+.notification.dropdown-menu li:hover i {
+  color: var(--dark_secondary) !important;
+}
+
+.notification.dropdown-menu li:active i.bx,
+.notification.dropdown-menu li:active div.fw-bold,
+.notification.dropdown-menu li:active small.text-muted {
+  color: white !important;
+}
+
+.notification.dropdown-menu li:hover {
+  color: inherit !important;
+  cursor: pointer;
+}
+
+.notification.dropdown-menu .header {
+  pointer-events: none;
+}
+
+.notification.dropdown-menu .header i.bx {
+  pointer-events: auto;
+}
+
+.notification.dropdown-menu .header i.bx:hover {
+  color: var(--dark_secondary) !important;
+  cursor: pointer;
+}
+
 * {
 	font-family: "Oswald", sans-serif;
 	margin: 0;
@@ -58,7 +127,6 @@ section#services {
 	outline: none;
 	border: none;
 	text-decoration: none !important;
-	transition: .1s linear;
 }
 
 html {

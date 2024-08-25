@@ -124,7 +124,6 @@ body {
   cursor: pointer;
 }
 
-/* Notification DROPDOWN */
 .notification.dropdown-menu {
   max-height: 375px !important;
   overflow-y: auto;
@@ -231,13 +230,7 @@ div.sidepanel {
   border-color: var(--primary);
 }
 
-#dashboard,
-#users,
-#campus,
-#add_campus,
-#appointment,
-#analytics,
-#notification {
+.page-container {
 	margin: 20px;
 	margin-top: 0;
 	padding-top: 84px;
@@ -315,4 +308,10 @@ div.sidepanel {
   height: 250px;
   border: 3px solid var(--main-color);
   z-index: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .page-container  {
+    padding-left: 20px;
+  }
 }

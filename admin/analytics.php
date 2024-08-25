@@ -14,7 +14,7 @@
     require_once ('./includes/admin_sidepanel.php');
   ?>
 
-  <section id="analytics">
+  <section id="analytics" class="page-container">
 
     <div class="row justify-content-center">
       <!-- First Column -->

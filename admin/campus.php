@@ -14,7 +14,7 @@
     require_once ('./includes/admin_sidepanel.php');
   ?>
 
-  <section id="campus">
+  <section id="campus" class="page-container">
     <div class="d-flex justify-content-center position-relative my-3">
       <h1 class="text-center m-0">Campuses</h1>
       <a href="add_campus" class="btn btn-success text-white position-absolute end-0">Add Campus</a>

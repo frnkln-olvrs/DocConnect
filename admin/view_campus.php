@@ -14,7 +14,7 @@
     require_once ('./includes/admin_sidepanel.php');
   ?>
 
-  <section id="campus" class="">
+  <section id="campus" class="page-container">
     <div class="d-flex justify-content-between align-items-center">
       <a href="./campus" class="btn btn-secondary text-white"><i class='bx bx-chevron-left'></i></a>
       <h1 class="text-center m-0">Campus A</h1>

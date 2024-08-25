@@ -14,7 +14,7 @@
     require_once ('./includes/admin_sidepanel.php');
   ?>
 
-  <section id="add_campus" class="">
+  <section id="add_campus" class="page-container">
     <div class="row">
 
       <div class="col-2"></div>

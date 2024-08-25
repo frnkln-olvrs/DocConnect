@@ -14,7 +14,7 @@
     require_once ('./includes/admin_sidepanel.php');
   ?>
 
-  <section id="users">
+  <section id="users" class="page-container">
     <h1 class="text-center my-3">Users</h1>
 
     <div class="container text-center mt-5 px-5">
