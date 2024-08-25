@@ -14,7 +14,7 @@
     require_once ('./includes/admin_sidepanel.php');
   ?>
 
-  <section id="appointment">
+  <section id="appointment" class="page-container">
     <h1 class="text-center">Appointment Management</h1>
 
   </section>

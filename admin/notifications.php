@@ -14,7 +14,7 @@
     require_once ('./includes/admin_sidepanel.php');
   ?>
 
-  <section id="notification">
+  <section id="notification" class="page-container">
     
     <div class="d-flex justify-content-center w-100">
       <div class="w-75 shadow-lg p-3 rounded-2 ">

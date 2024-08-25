@@ -14,7 +14,7 @@
     require_once ('./includes/admin_sidepanel.php');
   ?>
 
-  <section id="dashboard">
+  <section id="dashboard" class="page-container">
     <h1 class="text-center">Overview</h1>
 
     <div class="container">
