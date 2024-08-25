@@ -124,7 +124,6 @@ body {
   cursor: pointer;
 }
 
-/* Notification DROPDOWN */
 .notification.dropdown-menu {
   max-height: 375px !important;
   overflow-y: auto;
