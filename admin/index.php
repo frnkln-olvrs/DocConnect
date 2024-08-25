@@ -18,10 +18,10 @@
     <h1 class="text-center">Overview</h1>
 
     <div class="container">
-      <div class="row mx-5 mb-4">
-        <div class="col bg-primary mx-2 p-3 text-white rounded-3">
+      <div class="row flex-md-nowrap row-cols-1 row-cols-md-3 mx-0 mx-md-5 mb-4">
+        <div class="col bg-primary mx-0 mx-md-2 p-3 text-white rounded-3 mb-3 mb-md-0">
           <div class="row g-3">
-            <div class="col-6  d-flex align-items-end justify-content-start">
+            <div class="col-6 d-flex align-items-end justify-content-start">
               <i class='bx bx-user'></i>
             </div>
             <div class="col-6 text-end">
@@ -31,7 +31,7 @@
           </div>
         </div>
 
-        <div class="col bg-primary mx-2 p-3 text-white rounded-3">
+        <div class="col bg-primary mx-0 mx-md-2 p-3 text-white rounded-3 mb-3 mb-md-0">
           <div class="row g-3">
             <div class="col-6 d-flex align-items-end justify-content-start">
               <i class='bx bx-user-check'></i>
@@ -43,9 +43,9 @@
           </div>
         </div>
 
-        <div class="col bg-primary mx-2 p-3 text-white rounded-3">
+        <div class="col bg-primary mx-0 mx-md-2 p-3 text-white rounded-3 mb-3 mb-md-0">
           <div class="row g-3">
-            <div class="col-6  d-flex align-items-end justify-content-start">
+            <div class="col-6 d-flex align-items-end justify-content-start">
               <i class='bx bx-user-plus'></i>
             </div>
             <div class="col-6 text-end">
@@ -57,16 +57,16 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container px-0 px-md-2">
       <div class="row mx-2">
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <div class="border border-2 border-dark-subtle shadow-sm p-3 h-100">
             <h3 class="text-center mb-4">Appoint Management</h3>
             <h5>Appointments today: </h5>
           </div>
         </div>
         
-        <div class="col-md-8">
+        <div class="col-12 col-lg-8">
           <nav>
             <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
               <button class="nav-link  active" id="nav-campus-tab" data-bs-toggle="tab" data-bs-target="#nav-campus" type="button" role="tab" aria-controls="nav-campus" aria-selected="true">Campus</button>

@@ -310,8 +310,8 @@ div.sidepanel {
   z-index: 0;
 }
 
-@media screen and (max-width: 600px) {
-  body {
-    background-color: olive !important;
+@media screen and (max-width: 991px) {
+  .page-container  {
+    padding-left: 20px;
   }
 }
