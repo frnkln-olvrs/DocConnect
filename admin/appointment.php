@@ -73,7 +73,7 @@
             <td><?= $item['Patient Name'] ?></td>
             <td><?= $item['Doctor Name'] ?></td>
             <td><?= $item['Appointment date'] ?></td>
-            <td><?= $item['Status'] ?></td>
+            <td  class="bg-green text-light text-center"><?= $item['Status'] ?></td>
             <td class="text-center">
               icon
             </td>
@@ -82,18 +82,8 @@
           $counter++;
           }
         ?>
-
         <tr>
-          <td>01</td>
-          <td>0001</td>
-          <td>F-2-F</td>
-          <td>Allen Barry</td>
-          <td>Dr. Jame Oliveros</td>
-          <td>Monday, 9:00 - 10:00 am</td>
-          <td class="bg-green text-light text-center">Completed</td>
-          <td>Icon</td>
-        </tr>
-        <tr>
+          <td>02</td>
           <td>0002</td>
           <td>Online</td>
           <td>Allen Barry</td>
@@ -103,6 +93,7 @@
           <td>Icon</td>
         </tr>
         <tr>
+          <td>03</td>
           <td>0003</td>
           <td>Online</td>
           <td>Allen Barry</td>
@@ -112,6 +103,7 @@
           <td>Icon</td>
         </tr>
         <tr>
+          <td>04</td>
           <td>0004</td>
           <td>Online</td>
           <td>Allen Barry</td>
