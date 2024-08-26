@@ -28,9 +28,9 @@
           </select>
         </div>
         
-        <div class="input-group w-25">
-          <input type="text" name="keyword" id="keyword" placeholder="Search Product" class="form-control">
-          <button class="btn btn-outline-secondary brand-bg-color" type="button"><i class='bx bx-search' aria-hidden="true" ></i></button>
+        <div class="input-group w-25 d-flex align-items-center border border-1 border-dark-subtle rounded-1">
+          <i class='bx bx-search-alt ps-2' ></i>
+          <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
         </div>
       </div>
     </div>
