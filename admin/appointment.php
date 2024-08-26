@@ -35,20 +35,56 @@
       </div>
     </div>
 
+    <?php
+      $appointment_array = array(
+        array(
+          'Code' => '0001',
+          'Type' => 'F-2-F',
+          'Patient Name' => 'Allen Barry',
+          'Doctor Name' => 'Dr. Jame Oliveros',
+          'Appointment date' => 'Monday, 9:00 - 10:00 am',
+          'Status' => 'Completed',
+        ),
+      );
+    ?>
+
     <table id="home_table" class="table table-striped" style="width:100%">
       <thead>
         <tr>
-          <th>Code</th>
-          <th>Type</th>
-          <th>Patient Name</th>
-          <th>Doctor Name</th>
-          <th>Appointment date</th>
-          <th>Status</th>
-          <th>View</th>
+          <th scope="col" width="3%">#</th>
+          <th scope="col">Code</th>
+          <th scope="col">Type</th>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Doctor Name</th>
+          <th scope="col">Appointment date</th>
+          <th scope="col">Status</th>
+          <th scope="col" width="5%">View</th>
         </tr>
       </thead>
       <tbody>
+        <?php
+          $counter = 1;
+          foreach ($appointment_array as $item){
+        ?>
+          <tr>
+            <td><?= $counter ?></td>
+            <td><?= $item['Code'] ?></td>
+            <td><?= $item['Type'] ?></td>
+            <td><?= $item['Patient Name'] ?></td>
+            <td><?= $item['Doctor Name'] ?></td>
+            <td><?= $item['Appointment date'] ?></td>
+            <td><?= $item['Status'] ?></td>
+            <td class="text-center">
+              icon
+            </td>
+          </tr>
+        <?php
+          $counter++;
+          }
+        ?>
+
         <tr>
+          <td>01</td>
           <td>0001</td>
           <td>F-2-F</td>
           <td>Allen Barry</td>
