@@ -21,8 +21,9 @@
   <!-- Charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 
-  <!-- uiBall -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/spiral.js"></script>
+  <!-- DataTables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.min.css">
+  <script src="https://cdn.datatables.net/2.1.4/js/dataTables.min.js"></script>
 
   <link rel="stylesheet" href="../css/custom.min.css">
   <link rel="stylesheet" href="./css/style.css">
