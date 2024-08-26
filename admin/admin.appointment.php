@@ -21,17 +21,21 @@
       <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-end">
 
         <div class="form-group mx-4">
-          <select name="student-remark" id="student-remark" class="form-select me-md-2">
-            <option value="">Remarks</option>
-            <option value="Passed">Passed</option>
-            <option value="Failed">Failed</option>
+          <select id="sort-by" class="form-select me-md-2">
+            <option value="">Sort By</option>
+            <option value="0">Code</option>
+            <option value="1">Type</option>
+            <option value="2">Patient Name</option>
+            <option value="3">Doctor Name</option>
+            <option value="4">Appointment Date</option>
           </select>
         </div>
         
-        <div class="input-group w-25 d-flex align-items-center border border-1 border-dark-subtle rounded-1">
-          <i class='bx bx-search-alt ps-2' ></i>
+        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1">
+          <i class='bx bx-search-alt text-green ps-2'></i>
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
         </div>
+
       </div>
     </div>
 
@@ -40,33 +44,33 @@
         array(
           'Code' => '0001',
           'Type' => 'F-2-F',
-          'Patient Name' => 'Allen Barry',
-          'Doctor Name' => 'Dr. Jame Oliveros',
+          'Patient Name' => 'Wally West',
+          'Doctor Name' => 'Dr. Olive Oil',
           'Appointment date' => 'Monday, 9:00 - 10:00 am',
           'Status' => 'Completed',
         ),
         array(
           'Code' => '0002',
           'Type' => 'Online',
-          'Patient Name' => 'Allen Barry',
-          'Doctor Name' => 'Dr. Jame Oliveros',
-          'Appointment date' => 'Monday, 9:00 - 10:00 am',
+          'Patient Name' => 'Jon Kent',
+          'Doctor Name' => 'Dr. James Jamison',
+          'Appointment date' => 'Tuesday, 11:00 - 12:00 am',
           'Status' => 'In Progress',
         ),
         array(
           'Code' => '0003',
           'Type' => 'Online',
           'Patient Name' => 'Allen Barry',
-          'Doctor Name' => 'Dr. James Oliveros',
-          'Appointment date' => 'Monday, 9:00 - 10:00 am',
+          'Doctor Name' => 'Dr. Knot Rildoctor',
+          'Appointment date' => 'Wednesday, 01:30 - 02:00 pm',
           'Status' => 'Canceled',
         ),
         array(
           'Code' => '0004',
-          'Type' => 'Online',
-          'Patient Name' => 'Allen Barry',
-          'Doctor Name' => 'Dr. Jame Oliveros',
-          'Appointment date' => 'Monday, 9:00 - 10:00 am',
+          'Type' => 'F-2-F',
+          'Patient Name' => 'Jason Todd',
+          'Doctor Name' => 'Dr. Thomes Wayne',
+          'Appointment date' => 'Friday, 08:30 - 10:00 am',
           'Status' => 'Waiting',
         ),
       );
@@ -87,7 +91,7 @@
       }
       ?>
       
-      <table id="home_table" class="table table-striped" style="width:100%">
+      <table id="appointment_table" class="table table-striped" style="width:100%">
         <thead>
           <tr>
             <th scope="col" width="3%">#</th>
@@ -128,7 +132,7 @@
       </table>
   </section>
 
-
+  <script src="./js/appointment-dataTable.js"></script>
 
 </body>
 </html>
