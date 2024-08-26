@@ -45,75 +45,87 @@
           'Appointment date' => 'Monday, 9:00 - 10:00 am',
           'Status' => 'Completed',
         ),
+        array(
+          'Code' => '0002',
+          'Type' => 'Online',
+          'Patient Name' => 'Allen Barry',
+          'Doctor Name' => 'Dr. Jame Oliveros',
+          'Appointment date' => 'Monday, 9:00 - 10:00 am',
+          'Status' => 'In Progress',
+        ),
+        array(
+          'Code' => '0003',
+          'Type' => 'Online',
+          'Patient Name' => 'Allen Barry',
+          'Doctor Name' => 'Dr. James Oliveros',
+          'Appointment date' => 'Monday, 9:00 - 10:00 am',
+          'Status' => 'Canceled',
+        ),
+        array(
+          'Code' => '0004',
+          'Type' => 'Online',
+          'Patient Name' => 'Allen Barry',
+          'Doctor Name' => 'Dr. Jame Oliveros',
+          'Appointment date' => 'Monday, 9:00 - 10:00 am',
+          'Status' => 'Waiting',
+        ),
       );
-    ?>
-
-    <table id="home_table" class="table table-striped" style="width:100%">
-      <thead>
-        <tr>
-          <th scope="col" width="3%">#</th>
-          <th scope="col">Code</th>
-          <th scope="col">Type</th>
-          <th scope="col">Patient Name</th>
-          <th scope="col">Doctor Name</th>
-          <th scope="col">Appointment date</th>
-          <th scope="col">Status</th>
-          <th scope="col" width="5%">View</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-          $counter = 1;
-          foreach ($appointment_array as $item){
-        ?>
+      
+      function getStatusClass($status) {
+        switch ($status) {
+          case 'Completed':
+            return 'bg-success';
+          case 'In Progress':
+            return 'bg-info';
+          case 'Canceled':
+            return 'bg-danger';
+          case 'Waiting':
+            return 'bg-warning';
+          default:
+            return 'bg-secondary';
+        }
+      }
+      ?>
+      
+      <table id="home_table" class="table table-striped" style="width:100%">
+        <thead>
           <tr>
-            <td><?= $counter ?></td>
-            <td><?= $item['Code'] ?></td>
-            <td><?= $item['Type'] ?></td>
-            <td><?= $item['Patient Name'] ?></td>
-            <td><?= $item['Doctor Name'] ?></td>
-            <td><?= $item['Appointment date'] ?></td>
-            <td  class="bg-green text-light text-center"><?= $item['Status'] ?></td>
-            <td class="text-center">
-              icon
-            </td>
+            <th scope="col" width="3%">#</th>
+            <th scope="col">Code</th>
+            <th scope="col">Type</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Appointment date</th>
+            <th scope="col">Status</th>
+            <th scope="col" width="5%">View</th>
           </tr>
-        <?php
-          $counter++;
+        </thead>
+        <tbody>
+          <?php
+          $counter = 1;
+          foreach ($appointment_array as $item) {
+            $statusClass = getStatusClass($item['Status']);
+          ?>
+            <tr>
+              <td><?= $counter ?></td>
+              <td><?= $item['Code'] ?></td>
+              <td><?= $item['Type'] ?></td>
+              <td><?= $item['Patient Name'] ?></td>
+              <td><?= $item['Doctor Name'] ?></td>
+              <td><?= $item['Appointment date'] ?></td>
+              <td class="<?= $statusClass ?> text-light text-center"><?= $item['Status'] ?></td>
+              <td class="text-center">
+                <a href="patient_details.php?code=<?= $item['Code'] ?>" title="View Details">
+                  <i class='bx bx-show'></i>
+                </a>
+              </td>
+            </tr>
+          <?php
+            $counter++;
           }
-        ?>
-        <tr>
-          <td>02</td>
-          <td>0002</td>
-          <td>Online</td>
-          <td>Allen Barry</td>
-          <td>Dr. Jame Oliveros</td>
-          <td>Monday, 9:00 - 10:00 am</td>
-          <td class="bg-info text-light text-center">In Progress</td>
-          <td>Icon</td>
-        </tr>
-        <tr>
-          <td>03</td>
-          <td>0003</td>
-          <td>Online</td>
-          <td>Allen Barry</td>
-          <td>Dr. James Oliveros</td>
-          <td>Monday, 9:00 - 10:00 am</td>
-          <td class="bg-Danger text-light text-center">Danger</td>
-          <td>Icon</td>
-        </tr>
-        <tr>
-          <td>04</td>
-          <td>0004</td>
-          <td>Online</td>
-          <td>Allen Barry</td>
-          <td>Dr. Jame Oliveros</td>
-          <td>Monday, 9:00 - 10:00 am</td>
-          <td class="bg-warning text-light text-center">Waiting</td>
-          <td>Icon</td>
-        </tr>
-      </tbody>
-    </table>
+          ?>
+        </tbody>
+      </table>
   </section>
 
 
