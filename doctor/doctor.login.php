@@ -21,7 +21,10 @@
               </div>
               <div class="mb-1">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                <div class="d-flex align-items-center border border-1 rounded-1">
+                  <input type="password" class="form-control border-0 " id="password" placeholder="Enter your password" required>
+                  <i class='bx bx-show me-2' id="togglePassword" style="cursor: pointer;"></i>
+                </div>
               </div>
               <div class="mb-3 text-end">
                 <a href="#" class="text-primary">Forgot Password?</a>
