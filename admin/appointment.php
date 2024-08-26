@@ -15,9 +15,62 @@
   ?>
 
   <section id="appointment" class="page-container">
-    <h1 class="text-center">Appointment Management</h1>
+    <h1 class="text-center mb-3">Appointment Management</h1>
 
+    <table id="home_table" class="table table-striped" style="width:100%">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Type</th>
+          <th>Patient Name</th>
+          <th>Doctor Name</th>
+          <th>Appointment date</th>
+          <th>Status</th>
+          <th>View</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0001</td>
+          <td>F-2-F</td>
+          <td>Allen Barry</td>
+          <td>Dr. Jame Oliveros</td>
+          <td>Monday, 9:00 - 10:00 am</td>
+          <td class="bg-green text-light text-center">Completed</td>
+          <td>Icon</td>
+        </tr>
+        <tr>
+          <td>0002</td>
+          <td>Online</td>
+          <td>Allen Barry</td>
+          <td>Dr. Jame Oliveros</td>
+          <td>Monday, 9:00 - 10:00 am</td>
+          <td class="bg-info text-light text-center">In Progress</td>
+          <td>Icon</td>
+        </tr>
+        <tr>
+          <td>0003</td>
+          <td>Online</td>
+          <td>Allen Barry</td>
+          <td>Dr. James Oliveros</td>
+          <td>Monday, 9:00 - 10:00 am</td>
+          <td class="bg-Danger text-light text-center">Danger</td>
+          <td>Icon</td>
+        </tr>
+        <tr>
+          <td>0004</td>
+          <td>Online</td>
+          <td>Allen Barry</td>
+          <td>Dr. Jame Oliveros</td>
+          <td>Monday, 9:00 - 10:00 am</td>
+          <td class="bg-warning text-light text-center">Waiting</td>
+          <td>Icon</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
+
+
 
 </body>
 </html>
