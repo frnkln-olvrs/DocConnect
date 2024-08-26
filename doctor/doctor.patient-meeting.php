@@ -40,7 +40,7 @@ include '../includes/head.php';
                                 <td>2024-04-07</td>
                                 <td><a href="https://meet.google.com/mno-rst-uvw">https://meet.google.com/mno-rst-uvw</a></td>
                                 <td>Upcoming</td>
-                                <td><a href="../doctor/meeting-view.php" class="text-primary bg-white">View</a></td>
+                                <td><a href="../doctor/doctor.meeting-view" class="text-primary bg-white">View</a></td>
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -48,7 +48,7 @@ include '../includes/head.php';
                                 <td>2024-04-06</td>
                                 <td><a href="https://meet.google.com/pqr-stu-vwx">https://meet.google.com/pqr-stu-vwx</a></td>
                                 <td>Completed</td>
-                                <td><a href="../doctor/meeting-view.php" class="text-primary bg-white">View</a></td>
+                                <td><a href="../doctor/doctor.meeting-view" class="text-primary bg-white">View</a></td>
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -56,7 +56,7 @@ include '../includes/head.php';
                                 <td>2024-04-05</td>
                                 <td><a href="https://meet.google.com/xyz-abc-def">https://meet.google.com/xyz-abc-def</a></td>
                                 <td>Completed</td>
-                                <td><a href="../doctor/meeting-view.php" class="text-primary bg-white">View</a></td>
+                                <td><a href="../doctor/doctor.meeting-view" class="text-primary bg-white">View</a></td>
                             </tr>
                         </tbody>
                     </table>
