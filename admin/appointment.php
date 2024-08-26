@@ -17,6 +17,24 @@
   <section id="appointment" class="page-container">
     <h1 class="text-center mb-3">Appointment Management</h1>
 
+    <div class="table-responsive overflow-hidden">
+      <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-end">
+
+        <div class="form-group mx-4">
+          <select name="student-remark" id="student-remark" class="form-select me-md-2">
+            <option value="">Remarks</option>
+            <option value="Passed">Passed</option>
+            <option value="Failed">Failed</option>
+          </select>
+        </div>
+        
+        <div class="input-group w-25">
+          <input type="text" name="keyword" id="keyword" placeholder="Search Product" class="form-control">
+          <button class="btn btn-outline-secondary brand-bg-color" type="button"><i class='bx bx-search' aria-hidden="true" ></i></button>
+        </div>
+      </div>
+    </div>
+
     <table id="home_table" class="table table-striped" style="width:100%">
       <thead>
         <tr>
