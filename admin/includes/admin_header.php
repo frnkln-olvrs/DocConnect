@@ -16,20 +16,20 @@
       <i class='bx bx-menu navbar-toggler-icon pt-2 text-light fs-3'></i>
 	  </button>
 
-    <a class="d-flex align-items-center text-dark text-decoration-none" href="./index">
+    <a class="d-flex align-items-center text-dark text-decoration-none" href="./admin.index">
       <img src="../assets/images/logo.png" class="me-2" alt="Logo" height="32">
       <h1 class="fs-4 link-light m-0 d-name">Doc<span class="link-light">Connect</span></h1>
     </a>
 
     <div class="d-flex align-items-center justify-content-between">
       <div class="dropdown me-3">
-        <a href="<?php echo getCurrentPage() == 'notifications.php' ? '#' : 'notifications.php'; ?>" 
+        <a href="<?php echo getCurrentPage() == 'admin.notifications.php' ? '#' : 'admin.notifications.php'; ?>" 
            class="notification dropdown-toggle text-decoration-none text-dark 
-           <?php echo getCurrentPage() == 'notifications.php' ? 'disabled no-hover' : ''; ?>" 
+           <?php echo getCurrentPage() == 'admin.notifications.php' ? 'disabled no-hover' : ''; ?>" 
            id="notificationDropdown" 
            data-bs-toggle="dropdown" 
            aria-expanded="false">
-          <i class='bx bx-bell fs-5 p-2 <?php echo getCurrentPage() == 'notifications.php' ? 'link-light bg-light text-dark rounded-5' : 'link-light'; ?>'></i>
+          <i class='bx bx-bell fs-5 p-2 <?php echo getCurrentPage() == 'admin.notifications.php' ? 'link-light bg-light text-dark rounded-5' : 'link-light'; ?>'></i>
         </a>
         <ul class="notification dropdown-menu dropdown-menu-end px-0" aria-labelledby="notificationDropdown">
             <li class="header mx-3 d-flex align-items-center justify-content-between">
@@ -90,7 +90,7 @@
             <hr class="mx-3">
 
             <li class="show-all dropdown-item bg-white">
-              <a href="./notifications">
+              <a href="./admin.notifications">
                 <button type="button" class="btn btn-outline-primary w-100">Show All Activities</button>
               </a>
             </li>
