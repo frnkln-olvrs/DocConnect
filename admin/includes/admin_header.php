@@ -16,7 +16,7 @@
       <i class='bx bx-menu navbar-toggler-icon pt-2 text-light fs-3'></i>
 	  </button>
 
-    <a class="d-flex align-items-center text-dark text-decoration-none" href="./admin.index">
+    <a class="d-flex align-items-center text-dark text-decoration-none" href="./index">
       <img src="../assets/images/logo.png" class="me-2" alt="Logo" height="32">
       <h1 class="fs-4 link-light m-0 d-name">Doc<span class="link-light">Connect</span></h1>
     </a>
