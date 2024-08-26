@@ -11,24 +11,27 @@
 </style>
 
 <header class="p-3 border-bottom bg-green shadow-sm position-fixed w-100 z-3 border-bottom-0">
-  <div class="mx-1 mx-lg-3">
-    <div class="d-flex flex-wrap justify-content-between">
-      <a class="d-flex align-items-center text-dark text-decoration-none" href="./index">
-        <img src="../assets/images/logo.png" class="me-2" alt="Logo" height="32">
-        <h1 class="fs-4 link-light m-0 d-name">Doc<span class="link-light">Connect</span></h1>
-      </a>
+  <div class="d-flex flex-wrap justify-content-between align-items-center">
+    <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <i class='bx bx-menu navbar-toggler-icon pt-2 text-light fs-3'></i>
+	  </button>
 
-      <div class="d-flex align-items-center justify-content-between">
-        <div class="dropdown me-3">
-          <a href="<?php echo getCurrentPage() == 'notifications.php' ? '#' : 'notifications.php'; ?>" 
-             class="notification dropdown-toggle text-decoration-none text-dark 
-             <?php echo getCurrentPage() == 'notifications.php' ? 'disabled no-hover' : ''; ?>" 
-             id="notificationDropdown" 
-             data-bs-toggle="dropdown" 
-             aria-expanded="false">
-            <i class='bx bx-bell fs-5 p-2 <?php echo getCurrentPage() == 'notifications.php' ? 'link-light bg-light text-dark rounded-5' : 'link-light'; ?>'></i>
-          </a>
-          <ul class="notification dropdown-menu dropdown-menu-end px-0" aria-labelledby="notificationDropdown">
+    <a class="d-flex align-items-center text-dark text-decoration-none" href="./index">
+      <img src="../assets/images/logo.png" class="me-2" alt="Logo" height="32">
+      <h1 class="fs-4 link-light m-0 d-name">Doc<span class="link-light">Connect</span></h1>
+    </a>
+
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="dropdown me-3">
+        <a href="<?php echo getCurrentPage() == 'notifications.php' ? '#' : 'notifications.php'; ?>" 
+           class="notification dropdown-toggle text-decoration-none text-dark 
+           <?php echo getCurrentPage() == 'notifications.php' ? 'disabled no-hover' : ''; ?>" 
+           id="notificationDropdown" 
+           data-bs-toggle="dropdown" 
+           aria-expanded="false">
+          <i class='bx bx-bell fs-5 p-2 <?php echo getCurrentPage() == 'notifications.php' ? 'link-light bg-light text-dark rounded-5' : 'link-light'; ?>'></i>
+        </a>
+        <ul class="notification dropdown-menu dropdown-menu-end px-0" aria-labelledby="notificationDropdown">
             <li class="header mx-3 d-flex align-items-center justify-content-between">
               <h4>Notification</h4>
               <div class="dropdown">
@@ -91,24 +94,23 @@
                 <button type="button" class="btn btn-outline-primary w-100">Show All Activities</button>
               </a>
             </li>
-          </ul>
-        </div>
-
-        <div class="dropdown text-end">
-          <a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="./../assets/images/profile_img.jpg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light">
-          </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../login">Sign out</a></li>
-          </ul>
-        </div>
+        </ul>
       </div>
 
+      <div class="dropdown text-end">
+        <a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="./../assets/images/profile_img.jpg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light">
+        </a>
+        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="../login">Sign out</a></li>
+        </ul>
+      </div>
     </div>
+
   </div>
 </header>
 
