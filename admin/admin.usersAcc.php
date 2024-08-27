@@ -1,0 +1,113 @@
+<html lang="en">
+<?php 
+  $title = 'Admin | Doctors';
+	include './includes/admin_head.php';
+  function getCurrentPage() {
+    return basename($_SERVER['PHP_SELF']);
+  }
+?>
+<body>
+  <?php 
+    require_once ('./includes/admin_header.php');
+  ?>
+  <?php 
+    require_once ('./includes/admin_sidepanel.php');
+  ?>
+
+  <section id="doc-acc" class="page-container">
+    <h1 class="text-start my-3">Patients Accounts</h1>
+
+    <div class="table-responsive overflow-hidden">
+      <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-end">
+
+        <div class="form-group mx-4">
+          <select id="sort-by" class="form-select me-md-2">
+            <option value="">Sort By</option>
+            <option value="0">Name</option>
+            <option value="1">Account ID</option>
+          </select>
+        </div>
+        
+        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1">
+          <i class='bx bx-search-alt text-green ps-2'></i>
+          <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
+        </div>
+
+      </div>
+    </div>
+
+    <?php
+      $appointment_array = array(
+        array(
+          'name' => 'Franklin Oliveros',
+          'acc-id' => '0000-001',
+          'email' => 'frnki@email.com',
+          'phone-no' => '0992 345 6789`',
+          'DoB' => 'Feb. 29, 2004',
+          'status' => 'Inactive',
+        ),
+        array(
+          'name' => 'Hilal Abdulajid',
+          'acc-id' => '0000-002',
+          'email' => 'hiraru@email.com',
+          'phone-no' => '0999 876 5432`',
+          'DoB' => 'Dec. 02, 1978',
+          'status' => 'Active',
+        ),
+      );
+
+      function getStatusClass($status) {
+        switch ($status) {
+          case 'Active':
+            return 'bg-success';
+          case 'Inactive':
+            return 'bg-danger';
+        }
+      }
+      ?>
+      
+      <table id="appointment_table" class="table table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <th scope="col" width="3%">#</th>
+            <th scope="col">Account Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Phone No.</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Status</th>
+            <th scope="col" width="7%">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          $counter = 1;
+          foreach ($appointment_array as $item) {
+            $statusClass = getStatusClass($item['status']);
+          ?>
+            <tr>
+              <td><?= $counter ?></td>
+              <td><?= $item['acc-id'] ?></td>
+              <td><?= $item['name'] ?></td>
+              <td><?= $item['email'] ?></td>
+              <td><?= $item['phone-no'] ?></td>
+              <td><?= $item['DoB'] ?></td>
+              <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
+
+              <td class="text-center">
+                <a href="patient_details.php?code=<?= $item['acc-id'] ?>" title="View Details">
+                  <i class='bx bx-show'></i>
+                </a>
+              </td>
+            </tr>
+          <?php
+            $counter++;
+          }
+          ?>
+        </tbody>
+      </table>
+
+  </section>
+
+</body>
+</html>
