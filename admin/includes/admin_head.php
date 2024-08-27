@@ -21,8 +21,15 @@
   <!-- Charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 
-  <!-- uiBall -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/spiral.js"></script>
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../vendor/dataTable-1.13.6/datatables.min.css">
+  <script src="../vendor/dataTable-1.13.6/datatables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.min.css">
+  <script src="https://cdn.datatables.net/2.1.4/js/dataTables.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+
 
   <link rel="stylesheet" href="../css/custom.min.css">
   <link rel="stylesheet" href="./css/style.css">

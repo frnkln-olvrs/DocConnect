@@ -33,7 +33,7 @@ include '../includes/head.php';
                     ?>
                         <div class="col p-1">
                             <div class="card">
-                                <a class="card-header fs-5" href="./patient-view.php">
+                                <a class="card-header fs-5" href="./doctor.patient-view">
                                     <p class="text-dark m-0">
                                         <?= $name[0] ?>
                                         <img src="../assets/images/profile_img.jpg" alt="" height="32" width="32" class="float-end rounded-circle border border-primary">
