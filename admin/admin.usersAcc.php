@@ -42,7 +42,7 @@
           'name' => 'Franklin Oliveros',
           'acc-id' => '0000-001',
           'email' => 'frnki@email.com',
-          'phone-no' => '0992 345 6789`',
+          'phone-no' => '0992 345 6789',
           'DoB' => 'Feb. 29, 2004',
           'status' => 'Inactive',
         ),
@@ -50,7 +50,7 @@
           'name' => 'Hilal Abdulajid',
           'acc-id' => '0000-002',
           'email' => 'hiraru@email.com',
-          'phone-no' => '0999 876 5432`',
+          'phone-no' => '0999 876 5432',
           'DoB' => 'Dec. 02, 1978',
           'status' => 'Active',
         ),
@@ -66,7 +66,7 @@
       }
       ?>
       
-      <table id="appointment_table" class="table table-striped" style="width:100%">
+      <table id="usersAcc_table" class="table table-striped" style="width:100%">
         <thead>
           <tr>
             <th scope="col" width="3%">#</th>
@@ -94,10 +94,13 @@
               <td><?= $item['DoB'] ?></td>
               <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
 
-              <td class="text-center">
+              <td class="d-flex justify-content-around align-items-center text-center">
                 <a href="patient_details.php?code=<?= $item['acc-id'] ?>" title="View Details">
-                  <i class='bx bx-show'></i>
+                  <i class='bx bx-edit-alt' ></i>
                 </a>
+                <button class="delete-btn bg-none" data-subject-id="<?= $item['acc-id'] ?>">
+                  <i class='bx bx-user-x bg-none text-primary fs-5'></i>
+                </button>
               </td>
             </tr>
           <?php
@@ -107,7 +110,28 @@
         </tbody>
       </table>
 
+      <!-- confirm delete modal markup -->
+      <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Action</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to disable this account?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary text-light" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-danger text-light" id="confirmDeleteBtn">Disable</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
   </section>
+
+  <script src="./js/modal-delete_comfirmation.js"></script>
 
 </body>
 </html>
