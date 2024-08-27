@@ -43,16 +43,22 @@
           'acc-id' => '0000-001',
           'email' => 'frnki@email.com',
           'phone-no' => '0992 345 6789',
-          'DoB' => 'Feb. 29, 2004',
-          'status' => 'Inactive',
+          'DoB' => '02/29/2004',
+          'reg-date' => '08/04/2024',
+          'department' => 'CCS',
+          'no.ofApp' => '01',
+          'status' => 'Active',
         ),
         array(
           'name' => 'Hilal Abdulajid',
           'acc-id' => '0000-002',
           'email' => 'hiraru@email.com',
           'phone-no' => '0999 876 5432',
-          'DoB' => 'Dec. 02, 1978',
-          'status' => 'Active',
+          'DoB' => '09/10/1978',
+          'reg-date' => '08/01/2024',
+          'department' => 'CCS',
+          'no.ofApp' => '03',
+          'status' => 'Inactive',
         ),
       );
 
@@ -75,6 +81,9 @@
             <th scope="col">Email Address</th>
             <th scope="col">Phone No.</th>
             <th scope="col">Date of Birth</th>
+            <th scope="col">Registration Date</th>
+            <th scope="col">Department</th>
+            <th scope="col">No. of Appointment</th>
             <th scope="col">Status</th>
             <th scope="col" width="7%">Action</th>
           </tr>
@@ -92,6 +101,9 @@
               <td><?= $item['email'] ?></td>
               <td><?= $item['phone-no'] ?></td>
               <td><?= $item['DoB'] ?></td>
+              <td><?= $item['reg-date'] ?></td>
+              <td><?= $item['department'] ?></td>
+              <td><?= $item['no.ofApp'] ?></td>
               <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
 
               <td class="d-flex justify-content-around align-items-center text-center">
