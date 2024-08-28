@@ -22,14 +22,19 @@
       <div class="col-12 col-lg-8">
         <form>
           <div class="border shadow p-4 mb-5 bg-body rounded">
-            <h5 class="text-center">Status: <span class="text-success"> Completed</span></h5>
+            <div class="d-flex align-items-center">
+              <button class="btn p-0 me-auto" onclick="event.preventDefault(); window.history.back();">
+                <i class='bx bx-chevron-left-circle fs-3 link'></i>
+              </button>
+              <h5 class="text-center w-100 mb-0">Status: <span class="text-success">Completed</span></h5>
+            </div>
 
             <hr class="mx-3 my-4">
 
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
               <div class="col d-flex ">
                 <strong class="me-2">Code:</strong>
-                <p>001</p>
+                <p>0001</p>
               </div>
 
               <div class="col d-flex ">
@@ -68,7 +73,10 @@
               </div>
             </div>
 
-            
+            <div class="d-flex flex-column justify-content-end">
+              <label for="exampleFormControlTextarea1" class="form-label"><strong>Reason of Visit/ Appointment</strong></label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly></textarea>
+            </div>
 
           </div>
         </form>
