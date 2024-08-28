@@ -73,10 +73,20 @@
               </div>
             </div>
 
-            <div class="d-flex flex-column justify-content-end">
-              <label for="exampleFormControlTextarea1" class="form-label"><strong>Reason of Visit/ Appointment</strong></label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly></textarea>
+            <div class="d-flex flex-column justify-content-end mb-3">
+              <label for="reasons" class="form-label"><strong>Reason of Visit/Appointment</strong></label>
+              <textarea class="form-control" id="reason" rows="3" disabled readonly>Masakit ulo</textarea>
             </div>
+
+            <div class="col d-flex ">
+                <strong class="me-2">Doctor:</strong>
+                <p class="mb-0">Dr. Thomas Wayne</p>
+              </div>
+
+            <div class="d-flex flex-column justify-content-end">
+              <label for="notes" class="form-label"><strong>Notes</strong></label>
+              <textarea class="form-control" id="notes" rows="3" disabled readonly>Masakit ulo</textarea>
+            </div>            
 
           </div>
         </form>
