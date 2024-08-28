@@ -40,30 +40,29 @@
       $appointment_array = array(
         array(
           'name' => 'Franklin Oliveros',
-          'acc-id' => '0000-001',
+          'acc-id' => '000-001',
           'email' => 'frnki@email.com',
           'phone-no' => '0992 345 6789',
           'DoB' => 'Feb. 29, 2004',
-          'status' => 'Inactive',
+          'specialties' => 'Family Medicine',
+          'work-hour' => 'Mon-Fri, 9am - 5pa',
+          'no.patients' => '10',
+          'rating' => '9/10',
+          'last-login' => '08/04/2024',
         ),
         array(
           'name' => 'Hilal Abdulajid',
-          'acc-id' => '0000-002',
+          'acc-id' => '000-002',
           'email' => 'hiraru@email.com',
           'phone-no' => '0999 876 5432',
-          'DoB' => 'Dec. 02, 1978',
-          'status' => 'Active',
+          'DoB' => '09/10/1978',
+          'specialties' => 'Family Medicine',
+          'work-hour' => 'Mon-Fri, 9am - 5pa',
+          'no.patients' => '10',
+          'rating' => '9/10',
+          'last-login' => '08/04/2024',
         ),
       );
-
-      function getStatusClass($status) {
-        switch ($status) {
-          case 'Active':
-            return 'bg-success';
-          case 'Inactive':
-            return 'bg-danger';
-        }
-      }
       ?>
       
       <table id="usersAcc_table" class="table table-striped" style="width:100%">
@@ -75,7 +74,11 @@
             <th scope="col">Email Address</th>
             <th scope="col">Phone No.</th>
             <th scope="col">Date of Birth</th>
-            <th scope="col">Status</th>
+            <th scope="col">Specialties</th>
+            <th scope="col">Working Hours</th>
+            <th scope="col">Number of Patients</th>
+            <th scope="col">Patient Satisfaction</th>
+            <th scope="col">Last Login</th>
             <th scope="col" width="7%">Action</th>
           </tr>
         </thead>
@@ -83,7 +86,6 @@
           <?php
           $counter = 1;
           foreach ($appointment_array as $item) {
-            $statusClass = getStatusClass($item['status']);
           ?>
             <tr>
               <td><?= $counter ?></td>
@@ -92,9 +94,14 @@
               <td><?= $item['email'] ?></td>
               <td><?= $item['phone-no'] ?></td>
               <td><?= $item['DoB'] ?></td>
-              <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
+              <td><?= $item['specialties'] ?></td>
+              <td><?= $item['work-hour'] ?></td>
+              <td><?= $item['no.patients'] ?></td>
+              <td><?= $item['rating'] ?></td>
+              <td><?= $item['last-login'] ?></td>
+              
 
-              <td class="d-flex justify-content-around align-items-center text-center">
+              <td class="h-100 d-flex justify-content-around align-items-center text-center">
                 <a href="patient_details.php?code=<?= $item['acc-id'] ?>" title="View Details">
                   <i class='bx bx-edit-alt' ></i>
                 </a>
