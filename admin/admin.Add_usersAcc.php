@@ -81,7 +81,21 @@
 
               <div class="form-group mb-2">
                 <label for="status">Status</label>
-                <input type="radio" class="form-control" id="status" placeholder="MM/DD/YYYY">
+                <div class="d-flex flex-row justify-content-around">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Active
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Inactive
+                    </label>
+                  </div>
+
+                </div>
               </div>
             </div>
 
