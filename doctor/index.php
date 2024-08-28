@@ -1,3 +1,3 @@
 <?php 
-header('location: ./doctor.dashboard')
+header('location: ./dashboard')
 ?>
