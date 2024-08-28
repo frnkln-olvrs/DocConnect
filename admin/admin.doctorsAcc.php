@@ -100,14 +100,16 @@
               <td><?= $item['rating'] ?></td>
               <td><?= $item['last-login'] ?></td>
               
+              <td class="text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                  <a href="patient_details.php?code=<?= $item['acc-id'] ?>" title="View Details">
+                    <i class='bx bx-edit-alt mx-1'></i>
+                  </a>
+                  <button class="delete-btn bg-none" data-subject-id="<?= $item['acc-id'] ?>">
+                    <i class='bx bx-user-x mx-1 text-primary fs-5'></i>
+                  </button>
 
-              <td class="h-100 d-flex justify-content-around align-items-center text-center">
-                <a href="patient_details.php?code=<?= $item['acc-id'] ?>" title="View Details">
-                  <i class='bx bx-edit-alt' ></i>
-                </a>
-                <button class="delete-btn bg-none" data-subject-id="<?= $item['acc-id'] ?>">
-                  <i class='bx bx-user-x bg-none text-primary fs-5'></i>
-                </button>
+                </div>
               </td>
             </tr>
           <?php
