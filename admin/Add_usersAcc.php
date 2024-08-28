@@ -104,7 +104,7 @@
 
             <!-- Save and Cancel Buttons -->
             <div class="d-flex justify-content-end mt-3">
-              <a href="./admin.usersAcc.php" class="btn btn-secondary me-2 link-light">Cancel</a>
+              <a href="./usersAcc.php" class="btn btn-secondary me-2 link-light">Cancel</a>
               <button type="submit" class="btn btn-primary link-light">Save</button>
             </div>
           </div>

@@ -19,7 +19,7 @@
 
     <div class="container text-center mt-5 px-5">
       <ul class="list-group">
-        <a href="./admin.doctorsAcc" class="d-flex justify-content-center">
+        <a href="./doctorsAcc" class="d-flex justify-content-center">
           <li class="list-group-item my-2 p-2 border-0 w-75">
             <div class="row align-items-center justify-content-center">
               <div class="col-2 p-0">
@@ -35,7 +35,7 @@
           </li>
         </a>
 
-        <a href="./admin.usersAcc.php" class="d-flex justify-content-center">
+        <a href="./usersAcc.php" class="d-flex justify-content-center">
           <li class="list-group-item my-2 p-2 border-0 w-75">
             <div class="row align-items-center justify-content-center">
               <div class="col-2 p-0">
