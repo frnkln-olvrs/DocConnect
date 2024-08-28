@@ -35,7 +35,7 @@
           </li>
         </a>
 
-        <a href="./admin.usersAcc" class="d-flex justify-content-center">
+        <a href="./admin.usersAcc.php" class="d-flex justify-content-center">
           <li class="list-group-item my-2 p-2 border-0 w-75">
             <div class="row align-items-center justify-content-center">
               <div class="col-2 p-0">
