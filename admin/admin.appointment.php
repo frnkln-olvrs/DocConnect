@@ -119,7 +119,7 @@
               <td><?= $item['Appointment date'] ?></td>
               <td class="<?= $statusClass ?> text-light text-center"><?= $item['Status'] ?></td>
               <td class="text-center">
-                <a href="patient_details.php?code=<?= $item['Code'] ?>" title="View Details">
+                <a href="./admin.viewAppointment?= $item['Code'] ?>" title="View Details">
                   <i class='bx bx-show'></i>
                 </a>
               </td>
