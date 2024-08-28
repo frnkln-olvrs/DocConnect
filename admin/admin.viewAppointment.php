@@ -26,7 +26,28 @@
               <button class="btn p-0 me-auto" onclick="event.preventDefault(); window.history.back();">
                 <i class='bx bx-chevron-left-circle fs-3 link'></i>
               </button>
-              <h5 class="text-center w-100 mb-0">Status: <span class="text-success">Completed</span></h5>
+              <?php
+                $status = "completed";
+                $statusClass = "";
+                switch (strtolower($status)) {
+                  case "completed":
+                    $statusClass = "text-success";
+                    break;
+                  case "in progress":
+                    $statusClass = "text-info";
+                    break;
+                  case "cancelled":
+                    $statusClass = "text-danger";
+                    break;
+                  case "waiting":
+                    $statusClass = "text-warning";
+                    break;
+                  default:
+                    $statusClass = "text-secondary";
+                    break;
+                }
+              ?>
+              <h5 class="text-center w-100 mb-0">Status: <span class="<?php echo $statusClass; ?>"><?php echo ucfirst($status); ?></span></h5>
             </div>
 
             <hr class="mx-3 my-4">
@@ -95,10 +116,11 @@
 
       <div class="col-2"></div>
 
-    </div>
-
-    
+    </div>    
   </section>
 
+  <script>
+    
+  </script>
 </body>
 </html>
