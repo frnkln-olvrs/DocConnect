@@ -52,18 +52,19 @@ class Account
         }
     }
 
-    function add()
+    // admin functions begin
+
+    function add_admin()
     {
-        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, gender, birthdate, user_role) VALUES (:email, :password, :firstname, :middlename, :lastname, :gender, :birthdate, :user_role);";
+        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role);";
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':email', $this->email);
-        $query->bindParam(':password', $this->password);
+        $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+        $query->bindParam(':password', $hashedPassword);
         $query->bindParam(':firstname', $this->firstname);
         $query->bindParam(':middlename', $this->middlename);
         $query->bindParam(':lastname', $this->lastname);
-        $query->bindParam(':gender', $this->gender);
-        $query->bindParam(':birthdate', $this->birthdate);
         $query->bindParam(':user_role', $this->user_role);
 
         if ($query->execute()) {
@@ -73,5 +74,32 @@ class Account
         }
     }
 
+    function is_email_exist()
+    {
+        $sql = "SELECT * FROM account WHERE email = :email;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':email', $this->email);
+        if ($query->execute()) {
+            if ($query->rowCount() > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    function check_for_admin($user_role)
+    {
+        $sql = "SELECT * FROM account WHERE user_role = :user_role;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':user_role', $user_role);
+        if ($query->execute()) {
+            if ($query->rowCount() > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    // admin functions end
 }
