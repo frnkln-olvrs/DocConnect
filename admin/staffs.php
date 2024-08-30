@@ -1,6 +1,6 @@
 <html lang="en">
 <?php 
-  $title = 'Admin | Appointment';
+  $title = 'Admin | Staff';
 	include './includes/admin_head.php';
   function getCurrentPage() {
     return basename($_SERVER['PHP_SELF']);
@@ -18,13 +18,16 @@
     <h1 class="text-center mb-3">Staff</h1>
 
     <div class="table-responsive overflow-hidden">
-      <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-end">
-        
-        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1">
+      <div class="col-12 flex-lg-grow-0 d-flex justify-content-end">
+        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1 me-3">
           <i class='bx bx-search-alt text-green ps-2'></i>
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
         </div>
 
+        <a href="./add_staff" class="input-group bg-success d-flex align-items-center border border-1 rounded-1" style="width: 10%;">
+          <i class='bx bx-plus text-white fs-4 ps-2 me-2'></i>
+          <p class="m-0 text-white">Add staff</p>
+        </a>
       </div>
     </div>
 
@@ -109,7 +112,7 @@
           <th scope="col">Phone No.</th>
           <th scope="col">Email</th>
           <th scope="col">Status</th>
-          <th scope="col" width="5%">View</th>
+          <th scope="col" width="5%">Action</th>
         </tr>
       </thead>
       <tbody>
