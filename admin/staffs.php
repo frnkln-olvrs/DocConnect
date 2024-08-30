@@ -132,7 +132,8 @@
     </div>
 
   </section>
-
+  
+  <script src="./js/staff-dataTables.js"></script>
   <script src="./js/modal-delete_comfirmation.js"></script>
 
 </body>
