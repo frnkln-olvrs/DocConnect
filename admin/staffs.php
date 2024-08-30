@@ -97,7 +97,7 @@
             <td><?= $item['email'] ?></td>
             <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
             <td class="d-flex justify-content-around align-items-center text-center">
-              <a href="./Add_usersAcc?= $item['acc-id'] ?>" title="View Details">
+              <a href="./add_staff?= $item['acc-id'] ?>" title="View Details">
                 <i class='bx bx-edit-alt' ></i>
               </a>
               <button class="delete-btn bg-none" data-subject-id="<?= $item['id'] ?>">
