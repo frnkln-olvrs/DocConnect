@@ -59,9 +59,15 @@ hr {
 
 .form-control:focus,
 .form-check-input:focus,
-.btn:focus {
-  box-shadow: none;
-  outline: none;
+.btn:focus,
+.dt-buttons .btn:focus,
+.paginate_button:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.dt-buttons .btn {
+  color: var(--white);
 }
 
 .btn-outline-primary:hover {
