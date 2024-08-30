@@ -1,6 +1,8 @@
 $(document).ready(function() {
   var dataTable = $("#staff_table").DataTable({
     dom: 'Brtp',
+    scrollCollapse: true,
+    scrollY: '300px',
     scrollX: true,
     pageLength: 10,
     columnDefs: [
@@ -25,10 +27,10 @@ $(document).ready(function() {
 
   $.fn.dataTable.ext.search.push(function(settings, searchData, index, rowData, counter) {
     var searchVal = input.val().toLowerCase();
-    var patientName = searchData[3].toLowerCase();
-    var doctorName = searchData[4].toLowerCase();
+    var name = searchData[2].toLowerCase();
+    var position = searchData[3].toLowerCase();
 
-    if (patientName.indexOf(searchVal) !== -1 || doctorName.indexOf(searchVal) !== -1) {
+    if (name.indexOf(searchVal) !== -1 || position.indexOf(searchVal) !== -1) {
       return true;
     }
 

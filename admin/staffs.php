@@ -19,17 +19,6 @@
 
     <div class="table-responsive overflow-hidden">
       <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-end">
-
-        <div class="form-group mx-4">
-          <select id="sort-by" class="form-select me-md-2">
-            <option value="">Sort By</option>
-            <option value="0">Code</option>
-            <option value="1">Type</option>
-            <option value="2">Patient Name</option>
-            <option value="3">Doctor Name</option>
-            <option value="4">Appointment Date</option>
-          </select>
-        </div>
         
         <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1">
           <i class='bx bx-search-alt text-green ps-2'></i>
@@ -43,20 +32,61 @@
       $staff_array = array(
         array(
           'id' => '0001',
-          'name' => 'Namor Man',
-          'position' => 'Encoder',
+          'name' => 'Namor McKenzie',
+          'position' => 'King',
           'phone-no' => '+63 9xx xxx xxxx',
           'email' => 'email@email.com',
           'status' => 'Active',
         ),
         array(
-          'id' => '0001',
-          'name' => 'Namor Man',
-          'position' => 'Encoder',
+          'id' => '0013',
+          'name' => 'Bruce Wayne',
+          'position' => 'Batman',
           'phone-no' => '+63 9xx xxx xxxx',
           'email' => 'email@email.com',
           'status' => 'Inactive',
         ),
+        array(
+          'id' => '0027',
+          'name' => 'Diana Prince',
+          'position' => 'Manager',
+          'phone-no' => '+63 9xx xxx xxxx',
+          'email' => 'diana.prince@themyscira.com',
+          'status' => 'Active',
+        ),
+        array(
+          'id' => '0034',
+          'name' => 'Clark Kent',
+          'position' => 'Reporter',
+          'phone-no' => '+63 9xx xxx xxxx',
+          'email' => 'clark.kent@dailyplanet.com',
+          'status' => 'Active',
+        ),
+        array(
+          'id' => '0042',
+          'name' => 'Tony Stark',
+          'position' => 'Engineer',
+          'phone-no' => '+63 9xx xxx xxxx',
+          'email' => 'tony.stark@starkindustries.com',
+          'status' => 'Inactive',
+        ),
+        array(
+          'id' => '0056',
+          'name' => 'Peter Parker',
+          'position' => 'Photographer',
+          'phone-no' => '+63 9xx xxx xxxx',
+          'email' => 'peter.parker@dailybugle.com',
+          'status' => 'Active',
+        ),
+        array(
+          'id' => '0071',
+          'name' => 'Natasha Romanoff',
+          'position' => 'Spy',
+          'phone-no' => '+63 9xx xxx xxxx',
+          'email' => 'natasha.romanoff@shield.com',
+          'status' => 'Inactive',
+        ),
+        
       );
       
       function getStatusClass($status) {
