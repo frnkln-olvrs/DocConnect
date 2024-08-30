@@ -4,11 +4,11 @@ session_start();
 require_once '../tools/functions.php';
 require_once '../classes/account.class.php';
 
-// if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) {
-// 	header('location: index.php');
-// } else if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 2) {
-// 	header('location: ./admin/index.php');
-// }
+if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) {
+	//header('location: index.php');
+} else if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 2) {
+	//header('location: ./admin/index.php');
+}
 
 $account = new Account();
 
@@ -21,7 +21,11 @@ if (isset($_POST['signup'])) {
   $account->email = htmlentities($_POST['email']);
   $account->password = htmlentities($_POST['password']);
   $account->firstname = ucfirst(strtolower(htmlentities($_POST['firstname'])));
-  $account->lastname = ucfirst(strtolower(htmlentities($_POST['middlename'])));
+  if (isset($_POST['middlename'])) {
+    $account->middlename = ucfirst(strtolower(htmlentities($_POST['middlename'])));
+  } else {
+    $account->middlename = '';
+  }
   $account->lastname = ucfirst(strtolower(htmlentities($_POST['lastname'])));
   $account->user_role = 0; // user_role (0 = admin, 1 = mod, 2 = user)
 
@@ -70,11 +74,11 @@ function getCurrentPage()
           </div>
 
           <div class="card-body">
-            <form>
+            <form action="" method="post">
               <div class="row">
                 <div class="col-12 col-md-4 mb-3">
                   <label for="firstname" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="firstname" placeholder="first name" required value="<?= isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>">
+                  <input type="text" class="form-control" id="firstname" name="firstname" required placeholder="first name" value="<?= isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>">
                   <?php
                   if (isset($_POST['firstname']) && !validate_field($_POST['firstname'])) {
                   ?>
@@ -85,11 +89,11 @@ function getCurrentPage()
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                   <label for="middlename" class="form-label">Middle Name</label>
-                  <input type="text" class="form-control" id="middlename" placeholder="middle name" value="<?= isset($_POST['middlename']) ? $_POST['middlename'] : '' ?>">
+                  <input type="text" class="form-control" id="middlename" name="middlename" required placeholder="middle name" value="<?= isset($_POST['middlename']) ? $_POST['middlename'] : '' ?>">
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                   <label for="lastname" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="lastname" placeholder="last name" required value="<?= isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>">
+                  <input type="text" class="form-control" id="lastname" name="lastname" required placeholder="last name" value="<?= isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>">
                   <?php
                   if (isset($_POST['lastname']) && !validate_field($_POST['lastname'])) {
                   ?>
@@ -102,7 +106,7 @@ function getCurrentPage()
 
               <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email" required value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
+                <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
                 <?php
                 $new_account = new Account();
                 if (isset($_POST['email'])) {
@@ -127,7 +131,7 @@ function getCurrentPage()
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter your password" required value="<?= isset($_POST['password']) ? $_POST['password'] : '' ?>">
+                <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password" value="<?= isset($_POST['password']) ? $_POST['password'] : '' ?>">
                 <?php
                 if (isset($_POST['password']) && validate_password($_POST['password']) !== "success") {
                 ?>
@@ -138,7 +142,7 @@ function getCurrentPage()
               </div>
               <div class="mb-3">
                 <label for="confirm-password" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password" required value="<?= isset($_POST['confirm-password']) ? $_POST['confirm-password'] : '' ?>">
+                <input type="password" class="form-control" id="confirm-password" name="confirm-password" required placeholder="Confirm your password" value="<?= isset($_POST['confirm-password']) ? $_POST['confirm-password'] : '' ?>">
                 <?php
                 if (isset($_POST['password']) && isset($_POST['confirm-password']) && !validate_cpw($_POST['password'], $_POST['confirm-password'])) {
                 ?>
@@ -147,7 +151,7 @@ function getCurrentPage()
                 }
                 ?>
               </div>
-              <input type="submit" class="btb btn-primary text-light w-100" name="signup" value="Sign Up">
+              <input type="submit" class="btn btn-primary text-light w-100" name="signup" value="Sign Up">
             </form>
           </div>
         </div>

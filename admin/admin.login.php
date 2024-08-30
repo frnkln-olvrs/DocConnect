@@ -1,12 +1,53 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user_role'])) {
+  //header('location: ../index.php');
+}
+
+require_once("../classes/account.class.php");
+require_once("../tools/functions.php");
+
+if (isset($_POST['login'])) {
+  $account = new Account();
+
+  $account->email = htmlentities($_POST['email']);
+  $account->password = htmlentities($_POST['password']);
+  if ($account->sign_in_account()) {
+    $_SESSION['user_role'] = $account->user_role;
+    $_SESSION['account_id'] = $account->account_id;
+    $_SESSION['verification_status'] = $account->verification_status;
+    $_SESSION['email'] = $account->email;
+    if (isset($account->middlename)) {
+      $_SESSION['full_name'] = ucwords(strtolower($account->firstname . ' ' . $account->middlename . ' ' . $account->lastname));
+    } else {
+      $_SESSION['full_name'] = ucwords(strtolower($account->firstname . ' ' . $account->lastname));
+    }
+
+    if ($_SESSION['user_role'] == 2) {
+      //header('location: ../index.php');
+    } else if ($_SESSION['user_role'] == 1) {
+      //header('location: ../index.php');
+    } else if ($_SESSION['user_role'] == 0) {
+      //header('location: ../index.php');
+    }
+  } else {
+    $error = 'Login failed: Invalid email or password.';
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-  $title = 'Admin | Login';
-  include './includes/admin_head.php';
-  function getCurrentPage() {
-    return basename($_SERVER['PHP_SELF']);
-  }
+<?php
+$title = 'Admin | Login';
+include './includes/admin_head.php';
+function getCurrentPage()
+{
+  return basename($_SERVER['PHP_SELF']);
+}
 ?>
+
 <body class="bg-danger d-flex align-items-center min-vh-100">
   <div class="container">
     <div class="row justify-content-center">
@@ -15,21 +56,32 @@
           <div class="card-header text-center">
             <h4>Admin Login</h4>
           </div>
-          
+
           <div class="card-body">
-            <form>
+            <form action="" method="post">
               <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
               </div>
               <div class="mb-1">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
               </div>
               <div class="mb-3 text-end">
                 <a href="#" class="text-primary">Forgot Password?</a>
               </div>
-              <button type="submit" class="btn btn-primary text-light w-100">Login</button>
+              <?php
+              if (isset($_POST['login']) && isset($error)) {
+              ?>
+                <div class="mb-2 col-12">
+                  <p class="text-dark m-0 ps-2 text-start">
+                    <?= $error ?>
+                  </p>
+                </div>
+              <?php
+              }
+              ?>
+              <input type="submit" class="btn btn-primary text-light w-100" name="login" value="Login">
             </form>
           </div>
 
@@ -41,4 +93,5 @@
     </div>
   </div>
 </body>
+
 </html>

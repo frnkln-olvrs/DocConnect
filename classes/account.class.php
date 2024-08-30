@@ -41,10 +41,6 @@ class Account
                 $this->lastname = $accountData['lastname'];
                 $this->email = $accountData['email'];
                 $this->verification_status = $accountData['verification_status'];
-                $this->gender = $accountData['gender'];
-                $this->birthdate = $accountData['birthdate'];
-                $this->contact = $accountData['contact'];
-                $this->address = $accountData['address'];
                 $this->account_image = $accountData['account_image'];
 
                 return true;
