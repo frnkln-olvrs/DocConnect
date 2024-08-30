@@ -49,6 +49,14 @@
           'email' => 'email@email.com',
           'status' => 'Active',
         ),
+        array(
+          'id' => '0001',
+          'name' => 'Namor Man',
+          'position' => 'Encoder',
+          'phone-no' => '+63 9xx xxx xxxx',
+          'email' => 'email@email.com',
+          'status' => 'Inactive',
+        ),
       );
       
       function getStatusClass($status) {
@@ -59,50 +67,73 @@
             return 'bg-danger';
         }
       }
-      ?>
+    ?>
       
-      <table id="staff_table" class="table table-striped" style="width:100%">
-        <thead>
+    <table id="staff_table" class="table table-striped" style="width:100%">
+      <thead>
+        <tr>
+          <th scope="col" width="3%">#</th>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Position</th>
+          <th scope="col">Phone No.</th>
+          <th scope="col">Email</th>
+          <th scope="col">Status</th>
+          <th scope="col" width="5%">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $counter = 1;
+        foreach ($staff_array as $item) {
+          $statusClass = getStatusClass($item['status']);
+        ?>
           <tr>
-            <th scope="col" width="3%">#</th>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Position</th>
-            <th scope="col">Phone No.</th>
-            <th scope="col">Email</th>
-            <th scope="col">Status</th>
-            <th scope="col" width="5%">View</th>
+            <td><?= $counter ?></td>
+            <td><?= $item['id'] ?></td>
+            <td><?= $item['name'] ?></td>
+            <td><?= $item['position'] ?></td>
+            <td><?= $item['phone-no'] ?></td>
+            <td><?= $item['email'] ?></td>
+            <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
+            <td class="d-flex justify-content-around align-items-center text-center">
+              <a href="./Add_usersAcc?= $item['acc-id'] ?>" title="View Details">
+                <i class='bx bx-edit-alt' ></i>
+              </a>
+              <button class="delete-btn bg-none" data-subject-id="<?= $item['id'] ?>">
+                <i class='bx bx-user-x bg-none text-primary fs-5'></i>
+              </button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <?php
-          $counter = 1;
-          foreach ($staff_array as $item) {
-            $statusClass = getStatusClass($item['status']);
-          ?>
-            <tr>
-              <td><?= $counter ?></td>
-              <td><?= $item['id'] ?></td>
-              <td><?= $item['name'] ?></td>
-              <td><?= $item['position'] ?></td>
-              <td><?= $item['phone-no'] ?></td>
-              <td><?= $item['email'] ?></td>
-              <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
-              <td class="text-center">
-                <a href="./viewAppointment?= $item['Code'] ?>" title="View Details">
-                  <i class='bx bx-show'></i>
-                </a>
-              </td>
-            </tr>
-          <?php
-            $counter++;
-          }
-          ?>
-        </tbody>
-      </table>
+        <?php
+          $counter++;
+        }
+        ?>
+      </tbody>
+    </table>
+
+    <!-- confirm delete modal markup -->
+    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Action</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to disable (NAME) account?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary text-light" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger text-light" id="confirmDeleteBtn">Disable</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
-  <script src="./js/appointment-dataTable.js"></script>
+  <script src="./js/modal-delete_comfirmation.js"></script>
 
 </body>
 </html>
