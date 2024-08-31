@@ -63,7 +63,7 @@
           </div>
 
           <div class="card-footer text-center">
-            <small class="text-muted">Already have an account? <a href="./doctor.login">Login here</a></small>
+            <small class="text-muted">Already have an account? <a href="./login">Login here</a></small>
           </div>
         </div>
       </div>

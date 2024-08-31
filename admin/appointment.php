@@ -61,7 +61,7 @@
           'Code' => '0003',
           'Type' => 'Online',
           'Patient Name' => 'Allen Barry',
-          'Doctor Name' => 'Dr. Knot Rildoctor',
+          'Doctor Name' => 'Dr. Knot Rildoktor',
           'Appointment date' => 'Wednesday, 01:30 - 02:00 pm',
           'Status' => 'Canceled',
         ),
@@ -69,7 +69,7 @@
           'Code' => '0004',
           'Type' => 'F-2-F',
           'Patient Name' => 'Jason Todd',
-          'Doctor Name' => 'Dr. Thomes Wayne',
+          'Doctor Name' => 'Dr. Thomas Wayne',
           'Appointment date' => 'Friday, 08:30 - 10:00 am',
           'Status' => 'Waiting',
         ),
@@ -119,7 +119,7 @@
               <td><?= $item['Appointment date'] ?></td>
               <td class="<?= $statusClass ?> text-light text-center"><?= $item['Status'] ?></td>
               <td class="text-center">
-                <a href="patient_details.php?code=<?= $item['Code'] ?>" title="View Details">
+                <a href="./viewAppointment?= $item['Code'] ?>" title="View Details">
                   <i class='bx bx-show'></i>
                 </a>
               </td>

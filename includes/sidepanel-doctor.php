@@ -13,13 +13,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../doctor/doctor.profile">
+                <a class="nav-link" href="../doctor/profile">
                     <i class='bx bxs-user-detail me-2'></i>
                     Profile
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../doctor/doctor.patients">
+                <a class="nav-link" href="../doctor/patients">
                     <i class='bx bx-group me-2'></i>
                     Patients
                 </a>
@@ -31,7 +31,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../doctor/doctor.settings">
+                <a class="nav-link" href="../doctor/settings">
                     <i class='bx bx-cog me-2'></i>
                     Settings
                 </a>

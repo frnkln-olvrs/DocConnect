@@ -86,7 +86,7 @@ function getCurrentPage()
           </div>
 
           <!-- <div class="card-footer text-center">
-            <small class="text-muted">Don't have an account? <a href="./admin.signup">Signup here</a></small>
+            <small class="text-muted">Don't have an account? <a href="./signup">Signup here</a></small>
           </div> -->
         </div>
       </div>

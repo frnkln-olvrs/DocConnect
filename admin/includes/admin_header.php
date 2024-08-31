@@ -23,13 +23,13 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <div class="dropdown me-3">
-        <a href="<?php echo getCurrentPage() == 'admin.notifications.php' ? '#' : 'admin.notifications.php'; ?>" 
+        <a href="<?php echo getCurrentPage() == 'notifications.php' ? '#' : 'notifications.php'; ?>" 
            class="notification dropdown-toggle text-decoration-none text-dark 
-           <?php echo getCurrentPage() == 'admin.notifications.php' ? 'disabled no-hover' : ''; ?>" 
+           <?php echo getCurrentPage() == 'notifications.php' ? 'disabled no-hover' : ''; ?>" 
            id="notificationDropdown" 
            data-bs-toggle="dropdown" 
            aria-expanded="false">
-          <i class='bx bx-bell fs-5 p-2 <?php echo getCurrentPage() == 'admin.notifications.php' ? 'link-light bg-light text-dark rounded-5' : 'link-light'; ?>'></i>
+          <i class='bx bx-bell fs-5 p-2 <?php echo getCurrentPage() == 'notifications.php' ? 'link-light bg-light text-dark rounded-5' : 'link-light'; ?>'></i>
         </a>
         <ul class="notification dropdown-menu dropdown-menu-end px-0" aria-labelledby="notificationDropdown">
             <li class="header mx-3 d-flex align-items-center justify-content-between">
@@ -90,7 +90,7 @@
             <hr class="mx-3">
 
             <li class="show-all dropdown-item bg-white">
-              <a href="./admin.notifications">
+              <a href="./notifications">
                 <button type="button" class="btn btn-outline-primary w-100">Show All Activities</button>
               </a>
             </li>
