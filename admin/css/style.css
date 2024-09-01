@@ -327,6 +327,12 @@ body.sidepanel-open {
   z-index: 0;
 }
 
+@media screen and (max-width: 450px) {
+  #users .bx {
+    font-size: 35px;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .page-container  {
     padding-left: 0px;
