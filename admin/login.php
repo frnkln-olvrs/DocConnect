@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_role'])) {
-  //header('location: ../index.php');
+  header('location: ./index.php');
 }
 
 require_once("../classes/account.class.php");
@@ -24,12 +24,8 @@ if (isset($_POST['login'])) {
       $_SESSION['fullname'] = ucwords(strtolower($account->firstname . ' ' . $account->lastname));
     }
 
-    if ($_SESSION['user_role'] == 2) {
-      //header('location: ../index.php');
-    } else if ($_SESSION['user_role'] == 1) {
-      //header('location: ../index.php');
-    } else if ($_SESSION['user_role'] == 0) {
-      //header('location: ../index.php');
+    if ($_SESSION['user_role'] == 0) {
+      header('location: ./index.php');
     }
   } else {
     $error = 'Login failed: Invalid email or password.';

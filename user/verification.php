@@ -16,10 +16,10 @@ $verification_code = generate_code();
 
 if (!isset($_SESSION['code'])) {
     $_SESSION['code'] = $verification_code;
-    send_code($_SESSION['email'], $_SESSION['name'], $_SESSION['code']);
+    send_code($_SESSION['email'], $_SESSION['fullname'], $_SESSION['code']);
 } else if (isset($_POST['resend'])) {
     $_SESSION['code'] = $verification_code;
-    send_code($_SESSION['email'], $_SESSION['name'], $_SESSION['code']);
+    send_code($_SESSION['email'], $_SESSION['fullname'], $_SESSION['code']);
 } else if (isset($_POST['verify'])) {
     $account = new Account();
 

@@ -13,7 +13,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) {
 $account = new Account();
 
 if (isset($_SESSION['user_role']) || $account->check_for_admin(0)) {
-  header('location: ./admin.login.php'); // change the location later
+  header('location: ./login.php'); // change the location later
 }
 
 if (isset($_POST['signup'])) {
