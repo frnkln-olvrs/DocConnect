@@ -19,54 +19,207 @@
   <section id="dashboard" class="page-container">
     <h1 class="text-start">User Group Management</h1>
 
-    <!------ Include the above in your HEAD tag ---------->
+    <div class="row flex-md-nowrap row-cols-1 row-cols-md-2">
+      <div class="col">
+      </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6">
-      <h2>Wired style</h2>
-      <div>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label> Switch1
+      <div class="col">
+        <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
+          <p class="m-0 text-muted text-center">Students</p>
+          <p class="m-0 text-muted text-center">Staff</p>
+          <p class="m-0 text-muted text-center">Faculty</p>
+        </div>
       </div>
-      <div>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label> Switch2
+    </div>
+
+    <hr class="my-2">
+
+    <div class="row flex-md-nowrap row-cols-1 row-cols-md-2 align-items-center">
+      <div class="col">
+        <h4 class="m-0">Appointment reminders</h4>
       </div>
-      <div>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label> Switch3
+
+      <div class="col">
+        <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
       </div>
-    </div></col-->
-    <div class="col-sm-6">
-      <h2>Flat style</h2>
-      <div>
-        <label class="switch flat">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label> Switch1
+    </div>
+
+    <hr class="my-2">
+
+    <div class="row flex-md-nowrap row-cols-1 row-cols-md-2 align-items-center">
+      <div class="col">
+        <h4 class="m-0">Checkup results</h4>
       </div>
-      <div>
-        <label class="switch flat">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label> Switch2
+
+      <div class="col">
+        <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
       </div>
-      <div>
-        <label class="switch flat">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label> Switch3
+    </div>
+
+    <hr class="my-2">
+
+    <div class="row flex-md-nowrap row-cols-1 row-cols-md-2 align-items-center">
+      <div class="col">
+        <h4 class="m-0">General announcements</h4>
       </div>
-    </div></col-->
-  </div></row-->
-</div></container-->
+
+      <div class="col">
+        <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-2">
+
+    <div class="row flex-md-nowrap row-cols-1 row-cols-md-2 align-items-center">
+      <div class="col">
+        <h4 class="m-0">Health and Wellness Tips</h4>
+      </div>
+
+      <div class="col">
+        <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-2">
+
+    <div class="row flex-md-nowrap row-cols-1 row-cols-md-2 align-items-center">
+      <div class="col">
+        <h4 class="m-0">Policy Updates</h4>
+      </div>
+
+      <div class="col">
+        <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-2">
+
+    <div class="row flex-md-nowrap row-cols-1 row-cols-md-2 align-items-center">
+      <div class="col">
+        <h4 class="m-0">Special Programs or Initiatives</h4>
+      </div>
+
+      <div class="col">
+        <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-2">
+  </section>
 
 </body>
 </html>
