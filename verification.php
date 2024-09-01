@@ -24,6 +24,7 @@
               </div>
               <div class="mb-3 text-end">
                 <a href="#" class="text-primary">Resend Code</a>
+                <span id="countdown" class="text-muted ms-2"></span>
                 <p id="demo"></p>
               </div>
               <button type="submit" class="btn btn-primary text-light w-100">Login</button>
@@ -39,11 +40,28 @@
   </div>
 
   <script>
-    var count = 0;
-    var timer = $.timer(function() {
-        $('#counter').html(++count);
+    document.addEventListener("DOMContentLoaded", function() {
+      var countdownElement = document.getElementById("countdown");
+      var countdownTime = 10;
+      
+      function startCountdown() {
+        var countdownInterval = setInterval(function() {
+          countdownElement.innerText = countdownTime + "s";
+
+          if (countdownTime <= 0) {
+            clearInterval(countdownInterval);
+            countdownElement.innerText = "Code expired, please resend!";
+            document.querySelector("a.text-primary").classList.remove("disabled");
+          }
+
+          countdownTime--;
+        }, 1000);
+      }
+
+      document.querySelector("a.text-primary").classList.add("disabled");
+
+      startCountdown();
     });
-    timer.set({ time : 1000, autostart : true });
   </script>
 </body>
 </html>
