@@ -28,10 +28,15 @@
           </select>
         </div>
         
-        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1">
+        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1 me-4">
           <i class='bx bx-search-alt text-green ps-2'></i>
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
         </div>
+
+        <a href="./add_doctorAcc" class="input-group bg-success d-flex align-items-center border border-1 rounded-1 p-1" style="width: 13%;">
+          <i class='bx bx-plus text-white fs-4 ps-2 me-2'></i>
+          <p class="m-0 text-white d-none d-md-block">Add Doctor</p>
+        </a>
 
       </div>
     </div>
