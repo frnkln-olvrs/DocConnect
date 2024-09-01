@@ -98,4 +98,19 @@ class Account
 
 
     // admin functions end
+
+    function verify()
+    {
+        $sql = "UPDATE account SET verification_status = :verification_status WHERE account_id = :account_id";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':verification_status', $this->verification_status);
+        $query->bindParam(':account_id', $this->account_id);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
