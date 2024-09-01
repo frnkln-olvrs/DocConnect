@@ -21,19 +21,19 @@ function send_code($email, $name, $code)
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'crimson.avenue.soltec@gmail.com';                     //SMTP username
-        $mail->Password   = 'cbym ajil plzp tbob';                               //SMTP password
+        $mail->Username   = 'wmsu.docconnect@gmail.com';                     //SMTP username
+        $mail->Password   = 'knoy xtai qnvf lfbg';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('crimson.avenue.soltec@gmail.com', 'Crimson Avenue');
+        $mail->setFrom('wmsu.docconnect@gmail.com', 'DocConnect');
         $mail->addAddress($email, $name);     //Add a recipient
-        $mail->addReplyTo('crimson.avenue.soltec@gmail.com', 'Crimson Avenue');
+        $mail->addReplyTo('wmsu.docconnect@gmail.com', 'DocConnect');
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'Verify Your Crimson Avenue Account';
+        $mail->Subject = 'Verify Your WMSU DocConnect Account';
         $mail->Body    = '<p> Hi ' . ucwords($name) . ',<br><br>Welcome to Crimson Avenue! Please verify your email to complete your sign-up.<br><br>Verification Code: <strong>' . $code . '</strong><br><a href="http://crimsonavenue.se.local/user/verify.php">http://crimsonavenue.se.local/user/verify.php</a><br><br>If you have any questions, contact us at [your support email/phone]. </p>';
         $mail->AltBody = '<p> Hi ' . ucwords($name) . ',<br><br>Welcome to Crimson Avenue! Please verify your email to complete your sign-up.<br><br>Verification Code: <strong>' . $code . '</strong><br><a href="http://crimsonavenue.se.local/user/verify.php">http://crimsonavenue.se.local/user/verify.php</a><br><br>If you have any questions, contact us at [your support email/phone]. </p>';
 
