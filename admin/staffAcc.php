@@ -15,7 +15,7 @@
   ?>
 
   <section id="appointment" class="page-container">
-    <h1 class="text-center mb-3">Staff</h1>
+    <h1 class="text-start mb-3">Staff</h1>
 
     <div class="table-responsive overflow-hidden">
       <div class="col-12 flex-lg-grow-0 d-flex justify-content-end">
@@ -24,7 +24,7 @@
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
         </div>
 
-        <a href="./add_staff" class="input-group bg-success d-flex align-items-center border border-1 rounded-1" style="width: 10%;">
+        <a href="./add_staffAcc" class="input-group bg-success d-flex align-items-center border border-1 rounded-1" style="width: 10%;">
           <i class='bx bx-plus text-white fs-4 ps-2 me-2'></i>
           <p class="m-0 text-white">Add staff</p>
         </a>
@@ -130,7 +130,7 @@
             <td><?= $item['email'] ?></td>
             <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
             <td class="d-flex justify-content-around align-items-center text-center">
-              <a href="./add_staff?= $item['acc-id'] ?>" title="View Details">
+              <a href="./add_staffAcc?= $item['acc-id'] ?>" title="View Details">
                 <i class='bx bx-edit-alt' ></i>
               </a>
               <button class="delete-btn bg-none" data-subject-id="<?= $item['id'] ?>">
