@@ -20,7 +20,7 @@
     <div class="table-responsive overflow-hidden">
       <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-between justify-content-md-end mb-3 mb-md-0">
         
-        <div class="input-group w-75 d-flex align-items-center border border-1 rounded-1 me-0 me-md-4">
+        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1 me-0 me-md-4">
           <i class='bx bx-search-alt text-green ps-2'></i>
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
         </div>
