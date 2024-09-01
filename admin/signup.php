@@ -163,36 +163,21 @@ function getCurrentPage()
 <?php
 if (isset($_POST['signup']) && $success == 'success') {
 ?>
-  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="row d-flex">
-            <div class="col-12 text-center">
-              <a href="./login.php" class="text-decoration-none text-dark">
-                <p class="m-0">Account is successfully created!</br><span class="text-primary fw-bold">Login to verify your account</span>.</p>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
   <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Action</h5>
+          <h5 class="modal-title" id="deleteConfirmationModalLabel">Account is successfully created!</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Are you sure you want to disable this account?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary text-light" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger text-light" id="confirmDeleteBtn">Disable</button>
+          <div class="row d-flex">
+            <div class="col-12 text-center">
+              <a href="./login.php" class="text-decoration-none text-dark">
+                <p class="m-0 text-primary fw-bold">Login to verify your account.</p>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
