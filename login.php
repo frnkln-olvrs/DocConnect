@@ -30,20 +30,49 @@
           </div>
           <h2>Sign Up</h2>
           <form id="form-signup" method="post" onsubmit="return false;">
+            <div class="row row-cols-1 row-cols-md-3">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="fname" placeholder="first name" required>
+                <label for="fname" class="p-0 ps-4 pt-3">First Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="mname" placeholder="middle name">
+                <label for="mname" class="p-0 ps-4 pt-3">Middle Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="lname" placeholder="last name" required>
+                <label for="lname" class="p-0 ps-4 pt-3">Last Name</label>
+              </div>
+            </div>
+
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="email" placeholder="name@example.com">
+              <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
               <label for="email">Email address</label>
             </div>
+
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="username-signup" placeholder="Username">
-              <label for="username-signup">Username</label>
+              <input type="text" class="form-control" id="DoB" placeholder="+63 9xx xxx xxxx" required>
+              <label for="DoB">Phone No.</label>
             </div>
+
             <div class="form-floating mb-3">
-              <input type="password" class="form-control" id="password-signup" placeholder="Password">
-              <label for="password-signup">Password</label>
+              <input type="date" class="form-control" id="contact" placeholder="MM/DD/YYYY" required>
+              <label for="contact">Date of Birth</label>
             </div>
+
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password-signup" placeholder="Password" required>
+                <label for="password-signup" class="p-0 ps-4 pt-3">Password</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="confirm-pass" placeholder="confirm password" required>
+                <label for="confirm-pass" class="p-0 ps-4 pt-3">Confirm Password</label>
+              </div>
+            </div>
+            
             <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" value="yes" id="confirm-terms">
+              <input class="form-check-input" type="checkbox" value="yes" id="confirm-terms" required>
               <label class="form-check-label" for="confirm-terms">
                 I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
               </label>
@@ -66,8 +95,8 @@
           <h2>Login</h2>
           <form id="form-login" method="post" onsubmit="return false;">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="username-login" placeholder="Username">
-              <label for="username-login">Username</label>
+              <input type="email" class="form-control" id="email-login" placeholder="Email">
+              <label for="email-login">Email</label>
             </div>
             <div class="form-floating mb-3">
               <input type="password" class="form-control" id="password-login" placeholder="Password">
