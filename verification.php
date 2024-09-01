@@ -23,11 +23,10 @@
                 <input type="text" class="form-control" id="verify" placeholder="Enter code" required>
               </div>
               <div class="mb-3 text-end">
-                <a href="#" class="text-primary">Resend Code</a>
-                <span id="countdown" class="text-muted ms-2"></span>
-                <p id="demo"></p>
+                <a href="#" id="resend-link" class="text-primary">Resend Code</a>
+                <span id="countdown" class="text-muted ms-1"></span>
               </div>
-              <button type="submit" class="btn btn-primary text-light w-100">Login</button>
+              <button type="submit" class="btn btn-primary text-light w-100">Verify</button>
             </form>
           </div>
 
@@ -42,23 +41,26 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var countdownElement = document.getElementById("countdown");
-      var countdownTime = 10;
+      var resendLink = document.getElementById("resend-link");
+      var countdownTime = 60;
       
       function startCountdown() {
         var countdownInterval = setInterval(function() {
-          countdownElement.innerText = countdownTime + "s";
+          countdownElement.innerText = "[" + countdownTime + "]";
 
           if (countdownTime <= 0) {
             clearInterval(countdownInterval);
-            countdownElement.innerText = "Code expired, please resend!";
-            document.querySelector("a.text-primary").classList.remove("disabled");
+            countdownElement.innerText = "";
+            resendLink.innerText = "Code expired, please resend!";
+            resendLink.href = "#"; // lagay lng link dto para sa resend
+            resendLink.classList.remove("disabled");
           }
 
           countdownTime--;
         }, 1000);
       }
 
-      document.querySelector("a.text-primary").classList.add("disabled");
+      resendLink.classList.add("disabled");
 
       startCountdown();
     });
