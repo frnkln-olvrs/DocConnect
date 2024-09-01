@@ -33,7 +33,7 @@
                 </div>
                 <div class="d-flex mt-2 align-items-center">
                   <i class='bx bxs-map fs-3'></i>
-                  <p class="m-0 ms-3 fs-5 text-start">Location</p>
+                  <p class="m-0 ms-3 fs-5 text-start">W376+CGQ, Normal Rd, Zamboanga, 7000 Zamboanga del Sur</p>
                 </div>
               </div>
             </div>  
@@ -49,7 +49,7 @@
               <div class="details mx-3">
                 <div class="d-flex mt-2 align-items-center">
                   <i class='bx bxs-school fs-3'></i>
-                  <p class="m-0 ms-3 fs-5">Campus A</p>
+                  <p class="m-0 ms-3 fs-5">Campus B</p>
                 </div>
                 <div class="d-flex mt-2 align-items-center">
                   <i class='bx bxs-map fs-3'></i>
@@ -69,7 +69,7 @@
               <div class="details mx-3">
                 <div class="d-flex mt-2 align-items-center">
                   <i class='bx bxs-school fs-3'></i>
-                  <p class="m-0 ms-3 fs-5">Campus A</p>
+                  <p class="m-0 ms-3 fs-5">Campus C</p>
                 </div>
                 <div class="d-flex mt-2 align-items-center">
                   <i class='bx bxs-map fs-3'></i>
@@ -81,6 +81,25 @@
         </a>
       </div>
 
+      <div class="col p-0 mb-3">
+        <a href="./view_campus" class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
+          <div class="card-body d-flex flex-column justify-content-between shadow-sm">
+            <div class="align-content-center text-center">
+              <img src="../assets/images/bg-1.png" alt="" class="w-100 rounded-2">
+              <div class="details mx-3">
+                <div class="d-flex mt-2 align-items-center">
+                  <i class='bx bxs-school fs-3'></i>
+                  <p class="m-0 ms-3 fs-5">ESU</p>
+                </div>
+                <div class="d-flex mt-2 align-items-center">
+                  <i class='bx bxs-map fs-3'></i>
+                  <p class="m-0 ms-3 fs-5 text-start">Location</p>
+                </div>
+              </div>
+            </div>  
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
