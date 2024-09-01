@@ -8,6 +8,12 @@
     color: inherit;
     background-color: inherit;
   }
+
+  @media (min-width: 992px) {
+    .sidepanel {
+      transform: translateX(0) !important;
+    }
+  }
 </style>
 
 <header class="p-3 border-bottom bg-green shadow-sm position-fixed w-100 z-3 border-bottom-0">
@@ -113,5 +119,15 @@
 
   </div>
 </header>
+
+<script>
+  document.querySelector('.navbar-toggler').addEventListener('click', function() {
+    const sidepanel = document.querySelector('.sidepanel');
+    if (window.innerWidth < 991) {
+      sidepanel.classList.toggle('show');
+      document.body.classList.toggle('sidepanel-open');
+    }
+  });
+</script>
 
 <script src="./../js/notification_dropdropdown.js"></script>
