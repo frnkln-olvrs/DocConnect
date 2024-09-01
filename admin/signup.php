@@ -5,9 +5,9 @@ require_once '../tools/functions.php';
 require_once '../classes/account.class.php';
 
 if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) {
-  //header('location: index.php');
+  header('location: index.php');
 } else if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 2) {
-  //header('location: ./admin/index.php');
+  header('location: ./admin/index.php');
 }
 
 $account = new Account();
@@ -89,7 +89,7 @@ function getCurrentPage()
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                   <label for="middlename" class="form-label">Middle Name</label>
-                  <input type="text" class="form-control" id="middlename" name="middlename" required placeholder="middle name" value="<?= isset($_POST['middlename']) ? $_POST['middlename'] : '' ?>">
+                  <input type="text" class="form-control" id="middlename" name="middlename" placeholder="middle name" value="<?= isset($_POST['middlename']) ? $_POST['middlename'] : '' ?>">
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                   <label for="lastname" class="form-label">Last Name</label>
@@ -118,7 +118,7 @@ function getCurrentPage()
                 ?>
                   <p class="text-dark m-0 ps-2"><?= validate_email($_POST['email']) ?></p>
                 <?php
-                } else if ($new_account->is_email_exist() && $_POST['email'] && $success = 'success') {
+                } else if (($new_account->is_email_exist() && $_POST['email']) && $success !== 'success') {
                 ?>
                   <p class="text-dark m-0 ps-2">Email you've entered already exist.</p>
                 <?php
@@ -158,16 +158,14 @@ function getCurrentPage()
       </div>
     </div>
   </div>
-</body>
-
-<?php
+  <?php
 if (isset($_POST['signup']) && $success == 'success') {
 ?>
-  <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteConfirmationModalLabel">Account is successfully created!</h5>
+          <h5 class="modal-title" id="myModalLabel">Account is successfully created!</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -185,6 +183,7 @@ if (isset($_POST['signup']) && $success == 'success') {
 <?php
 }
 ?>
-
+<script src="../js/main.js"></script>
+</body>
 
 </html>
