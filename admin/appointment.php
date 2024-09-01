@@ -18,9 +18,9 @@
     <h1 class="text-center mb-3">Appointment Management</h1>
 
     <div class="table-responsive overflow-hidden">
-      <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-end">
+      <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-between justify-content-md-end mb-3 mb-md-0">
 
-        <div class="form-group mx-4">
+        <div class="form-group mx-0 mx-md-4">
           <select id="sort-by" class="form-select me-md-2">
             <option value="">Sort By</option>
             <option value="0">Code</option>
@@ -31,7 +31,7 @@
           </select>
         </div>
         
-        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1">
+        <div class="input-group w-auto d-flex align-items-center border border-1 rounded-1 me-0 me-md-4">
           <i class='bx bx-search-alt text-green ps-2'></i>
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
         </div>
