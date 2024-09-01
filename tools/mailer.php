@@ -12,7 +12,7 @@ require_once('../vendor/autoload.php');
 //Create an instance; passing `true` enables exceptions
 
 
-function send_code($email, $name, $code)
+function send_code($email, $fullname, $code)
 {
     $mail = new PHPMailer(true);
     try {
@@ -28,14 +28,14 @@ function send_code($email, $name, $code)
 
         //Recipients
         $mail->setFrom('wmsu.docconnect@gmail.com', 'DocConnect');
-        $mail->addAddress($email, $name);     //Add a recipient
+        $mail->addAddress($email, $fullname);     //Add a recipient
         $mail->addReplyTo('wmsu.docconnect@gmail.com', 'DocConnect');
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Verify Your WMSU DocConnect Account';
-        $mail->Body    = '<p> Hi ' . ucwords($name) . ',<br><br>Welcome to Crimson Avenue! Please verify your email to complete your sign-up.<br><br>Verification Code: <strong>' . $code . '</strong><br><a href="http://crimsonavenue.se.local/user/verify.php">http://crimsonavenue.se.local/user/verify.php</a><br><br>If you have any questions, contact us at [your support email/phone]. </p>';
-        $mail->AltBody = '<p> Hi ' . ucwords($name) . ',<br><br>Welcome to Crimson Avenue! Please verify your email to complete your sign-up.<br><br>Verification Code: <strong>' . $code . '</strong><br><a href="http://crimsonavenue.se.local/user/verify.php">http://crimsonavenue.se.local/user/verify.php</a><br><br>If you have any questions, contact us at [your support email/phone]. </p>';
+        $mail->Body    = '<p> Hi ' . ucwords($fullname) . ',<br><br>Welcome to Crimson Avenue! Please verify your email to complete your sign-up.<br><br>Verification Code: <strong>' . $code . '</strong><br><a href="http://crimsonavenue.se.local/user/verify.php">http://crimsonavenue.se.local/user/verify.php</a><br><br>If you have any questions, contact us at [your support email/phone]. </p>';
+        $mail->AltBody = '<p> Hi ' . ucwords($fullname) . ',<br><br>Welcome to Crimson Avenue! Please verify your email to complete your sign-up.<br><br>Verification Code: <strong>' . $code . '</strong><br><a href="http://crimsonavenue.se.local/user/verify.php">http://crimsonavenue.se.local/user/verify.php</a><br><br>If you have any questions, contact us at [your support email/phone]. </p>';
 
         if ($mail->send()) {
             //echo 'Message has been sent';
