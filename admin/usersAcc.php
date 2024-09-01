@@ -134,6 +134,7 @@
 
   </section>
 
+  <script src="./js/usersAcc-dataTables.js"></script>
   <script src="./js/modal-delete_comfirmation.js"></script>
 
 </body>
