@@ -5,6 +5,8 @@ $title = 'Patient Files';
 include '../includes/head.php';
 ?>
 
+
+
 <body>
     <?php
     require_once('../includes/header-doctor.php');

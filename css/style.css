@@ -373,4 +373,13 @@ section#contacts .box-1 {
   section.main {
     border-image: fill 0 linear-gradient(to top, #ad2634, #00000000);
   }
+
+  .breadcrumb-item a.current {
+    text-decoration: underline;
+    text-decoration-color: lightgreen; 
+    text-decoration-thickness: 2px; 
+    font-weight: bold; 
+    color: inherit; 
+}
+
 }
