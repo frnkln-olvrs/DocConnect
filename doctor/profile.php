@@ -29,33 +29,40 @@ include '../includes/head.php';
                         <a href="" class="m-0 p-0 fs-6 fw-normal text-primary text-decoration-underline mb-2">Update Schedule</a>
                     </div>
                     <div class="d-flex flex-nowrap justify-content-between">
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
+                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
                             <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Monday</p>
                             <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">01/04/2024 <br> 9:30AM - 12:00PM</p>
+                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
                         </div>
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
+                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
                             <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Tuesday</p>
                             <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">02/04/2024 <br> 9:30AM - 12:00PM</p>
+                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
                         </div>
-                        <div class="p-2 border border-1 border-secondary-subtle  mx-1 flex-grow-1 ">
+                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
                             <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Wednesday</p>
                             <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">03/04/2024 <br> 9:30AM - 12:00PM</p>
+                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
                         </div>
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
-                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Thursday </p>
+                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
+                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Thursday</p>
                             <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">04/04/2024 <br> 9:30AM - 12:00PM</p>
+                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
                         </div>
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
-                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Friday </p>
+                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
+                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Friday</p>
                             <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">05/04/2024 <br> 9:30AM - 12:00PM</p>
+                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
                         </div>
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
-                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Saturday </p>
+                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
+                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Saturday</p>
                             <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">06/04/2024 <br> Not Available</p>
+                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
                         </div>
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 ">
-                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Sunday </p>
+                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
+                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Sunday</p>
                             <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">07/04/2024 <br> Not Available</p>
+                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
                         </div>
                     </div>
                 </div>
