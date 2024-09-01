@@ -1,4 +1,4 @@
-<div class="sidepanel d-none d-lg-block d-flex flex-column flex-shrink-0 p-3 bg-light border-end border-2 position-fixed" style="width: 220px; height: calc(100% - 67.7px)">
+<div class="sidepanel d-lg-block d-flex flex-column flex-shrink-0 p-3 bg-light border-end border-2 position-fixed" style="width: 220px; height: calc(100% - 67.7px)">
   <ul class="nav nav-pills flex-column mb-auto">
     <li>
       <a href="./dashboard" class="nav-link <?php echo getCurrentPage() == 'dashboard.php' ? 'active' : 'link-dark'; ?>" aria-current="page">
