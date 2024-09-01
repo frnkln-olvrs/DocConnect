@@ -1,6 +1,6 @@
 <html lang="en">
 <?php
-  $title = 'Campuses | Campus A';
+  $title = 'Campuses | Add User';
   include './includes/admin_head.php';
   function getCurrentPage() {
     return basename($_SERVER['PHP_SELF']);
