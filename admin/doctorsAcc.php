@@ -145,6 +145,7 @@
 
   </section>
 
+  <script src="./js/doctorsAcc-dataTables.js"></script>
   <script src="./js/modal-delete_comfirmation.js"></script>
 
 </body>
