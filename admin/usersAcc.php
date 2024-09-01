@@ -47,7 +47,6 @@
           'reg-date' => '08/04/2024',
           'department' => 'CCS',
           'no.ofApp' => '01',
-          'status' => 'Active',
         ),
         array(
           'name' => 'Hilal Abdulajid',
@@ -58,18 +57,8 @@
           'reg-date' => '08/01/2024',
           'department' => 'CCS',
           'no.ofApp' => '03',
-          'status' => 'Inactive',
         ),
       );
-
-      function getStatusClass($status) {
-        switch ($status) {
-          case 'Active':
-            return 'bg-success';
-          case 'Inactive':
-            return 'bg-danger';
-        }
-      }
       ?>
       
       <table id="usersAcc_table" class="table table-striped" style="width:100%">
@@ -84,7 +73,6 @@
             <th scope="col">Registration Date</th>
             <th scope="col">Department</th>
             <th scope="col">No. of Appointment</th>
-            <th scope="col">Status</th>
             <th scope="col" width="7%">Action</th>
           </tr>
         </thead>
@@ -92,7 +80,6 @@
           <?php
           $counter = 1;
           foreach ($appointment_array as $item) {
-            $statusClass = getStatusClass($item['status']);
           ?>
             <tr>
               <td><?= $counter ?></td>
@@ -104,7 +91,6 @@
               <td><?= $item['reg-date'] ?></td>
               <td><?= $item['department'] ?></td>
               <td><?= $item['no.ofApp'] ?></td>
-              <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
 
               <td class="d-flex justify-content-around align-items-center text-center">
                 <a href="./add_usersAcc?= $item['acc-id'] ?>" title="View Details">
