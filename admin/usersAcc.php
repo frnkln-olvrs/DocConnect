@@ -18,7 +18,7 @@
     <h1 class="text-start my-3">Patients Accounts</h1>
 
     <div class="table-responsive overflow-hidden">
-      <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-end">
+      <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-end align-items-center">
 
         <div class="form-group mx-4">
           <select id="sort-by" class="form-select me-md-2">
@@ -28,10 +28,15 @@
           </select>
         </div>
         
-        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1">
+        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1 me-4">
           <i class='bx bx-search-alt text-green ps-2'></i>
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
         </div>
+
+        <a href="./add_usersAcc" class="input-group bg-success d-flex align-items-center border border-1 rounded-1 p-1" style="width: 10%;">
+          <i class='bx bx-plus text-white fs-4 ps-2 me-2'></i>
+          <p class="m-0 text-white">Add Acc</p>
+        </a>
 
       </div>
     </div>
@@ -93,8 +98,8 @@
               <td><?= $item['no.ofApp'] ?></td>
 
               <td class="d-flex justify-content-around align-items-center text-center">
-                <a href="./add_usersAcc?= $item['acc-id'] ?>" title="View Details">
-                  <i class='bx bx-edit-alt' ></i>
+                <a href="./viewuserAcc" title="View Details">
+                  <i class='bx bx-show'></i>
                 </a>
                 <button class="delete-btn bg-none" data-subject-id="<?= $item['acc-id'] ?>">
                   <i class='bx bx-user-x bg-none text-primary fs-5'></i>
