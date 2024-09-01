@@ -19,9 +19,9 @@ if (isset($_POST['login'])) {
     $_SESSION['verification_status'] = $account->verification_status;
     $_SESSION['email'] = $account->email;
     if (isset($account->middlename)) {
-      $_SESSION['full_name'] = ucwords(strtolower($account->firstname . ' ' . $account->middlename . ' ' . $account->lastname));
+      $_SESSION['fullname'] = ucwords(strtolower($account->firstname . ' ' . $account->middlename . ' ' . $account->lastname));
     } else {
-      $_SESSION['full_name'] = ucwords(strtolower($account->firstname . ' ' . $account->lastname));
+      $_SESSION['fullname'] = ucwords(strtolower($account->firstname . ' ' . $account->lastname));
     }
 
     if ($_SESSION['user_role'] == 2) {

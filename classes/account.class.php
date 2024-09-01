@@ -26,7 +26,7 @@ class Account
 
     function sign_in_account()
     {
-        $sql = "SELECT account WHERE email = :email LIMIT 1;";
+        $sql = "SELECT * FROM account WHERE email = :email LIMIT 1;";
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':email', $this->email);
 
