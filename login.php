@@ -80,7 +80,7 @@
             <div class="form-group">
               <button id="signUp" class="btn text-white signup" type="submit" name="signup">Sign up</button>
             </div>
-            <p class="text-center">New Here? <span id="goLeft" class="signup off text-secondary"  style="cursor: pointer;">Log In</span> </p>
+            <p class="text-center">Already have an account? <span id="goLeft" class="signup off text-secondary"  style="cursor: pointer;">Log In</span> </p>
           </form>
         </div>
       </div>
