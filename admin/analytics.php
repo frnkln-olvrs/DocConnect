@@ -29,15 +29,15 @@
       </div>
 
       <div class="col-12 col-lg-6 d-flex flex-column justify-content-start p-3 border border-danger-subtle shadow-lg rounded-1 ms-lg-3">
-        <div class="row row-cols-2">
-          <div class="col" id="campusA">
-            Campus A Data: <?php echo $percentages[0]; ?>
+        <div class="row row-cols-2 mx-2">
+          <div class="col mb-2 d-flex justify-content-start p-0" id="campusA">
+            <p class="m-0 text-center">Campus A: <strong><?php echo $percentages[0]; ?></strong></p>
           </div>
-          <div class="col" id="campusB">
-            Campus B Data: <?php echo $percentages[1]; ?>
+          <div class="col mb-2 d-flex justify-content-start p-0" id="campusA">
+            <p class="m-0 text-center">Campus B: <strong><?php echo $percentages[1]; ?></strong></p>
           </div>
-          <div class="col" id="campusC">
-            Campus C Data: <?php echo $percentages[2]; ?>
+          <div class="col mb-2 d-flex justify-content-start p-0" id="campusA">
+            <p class="m-0 text-center">Campus C: <strong><?php echo $percentages[2]; ?></strong></p>
           </div>
         </div>
       </div>
@@ -84,6 +84,6 @@
 
   <script src="./js/analytics-lineChart.js"></script>
   <script src="./js/analytics-donutChart.js"></script>
-  
+
 </body>
 </html>
