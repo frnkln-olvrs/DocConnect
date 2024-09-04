@@ -30,13 +30,13 @@
 
       <div class="col-12 col-lg-6 d-flex flex-column justify-content-start p-3 border border-danger-subtle shadow-lg rounded-1 ms-lg-3">
         <div class="row row-cols-2 mx-2">
-          <div class="col mb-2 d-flex justify-content-start p-0" id="campusA">
+          <div class="col mb-2 d-flex justify-content-start p-3 border border-1 border-primary" id="campusA">
             <p class="m-0 text-center">Campus A: <strong><?php echo $percentages[0]; ?></strong></p>
           </div>
-          <div class="col mb-2 d-flex justify-content-start p-0" id="campusA">
+          <div class="col mb-2 d-flex justify-content-start p-3 border border-1 border-primary" id="campusA">
             <p class="m-0 text-center">Campus B: <strong><?php echo $percentages[1]; ?></strong></p>
           </div>
-          <div class="col mb-2 d-flex justify-content-start p-0" id="campusA">
+          <div class="col mb-2 d-flex justify-content-start p-3 border border-1 border-primary" id="campusA">
             <p class="m-0 text-center">Campus C: <strong><?php echo $percentages[2]; ?></strong></p>
           </div>
         </div>
