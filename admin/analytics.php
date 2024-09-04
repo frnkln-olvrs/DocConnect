@@ -24,7 +24,7 @@
   <section id="analytics" class="page-container">
 
     <div class="row justify-content-center mb-3">
-      <div class="col-12 col-lg-5 d-flex flex-column justify-content-center py-2 px-0 border border-danger-subtle shadow-lg rounded-1 me-lg-3 mb-lg-0 mb-3">
+      <div class="col-12 col-lg-5 d-flex flex-column justify-content-center p-3 border border-danger-subtle shadow-lg rounded-1 me-lg-3 mb-lg-0 mb-3">
         <canvas id="barGraph" class="bar" role="img"></canvas>
       </div>
 
@@ -84,54 +84,7 @@
 
   <script src="./js/analytics-lineChart.js"></script>
   <script src="./js/analytics-donutChart.js"></script>
-  <script>
-  // Define the data for the bar graph
-const barData = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [{
-    label: 'My First Dataset',
-    data: [65, 59, 80, 81, 56, 55, 40],
-    backgroundColor: [
-      'rgba(255, 99, 132, 0.2)',
-      'rgba(255, 159, 64, 0.2)',
-      'rgba(255, 205, 86, 0.2)',
-      'rgba(75, 192, 192, 0.2)',
-      'rgba(54, 162, 235, 0.2)',
-      'rgba(153, 102, 255, 0.2)',
-      'rgba(201, 203, 207, 0.2)'
-    ],
-    borderColor: [
-      'rgb(255, 99, 132)',
-      'rgb(255, 159, 64)',
-      'rgb(255, 205, 86)',
-      'rgb(75, 192, 192)',
-      'rgb(54, 162, 235)',
-      'rgb(153, 102, 255)',
-      'rgb(201, 203, 207)'
-    ],
-    borderWidth: 1
-  }]
-};
-
-// Configuration options for the bar graph
-const barConfig = {
-  type: 'bar',
-  data: barData,
-  options: {
-    indexAxis: 'y', // Display the bars horizontally
-    scales: {
-      x: {
-        beginAtZero: true
-      }
-    }
-  }
-};
-
-// Initialize the bar chart
-const barCtx = document.getElementById('barGraph').getContext('2d');
-const barChart = new Chart(barCtx, barConfig);
-
-</script>
+  <script src="./js/analytics-barGraph.js"></script>
 
 </body>
 </html>
