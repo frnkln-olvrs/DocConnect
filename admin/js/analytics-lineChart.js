@@ -1,15 +1,4 @@
-document.getElementById('yearSelect').addEventListener('change', function() {
-  const yearMap = {
-    '1': '2021-2022',
-    '2': '2022-2023',
-    '3': '2023-2024'
-  };
-  const selectedYear = yearMap[this.value];
-  updateChart(campusChart, data[selectedYear].campus);
-  updateTypeChart(typeChart, data[selectedYear].type);
-});
-
-const xValues = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov'];
+const xValues = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
 
 const data = {
   "2021-2022": {
@@ -19,8 +8,8 @@ const data = {
       camp_c: [78, 230, 250, 450, 630, 250, 450, 650, 820, 900, 910]
     },
     type: {
-      yCampus1: [110, 300, 500, 450, 400, 400, 475, 500, 390, 350, 400],
-      yCampus2: [100, 90, 50, 100, 109, 160, 230, 190, 290, 130, 140]
+      yCampus1: [100, 90, 50, 100, 109, 160, 230, 190, 290, 130, 140],
+      yCampus2: [110, 300, 500, 450, 400, 400, 475, 500, 390, 350, 400]
     }
   },
   "2022-2023": {
@@ -92,9 +81,9 @@ const campusChart = new Chart("campusChart", {
     ]
   },
   options: {
-    legend: {display: true},
+    legend: { display: true },
     scales: {
-      yAxes: [{ticks: {min: 0, max: 1000}}],
+      yAxes: [{ ticks: { min: 0, max: 1000 } }],
     }
   }
 });
@@ -123,9 +112,9 @@ const typeChart = new Chart("typeChart", {
     ]
   },
   options: {
-    legend: {display: true},
+    legend: { display: true },
     scales: {
-      yAxes: [{ticks: {min: 0, max: 600}}],
+      yAxes: [{ ticks: { min: 0, max: 600 } }],
     }
   }
 });

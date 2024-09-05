@@ -15,19 +15,21 @@
   ?>
 
   <section id="appointment" class="page-container">
-    <h1 class="text-center mb-3">Staff</h1>
+    <h1 class="text-start mb-3">Staff</h1>
 
     <div class="table-responsive overflow-hidden">
-      <div class="col-12 flex-lg-grow-0 d-flex justify-content-end">
-        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1 me-3">
+      <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-between justify-content-md-end mb-3 mb-md-0">
+        
+        <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1 me-0 me-md-4">
           <i class='bx bx-search-alt text-green ps-2'></i>
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
         </div>
 
-        <a href="./add_staff" class="input-group bg-success d-flex align-items-center border border-1 rounded-1" style="width: 10%;">
+        <a href="./add_doctorAcc" class="input-group bg-success d-flex  justify-content-center align-items-center border border-1 rounded-1 p-1" style="width: 13%;">
           <i class='bx bx-plus text-white fs-4 ps-2 me-2'></i>
-          <p class="m-0 text-white">Add staff</p>
+          <p class="m-0 text-white d-none d-lg-block">Add Doctor</p>
         </a>
+
       </div>
     </div>
 
@@ -130,7 +132,7 @@
             <td><?= $item['email'] ?></td>
             <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
             <td class="d-flex justify-content-around align-items-center text-center">
-              <a href="./add_staff?= $item['acc-id'] ?>" title="View Details">
+              <a href="./add_staffAcc?= $item['acc-id'] ?>" title="View Details">
                 <i class='bx bx-edit-alt' ></i>
               </a>
               <button class="delete-btn bg-none" data-subject-id="<?= $item['id'] ?>">

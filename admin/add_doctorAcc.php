@@ -1,6 +1,6 @@
 <html lang="en">
 <?php
-  $title = 'Campuses | Add User';
+  $title = 'Campuses | Add Doctor';
   include './includes/admin_head.php';
   function getCurrentPage() {
     return basename($_SERVER['PHP_SELF']);
@@ -22,7 +22,7 @@
       <div class="col-12 col-md-8">
         <form>
           <div class="border shadow p-3 mb-5 bg-body rounded">
-            <h3 class="text-center">Add Patient</h3>
+            <h3 class="text-center">Add Doctor</h3>
             
             <hr class="my-3 mx-4">
 
@@ -41,7 +41,7 @@
               </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-2">
               <label for="email">Email address</label>
               <input type="email" class="form-control" id="email" placeholder="name@example.com">
             </div>
@@ -57,55 +57,29 @@
             </div>
 
             <div class="form-group mb-2">
-              <label for="reg_date">RegistrationDate</label>
-              <input type="date" class="form-control" id="reg_date" placeholder="MM/DD/YYYY">
+              <label for="specialty">Specialties</label>
+              <select class="form-select" aria-label="Default select example">
+                
+                <option selected>Open this select menu</option>
+                <option value="1">Family Medicine</option>
+              </select>
             </div>
 
-            <div class="row row-cols-1 row-cols-md-3">
-              
-              <div class="form-group mb-2">
-                <label for="DoB">Campus</label>
-                <select class="form-select" aria-label="Default select example">
-                  
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-
-              <div class="form-group mb-2">
-                <label for="app-hist">Appointment History</label>
-                <input type="number" class="form-control" id="hist" placeholder="No. of Appointment">
-              </div>
-
-              <div class="form-group mb-2">
-                <label for="status">Status</label>
-                <div class="d-flex flex-row justify-content-around">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      Active
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
-                      Inactive
-                    </label>
-                  </div>
-
-                </div>
+            <div class="form-group mb-2">
+              <label for="work-hours">Workin Hours</label>
+              <div class="d-flex align-items-center">
+                <input type="time" class="form-control" id="work-hours" placeholder="">
+                <p class="m-0 mx-3"> to </p>
+                <input type="time" class="form-control" id="work-hours" placeholder="">
               </div>
             </div>
-
-
-
+            
+            
 
             <!-- Save and Cancel Buttons -->
             <div class="d-flex justify-content-end mt-3">
-              <a href="./usersAcc.php" class="btn btn-secondary me-2 link-light">Cancel</a>
-              <button type="submit" class="btn btn-primary link-light">Save</button>
+              <a href="./doctorsAcc" class="btn btn-secondary me-2 link-light">Cancel</a>
+              <button type="submit" class="btn btn-primary link-light">Add</button>
             </div>
           </div>
         </form>

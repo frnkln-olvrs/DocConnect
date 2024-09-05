@@ -17,7 +17,7 @@
   <section id="users" class="page-container">
     <h1 class="text-center my-3">Users</h1>
 
-    <div class="container text-center mt-5 px-5">
+    <div class="container text-center mt-5 px-1 px-md-5">
       <ul class="list-group">
         <a href="./doctorsAcc" class="d-flex justify-content-center">
           <li class="list-group-item my-2 p-2 border-0 w-75">
