@@ -9,9 +9,9 @@
     require_once ('../includes/header.php');
   ?>
 
-  <section class="padding-medium mt-5 pt-3 p-3">
+  <section class="page-container padding-medium pt-3 p-3">
     <div class="border-primary border-bottom">
-      <h1 class="mt-5 text-green">Our Doctors</h1>
+      <h1 class="text-green">Our Doctors</h1>
       <p class="fs-5 fw-light">
         At Western Mindanao State University, we pride ourselves on providing high-quality 
         telecommunication health services to our students, faculty, and staff. Our team of 
