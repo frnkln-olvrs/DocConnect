@@ -27,13 +27,57 @@
         <div class="col-lg-4">
           <div class="card mb-4">
             <div class="card-body text-center">
-              <img src="../assets/images/profile_img.jpg" alt="avatar" class="rounded-3 img-fluid" style="width: 150px;">
-              <h5 class="my-3">John Smith</h5>
-              <p class="text-muted mb-1">Full Stack Developer</p>
-              <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
-              <div class="d-flex justify-content-center mb-2">
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Follow</button>
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">Message</button>
+              <img src="../assets/images/profile_img.jpg" alt="avatar" class="rounded-3 shadow-lg img-fluid" style="width: 150px;">
+              <h4 class="my-3">Fname Lname</h4>
+              <!-- <p class="text-success mb-4">Active</p> -->
+              <div class="details">
+                <div class="d-flex mx-5 mx-md-4">
+                  <p class="text-muted text-start w-75">Gender</p>
+                  <div class="text-start w-25">
+                    <p class="text-black">Male</p>
+                  </div>
+                </div>
+                <div class="d-flex mx-5 mx-md-4">
+                  <p class="text-muted text-start w-75">Age</p>
+                  <div class="text-start w-25">
+                    <p class="text-black">21</p>
+                  </div>
+                </div>
+                <div class="d-flex mx-5 mx-md-4">
+                  <p class="text-muted text-start w-75">Height</p>
+                  <div class="text-start w-25">
+                    <p class="text-black">171cm</p>
+                  </div>
+                </div>
+                <div class="d-flex mx-5 mx-md-4">
+                  <p class="text-muted text-start w-75">Weight</p>
+                  <div class="text-start w-25">
+                    <p class="text-black">157kg</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-body text-start">
+              <h4 class="text-muted mb-2">Allergies</h4>
+              <div class="d-flex mx-5 mx-md-4">
+                <p class="text-muted text-start w-75">Peicillin</p>
+                <div class="text-start w-25">
+                  <p class="text-danger">High</p>
+                </div>
+              </div>
+              <div class="d-flex mx-5 mx-md-4">
+                <p class="text-muted text-start w-75">Peicillin</p>
+                <div class="text-start w-25">
+                  <p class="text-warning">Medium</p>
+                </div>
+              </div>
+              <div class="d-flex mx-5 mx-md-4">
+                <p class="text-muted text-start w-75">Peicillin</p>
+                <div class="text-start w-25">
+                  <p class="text-success">Low</p>
+                </div>
               </div>
             </div>
           </div>
