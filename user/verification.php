@@ -65,8 +65,12 @@ function getCurrentPage()
           <div class="card-body">
             <form method="post" action="">
               <div class="mb-3">
-                <label for="verify" class="form-label">Verification Code</label>
-                <input type="text" class="form-control" id="verify" name="code" placeholder="Enter code" required>
+                <label for="code" class="px-3 form-label text-center text-dark">
+                  We've sent you 6-digit code to
+                  <span class="text-primary fw-semibold "><?= $_SESSION['email'] ?></span>,
+                  Enter the code below to verify your account.
+                </label>
+                <input type="text" class="form-control" id="verify" name="code" placeholder="Enter code">
                 <?php
                 if (isset($_POST['code']) && !validate_field($_POST['code']) && isset($_POST['verify'])) {
                 ?>
@@ -80,8 +84,11 @@ function getCurrentPage()
                 ?>
               </div>
               <div class="mb-3 text-end">
-                <input type="submit" id="resend-link" class="text-primary bg-white border-0" name="resend" value="Resend">
-                <span id="countdown" class="text-muted ms-1"></span>
+                <p class="text-dark m-0">
+                  Didn't received verification code?
+                  <input type="submit" class="text-primary text-decoration-none fw-semibold border-0 bg-white" id="input_resend" onclick="var rb = document.getElementById('input_resend');rb.setAttribute('hidden', 'true');var ss = document.getElementById('input_sending');ss.style.cursor = 'default';ss.removeAttribute('hidden');" name="resend" value="Resend Code">
+                  <span id="input_sending" class="text-primary fw-semibold" hidden>Sending!</span>
+                </p>
               </div>
               <input type="submit" class="btn btn-primary text-light w-100" name="verify" value="Submit">
             </form>
@@ -95,33 +102,7 @@ function getCurrentPage()
     </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var countdownElement = document.getElementById("countdown");
-      var resendLink = document.getElementById("resend-link");
-      var countdownTime = 60;
-
-      function startCountdown() {
-        var countdownInterval = setInterval(function() {
-          countdownElement.innerText = "[" + countdownTime + "]";
-
-          if (countdownTime <= 0) {
-            clearInterval(countdownInterval);
-            countdownElement.innerText = "";
-            resendLink.innerText = "Code expired, please resend!";
-            resendLink.href = "#"; // lagay lng link dto para sa resend
-            resendLink.classList.remove("disabled");
-          }
-
-          countdownTime--;
-        }, 1000);
-      }
-
-      resendLink.classList.add("disabled");
-
-      startCountdown();
-    });
-  </script>
+  
 </body>
 
 </html>
