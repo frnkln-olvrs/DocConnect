@@ -25,6 +25,8 @@
 
     <div class="row justify-content-center mb-3">
       <div class="col-12 col-lg-5 d-flex flex-column justify-content-center p-3 border border-danger-subtle shadow-lg rounded-1 me-lg-3 mb-lg-0 mb-3">
+        <h4 class="mx-2">Total Type of   users</h4>
+        <hr class="mx-4 mb-3">
         <canvas id="barGraph" class="bar" role="img"></canvas>
       </div>
 
