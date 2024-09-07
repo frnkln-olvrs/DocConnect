@@ -61,6 +61,7 @@
                   <option value="other">Other</option>
                 </select>
               </div>
+              
               <div class="form-group mb-2">
                 <label for="DoB">Date of Birth</label>
                 <input type="date" class="form-control" id="DoB" placeholder="MM/DD/YYYY">

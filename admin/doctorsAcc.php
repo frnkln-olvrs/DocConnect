@@ -52,8 +52,6 @@
           'specialties' => 'Family Medicine',
           'work-hour' => 'Mon-Fri, 9am - 5pa',
           'no.patients' => '10',
-          'rating' => '9/10',
-          'last-login' => '08/04/2024',
         ),
         array(
           'name' => 'Hilal Abdulajid',
@@ -64,8 +62,6 @@
           'specialties' => 'Family Medicine',
           'work-hour' => 'Mon-Fri, 9am - 5pa',
           'no.patients' => '10',
-          'rating' => '9/10',
-          'last-login' => '08/04/2024',
         ),
       );
       ?>
@@ -82,8 +78,8 @@
             <th scope="col">Specialties</th>
             <th scope="col">Working Hours</th>
             <th scope="col">Number of Patients</th>
-            <th scope="col">Patient Satisfaction</th>
-            <th scope="col">Last Login</th>
+            <!-- <th scope="col">Patient Satisfaction</th>
+            <th scope="col">Last Login</th> -->
             <th scope="col" width="7%">Action</th>
           </tr>
         </thead>
@@ -102,8 +98,8 @@
               <td><?= $item['specialties'] ?></td>
               <td><?= $item['work-hour'] ?></td>
               <td><?= $item['no.patients'] ?></td>
-              <td><?= $item['rating'] ?></td>
-              <td><?= $item['last-login'] ?></td>
+              <!-- <td><?= $item['rating'] ?></td>
+              <td><?= $item['last-login'] ?></td> -->
               
               <td class="text-center">
                 <div class="d-flex align-items-center justify-content-center">
