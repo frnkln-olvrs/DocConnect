@@ -35,7 +35,7 @@
 
         <a href="./add_usersAcc" class="input-group bg-success d-flex  justify-content-center align-items-center border border-1 rounded-1 p-1" style="width: 13%;">
           <i class='bx bx-plus text-white fs-4 ps-2 me-2'></i>
-          <p class="m-0 text-white d-none d-lg-block">Add Doctor</p>
+          <p class="m-0 text-white d-none d-lg-block">Add Patient</p>
         </a>
 
       </div>
@@ -47,6 +47,7 @@
           'name' => 'Franklin Oliveros',
           'acc-id' => '0000-001',
           'email' => 'frnki@email.com',
+          'gender' => 'Male',
           'phone-no' => '0992 345 6789',
           'DoB' => '02/29/2004',
           'reg-date' => '08/04/2024',
@@ -57,6 +58,7 @@
           'name' => 'Hilal Abdulajid',
           'acc-id' => '0000-002',
           'email' => 'hiraru@email.com',
+          'gender' => 'Male',
           'phone-no' => '0999 876 5432',
           'DoB' => '09/10/1978',
           'reg-date' => '08/01/2024',
@@ -73,6 +75,7 @@
             <th scope="col">Account Id</th>
             <th scope="col">Name</th>
             <th scope="col">Email Address</th>
+            <th scope="col">Gender</th>
             <th scope="col">Phone No.</th>
             <th scope="col">Date of Birth</th>
             <th scope="col">Registration Date</th>
@@ -91,6 +94,7 @@
               <td><?= $item['acc-id'] ?></td>
               <td><?= $item['name'] ?></td>
               <td><?= $item['email'] ?></td>
+              <td><?= $item['gender'] ?></td>
               <td><?= $item['phone-no'] ?></td>
               <td><?= $item['DoB'] ?></td>
               <td><?= $item['reg-date'] ?></td>
