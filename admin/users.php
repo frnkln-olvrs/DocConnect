@@ -51,14 +51,14 @@
           </li>
         </a>
 
-        <a href="./staffAcc" class="d-flex justify-content-center">
+        <a href="./moderatorsAcc" class="d-flex justify-content-center">
           <li class="list-group-item my-2 p-2 border-0 w-75">
             <div class="row align-items-center justify-content-center">
               <div class="col-2 p-0">
                 <i class='bx bx-group text-danger'></i>
               </div>
               <div class="col-9 text-start w-75">
-                <p class="fs-3 mb-0">Staff Accounts</p>
+                <p class="fs-3 mb-0">Moderator Accounts</p>
               </div>
               <div class="col-1 p-0">
                 <i class='bx bx-chevron-right fs-1'></i>
