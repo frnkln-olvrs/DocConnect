@@ -105,7 +105,7 @@
 
       <div class="dropdown text-end">
         <a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="./../assets/images/profile_img.jpg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light">
+          <img src="" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light">
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
           <li><a class="dropdown-item" href="#">New project...</a></li>
