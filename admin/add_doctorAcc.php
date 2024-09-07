@@ -50,10 +50,21 @@
               <label for="contact">Phone No.</label>
               <input type="text" class="form-control" id="contact" placeholder="+63 9xx xxx xxxx">
             </div>
-
-            <div class="form-group mb-2">
-              <label for="DoB">Date of Birth</label>
-              <input type="date" class="form-control" id="DoB" placeholder="MM/DD/YYYY">
+            
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="form-group mb-2">
+                <label for="gender">Gender</label>
+                <select class="form-select" aria-label="gender">
+                  <option selected>Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group mb-2">
+                <label for="DoB">Date of Birth</label>
+                <input type="date" class="form-control" id="DoB" placeholder="MM/DD/YYYY">
+              </div>
             </div>
 
             <div class="form-group mb-2">

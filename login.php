@@ -55,9 +55,20 @@
               <label for="DoB">Phone No.</label>
             </div>
 
-            <div class="form-floating mb-3">
-              <input type="date" class="form-control" id="contact" placeholder="MM/DD/YYYY" required>
-              <label for="contact">Date of Birth</label>
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="form-floating mb-3">
+                <select class="form-select" aria-label="Gender">
+
+                  <option selected>Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="date" class="form-control" id="contact" placeholder="MM/DD/YYYY" required>
+                <label for="contact">Date of Birth</label>
+              </div>
             </div>
 
             <div class="row row-cols-1 row-cols-md-2">
