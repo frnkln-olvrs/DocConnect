@@ -29,7 +29,7 @@
                   <i class="bx bxs-camera-plus"></i>
                   <span>Change Image</span>
                 </label>
-                <img src="../assets/images/bg-1.png" id="output" class="img-fluid rounded-3 w-75">
+                <img src="../assets/images/bg-1.png" id="output" class="img-fluid rounded-3 w-75 shadow-lg">
                 <input id="file" type="file" name="profile" accept="image/png, image/jpeg" onchange="validateFile(event)">
               </div>
             </div>
@@ -54,7 +54,7 @@
             <!-- Save and Cancel Buttons -->
             <div class="d-flex justify-content-end mt-3">
               <a href="./campus" class="btn btn-secondary me-2 link-light">Cancel</a>
-              <button type="submit" class="btn btn-primary link-light">Save</button>
+              <button type="submit" id="saveCampus" class="btn btn-primary link-light">Save</button>
             </div>
           </div>
         </form>
@@ -64,9 +64,9 @@
       <div class="col-2"></div>
 
     </div>
-
-    
   </section>
+
+  <script src="./js/imageChange.js"></script>
 
 </body>
 </html>
