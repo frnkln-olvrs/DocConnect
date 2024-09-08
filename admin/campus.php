@@ -43,7 +43,7 @@ function getCurrentPage()
     ?>
       <div class="row row-cols-1 row-cols-md-2 mx-1 mx-md-5">
         <div class="col p-0 mb-3">
-          <a href="./view_campus" class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
+          <a href="./view_campus.php?campus_id=<?= $item['campus_id'] ?>" class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
             <div class="card-body d-flex flex-column justify-content-between shadow-sm">
               <div class="align-content-center text-center">
                 <img src="<?php if (isset($item['campus_profile'])) {
