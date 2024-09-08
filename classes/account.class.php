@@ -113,4 +113,42 @@ class Account
             return false;
         }
     }
+
+    // doctor functions start
+    // fix laterr
+    function add_doctor()
+    {
+        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role);";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':email', $this->email);
+        $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+        $query->bindParam(':password', $hashedPassword);
+        $query->bindParam(':firstname', $this->firstname);
+        $query->bindParam(':middlename', $this->middlename);
+        $query->bindParam(':lastname', $this->lastname);
+        $query->bindParam(':user_role', $this->user_role);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    } 
+    
+
+    function show_doctors()
+    {
+        $sql = "SELECT * FROM account 
+        WHERE is_deleted != 1
+        ORDER BY account_id ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    // doctor functions end
 }
