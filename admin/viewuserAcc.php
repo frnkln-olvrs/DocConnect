@@ -66,8 +66,53 @@
                 <strong class="me-2">Number of Appointment(s):</strong>
                 <p>01</p>
               </div>
-
             </div> 
+
+            <hr class="mb-3">
+            <div class="row">
+              <div class="col d-flex ">
+                <strong class="me-2">Allergies:</strong>
+                <p>04</p>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="row row-cols-2 row-cols-md-3">
+                    <div class="col">
+                      <div class="d-flex mx-1 mx-md-3">
+                        <p class="m-0 text-muted text-start">
+                          Peicillin - 
+                          <span class="ms-1"><p class="m-0 text-danger">High</p></span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="d-flex mx-1 mx-md-3">
+                        <p class="m-0 text-muted text-start">
+                          Dust - 
+                          <span class="ms-1"><p class="m-0 text-warning">Medium</p></span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="d-flex mx-1 mx-md-3">
+                        <p class="m-0 text-muted text-start">
+                          Pollen - 
+                          <span class="ms-1"><p class="m-0 text-success">Low</p></span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="d-flex mx-1 mx-md-3">
+                        <p class="m-0 text-muted text-start">
+                          CatFur - 
+                          <span class="ms-1"><p class="m-0 text-warning">Medium</p></span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
 
