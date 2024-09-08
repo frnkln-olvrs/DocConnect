@@ -34,4 +34,15 @@ class Campus
             return false;
         }
     }
+
+    function show_campus()
+    {
+        $sql = "SELECT * FROM campus WHERE is_deleted != 1 ORDER BY campus_id ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
 }

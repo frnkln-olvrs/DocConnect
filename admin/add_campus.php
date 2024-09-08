@@ -91,7 +91,7 @@ function getCurrentPage()
                   <span>Change Image</span>
                 </label>
                 <img src="../assets/images/bg-1.png" id="output" class="img-fluid rounded-3 w-75">
-                <input id="file" type="file" name="campus_profile" accept=".jpg, .jpeg, .png" required>
+                <input id="file" type="file" name="campus_profile" accept=".jpg, .jpeg, .png" required onchange="validateFile(event)">
                 <?php
                 if (isset($_POST['campus_profile']) && !validate_field($_POST['campus_profile'])) {
                 ?>
@@ -163,6 +163,31 @@ function getCurrentPage()
 
 
   </section>
+  <?php
+  if (isset($_POST['save']) && $success == 'success') {
+  ?>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">New campus is successfully created!</h5>
+          </div>
+          <div class="modal-body">
+            <div class="row d-flex">
+              <div class="col-12 text-center">
+                <a href="./campus.php" class="text-decoration-none text-dark">
+                  <p class="m-0 text-primary fw-bold">Click to Continue</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+  ?>
+  <script src="../js/main.js"></script>
   <script src="./js/imageChange.js"></script>
 </body>
 
