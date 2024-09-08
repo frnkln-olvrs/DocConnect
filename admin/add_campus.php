@@ -19,7 +19,7 @@
 
       <div class="col-2"></div>
 
-      <div class="col-8">
+      <div class="col-12 col-md-8">
         <form>
           <div class="border shadow p-3 mb-5 bg-body rounded">
             <h3 class="text-center">Add Campus</h3>

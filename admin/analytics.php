@@ -25,19 +25,27 @@
 
     <div class="row justify-content-center mb-3">
       <div class="col-12 col-lg-5 d-flex flex-column justify-content-center p-3 border border-danger-subtle shadow-lg rounded-1 me-lg-3 mb-lg-0 mb-3">
+        <h4 class="mx-2">Total Type of   users</h4>
+        <hr class="mx-4 mb-3">
         <canvas id="barGraph" class="bar" role="img"></canvas>
       </div>
 
       <div class="col-12 col-lg-6 d-flex flex-column justify-content-start p-3 border border-danger-subtle shadow-lg rounded-1 ms-lg-3">
         <div class="row row-cols-2 mx-2">
-          <div class="col mb-2 d-flex justify-content-start p-3 border border-1 border-primary" id="campusA">
-            <p class="m-0 text-center">Campus A: <strong><?php echo $percentages[0]; ?></strong></p>
+          <div class="col mb-2 d-flex justify-content-center px-3" id="campusA">
+            <div class=" border border-1 border-primary w-100 p-2">
+              <p class="m-0 text-center">Campus A: <strong><?php echo $percentages[0]; ?></strong></p>
+            </div>
           </div>
-          <div class="col mb-2 d-flex justify-content-start p-3 border border-1 border-primary" id="campusA">
-            <p class="m-0 text-center">Campus B: <strong><?php echo $percentages[1]; ?></strong></p>
+          <div class="col mb-2 d-flex justify-content-center px-3" id="campusA">
+            <div class=" border border-1 border-primary w-100 p-2">
+              <p class="m-0 text-center">Campus B: <strong><?php echo $percentages[1]; ?></strong></p>
+            </div>
           </div>
-          <div class="col mb-2 d-flex justify-content-start p-3 border border-1 border-primary" id="campusA">
-            <p class="m-0 text-center">Campus C: <strong><?php echo $percentages[2]; ?></strong></p>
+          <div class="col mb-2 d-flex justify-content-center px-3" id="campusA">
+            <div class=" border border-1 border-primary w-100 p-2">
+              <p class="m-0 text-center">Campus C: <strong><?php echo $percentages[2]; ?></strong></p>
+            </div>
           </div>
         </div>
       </div>

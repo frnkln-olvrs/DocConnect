@@ -22,7 +22,7 @@
       <div class="col-12 col-md-8">
         <form>
           <div class="border shadow p-3 mb-5 bg-body rounded">
-            <h3 class="text-center">Add Staff</h3>
+            <h3 class="text-center">Add Moderator</h3>
             
             <hr class="my-3 mx-4">
 
@@ -41,15 +41,27 @@
               </div>
             </div>
 
-            <div class="form-group mb-2">
-              <label for="position">Position</label>
-              <select class="form-select" aria-label="Default select example">
-                
-                <option selected>Open this select menu</option>
-                <option value="1">Encoder</option>
-                <option value="2">some</option>
-                <option value="3">thing</option>
-              </select>
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="form-group mb-2">
+                  <label for="gender">Gender</label>
+                  <select class="form-select" aria-label="gender">
+                    <option selected>Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+  
+              <div class="form-group mb-2">
+                <label for="position">Position</label>
+                <select class="form-select" aria-label="Default select example">
+                  
+                  <option selected>Open this select menu</option>
+                  <option value="1">Encoder</option>
+                  <option value="2">some</option>
+                  <option value="3">thing</option>
+                </select>
+              </div>
             </div>
             
             <div class="form-group mb-2">
@@ -82,7 +94,7 @@
 
             <!-- Save and Cancel Buttons -->
             <div class="d-flex justify-content-end mt-3">
-              <a href="./staffs.php" class="btn btn-secondary me-2 link-light">Cancel</a>
+              <a href="./moderatorsAcc" class="btn btn-secondary me-2 link-light">Cancel</a>
               <button type="submit" class="btn btn-primary link-light">Add</button>
             </div>
           </div>

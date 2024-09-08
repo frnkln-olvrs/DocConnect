@@ -15,7 +15,7 @@
   ?>
 
   <section id="appointment" class="page-container">
-    <h1 class="text-start mb-3">Staff</h1>
+    <h1 class="text-start mb-3">Moderators</h1>
 
     <div class="table-responsive overflow-hidden">
       <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-between justify-content-md-end mb-3 mb-md-0">
@@ -25,9 +25,9 @@
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
         </div>
 
-        <a href="./add_doctorAcc" class="input-group bg-success d-flex  justify-content-center align-items-center border border-1 rounded-1 p-1" style="width: 13%;">
+        <a href="./add_moderatorAcc" class="input-group bg-success d-flex  justify-content-center align-items-center border border-1 rounded-1 p-1" style="width: 13%;">
           <i class='bx bx-plus text-white fs-4 ps-2 me-2'></i>
-          <p class="m-0 text-white d-none d-lg-block">Add Doctor</p>
+          <p class="m-0 text-white d-none d-lg-block">Add Moderator</p>
         </a>
 
       </div>
@@ -39,6 +39,7 @@
           'id' => '0001',
           'name' => 'Namor McKenzie',
           'position' => 'King',
+          'gender' => 'Male',
           'phone-no' => '+63 9xx xxx xxxx',
           'email' => 'email@email.com',
           'status' => 'Active',
@@ -47,6 +48,7 @@
           'id' => '0013',
           'name' => 'Bruce Wayne',
           'position' => 'Batman',
+          'gender' => 'Male',
           'phone-no' => '+63 9xx xxx xxxx',
           'email' => 'email@email.com',
           'status' => 'Inactive',
@@ -55,6 +57,7 @@
           'id' => '0027',
           'name' => 'Diana Prince',
           'position' => 'Manager',
+          'gender' => 'Female',
           'phone-no' => '+63 9xx xxx xxxx',
           'email' => 'diana.prince@themyscira.com',
           'status' => 'Active',
@@ -63,6 +66,7 @@
           'id' => '0034',
           'name' => 'Clark Kent',
           'position' => 'Reporter',
+          'gender' => 'Male',
           'phone-no' => '+63 9xx xxx xxxx',
           'email' => 'clark.kent@dailyplanet.com',
           'status' => 'Active',
@@ -71,6 +75,7 @@
           'id' => '0042',
           'name' => 'Tony Stark',
           'position' => 'Engineer',
+          'gender' => 'Male',
           'phone-no' => '+63 9xx xxx xxxx',
           'email' => 'tony.stark@starkindustries.com',
           'status' => 'Inactive',
@@ -79,6 +84,7 @@
           'id' => '0056',
           'name' => 'Peter Parker',
           'position' => 'Photographer',
+          'gender' => 'Male',
           'phone-no' => '+63 9xx xxx xxxx',
           'email' => 'peter.parker@dailybugle.com',
           'status' => 'Active',
@@ -87,6 +93,7 @@
           'id' => '0071',
           'name' => 'Natasha Romanoff',
           'position' => 'Spy',
+          'gender' => 'Female',
           'phone-no' => '+63 9xx xxx xxxx',
           'email' => 'natasha.romanoff@shield.com',
           'status' => 'Inactive',
@@ -111,6 +118,7 @@
           <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">Position</th>
+          <th scope="col">Gender</th>
           <th scope="col">Phone No.</th>
           <th scope="col">Email</th>
           <th scope="col">Status</th>
@@ -128,6 +136,7 @@
             <td><?= $item['id'] ?></td>
             <td><?= $item['name'] ?></td>
             <td><?= $item['position'] ?></td>
+            <td><?= $item['gender'] ?></td>
             <td><?= $item['phone-no'] ?></td>
             <td><?= $item['email'] ?></td>
             <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
