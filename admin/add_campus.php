@@ -163,7 +163,7 @@ function getCurrentPage()
 
 
   </section>
-
+  <script src="./js/imageChange.js"></script>
 </body>
 
 </html>
