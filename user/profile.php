@@ -61,24 +61,44 @@
           <div class="card mb-4">
             <div class="card-body text-start">
               <h4 class="text-muted mb-2">Allergies</h4>
+
+              <?php
+                $allergies = [
+                  ['name' => 'Penicillin', 'level' => 'High'],
+                  ['name' => 'Dust', 'level' => 'Medium'],
+                  ['name' => 'Pollen', 'level' => 'Low'],
+                  ['name' => 'Cat Fur', 'level' => 'Medium']
+                ];
+
+                foreach ($allergies as $allergy) {
+                  $levelClass = '';
+                  switch (strtolower($allergy['level'])) {
+                    case 'high':
+                      $levelClass = 'text-danger';
+                      break;
+                    case 'medium':
+                      $levelClass = 'text-warning';
+                      break;
+                    case 'low':
+                      $levelClass = 'text-success';
+                      break;
+                    default:
+                      $levelClass = 'text-secondary';
+                      break;
+                  }
+              ?>
+
               <div class="d-flex mx-5 mx-md-4">
-                <p class="text-muted text-start w-75">Peicillin</p>
+                <p class="text-muted text-start w-75"><?php echo $allergy['name']; ?></p>
                 <div class="text-start w-25">
-                  <p class="text-danger">High</p>
+                  <p class="<?php echo $levelClass; ?>"><?php echo $allergy['level']; ?></p>
                 </div>
               </div>
-              <div class="d-flex mx-5 mx-md-4">
-                <p class="text-muted text-start w-75">Peicillin</p>
-                <div class="text-start w-25">
-                  <p class="text-warning">Medium</p>
-                </div>
-              </div>
-              <div class="d-flex mx-5 mx-md-4">
-                <p class="text-muted text-start w-75">Peicillin</p>
-                <div class="text-start w-25">
-                  <p class="text-success">Low</p>
-                </div>
-              </div>
+
+              <?php 
+                }
+              ?>
+
             </div>
           </div>
           <div class="card mb-4 mb-lg-0">
