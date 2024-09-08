@@ -4,12 +4,12 @@
   $title = 'Appointment';
 	include '../includes/head.php';
 ?>
-<body class="pt-5">
+<body>
   <?php 
     require_once ('../includes/header.php');
   ?>
 
-  <section id="appointment" class="padding-medium mt-5 mx-5">
+  <section id="appointment" class="page-container padding-medium p-3">
     <div class="row mb-3">
       <div class="col-sm-12 col-md-8">
         <div class="border border-dark-subtle shadow-sm rounded-2 p-3 mb-4 mb-md-0">

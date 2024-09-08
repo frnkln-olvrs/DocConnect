@@ -9,8 +9,8 @@
     require_once ('../includes/header.php');
   ?>
 
-  <section id="services" class="padding-medium mt-5 py-2">
-    <div class="container mt-4 mb-4 pt-2">
+  <section id="services" class="padding-medium page-container">
+    <div class="container mb-4">
       <div class="p-3 pb-md-4 mx-auto text-center">
         <h1 class="display-6 fw-normal">Telecommunication Health Services</h1>
         <p class="fs-5 text-muted mx-5">

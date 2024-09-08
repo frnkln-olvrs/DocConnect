@@ -9,8 +9,8 @@
     require_once ('../includes/header.php');
   ?>
   
-  <section class="about-section px-3 px-md-5">
-    <div class="row mb-5">
+  <section  class="about-section page-container px-3 px-md-5">
+    <div class="row pt-4 mb-5">
       <div class="col-8">
         <div class="sec-title">
           <span class="title">About Us:</span>

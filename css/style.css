@@ -153,6 +153,11 @@ section.main {
   margin: 0;
 }
 
+/* PAGE CONTAINER */
+.page-container {
+  margin-top: 77px;
+}
+
 /* HEADER NAVLINKS */
 ul.header.nav .nav-link {
 	position: relative;
@@ -288,9 +293,9 @@ section#chat #chat_text {
 }
 
 /* ABOUT US SECTION */
-section.about-section {
+/* section.about-section {
   margin-top: 100px;
-}
+} */
 
 /* CONTACT SECTION */
 section.main.contact {
