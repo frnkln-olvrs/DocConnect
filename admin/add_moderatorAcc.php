@@ -81,7 +81,7 @@ function getCurrentPage()
               </div>
 
               <div class="form-group mb-2">
-                <label for="position">Campus</label>
+                <label for="position">Campus</label>  
                 <select class="form-select" aria-label="Default select example">
 
                   <option selected>Open this select menu</option>
