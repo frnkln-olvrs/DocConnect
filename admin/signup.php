@@ -97,7 +97,7 @@ function getCurrentPage()
                   <?php
                   if (isset($_POST['lastname']) && !validate_field($_POST['lastname'])) {
                   ?>
-                    <p class="text-dark m-0 ps-2">First name is required.</p>
+                    <p class="text-dark m-0 ps-2">Last name is required.</p>
                   <?php
                   }
                   ?>
