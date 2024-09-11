@@ -123,6 +123,7 @@
           
           <div class="card bg-body-tertiary mb-4">
             <div class="card-body">
+              <h4 class="text-muted mb-3">Personal Information</h4>
               <div class="row row-cols-2">
                 <div class="col">
                   <div class="row">
@@ -148,19 +149,28 @@
                       <p class="mb-0">Phone</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">(097) 234-5678</p>
+                      <p class="text-muted mb-0">+63 998 765 4321</p>
                     </div>
                   </div>
                   <hr>
-                  
                 </div>
+
                 <div class="col">
                   <div class="row">
                     <div class="col-sm-3">
-                      <p class="mb-0">Mobile</p>
+                      <p class="mb-0">Occupation</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">(098) 765-4321</p>
+                      <p class="text-muted mb-0">Student</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">School Id</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">2021-00890</p>
                     </div>
                   </div>
                   <hr>
@@ -169,78 +179,72 @@
                       <p class="mb-0">Address</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                      <p class="text-muted mb-0">Normal Rd, Zamboanga, 7000 Zamboanga del Sur</p>
                     </div>
                   </div>
-                  
+                  <hr>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
-              <div class="card mb-4 mb-md-0">
+            <div class="col-md-12">
+              <div class="card bg-body-tertiary mb-4 mb-md-0">
                 <div class="card-body">
-                  <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
-                  </p>
-                  <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                  <div class="progress rounded" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                  <div class="progress rounded" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                  <div class="progress rounded" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                  <div class="progress rounded" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                  <div class="progress rounded mb-2" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="card mb-4 mb-md-0">
-                <div class="card-body">
-                  <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
-                  </p>
-                  <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                  <div class="progress rounded" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                  <div class="progress rounded" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                  <div class="progress rounded" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                  <div class="progress rounded" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                  <div class="progress rounded mb-2" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
+                  <h4 class="text-muted mb-3">Used Drus</h4>
+                  <?php
+                  $appointment_array = array(
+                    array(
+                      'brandName' => 'Amoxicillin',
+                      'genericName' => 'Amoxicillin',
+                      'strenght' => '250mg',
+                      'pack' => '100',
+                      'from' => 'Tab',
+                      'manufacturer' => 'Apotex Industries',
+                    ),
+                    array(
+                      'brandName' => 'Amoxicillin',
+                      'genericName' => 'Amoxicillin',
+                      'strenght' => '250mg',
+                      'pack' => '100',
+                      'from' => 'Tab',
+                      'manufacturer' => 'Apotex Industries',
+                    ),
+                  );
+                  ?>
+                  
+                  <table id="usersAcc_table" class="table table-striped" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th scope="col" width="3%">#</th>
+                        <th scope="col">Brand Name</th>
+                        <th scope="col">Generic Name</th>
+                        <th scope="col">Strenght</th>
+                        <th scope="col">Pack</th>
+                        <th scope="col">From</th>
+                        <th scope="col">Manufacturer</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $counter = 1;
+                      foreach ($appointment_array as $item) {
+                      ?>
+                        <tr>
+                          <td><?= $counter ?></td>
+                          <td><?= $item['brandName'] ?></td>
+                          <td><?= $item['genericName'] ?></td>
+                          <td><?= $item['strenght'] ?></td>
+                          <td><?= $item['pack'] ?></td>
+                          <td><?= $item['from'] ?></td>
+                          <td><?= $item['manufacturer'] ?></td>
+                        </tr>
+                      <?php
+                        $counter++;
+                      }
+                      ?>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
