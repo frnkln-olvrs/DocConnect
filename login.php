@@ -50,14 +50,25 @@
               <label for="email">Email address</label>
             </div>
 
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="DoB" placeholder="+63 9xx xxx xxxx" required>
-              <label for="DoB">Phone No.</label>
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="DoB" placeholder="+63 9xx xxx xxxx" required>
+                <label for="DoB" class="p-0 ps-4 pt-3">Phone No.</label>
+              </div>
+              <div class="form-floating mb-3">
+                <select class="form-select" aria-label="Campus" required>
+
+                  <option selected>Campus</option>
+                  <option value="campA">Campus A</option>
+                  <option value="campB">Campus B</option>
+                  <option value="campC">Campus C</option>
+                </select>
+              </div>
             </div>
 
             <div class="row row-cols-1 row-cols-md-2">
               <div class="form-floating mb-3">
-                <select class="form-select" aria-label="Gender">
+                <select class="form-select" aria-label="Gender" required>
 
                   <option selected>Gender</option>
                   <option value="male">Male</option>
