@@ -155,7 +155,7 @@ function getCurrentPage()
             </div>
             <div class="form-group mb-2">
               <label for="contact">Phone No.</label>
-              <input type="text" class="form-control" name="contact" id="contact" placeholder="+63 9xx xxx xxxx" value="<?= isset($_POST['contact']) ? $_POST['contact'] : '' ?>">
+              <input type="number" class="form-control" name="contact" id="contact" placeholder="+63 9xx xxx xxxx" value="<?= isset($_POST['contact']) ? $_POST['contact'] : '' ?>">
               <?php
               if (isset($_POST['contact']) && !validate_field($_POST['contact'])) {
               ?>
@@ -250,7 +250,7 @@ function getCurrentPage()
             <div class="row d-flex">
               <div class="col-12 text-center">
                 <a href="./moderatorsAcc" class="text-decoration-none text-dark">
-                  <p class="m-0 text-primary fw-bold">Login to verify your account.</p>
+                  <p class="m-0 text-primary fw-bold">Login to verify the moderator account.</p>
                 </a>
               </div>
             </div>

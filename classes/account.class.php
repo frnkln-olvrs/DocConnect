@@ -119,7 +119,7 @@ class Account
     // fix laterr
     function add_doctor()
     {
-        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role);";
+        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role, contact, birthdate) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role, :contact, :birthdate);";
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':email', $this->email);
@@ -129,6 +129,8 @@ class Account
         $query->bindParam(':middlename', $this->middlename);
         $query->bindParam(':lastname', $this->lastname);
         $query->bindParam(':user_role', $this->user_role);
+        $query->bindParam(':contact', $this->contact);
+        $query->bindParam(':birthdate', $this->birthdate);
 
         if ($query->execute()) {
             return true;
