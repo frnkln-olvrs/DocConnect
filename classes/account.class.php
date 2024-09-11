@@ -117,9 +117,9 @@ class Account
 
     // doctor functions start
     // fix laterr
-    function add_doctor()
+    function add_doc()
     {
-        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role, contact, birthdate) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role, :contact, :birthdate);";
+        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role, contact, birthdate, gender) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role, :contact, :birthdate, :gender);";
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':email', $this->email);
@@ -131,6 +131,7 @@ class Account
         $query->bindParam(':user_role', $this->user_role);
         $query->bindParam(':contact', $this->contact);
         $query->bindParam(':birthdate', $this->birthdate);
+        $query->bindParam(':gender', $this->gender);
 
         if ($query->execute()) {
             return true;

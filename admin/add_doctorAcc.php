@@ -9,7 +9,6 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
 
 require_once '../tools/functions.php';
 require_once '../classes/account.class.php';
-require_once '../classes/campus.class.php';
 
 $account = new Account();
 
@@ -23,24 +22,24 @@ if (isset($_POST['add'])) {
   } else {
     $account->middlename = '';
   }
-  $account->campus_id = htmlentities($_POST['campus']);
+  $account->birthdate = htmlentities($_POST['birthdate']);
   $account->gender = htmlentities($_POST['gender']);
   $account->lastname = ucfirst(strtolower(htmlentities($_POST['lastname'])));
-  $account->user_role = 2; // user_role (0 = admin, 1 = mod, 2 = user)
+  $account->user_role = 1; // user_role (0 = admin, 1 = doc, 2 = mod, 3 = user)
 
   if (
     validate_field($account->email) &&
     validate_field($account->password) &&
     validate_field($account->firstname) &&
     validate_field($account->lastname) &&
-    validate_password($account->gender) &&
-    validate_password($account->campus_id) &&
+    validate_field($account->gender) &&
+    validate_field($account->birthdate) &&
     validate_password($account->password) &&
     validate_cpw($account->password, $_POST['confirm-password']) &&
     validate_email($account->email) == 'success' && !$account->is_email_exist() &&
     validate_wmsu_email($account->email)
   ) {
-    if ($account->add_mod()) {
+    if ($account->add_doc()) {
       $success = 'success';
     } else {
       echo 'An error occured while adding in the database.';
@@ -54,18 +53,20 @@ if (isset($_POST['add'])) {
 
 <html lang="en">
 <?php
-  $title = 'Campuses | Add Doctor';
-  include './includes/admin_head.php';
-  function getCurrentPage() {
-    return basename($_SERVER['PHP_SELF']);
-  }
+$title = 'Campuses | Add Doctor';
+include './includes/admin_head.php';
+function getCurrentPage()
+{
+  return basename($_SERVER['PHP_SELF']);
+}
 ?>
+
 <body>
   <?php
-    require_once ('./includes/admin_header.php');
+  require_once('./includes/admin_header.php');
   ?>
   <?php
-    require_once ('./includes/admin_sidepanel.php');
+  require_once('./includes/admin_sidepanel.php');
   ?>
 
   <section id="add_campus" class="page-container">
@@ -74,10 +75,10 @@ if (isset($_POST['add'])) {
       <div class="col-2"></div>
 
       <div class="col-12 col-md-8">
-        <form>
+        <form method="post" action="">
           <div class="border shadow p-3 mb-5 bg-body rounded">
             <h3 class="text-center">Add Doctor</h3>
-            
+
             <hr class="my-3 mx-4">
 
             <div class="row row-cols-1 row-cols-md-3">
@@ -123,9 +124,16 @@ if (isset($_POST['add'])) {
 
             <div class="form-group mb-2">
               <label for="contact">Phone No.</label>
-              <input type="text" class="form-control" id="contact" placeholder="+63 9xx xxx xxxx">
+              <input type="number" class="form-control" name="contact" id="contact" placeholder="+63 9xx xxx xxxx" value="<?= isset($_POST['contact']) ? $_POST['contact'] : '' ?>">
+              <?php
+              if (isset($_POST['contact']) && !validate_field($_POST['contact'])) {
+              ?>
+                <p class="text-dark m-0 ps-2">Contact is required.</p>
+              <?php
+              }
+              ?>
             </div>
-            
+
             <div class="row row-cols-1 row-cols-md-2">
               <div class="form-group mb-2">
                 <label for="gender">Gender</label>
@@ -143,35 +151,63 @@ if (isset($_POST['add'])) {
                 }
                 ?>
               </div>
-              
+
               <div class="form-group mb-2">
                 <label for="DoB">Date of Birth</label>
-                <input type="date" class="form-control" id="DoB" placeholder="MM/DD/YYYY">
+                <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="MM/DD/YYYY" value="<?= isset($_POST['birthdate']) ? $_POST['birthdate'] : '' ?>">
+                <?php
+                if (isset($_POST['birthdate']) && !validate_field($_POST['birthdate'])) {
+                ?>
+                  <p class="text-dark m-0 ps-2">Birthdate is required.</p>
+                <?php
+                }
+                ?>
               </div>
             </div>
-
+            <!-- 
             <div class="form-group mb-2">
-              <label for="specialty">Specialties</label>
-              <select class="form-select" aria-label="Default select example">
-                
-                <option selected>Open this select menu</option>
-                <option value="1">Family Medicine</option>
-              </select>
+              <label for="fname">Job Title</label>
+              <input type="text" class="form-control" id="firstname" name="jobtitle" required placeholder="Job Title" value="<?= isset($_POST['jobtitle']) ? $_POST['jobtitle'] : '' ?>">
+              <?php
+              // if (isset($_POST['jobtitle']) && !validate_field($_POST['jobtitle'])) {
+              ?>
+                <p class="text-dark m-0 ps-2">Job title is required.</p>
+              <?php
+              //}
+              ?>
             </div>
 
             <div class="form-group mb-2">
               <label for="work-hours">Workin Hours</label>
               <div class="d-flex align-items-center">
-                <input type="time" class="form-control" id="work-hours" placeholder="">
+                <input type="time" class="form-control" id="work-hours" name="startwh" placeholder="">
                 <p class="m-0 mx-3"> to </p>
-                <input type="time" class="form-control" id="work-hours" placeholder="">
+                <input type="time" class="form-control" id="work-hours" name="endwh" placeholder="">
               </div>
-            </div>
+              <?php
+              //if (isset($_POST['startwh']) && !validate_field($_POST['startwh'])) {
+              ?>
+                <p class="text-dark m-0 ps-2">Start working hours is required.</p>
+              <?php
+              //} else if (isset($_POST['endwh']) && !validate_field($_POST['endwh'])) {
+              ?>
+                <p class="text-dark m-0 ps-2">Start working hours is required.</p>
+              <?php
+              //} 
+              ?>
+            </div> -->
 
             <div class="row row-cols-1 row-cols-md-2">
               <div class="form-group mb-2">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password">
+                <?php
+                if (isset($_POST['password']) && validate_password($_POST['password']) !== "success") {
+                ?>
+                  <p class="text-dark m-0 ps-2"><?= validate_password($_POST['password']) ?></p>
+                <?php
+                }
+                ?>
               </div>
               <div class="form-group mb-2">
                 <label for="confirm-password" class="form-label">Confirm Password</label>
@@ -185,13 +221,13 @@ if (isset($_POST['add'])) {
                 ?>
               </div>
             </div>
-            
-            
+
+
 
             <!-- Save and Cancel Buttons -->
             <div class="d-flex justify-content-end mt-3">
               <a href="./doctorsAcc" class="btn btn-secondary me-2 link-light">Cancel</a>
-              <button type="submit" class="btn btn-primary link-light">Add</button>
+              <button type="submit" class="btn btn-primary link-light" name="add">Add</button>
             </div>
           </div>
         </form>
@@ -202,8 +238,33 @@ if (isset($_POST['add'])) {
 
     </div>
 
-    
-  </section>
 
+  </section>
+  <?php
+  if (isset($_POST['add']) && $success == 'success') {
+  ?>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Doctor account is successfully created!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row d-flex">
+              <div class="col-12 text-center">
+                <a href="./moderatorsAcc" class="text-decoration-none text-dark">
+                  <p class="m-0 text-primary fw-bold">Login to verify the doctor account.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+  ?>
 </body>
+
 </html>
