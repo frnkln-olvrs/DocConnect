@@ -24,6 +24,7 @@ if (isset($_POST['add'])) {
   }
   $account->birthdate = htmlentities($_POST['birthdate']);
   $account->gender = htmlentities($_POST['gender']);
+  $account->contact = htmlentities($_POST['contact']);
   $account->lastname = ucfirst(strtolower(htmlentities($_POST['lastname'])));
   $account->user_role = 1; // user_role (0 = admin, 1 = doc, 2 = mod, 3 = user)
 
@@ -34,6 +35,7 @@ if (isset($_POST['add'])) {
     validate_field($account->lastname) &&
     validate_field($account->gender) &&
     validate_field($account->birthdate) &&
+    validate_field($account->contact) &&
     validate_password($account->password) &&
     validate_cpw($account->password, $_POST['confirm-password']) &&
     validate_email($account->email) == 'success' && !$account->is_email_exist() &&
@@ -200,7 +202,7 @@ function getCurrentPage()
             <div class="row row-cols-1 row-cols-md-2">
               <div class="form-group mb-2">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password">
+                <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password" value="<?= isset($_POST['password']) ? $_POST['password'] : '' ?>">
                 <?php
                 if (isset($_POST['password']) && validate_password($_POST['password']) !== "success") {
                 ?>
@@ -253,7 +255,7 @@ function getCurrentPage()
           <div class="modal-body">
             <div class="row d-flex">
               <div class="col-12 text-center">
-                <a href="./moderatorsAcc" class="text-decoration-none text-dark">
+                <a href="./doctorsAcc" class="text-decoration-none text-dark">
                   <p class="m-0 text-primary fw-bold">Login to verify the doctor account.</p>
                 </a>
               </div>
@@ -265,6 +267,7 @@ function getCurrentPage()
   <?php
   }
   ?>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

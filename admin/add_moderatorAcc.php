@@ -25,6 +25,7 @@ if (isset($_POST['add'])) {
   }
   $account->campus_id = htmlentities($_POST['campus']);
   $account->gender = htmlentities($_POST['gender']);
+  $account->contact = htmlentities($_POST['contact']);
   $account->lastname = ucfirst(strtolower(htmlentities($_POST['lastname'])));
   $account->user_role = 2; // user_role (0 = admin, 1 = mod, 2 = user)
 
@@ -34,6 +35,7 @@ if (isset($_POST['add'])) {
     validate_field($account->firstname) &&
     validate_field($account->lastname) &&
     validate_password($account->gender) &&
+    validate_field($account->contact) &&
     validate_password($account->campus_id) &&
     validate_password($account->password) &&
     validate_cpw($account->password, $_POST['confirm-password']) &&

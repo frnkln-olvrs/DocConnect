@@ -7,6 +7,9 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
   header('location: ../index.php');
 }
 
+
+require_once '../classes/account.class.php';
+$account = new Account();
 ?>
 
 <html lang="en">
@@ -52,38 +55,11 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
       </div>
     </div>
 
-    <?php
-      $appointment_array = array(
-        array(
-          'name' => 'Franklin Oliveros',
-          'acc-id' => '000-001',
-          'email' => 'frnki@email.com',
-          'gender' => 'Male',
-          'phone-no' => '0992 345 6789',
-          'DoB' => 'Feb. 29, 2004',
-          'specialties' => 'Family Medicine',
-          'work-hour' => 'Mon-Fri, 9am - 5pa',
-          'no.patients' => '10',
-        ),
-        array(
-          'name' => 'Hilal Abdulajid',
-          'acc-id' => '000-002',
-          'email' => 'hiraru@email.com',
-          'gender' => 'Male',
-          'phone-no' => '0999 876 5432',
-          'DoB' => '09/10/1978',
-          'specialties' => 'Family Medicine',
-          'work-hour' => 'Mon-Fri, 9am - 5pa',
-          'no.patients' => '10',
-        ),
-      );
-      ?>
-      
+
       <table id="usersAcc_table" class="table table-striped" style="width:100%">
         <thead>
           <tr>
             <th scope="col" width="3%">#</th>
-            <th scope="col">Account Id</th>
             <th scope="col">Name</th>
             <th scope="col">Email Address</th>
             <th scope="col">Gender</th>
@@ -92,36 +68,34 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
             <th scope="col">Specialties</th>
             <th scope="col">Working Hours</th>
             <th scope="col">Number of Patients</th>
-            <!-- <th scope="col">Patient Satisfaction</th>
-            <th scope="col">Last Login</th> -->
+
             <th scope="col" width="7%">Action</th>
           </tr>
         </thead>
         <tbody>
           <?php
           $counter = 1;
-          foreach ($appointment_array as $item) {
+          $accountArray = $account->show_doc();
+          foreach ($accountArray as $item) {
+          
           ?>
             <tr>
               <td><?= $counter ?></td>
-              <td><?= $item['acc-id'] ?></td>
-              <td><?= $item['name'] ?></td>
+              <td> <?= (isset($item['middlename'])) ? ucwords(strtolower($item['firstname'] . ' ' . $item['middlename'] . ' ' . $item['lastname'])) : ucwords(strtolower($item['firstname'] . ' ' . $item['lastname'])) ?></td>
               <td><?= $item['email'] ?></td>
               <td><?= $item['gender'] ?></td>
-              <td><?= $item['phone-no'] ?></td>
-              <td><?= $item['DoB'] ?></td>
-              <td><?= $item['specialties'] ?></td>
-              <td><?= $item['work-hour'] ?></td>
-              <td><?= $item['no.patients'] ?></td>
-              <!-- <td><?= $item['rating'] ?></td>
-              <td><?= $item['last-login'] ?></td> -->
+              <td><?= $item['contact'] ?></td>
+              <td><?= date('F j Y', strtotime($item['birthdate'])) ?></td>
+              <td><?= "no data"//$item['specialties'] ?></td>
+              <td><?= "no data"//$item['work-hour'] ?></td>
+              <td><?= "no data"//$item['no.patients'] ?></td>
               
               <td class="text-center">
                 <div class="d-flex align-items-center justify-content-center">
-                  <a href="patient_details.php?code=<?= $item['acc-id'] ?>" title="View Details">
+                  <a href="patient_details.php?code=<?= $item['account_id'] ?>" title="View Details">
                     <i class='bx bx-edit-alt mx-1'></i>
                   </a>
-                  <button class="delete-btn bg-none" data-subject-id="<?= $item['acc-id'] ?>">
+                  <button class="delete-btn bg-none" data-subject-id="<?= $item['account_id'] ?>">
                     <i class='bx bx-user-x mx-1 text-primary fs-5'></i>
                   </button>
 

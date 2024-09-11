@@ -141,11 +141,8 @@ class Account
     }
 
 
-    function show_doctors()
-    {
-        $sql = "SELECT * FROM account 
-        WHERE is_deleted != 1
-        ORDER BY account_id ASC;";
+    function show_doc() {
+        $sql = "SELECT * FROM account  WHERE user_role = 1 AND is_deleted != 1 ORDER BY account_id ASC;";
         $query = $this->db->connect()->prepare($sql);
         $data = null;
         if ($query->execute()) {
