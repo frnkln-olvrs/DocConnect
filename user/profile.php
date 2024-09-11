@@ -193,27 +193,59 @@
                 <div class="card-body">
                   <h4 class="text-muted mb-3">Used Drus</h4>
                   <?php
-                  $appointment_array = array(
-                    array(
-                      'brandName' => 'Amoxicillin',
-                      'genericName' => 'Amoxicillin',
-                      'strenght' => '250mg',
-                      'pack' => '100',
-                      'from' => 'Tab',
-                      'manufacturer' => 'Apotex Industries',
-                    ),
-                    array(
-                      'brandName' => 'Amoxicillin',
-                      'genericName' => 'Amoxicillin',
-                      'strenght' => '250mg',
-                      'pack' => '100',
-                      'from' => 'Tab',
-                      'manufacturer' => 'Apotex Industries',
-                    ),
-                  );
+                    $usedDrugs_array = array(
+                      array(
+                        'brandName' => 'Amoxicillin',
+                        'genericName' => 'Amoxicillin',
+                        'strenght' => '250mg',
+                        'pack' => '100',
+                        'from' => 'Tab',
+                        'manufacturer' => 'Apotex Industries',
+                      ),
+                      array(
+                        'brandName' => 'Ibuprofen',
+                        'genericName' => 'Ibuprofen',
+                        'strenght' => '200mg',
+                        'pack' => '50',
+                        'from' => 'Caplet',
+                        'manufacturer' => 'Pfizer',
+                      ),
+                      array(
+                        'brandName' => 'Paracetamol',
+                        'genericName' => 'Acetaminophen',
+                        'strenght' => '500mg',
+                        'pack' => '30',
+                        'from' => 'Tablet',
+                        'manufacturer' => 'GlaxoSmithKline',
+                      ),
+                      array(
+                        'brandName' => 'Ciprofloxacin',
+                        'genericName' => 'Ciprofloxacin',
+                        'strenght' => '500mg',
+                        'pack' => '20',
+                        'from' => 'Tab',
+                        'manufacturer' => 'Bayer Pharmaceuticals',
+                      ),
+                      array(
+                        'brandName' => 'Lisinopril',
+                        'genericName' => 'Lisinopril',
+                        'strenght' => '10mg',
+                        'pack' => '60',
+                        'from' => 'Tablet',
+                        'manufacturer' => 'Merck',
+                      ),
+                      array(
+                        'brandName' => 'Metformin',
+                        'genericName' => 'Metformin',
+                        'strenght' => '850mg',
+                        'pack' => '100',
+                        'from' => 'Tab',
+                        'manufacturer' => 'Teva Pharmaceuticals',
+                      ),
+                    );
                   ?>
                   
-                  <table id="usersAcc_table" class="table table-striped" style="width:100%">
+                  <table id="profileGeneral_table" class="table table-striped" style="width:100%">
                     <thead>
                       <tr>
                         <th scope="col" width="3%">#</th>
@@ -228,7 +260,7 @@
                     <tbody>
                       <?php
                       $counter = 1;
-                      foreach ($appointment_array as $item) {
+                      foreach ($usedDrugs_array as $item) {
                       ?>
                         <tr>
                           <td><?= $counter ?></td>
@@ -254,7 +286,8 @@
     </div>
   </section>
   
-
+  <script src="../js/profileGeneral-dataTables.js"></script>
+  
   <?php 
     require_once ('../includes/footer.php');
   ?>
