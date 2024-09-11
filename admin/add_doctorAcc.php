@@ -1,3 +1,57 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+  header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 0) {
+  header('location: ../index.php');
+}
+
+require_once '../tools/functions.php';
+require_once '../classes/account.class.php';
+require_once '../classes/campus.class.php';
+
+$account = new Account();
+
+if (isset($_POST['add'])) {
+
+  $account->email = htmlentities($_POST['email']);
+  $account->password = htmlentities($_POST['password']);
+  $account->firstname = ucfirst(strtolower(htmlentities($_POST['firstname'])));
+  if (isset($_POST['middlename'])) {
+    $account->middlename = ucfirst(strtolower(htmlentities($_POST['middlename'])));
+  } else {
+    $account->middlename = '';
+  }
+  $account->campus_id = htmlentities($_POST['campus']);
+  $account->gender = htmlentities($_POST['gender']);
+  $account->lastname = ucfirst(strtolower(htmlentities($_POST['lastname'])));
+  $account->user_role = 2; // user_role (0 = admin, 1 = mod, 2 = user)
+
+  if (
+    validate_field($account->email) &&
+    validate_field($account->password) &&
+    validate_field($account->firstname) &&
+    validate_field($account->lastname) &&
+    validate_password($account->gender) &&
+    validate_password($account->campus_id) &&
+    validate_password($account->password) &&
+    validate_cpw($account->password, $_POST['confirm-password']) &&
+    validate_email($account->email) == 'success' && !$account->is_email_exist() &&
+    validate_wmsu_email($account->email)
+  ) {
+    if ($account->add_mod()) {
+      $success = 'success';
+    } else {
+      echo 'An error occured while adding in the database.';
+    }
+  } else {
+    $success = 'failed';
+  }
+}
+
+?>
+
 <html lang="en">
 <?php
   $title = 'Campuses | Add Doctor';
@@ -29,21 +83,42 @@
             <div class="row row-cols-1 row-cols-md-3">
               <div class="col form-group mb-2">
                 <label for="fname">First Name</label>
-                <input type="text" class="form-control" id="fname" placeholder="first name">
+                <input type="text" class="form-control" id="firstname" name="firstname" required placeholder="first name" value="<?= isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>">
+                <?php
+                if (isset($_POST['firstname']) && !validate_field($_POST['firstname'])) {
+                ?>
+                  <p class="text-dark m-0 ps-2">First name is required.</p>
+                <?php
+                }
+                ?>
               </div>
               <div class="col form-group mb-2">
                 <label for="mname">Middle Name</label>
-                <input type="text" class="form-control" id="mname" placeholder="middle name">
+                <input type="text" class="form-control" id="middlename" name="middlename" placeholder="middle name" value="<?= isset($_POST['middlename']) ? $_POST['middlename'] : '' ?>">
               </div>
               <div class="col form-group mb-2">
                 <label for="lname">Last Name</label>
-                <input type="text" class="form-control" id="lname" placeholder="last name">
+                <input type="text" class="form-control" id="lastname" name="lastname" required placeholder="last name" value="<?= isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>">
+                <?php
+                if (isset($_POST['lastname']) && !validate_field($_POST['lastname'])) {
+                ?>
+                  <p class="text-dark m-0 ps-2">Last name is required.</p>
+                <?php
+                }
+                ?>
               </div>
             </div>
 
             <div class="form-group mb-2">
               <label for="email">Email address</label>
-              <input type="email" class="form-control" id="email" placeholder="name@example.com">
+              <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
+              <?php
+              if (isset($_POST['email']) && !validate_field($_POST['email'])) {
+              ?>
+                <p class="text-dark m-0 ps-2">Email is required.</p>
+              <?php
+              }
+              ?>
             </div>
 
             <div class="form-group mb-2">
@@ -54,12 +129,19 @@
             <div class="row row-cols-1 row-cols-md-2">
               <div class="form-group mb-2">
                 <label for="gender">Gender</label>
-                <select class="form-select" aria-label="gender">
+                <select class="form-select" aria-label="gender" name="gender">
                   <option selected>Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
+                  <option value="male" <?= (isset($_POST['gender']) && $_POST['gender'] == "male") ? 'selected' : '' ?>>Male</option>
+                  <option value="female" <?= (isset($_POST['gender']) && $_POST['gender'] == "female") ? 'selected' : '' ?>>Female</option>
+                  <option value="other" <?= (isset($_POST['gender']) && $_POST['gender'] == "other") ? 'selected' : '' ?>>Other</option>
                 </select>
+                <?php
+                if (isset($_POST['gender']) && !validate_field($_POST['gender'])) {
+                ?>
+                  <p class="text-dark m-0 ps-2">No gender selected.</p>
+                <?php
+                }
+                ?>
               </div>
               
               <div class="form-group mb-2">
@@ -83,6 +165,24 @@
                 <input type="time" class="form-control" id="work-hours" placeholder="">
                 <p class="m-0 mx-3"> to </p>
                 <input type="time" class="form-control" id="work-hours" placeholder="">
+              </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="form-group mb-2">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password">
+              </div>
+              <div class="form-group mb-2">
+                <label for="confirm-password" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm-password" name="confirm-password" required placeholder="Confirm your password" value="<?= isset($_POST['confirm-password']) ? $_POST['confirm-password'] : '' ?>">
+                <?php
+                if (isset($_POST['password']) && isset($_POST['confirm-password']) && !validate_cpw($_POST['password'], $_POST['confirm-password'])) {
+                ?>
+                  <p class="text-dark m-0 ps-2">Password did not match.</p>
+                <?php
+                }
+                ?>
               </div>
             </div>
             

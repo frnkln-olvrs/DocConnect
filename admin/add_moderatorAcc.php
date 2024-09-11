@@ -176,28 +176,30 @@ function getCurrentPage()
               }
               ?>
             </div>
-
-            <div class="form-group mb-2">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password" value="<?= isset($_POST['password']) ? $_POST['password'] : '' ?>">
-              <?php
-              if (isset($_POST['password']) && validate_password($_POST['password']) !== "success") {
-              ?>
-                <p class="text-dark m-0 ps-2"><?= validate_password($_POST['password']) ?></p>
-              <?php
-              }
-              ?>
-            </div>
-            <div class="form-group mb-2">
-              <label for="confirm-password" class="form-label">Confirm Password</label>
-              <input type="password" class="form-control" id="confirm-password" name="confirm-password" required placeholder="Confirm your password" value="<?= isset($_POST['confirm-password']) ? $_POST['confirm-password'] : '' ?>">
-              <?php
-              if (isset($_POST['password']) && isset($_POST['confirm-password']) && !validate_cpw($_POST['password'], $_POST['confirm-password'])) {
-              ?>
-                <p class="text-dark m-0 ps-2">Password did not match.</p>
-              <?php
-              }
-              ?>
+            
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="form-group mb-2">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password" value="<?= isset($_POST['password']) ? $_POST['password'] : '' ?>">
+                <?php
+                if (isset($_POST['password']) && validate_password($_POST['password']) !== "success") {
+                ?>
+                  <p class="text-dark m-0 ps-2"><?= validate_password($_POST['password']) ?></p>
+                <?php
+                }
+                ?>
+              </div>
+              <div class="form-group mb-2">
+                <label for="confirm-password" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm-password" name="confirm-password" required placeholder="Confirm your password" value="<?= isset($_POST['confirm-password']) ? $_POST['confirm-password'] : '' ?>">
+                <?php
+                if (isset($_POST['password']) && isset($_POST['confirm-password']) && !validate_cpw($_POST['password'], $_POST['confirm-password'])) {
+                ?>
+                  <p class="text-dark m-0 ps-2">Password did not match.</p>
+                <?php
+                }
+                ?>
+              </div>
             </div>
 
             <!-- <div class="form-group mb-2">
