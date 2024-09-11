@@ -16,6 +16,7 @@ class Account
     public $address;
     public $user_role;
     public $verification_status;
+    public $campus_id;
 
     protected $db;
 
@@ -134,8 +135,8 @@ class Account
         } else {
             return false;
         }
-    } 
-    
+    }
+
 
     function show_doctors()
     {
@@ -151,4 +152,41 @@ class Account
     }
 
     // doctor functions end
+
+    // moderator functions start
+
+    function add_mod()
+    {
+        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role, contact, campus_id) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role, :contact, :campus_id);";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':email', $this->email);
+        $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+        $query->bindParam(':password', $hashedPassword);
+        $query->bindParam(':firstname', $this->firstname);
+        $query->bindParam(':middlename', $this->middlename);
+        $query->bindParam(':lastname', $this->lastname);
+        $query->bindParam(':user_role', $this->user_role);
+        $query->bindParam(':contact', $this->contact);
+        $query->bindParam(':campus_id', $this->campus_id);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function show_mod() {
+        $sql = "SELECT a.*, c.campus_id, c.campus_name FROM account a INNER JOIN campus c ON a.campus_id = c.campus_id WHERE user_role = 2 AND a.is_deleted != 1 ORDER BY account_id ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    // moderator functions end
+
 }

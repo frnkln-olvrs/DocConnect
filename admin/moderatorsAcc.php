@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
@@ -7,23 +7,27 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
   header('location: ../index.php');
 }
 
+require_once '../classes/account.class.php';
+$account = new Account();
 ?>
 
 
 <html lang="en">
-<?php 
-  $title = 'Admin | Staff';
-	include './includes/admin_head.php';
-  function getCurrentPage() {
-    return basename($_SERVER['PHP_SELF']);
-  }
+<?php
+$title = 'Admin | Staff';
+include './includes/admin_head.php';
+function getCurrentPage()
+{
+  return basename($_SERVER['PHP_SELF']);
+}
 ?>
+
 <body>
-  <?php 
-    require_once ('./includes/admin_header.php');
+  <?php
+  require_once('./includes/admin_header.php');
   ?>
-  <?php 
-    require_once ('./includes/admin_sidepanel.php');
+  <?php
+  require_once('./includes/admin_sidepanel.php');
   ?>
 
   <section id="appointment" class="page-container">
@@ -31,7 +35,7 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
 
     <div class="table-responsive overflow-hidden">
       <div class="search-keyword col-12 flex-lg-grow-0 d-flex justify-content-between justify-content-md-end mb-3 mb-md-0">
-        
+
         <div class="input-group w-25 d-flex align-items-center border border-1 rounded-1 me-0 me-md-4">
           <i class='bx bx-search-alt text-green ps-2'></i>
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
@@ -45,118 +49,38 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
       </div>
     </div>
 
-    <?php
-      $staff_array = array(
-        array(
-          'id' => '0001',
-          'name' => 'Namor McKenzie',
-          'position' => 'King',
-          'gender' => 'Male',
-          'phone-no' => '+63 9xx xxx xxxx',
-          'email' => 'email@email.com',
-          'status' => 'Active',
-        ),
-        array(
-          'id' => '0013',
-          'name' => 'Bruce Wayne',
-          'position' => 'Batman',
-          'gender' => 'Male',
-          'phone-no' => '+63 9xx xxx xxxx',
-          'email' => 'email@email.com',
-          'status' => 'Inactive',
-        ),
-        array(
-          'id' => '0027',
-          'name' => 'Diana Prince',
-          'position' => 'Manager',
-          'gender' => 'Female',
-          'phone-no' => '+63 9xx xxx xxxx',
-          'email' => 'diana.prince@themyscira.com',
-          'status' => 'Active',
-        ),
-        array(
-          'id' => '0034',
-          'name' => 'Clark Kent',
-          'position' => 'Reporter',
-          'gender' => 'Male',
-          'phone-no' => '+63 9xx xxx xxxx',
-          'email' => 'clark.kent@dailyplanet.com',
-          'status' => 'Active',
-        ),
-        array(
-          'id' => '0042',
-          'name' => 'Tony Stark',
-          'position' => 'Engineer',
-          'gender' => 'Male',
-          'phone-no' => '+63 9xx xxx xxxx',
-          'email' => 'tony.stark@starkindustries.com',
-          'status' => 'Inactive',
-        ),
-        array(
-          'id' => '0056',
-          'name' => 'Peter Parker',
-          'position' => 'Photographer',
-          'gender' => 'Male',
-          'phone-no' => '+63 9xx xxx xxxx',
-          'email' => 'peter.parker@dailybugle.com',
-          'status' => 'Active',
-        ),
-        array(
-          'id' => '0071',
-          'name' => 'Natasha Romanoff',
-          'position' => 'Spy',
-          'gender' => 'Female',
-          'phone-no' => '+63 9xx xxx xxxx',
-          'email' => 'natasha.romanoff@shield.com',
-          'status' => 'Inactive',
-        ),
-        
-      );
-      
-      function getStatusClass($status) {
-        switch ($status) {
-          case 'Active':
-            return 'bg-success';
-          case 'Inactive':
-            return 'bg-danger';
-        }
-      }
-    ?>
-      
     <table id="staff_table" class="table table-striped" style="width:100%">
       <thead>
         <tr>
           <th scope="col" width="3%">#</th>
-          <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">Position</th>
           <th scope="col">Gender</th>
           <th scope="col">Phone No.</th>
           <th scope="col">Email</th>
-          <th scope="col">Status</th>
+          <th scope="col">Verification Status</th>
           <th scope="col" width="5%">Action</th>
         </tr>
       </thead>
       <tbody>
         <?php
         $counter = 1;
-        foreach ($staff_array as $item) {
-          $statusClass = getStatusClass($item['status']);
+        $accountArray = $account->show_mod();
+        foreach ($accountArray as $item) {
         ?>
           <tr>
             <td><?= $counter ?></td>
-            <td><?= $item['id'] ?></td>
-            <td><?= $item['name'] ?></td>
-            <td><?= $item['position'] ?></td>
+            <td><?= (isset($item['middlename'])) ? ucwords(strtolower($item['firstname'] . ' ' . $item['middlename'] . ' ' . $item['lastname'])) : ucwords(strtolower($item['firstname'] . ' ' . $item['lastname'])) ?> </td>
+            <td><?= $item['campus_name'] ?></td>
             <td><?= $item['gender'] ?></td>
-            <td><?= $item['phone-no'] ?></td>
+            <td><?= $item['contact'] ?></td>
             <td><?= $item['email'] ?></td>
-            <td class="<?= $statusClass ?> text-light text-center"><?= $item['status'] ?></td>
+            <td class="text-dark"><?= $item['verification_status'] ?></td>
             <td class="d-flex justify-content-around align-items-center text-center">
               <a href="./add_staffAcc?= $item['acc-id'] ?>" title="View Details">
-                <i class='bx bx-edit-alt' ></i>
+                <i class='bx bx-edit-alt'></i>
               </a>
-              <button class="delete-btn bg-none" data-subject-id="<?= $item['id'] ?>">
+              <button class="delete-btn bg-none" data-subject-id="<?= $item['campus_id'] ?>">
                 <i class='bx bx-user-x bg-none text-primary fs-5'></i>
               </button>
             </td>
@@ -188,9 +112,10 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
     </div>
 
   </section>
-  
+
   <script src="./js/staff-dataTables.js"></script>
   <script src="./js/modal-delete_comfirmation.js"></script>
 
 </body>
+
 </html>
