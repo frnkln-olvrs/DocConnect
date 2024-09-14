@@ -219,6 +219,12 @@ input {
 	transform: translateX(20%);
 }
 
+@media (max-width:770px) {
+	form {
+		padding: 0 20px;
+	}
+}
+
 @media (max-width:450px) {
 	form {
 		padding: 0 15px;
