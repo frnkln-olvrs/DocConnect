@@ -1,5 +1,18 @@
 <header class="navbar fixed-top p-3 navbar-expand-lg navbar-dark bg-white shadow-sm">
 	<div class="container-fluid">
+
+		<a href="#" class="acc d-block d-lg-none link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+			<div class="d-flex align-items-center">
+				<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
+				<h6 class="m-0 text-dark d-none d-md-block">Firstname</h6>
+			</div>
+		</a>
+		<ul class="dropdown-menu text-small" aria-labelledby="profileDropddown">
+			<li><h4 class="m-0 text-dark d-block d-lg-none text-center">Name</h4></li>
+			<li><hr class="dropdown-divider d-block d-lg-none"></li>
+			<li><a class="dropdown-item" href="../logout">Logout</a></li>
+		</ul>
+
 		<a class="navbar-brand d-flex align-items-center text-dark text-decoration-none" href="../index.php">
       <img src="../assets/images/logo.png" alt="Logo" height="35">
       <h1 class="fs-4 link-primary m-0 d-name">Doc<span class="link-dark">Connect</span></h1>
@@ -16,7 +29,22 @@
         <li class="nav-item"><a href="./doctors" class="nav-link text-primary">Our Doctors</a></li>
         <li class="nav-item"><a href="./appointment" class="nav-link text-primary">Appointment</a></li>
         <li class="nav-item"><a href="./contact" class="nav-link text-primary">Contact</a></li>
-        <li class="nav-item"><a href="../login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white" aria-current="page">Login</a></li>
+        <li class="nav-item d-none"><a href="../login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white" aria-current="page">Login</a></li>
+
+				<!-- KAPAG NAKA LOGIN NA YUNG USER -->
+				<li class="nav-item dropdown d-none d-lg-flex align-items-center border-start ms-2">
+					<a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+						<div class="d-flex align-items-center">
+							<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
+							<h6 class="m-0 text-dark d-none d-md-block">Firstname</h6>
+						</div>
+					</a>
+					<ul class="dropdown-menu text-small" aria-labelledby="profileDropddown">
+						<li><h4 class="m-0 text-dark d-block d-lg-none text-center">Name</h4></li>
+						<li><hr class="dropdown-divider d-block d-lg-none"></li>
+						<li><a class="dropdown-item" href="../logout">Logout</a></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 	</div>
