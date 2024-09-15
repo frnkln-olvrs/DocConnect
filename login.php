@@ -82,7 +82,7 @@
         </div>
 
   			<button>Sign Up</button>
-        <p class="text-center d-block d-md-none">Already have an account? <span class="link-danger" id="signIn" style="cursor: pointer">Log In</span></p>
+        <p class="text-center">Already have an account? <span class="link-danger" id="signIn" style="cursor: pointer">Log In</span></p>
   		</form>
   	</div>
 
@@ -109,22 +109,22 @@
           <a href="#" class="text-end m-0 mb-3">Forgot your password?</a>
         </div>
   			<button>Login</button>
-        <p class="text-center d-block d-md-none">New Here? <span  class="link-danger" id="signUp" style="cursor: pointer">Sign Up!</span></p>
+        <p class="text-center">New Here? <span  class="link-danger" id="signUp" style="cursor: pointer">Sign Up!</span></p>
   		</form>
   	</div>
 
   	<div class="overlay-container">
-      <canvas id="canvas" class="canvas-back"></canvas>
-      <div class="overlay">
+      <canvas id="canvas" class="canvas-back" style="z-index: 10;"></canvas>
+      <div class="overlay" style="z-index: 2;"> 
         <div class="overlay-panel overlay-left">
           <h1>Welcome Back!</h1>
           <p>To keep connected with us please login with your personal info</p>
-          <button class="ghost" id="signIn-overlay">Sign In</button>
+          <button class="d-none ghost" id="signIn-overlay">Sign In</button>
         </div>
         <div class="overlay-panel overlay-right">
           <h1>Hello, Friend!</h1>
           <p>Enter your personal details and start journey with us</p>
-          <button class="ghost" id="signUp-overlay">Sign Up</button>
+          <button class="d-none ghost" id="signUp-overlay">Sign Up</button>
         </div>
       </div>
     </div>
