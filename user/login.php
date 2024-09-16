@@ -150,7 +150,7 @@ include '../includes/head.php';
     <div class="form-container sign-in-container">
       <form action="#">
         <a href="./index.php" class="d-flex align-items-center text-dark text-decoration-none">
-          <img src="./assets/images/logo.png" alt="Logo" height="35">
+          <img src="../assets/images/logo.png" alt="Logo" height="35">
           <h1 class="fs-4 link-danger m-0 d-name">Doc<span class="fs-4 link-dark">Connect</span></h1>
         </a>
         <h3 class="text-start fw-bold w-100">Sign in</h3>
@@ -191,7 +191,7 @@ include '../includes/head.php';
     </div>
   </div>
 
-  <script src="./js/login.js"></script>
+  <script src="../js/login.js"></script>
 </body>
 
 </html>
