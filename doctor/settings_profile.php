@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$title = 'Settings';
+$title = 'Settings | Profile';
 include '../includes/head.php';
 ?>
 
@@ -22,19 +22,9 @@ include '../includes/head.php';
           <h1 class="h2">Account Settings</h1>
         </div>
 
-        <div class="row">
-          <div class="col">
-            <nav aria-label="breadcrumb" class="bg-body-tertiary border-1 border rounded-3 p-3 mb-4">
-              <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item active" aria-current="page"><a href="#" class="text-dark">Profile Settings</a></li>
-                <li class="breadcrumb-item"><a href="#">Appointment Settings</a></li>
-                <li class="breadcrumb-item"><a href="#">Privacy and Security</a></li>
-                <li class="breadcrumb-item"><a href="#">Notification Settings</a></li>
-                <li class="breadcrumb-item"><a href="#">Patient Interaction Settings</a></li>
-              </ol>
-            </nav>
-          </div>
-        </div>
+        <?php 
+          require_once('../includes/doctorSetting_Nav.php')
+        ?>
 
         <div class="card bg-body-tertiary mb-4">
           <div class="card-body">
