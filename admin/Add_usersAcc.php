@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+  header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 0) {
+  header('location: ../index.php');
+}
+
+require_once '../classes/account.class.php';
+$account = new Account();
+?>
+
 <html lang="en">
 <?php
   $title = 'Campuses | Add User';
@@ -86,12 +99,12 @@
                 </select>
               </div>
 
-              <div class="form-group mb-2">
+              <!-- <div class="form-group mb-2">
                 <label for="app-hist">Appointment History</label>
                 <input type="number" class="form-control" id="hist" placeholder="No. of Appointment">
-              </div>
+              </div> -->
 
-              <div class="form-group mb-2">
+              <!-- <div class="form-group mb-2">
                 <label for="status">Status</label>
                 <div class="d-flex flex-row justify-content-around">
                   <div class="form-check">
@@ -107,13 +120,9 @@
                     </label>
                   </div>
 
-                </div>
+                </div> -->
               </div>
             </div>
-
-
-
-
             <!-- Save and Cancel Buttons -->
             <div class="d-flex justify-content-end mt-3">
               <a href="./usersAcc.php" class="btn btn-secondary me-2 link-light">Cancel</a>
