@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Settings | Privacy And Security';
+$setting = 'active';
 include '../includes/head.php';
 ?>
 

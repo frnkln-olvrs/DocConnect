@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Dashboard';
+$dashboard = 'active';
 include '../includes/head.php';
 ?>
 

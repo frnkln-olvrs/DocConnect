@@ -356,6 +356,20 @@ section#contacts .box-1 {
   color: whitesmoke;
 }
 
+.doctors_nav .nav-link.active {
+  position: relative;
+  background-color: #ad26342a;
+}
+
+.doctors_nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  background-color: var(--primary);
+  top: 0;
+  right: 0;
+  height: 40px;
+  width: 10px;
+}
 
 @media (max-width:450px) {
 	section.main .img {

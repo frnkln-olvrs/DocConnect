@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Patient Files';
+$patient = 'active';
 include '../includes/head.php';
 ?>
 

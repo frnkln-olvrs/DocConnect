@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Settings | Profile';
+$setting = 'active';
 include '../includes/head.php';
 ?>
 

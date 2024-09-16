@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Settings | Appointment';
+$setting = 'active';
 include '../includes/head.php';
 ?>
 

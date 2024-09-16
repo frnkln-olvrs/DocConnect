@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Profile';
+$profile = 'active';
 include '../includes/head.php';
 ?>
 

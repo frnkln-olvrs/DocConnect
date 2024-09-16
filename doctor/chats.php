@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Chats';
+$chat = 'active';
 include '../includes/head.php';
 ?>
 
