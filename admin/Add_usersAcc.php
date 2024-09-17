@@ -58,10 +58,21 @@ $account = new Account();
               <label for="email">Email address</label>
               <input type="email" class="form-control" id="email" placeholder="name@example.com">
             </div>
-
-            <div class="form-group mb-2">
-              <label for="contact">Phone No.</label>
-              <input type="text" class="form-control" id="contact" placeholder="+63 9xx xxx xxxx">
+            
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="col form-group mb-2">
+                <label for="contact">Phone No.</label>
+                <input type="text" class="form-control" id="contact" placeholder="+63 9xx xxx xxxx">
+              </div>
+              <div class="form-input px-1">
+                <label for="campus">Campus</label>
+                <select class="col form-select" aria-label="Campus" required>
+                  <option selected>Campus</option>
+                  <option value="campA">Campus A</option>
+                  <option value="campB">Campus B</option>
+                  <option value="campC">Campus C</option>
+                </select>
+              </div>
             </div>
 
             <div class="row row-cols-1 row-cols-md-2">
@@ -86,43 +97,17 @@ $account = new Account();
               <input type="date" class="form-control" id="reg_date" placeholder="MM/DD/YYYY">
             </div>
 
-            <div class="row row-cols-1 row-cols-md-3">
-              
-              <div class="form-group mb-2">
-                <label for="DoB">Campus</label>
-                <select class="form-select" aria-label="Default select example">
-                  
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="form-input mb-2">
+                <label for="password-signup">Password</label>
+                <input type="password" class="form-control" id="password-signup" placeholder="Password" required>
               </div>
-
-              <!-- <div class="form-group mb-2">
-                <label for="app-hist">Appointment History</label>
-                <input type="number" class="form-control" id="hist" placeholder="No. of Appointment">
-              </div> -->
-
-              <!-- <div class="form-group mb-2">
-                <label for="status">Status</label>
-                <div class="d-flex flex-row justify-content-around">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      Active
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
-                      Inactive
-                    </label>
-                  </div>
-
-                </div> -->
+              <div class="form-input mb-2">
+                <label for="confirmpassword-signup">Confirm password</label>
+                <input type="password" class="form-control" id="confirmpassword-signup" placeholder="Confirm password" required>
               </div>
             </div>
+
             <!-- Save and Cancel Buttons -->
             <div class="d-flex justify-content-end mt-3">
               <a href="./usersAcc.php" class="btn btn-secondary me-2 link-light">Cancel</a>
