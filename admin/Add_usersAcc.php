@@ -242,7 +242,32 @@ function getCurrentPage()
 
 
   </section>
-
+  <?php
+  if (isset($_POST['add']) && $success == 'success') {
+  ?>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Patient account is successfully created!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row d-flex">
+              <div class="col-12 text-center">
+                <a href="./moderatorsAcc" class="text-decoration-none text-dark">
+                  <p class="m-0 text-primary fw-bold">Login to verify the patient account.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+  ?>
+  <script src="../js/main.js"></script>
 </body>
 
 </html>
