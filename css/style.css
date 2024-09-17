@@ -372,6 +372,16 @@ section#contacts .box-1 {
   width: 5px;
 }
 
+.notification.dropdown-toggle.active {
+  pointer-events: none;
+}
+
+.notification i.bx-bell.active {
+  color: var(--primary);
+  border-radius: 50%;
+  background-color: #ad263416;
+}
+
 @media (max-width:450px) {
 	section.main .img {
 		display: none;

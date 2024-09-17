@@ -31,6 +31,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-dark <?= $notification ?>" href="../doctor/notifications">
+                    <i class='bx bx-bell me-2'></i>
+                    Notification
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-dark <?= $setting ?>" href="../doctor/settings_profile">
                     <i class='bx bx-cog me-2'></i>
                     Settings

@@ -7,8 +7,8 @@
 		<span class="fs-4 link-primary">DocConnect</span>
 	</a>
 	<div class="dropdown me-3">
-    <a href="" class="notification dropdown-toggle text-decoration-none text-dark" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-      <i class='bx bx-bell fs-5 p-2 '></i>
+    <a href="" class="notification dropdown-toggle <?= $notification ?> text-decoration-none text-dark" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class='bx bx-bell fs-5 p-2 <?= $notification ?>'></i>
     </a>
     <ul class="notification dropdown-menu dropdown-menu-end px-0" aria-labelledby="notificationDropdown">
       <li class="header mx-3 d-flex align-items-center justify-content-between">
