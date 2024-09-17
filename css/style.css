@@ -357,9 +357,9 @@ section#contacts .box-1 {
 }
 
 .doctors_nav .nav-link.active {
-  color: black;
+  color: var(--primary) !important;
   position: relative;
-  background-color: #ad26342a;
+  background-color: #ad263416;
 }
 
 .doctors_nav .nav-link.active::after {
@@ -369,7 +369,7 @@ section#contacts .box-1 {
   top: 0;
   right: 0;
   height: 40px;
-  width: 10px;
+  width: 5px;
 }
 
 @media (max-width:450px) {

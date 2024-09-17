@@ -7,31 +7,31 @@
         </div>
         <ul class="nav doctors_nav flex-column">
             <li class="nav-item">
-                <a class="nav-link <?= $dashboard ?>" href="../doctor/index">
+                <a class="nav-link text-dark <?= $dashboard ?>" href="../doctor/index">
                     <i class='bx bx-bar-chart-square me-2'></i>
                     Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $profile ?>" href="../doctor/profile">
+                <a class="nav-link text-dark <?= $profile ?>" href="../doctor/profile">
                     <i class='bx bxs-user-detail me-2'></i>
                     Profile
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $patient ?>" href="../doctor/patients">
+                <a class="nav-link text-dark <?= $patient ?>" href="../doctor/patients">
                     <i class='bx bx-group me-2'></i>
                     Patients
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $chat ?>" href="../doctor/chats">
+                <a class="nav-link text-dark <?= $chat ?>" href="../doctor/chats">
                     <i class='bx bx-chat me-2'></i>
                     Chats
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $setting ?>" href="../doctor/settings_profile">
+                <a class="nav-link text-dark <?= $setting ?>" href="../doctor/settings_profile">
                     <i class='bx bx-cog me-2'></i>
                     Settings
                 </a>
