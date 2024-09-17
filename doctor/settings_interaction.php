@@ -33,24 +33,24 @@ include '../includes/head.php';
               <div class="row">
                 <div class="col-12 mb-3">
                   <div class="form-group mb-2">
-                    <label for="notification-type">Notification Types</label>
+                    <label for="notification-type">Communication Preferences</label>
                     <div class="d-flex flex-wrap">
                       <div class="form-check py-3 pe-4 ps-5 border border-2 rounded-2 me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="appointment_reminders" checked>
-                        <label class="form-check-label" for="appointment_reminders">
-                          Appointment Reminders
+                        <input class="form-check-input" type="checkbox" value="" id="email" checked>
+                        <label class="form-check-label" for="email">
+                          Email
                         </label>
                       </div>
                       <div class="form-check py-3 pe-4 ps-5 border border-2 rounded-2 me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="updates">
-                        <label class="form-check-label" for="updates">
-                          Updates
+                        <input class="form-check-input" type="checkbox" value="" id="phone">
+                        <label class="form-check-label" for="phone">
+                          Phone
                         </label>
                       </div>
                       <div class="form-check py-3 pe-4 ps-5 border border-2 rounded-2 me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="newsletters">
-                        <label class="form-check-label" for="newsletters">
-                          Newsletters
+                        <input class="form-check-input" type="checkbox" value="" id="in-app_chat" checked>
+                        <label class="form-check-label" for="in-app_chat">
+                          In-app chat
                         </label>
                       </div>
                     </div>
@@ -58,52 +58,23 @@ include '../includes/head.php';
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-12 mb-3">
-                  <div class="form-group mb-2">
-                    <label for="sms-notification">SMS Notifications</label>
-                    <div class="d-flex flex-wrap">
-                      <div class="form-check py-3 pe-4 ps-5 border border-2 rounded-2 me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="new_appointments" checked>
-                        <label class="form-check-label" for="new_appointments">
-                          New Appointments
-                        </label>
-                      </div>
-                      <div class="form-check py-3 pe-4 ps-5 border border-2 rounded-2 me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="appointment_updates">
-                        <label class="form-check-label" for="appointment_updates">
-                          Appointment Updates
-                        </label>
-                      </div>
-                    </div>
+
+              <!-- hnd ko alam kung kailangan pa to -->
+              <!-- <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="patient_notes" class="form-label">Patient Notes</label>
+                    <textarea class="form-control" id="bio" rows="3"></textarea>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
+              <!-- hnd ko pa to paano to -->
               <div class="row">
-                <div class="col-12 mb-3">
+                <div class="col-6 mb-3">
                   <div class="form-group mb-2">
-                    <label for="sms-notification">System Alerts</label>
-                    <div class="d-flex flex-wrap">
-                      <div class="form-check py-3 pe-4 ps-5 border border-2 rounded-2 me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="new_patient_registered" checked>
-                        <label class="form-check-label" for="new_patient_registered">
-                          New Patient Registered
-                        </label>
-                      </div>
-                      <div class="form-check py-3 pe-4 ps-5 border border-2 rounded-2 me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="appointment_cancellations">
-                        <label class="form-check-label" for="appointment_cancellations">
-                          Appointment Cancellations
-                        </label>
-                      </div>
-                      <div class="form-check py-3 pe-4 ps-5 border border-2 rounded-2 me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="missed_appointments">
-                        <label class="form-check-label" for="missed_appointments">
-                          Missed Appointments
-                        </label>
-                      </div>
-                    </div>
+                    <label for="follow-up_schedule">Follow-up Schedule</label>
+                    <input type="datetime-local" class="form-control" id="follow-up_schedule" name="follow-up_schedule" placeholder="">
                   </div>
                 </div>
               </div>
