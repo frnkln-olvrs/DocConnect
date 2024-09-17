@@ -189,6 +189,13 @@ include '../includes/head.php';
               <option value="Female" <?= (isset($_POST['gender']) && $_POST['gender'] == "Female") ? 'selected' : '' ?>>Female</option>
               <option value="Other" <?= (isset($_POST['gender']) && $_POST['gender'] == "Other") ? 'selected' : '' ?>>Other</option>
             </select>
+            <?php
+            if (isset($_POST['gender']) && !validate_field($_POST['gender'])) {
+            ?>
+              <p class="text-dark m-0 ps-2">Gender is required.</p>
+            <?php
+            }
+            ?>
           </div>
           <div class="form-input px-1">
             <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="MM/DD/YYYY" required value="<?= isset($_POST['birthdate']) ? $_POST['birthdate'] : '' ?>">
