@@ -80,7 +80,7 @@ function getCurrentPage()
               <a href="./add_staffAcc?= $item['acc-id'] ?>" title="View Details">
                 <i class='bx bx-edit-alt'></i>
               </a>
-              <button class="delete-btn bg-none" data-subject-id="<?= $item['campus_id'] ?>">
+              <button class="delete-btn bg-none" data-subject-id="<?= $item['account_id'] ?>">
                 <i class='bx bx-user-x bg-none text-primary fs-5'></i>
               </button>
             </td>

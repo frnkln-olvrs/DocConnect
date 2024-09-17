@@ -12,19 +12,21 @@ $account = new Account();
 ?>
 
 <html lang="en">
-<?php 
-  $title = 'Admin | Doctors';
-	include './includes/admin_head.php';
-  function getCurrentPage() {
-    return basename($_SERVER['PHP_SELF']);
-  }
+<?php
+$title = 'Admin | Doctors';
+include './includes/admin_head.php';
+function getCurrentPage()
+{
+  return basename($_SERVER['PHP_SELF']);
+}
 ?>
+
 <body>
-  <?php 
-    require_once ('./includes/admin_header.php');
+  <?php
+  require_once('./includes/admin_header.php');
   ?>
-  <?php 
-    require_once ('./includes/admin_sidepanel.php');
+  <?php
+  require_once('./includes/admin_sidepanel.php');
   ?>
 
   <section id="doc-acc" class="page-container">
@@ -40,7 +42,7 @@ $account = new Account();
             <option value="1">Account ID</option>
           </select>
         </div>
-        
+
         <div class="input-group w-auto d-flex align-items-center border border-1 rounded-1 me-0 me-md-4">
           <i class='bx bx-search-alt text-green ps-2'></i>
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
@@ -53,46 +55,42 @@ $account = new Account();
 
       </div>
     </div>
-      
+
     <table id="usersAcc_table" class="table table-striped" style="width:100%">
       <thead>
         <tr>
           <th scope="col" width="3%">#</th>
-          <th scope="col">Account Id</th>
           <th scope="col">Name</th>
           <th scope="col">Email Address</th>
+          <th scope="col">Campus</th>
           <th scope="col">Gender</th>
           <th scope="col">Phone No.</th>
           <th scope="col">Date of Birth</th>
-          <th scope="col">Registration Date</th>
-          <th scope="col">Department</th>
           <th scope="col">No. of Appointment</th>
           <th scope="col" width="7%">Action</th>
         </tr>
       </thead>
       <tbody>
-      <?php
+        <?php
         $counter = 1;
-        $accountArray = $account->show_mod();
+        $accountArray = $account->show_user();
         foreach ($accountArray as $item) {
         ?>
           <tr>
             <td><?= $counter ?></td>
-            <td><?= $item['acc-id'] ?></td>
-            <td><?= $item['name'] ?></td>
+            <td><?= (isset($item['middlename'])) ? ucwords(strtolower($item['firstname'] . ' ' . $item['middlename'] . ' ' . $item['lastname'])) : ucwords(strtolower($item['firstname'] . ' ' . $item['lastname'])) ?> </td>
             <td><?= $item['email'] ?></td>
+            <td><?= $item['campus_name'] ?></td>
             <td><?= $item['gender'] ?></td>
-            <td><?= $item['phone-no'] ?></td>
-            <td><?= $item['DoB'] ?></td>
-            <td><?= $item['reg-date'] ?></td>
-            <td><?= $item['department'] ?></td>
-            <td><?= $item['no.ofApp'] ?></td>
+            <td><?= $item['contact'] ?></td>
+            <td><?= $item['birthdate'] ?></td>
+            <td><?= "No Data" //$item['no.ofApp'] ?></td>
 
             <td class="d-flex justify-content-around align-items-center text-center">
               <a href="./viewuserAcc" title="View Details">
                 <i class='bx bx-show'></i>
               </a>
-              <button class="delete-btn bg-none" data-subject-id="<?= $item['acc-id'] ?>">
+              <button class="delete-btn bg-none" data-subject-id="<?= $item['account_id'] ?>">
                 <i class='bx bx-user-x bg-none text-primary fs-5'></i>
               </button>
             </td>
@@ -129,4 +127,5 @@ $account = new Account();
   <script src="./js/modal-delete_comfirmation.js"></script>
 
 </body>
+
 </html>
