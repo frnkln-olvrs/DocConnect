@@ -357,6 +357,7 @@ section#contacts .box-1 {
 }
 
 .doctors_nav .nav-link.active {
+  color: black;
   position: relative;
   background-color: #ad26342a;
 }
