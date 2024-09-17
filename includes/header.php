@@ -35,7 +35,7 @@
 
 				<!-- KAPAG NAKA LOGIN NA YUNG USER -->
 				<!-- <li class="nav-item dropdown d-none d-lg-flex align-items-center border-start ms-2"> -->
-				<li class="nav-item dropdown d-none align-items-center border-start ms-2">
+				<li class="nav-item dropdown <?= isset($_SESSION['user_role']) ? "d-flex" : "d-none" ?> align-items-center border-start ms-2">
 					<a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 						<div class="d-flex align-items-center">
 							<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">

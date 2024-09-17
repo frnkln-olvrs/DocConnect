@@ -92,6 +92,7 @@ function getCurrentPage()
               </div>
               <input type="submit" class="btn btn-primary text-light w-100" name="verify" value="Submit">
             </form>
+            <p class="text-center mb-0 mt-2"><a class="text-decoration-none" href="../logout.php">Log out</a></p>
           </div>
 
           <!-- <div class="card-footer text-center">
