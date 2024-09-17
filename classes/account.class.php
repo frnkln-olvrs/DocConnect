@@ -194,7 +194,7 @@ class Account
 
     function add_user()
     {
-        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role, contact, campus_id) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role, :contact, :campus_id);";
+        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role, contact, gender, birthdate, campus_id) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role, :contact, :gender, :birthdate, :campus_id);";
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':email', $this->email);
@@ -205,6 +205,8 @@ class Account
         $query->bindParam(':lastname', $this->lastname);
         $query->bindParam(':user_role', $this->user_role);
         $query->bindParam(':contact', $this->contact);
+        $query->bindParam(':gender', $this->gender);
+        $query->bindParam(':birthdate', $this->birthdate);
         $query->bindParam(':campus_id', $this->campus_id);
 
         if ($query->execute()) {
