@@ -5,12 +5,12 @@
 		<a href="#" class="<?= isset($_SESSION['user_role']) ? "d-none" : "d-none acc d-block d-lg-none" ?> link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 			<div class="d-flex align-items-center">
 				<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
-				<h6 class="m-0 text-dark d-none d-md-block">Firstname</h6>
+				<h6 class="m-0 text-dark d-none d-md-block"><?= $_SESSION['fullname'] ?></h6>
 			</div>
 		</a>
 
 		<ul class="dropdown-menu text-small" aria-labelledby="profileDropddown">
-			<li><h4 class="m-0 text-dark d-block d-lg-none text-center">Name</h4></li>
+			<li><h4 class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></h4></li>
 			<li><hr class="dropdown-divider d-block d-lg-none"></li>
 			<li><a class="dropdown-item" href="../logout">Logout</a></li>
 		</ul>
@@ -39,11 +39,11 @@
 					<a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 						<div class="d-flex align-items-center">
 							<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
-							<h6 class="m-0 text-dark d-none d-md-block">Firstname</h6>
+							<h6 class="m-0 text-dark d-none d-md-block"><?= $_SESSION['fullname'] ?></h6>
 						</div>
 					</a>
 					<ul class="dropdown-menu text-small" aria-labelledby="profileDropddown">
-						<li><h4 class="m-0 text-dark d-block d-lg-none text-center">Name</h4></li>
+						<li><h4 class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></h4></li>
 						<li><hr class="dropdown-divider d-block d-lg-none"></li>
 						<li><a class="dropdown-item" href="../logout">Logout</a></li>
 					</ul>
