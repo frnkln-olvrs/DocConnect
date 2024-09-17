@@ -83,7 +83,7 @@ include '../includes/head.php';
               <div class="row">
                 <div class="col-12 mb-3">
                   <div class="form-group mb-2">
-                    <label for="sms-notification">System Alerts</label>
+                    <label for="system_alerts">System Alerts</label>
                     <div class="d-flex flex-wrap">
                       <div class="form-check py-3 pe-4 ps-5 border border-2 rounded-2 me-3">
                         <input class="form-check-input" type="checkbox" value="" id="new_patient_registered" checked>
