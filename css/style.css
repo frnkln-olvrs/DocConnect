@@ -357,12 +357,13 @@ section#contacts .box-1 {
 }
 
 /* ----------DASHBOARD------------- */
-.card.overview {
+.card.overview,
+.card.next_patient {
   background-color: #ad263416;
 }
 
 .card.chart_appointment {
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(242, 242, 242);
 }
 /* ----------DASHBOARD------------- */
 
