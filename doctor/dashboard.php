@@ -21,7 +21,7 @@ include '../includes/head.php';
                         <!-- Overview Cards -->
                         <div class="col-md-4 col-12 d-flex align-items-stretch">
                             <div class="card overview border-0 text-start d-flex justify-content-center p-3 w-100">
-                                <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+                                <div class="d-flex flex-sm-row flex-md-column flex-lg-row justify-content-center align-items-center">
                                     <div class="card-title">
                                         <div class="border border-5 rounded-5 border-primary me-3">
                                             <i class='bx bxs-user display-3 p-3 text-primary'></i>
@@ -38,7 +38,7 @@ include '../includes/head.php';
 
                         <div class="col-md-4 col-12 d-flex align-items-stretch">
                             <div class="card overview border-0 text-start d-flex justify-content-center p-3 w-100">
-                                <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+                                <div class="d-flex flex-sm-row flex-md-column flex-lg-row justify-content-center align-items-center">
                                     <div class="card-title">
                                         <div class="border border-5 rounded-5 border-primary me-3">
                                             <i class='bx bxs-user-plus display-3 p-3 text-primary'></i>
@@ -55,7 +55,7 @@ include '../includes/head.php';
 
                         <div class="col-md-4 col-12 d-flex align-items-stretch">
                             <div class="card overview border-0 text-start d-flex justify-content-center p-3 w-100">
-                                <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+                                <div class="d-flex flex-sm-row flex-md-column flex-lg-row justify-content-center align-items-center">
                                     <div class="card-title">
                                         <div class="border border-5 rounded-5 border-primary me-3">
                                             <i class='bx bxs-calendar display-3 p-3 text-primary'></i>
@@ -72,30 +72,6 @@ include '../includes/head.php';
                     </div>
 
                     
-                    </div>
-                </div>
-            </main>
-        </div>
-    </div>
-
-    <!-- Chart.js script for pie chart -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        var ctx = document.getElementById('patientSummaryChart').getContext('2d');
-        var patientSummaryChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['New Patients', 'Old Patients', 'Total Patients'],
-                datasets: [{
-                    data: [30, 70, 100],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
-    </script>
 </body>
 
 </html>
