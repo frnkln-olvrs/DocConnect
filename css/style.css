@@ -360,6 +360,10 @@ section#contacts .box-1 {
 .card.overview {
   background-color: #ad263416;
 }
+
+.card.chart_appointment {
+  background-color: rgb(238, 238, 238);
+}
 /* ----------DASHBOARD------------- */
 
 .doctors_nav .nav-link.active {
