@@ -356,6 +356,12 @@ section#contacts .box-1 {
   color: whitesmoke;
 }
 
+/* ----------DASHBOARD------------- */
+.card.overview {
+  background-color: #ad263416;
+}
+/* ----------DASHBOARD------------- */
+
 .doctors_nav .nav-link.active {
   color: var(--primary) !important;
   position: relative;

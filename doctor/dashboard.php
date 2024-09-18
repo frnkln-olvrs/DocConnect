@@ -16,55 +16,86 @@ include '../includes/head.php';
             require_once('../includes/sidepanel-doctor.php');
             ?>
             <main class="col-md-9 ms-sm-auto col-lg-10">
-                <div class="row h-100">
-                    <div class="col-12 col-md-8 p-2 shadow-sm h-auto">
-                        <div id='calendar'></div>
+                <div class="container my-4">
+                    <div class="row">
+                        <!-- Overview Cards -->
+                        <div class="col-md-4 col-12 d-flex align-items-stretch">
+                            <div class="card overview border-0 text-start d-flex justify-content-center p-3 w-100">
+                                <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+                                    <div class="card-title">
+                                        <div class="border border-5 rounded-5 border-primary me-3">
+                                            <i class='bx bxs-user display-3 p-3 text-primary'></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <p class="card-title mb-0">Total Patients</p>
+                                        <p class="card-text display-6 mb-0">2000+</p>
+                                        <p class="text-muted">Till Today</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-12 d-flex align-items-stretch">
+                            <div class="card overview border-0 text-start d-flex justify-content-center p-3 w-100">
+                                <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+                                    <div class="card-title">
+                                        <div class="border border-5 rounded-5 border-primary me-3">
+                                            <i class='bx bxs-user-plus display-3 p-3 text-primary'></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <p class="card-title mb-0">Today Patients</p>
+                                        <p class="card-text display-6 mb-0">68</p>
+                                        <p class="text-muted">Sep 18 2021</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-12 d-flex align-items-stretch">
+                            <div class="card overview border-0 text-start d-flex justify-content-center p-3 w-100">
+                                <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+                                    <div class="card-title">
+                                        <div class="border border-5 rounded-5 border-primary me-3">
+                                            <i class='bx bxs-calendar display-3 p-3 text-primary'></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <p class="card-title mb-0">Today Appointments</p>
+                                        <p class="card-text display-6 mb-0">85</p>
+                                        <p class="text-muted">Sep 18 2021</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-4 p-3">
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <h3>April Event List</h3>
-                            <button type="button" class=" btn btn-outline-primary">New Event</button>
-                        </div>
-                        <div class="row mb-3 border-bottom border-primary">
-                            <div class="col-4">
-                                <p>Start</p>
-                            </div>
-                            <div class="col-4 ">
-                                <p>Title</p>
-                            </div>
-                            <div class="col-4">
-                                <p>End</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3 border-bottom border-primary">
-                            <div class="col-4">
-                                <b>Apr 01</b>
-                            </div>
-                            <div class="col-4">
-                                <p>Title</p>
-                            </div>
-                            <div class="col-4">
-                                <p>Apr 01</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3 border-bottom border-primary">
-                            <div class="col-4">
-                                <b>Apr 18</b>
-                            </div>
-                            <div class="col-4">
-                                <p>Title</p>
-                            </div>
-                            <div class="col-4">
-                                <p>Apr 18</p>
-                            </div>
-                        </div>
+
+                    
                     </div>
                 </div>
             </main>
         </div>
     </div>
-</body>
 
-<script src="../js/calender.js"></script>
+    <!-- Chart.js script for pie chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('patientSummaryChart').getContext('2d');
+        var patientSummaryChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['New Patients', 'Old Patients', 'Total Patients'],
+                datasets: [{
+                    data: [30, 70, 100],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+</body>
 
 </html>
