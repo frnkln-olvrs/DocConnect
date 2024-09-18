@@ -84,24 +84,23 @@ include '../includes/head.php';
                             </div>
 
                             <div class="col-md-6 d-flex">
-                                <div class="card border-primary flex-fill m-4">
+                                <div class="card next_patient border-0 w-100 m-4">
                                     <div class="card-body">
-                                        <h5 class="card-title">Today Appointments</h5>
-                                        <ul class="list-group">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                M.J. Mical - Health Checkup <span>On Going</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                Sanath Deo - Health Checkup <span>12:30 PM</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                Loeara Phanj - Report <span>1:00 PM</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                Komola Haris - Common Cold <span>1:30 PM</span>
-                                            </li>
-                                            <a href="#" class="text-center mt-3">See All</a>
-                                        </ul>
+                                        <h5 class="card-title">Next Patient Details</h5>
+                                        <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start">
+                                            <div class="mb-2 mb-lg-0">
+                                                <img src="../assets/images/66e7db42336204.60963457.jpg" class="rounded-circle" width="80" height="80" alt="Patient Profile">
+                                            </div>
+                                            <div class="ms-3">
+                                                <h6>Bruce Willis - <span class="text-primary">Health Checkup</span></h6>
+                                                <p>Patient ID: 2021-00001</p>
+                                                <p>D.O.B: 15 January 1999 | Sex: Male | Weight: 59 kg</p>
+                                                <p>Last Appointment: Sep 29 2024</p>
+                                                <p>Height: 172 cm | Reg. Date: Sep 11 2024</p>
+                                                <button class="btn btn-outline-primary btn-sm">Document</button>
+                                                <button class="btn btn-outline-secondary btn-sm">Chat</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -112,30 +111,31 @@ include '../includes/head.php';
                     <!-- Next Patient and Prescriptions -->
                     <div class="row d-flex">
                         <div class="col-md-6 mb-4 d-flex">
-                            <div class="card next_patient border-0 w-100 h-100">
+                            <div class="card border-primary flex-fill">
                                 <div class="card-body">
-                                    <h5 class="card-title">Next Patient Details</h5>
-                                    <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start">
-                                        <div class="mb-2 mb-lg-0">
-                                            <img src="../assets/images/66e7db42336204.60963457.jpg" class="rounded-circle" width="80" height="80" alt="Patient Profile">
-                                        </div>
-                                        <div class="ms-3">
-                                            <h6>Bruce Willis - <span class="text-primary">Health Checkup</span></h6>
-                                            <p>Patient ID: 2021-00001</p>
-                                            <p>D.O.B: 15 January 1999 | Sex: Male | Weight: 59 kg</p>
-                                            <p>Last Appointment: Sep 29 2024</p>
-                                            <p>Height: 172 cm | Reg. Date: Sep 11 2024</p>
-                                            <button class="btn btn-outline-primary btn-sm">Document</button>
-                                            <button class="btn btn-outline-secondary btn-sm">Chat</button>
-                                        </div>
-                                    </div>
+                                    <h5 class="card-title">Today Appointments</h5>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            M.J. Mical - Health Checkup <span>On Going</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Sanath Deo - Health Checkup <span>12:30 PM</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Loeara Phanj - Report <span>1:00 PM</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Komola Haris - Common Cold <span>1:30 PM</span>
+                                        </li>
+                                        <a href="#" class="text-center mt-3">See All</a>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                    
+
                         <!-- Appointment Request and Calendar -->
                         <div class="col-md-6 mb-4 d-flex">
-                            <div class="card w-100 h-100">
+                            <div class="card w-100 h-100 border-primary">
                                 <div class="card-body">
                                     <h5 class="card-title">Appointment Requests</h5>
                                     <ul class="list-group">
@@ -155,12 +155,10 @@ include '../includes/head.php';
                     <!-- CALENDAR -->
                      <div class="row">
                         <div class="col-md-12 mb-4">
-                            <div class="card mt-3">
+                            <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Calendar - December 2021</h5>
-                                    <div id="calendar">
-                                        <!-- Calendar will be generated dynamically -->
-                                    </div>
+                                    <div id="calendar"></div>
                                 </div>
                             </div>
                         </div>
@@ -171,23 +169,9 @@ include '../includes/head.php';
     </div>
 
     <!-- Chart.js script for pie chart -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        var ctx = document.getElementById('patientSummaryChart').getContext('2d');
-        var patientSummaryChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['New Patients', 'Old Patients', 'Total Patients'],
-                datasets: [{
-                    data: [30, 70, 100],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
-    </script>
+    <script src="../js/calender.js"></script>
+    <script src="../js/dashboard-donutChart.js"></script>
+
 </body>
 
 </html>
