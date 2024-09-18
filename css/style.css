@@ -421,6 +421,38 @@ section#contacts .box-1 {
     text-decoration-thickness: 2px; 
     font-weight: bold; 
     color: inherit; 
-}
+  }
 
+  /*------------------|
+  | DOCTOR'S PAGE CSS |
+  |------------------*/
+  /* ----------DASHBOARD------------- */
+  .fc-header-toolbar,
+  .fc-toolbar,
+  .fc-toolbar-ltr {
+    font-size: 0.85rem !important;
+    padding: 0.5rem 0 !important;
+  }
+
+  .fc .fc-toolbar-title {
+    font-size: 1rem !important;
+  }
+
+  .fc .fc-button {
+    font-size: 0.85rem !important;
+    padding: 0.25rem 0.75rem !important;
+    border-radius: 0px;
+  }
+
+  .fc .fc-button-prev, 
+  .fc .fc-button-next, 
+  .fc .fc-button-today {
+    font-size: 0.85rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  .fc .fc-button-group {
+    flex-wrap: wrap;
+  }
+  /* ----------DASHBOARD------------- */
 }
