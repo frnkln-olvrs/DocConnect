@@ -33,44 +33,52 @@ include '../includes/head.php';
                                 <button class="btn btn-link text-muted"><i class='bx bx-dots-horizontal-rounded'></i></button>
                             </div>
                         </div>
-                        <ul class="nav nav-tabs mt-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Overview</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Opinions</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Experience</a>
-                            </li>
-                        </ul>
-                        <div class="mt-3">
-                            <h6>About specialist</h6>
-                            <p>Orthopedist. He treats injuries and chronic musculoskeletal ailments. Especially in athletes, but not only...</p>
-                            <a href="#" class="text-decoration-none">Read more</a>
+                    </div>
+                </div>
+
+                <div class="card mb-4 border-2 p-3">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-overview-tab" data-bs-toggle="tab" data-bs-target="#nav-overview" type="button" role="tab" aria-controls="nav-overview" aria-selected="true">Overview</button>
+                            <button class="nav-link" id="nav-opinions-tab" data-bs-toggle="tab" data-bs-target="#nav-opinions" type="button" role="tab" aria-controls="nav-opinions" aria-selected="false">Opinions</button>
+                            <button class="nav-link" id="nav-experience-tab" data-bs-toggle="tab" data-bs-target="#nav-experience" type="button" role="tab" aria-controls="nav-Experience" aria-selected="false">Experience</button>
                         </div>
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <h6>Services and price list</h6>
-                                <ul class="list-unstyled">
-                                    <li>Orthopedic consultation - $220</li>
-                                    <li>Delivery blocks - $220</li>
-                                    <li>Ultrasound injection - $220</li>
-                                </ul>
-                                <a href="#" class="text-decoration-none">Read more</a>
+                    </nav>
+                    <div class="card-body">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade active show" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab">
+                                <div class="mb-3">
+                                    <h6>About specialist</h6>
+                                    <p>As a medical practitioner, I provide compassionate healthcare with expertise in diagnosing, treating, and preventing illnesses and injuries. My patient-centered approach emphasizes trust, communication, and personalized treatment plans. I am dedicated to staying updated on medical advancements to ensure the highest standard of care. I'm passionate about health education and disease prevention, aiming to empower patients for long-term wellness.  </p>
+                                    <a href="#" class="text-decoration-none">Read more</a>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <h6>Diseases treated</h6>
+                                        <ul class="list-unstyled">
+                                            <li>Orthopedic consultation</li>
+                                            <li>Delivery blocks</li>
+                                            <li>Ultrasound injection</li>
+                                        </ul>
+                                        <a href="#" class="text-decoration-none">Read more</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <h6>Diseases treated</h6>
-                                <ul class="list-unstyled">
-                                    <li>Orthopedic consultation</li>
-                                    <li>Delivery blocks</li>
-                                    <li>Ultrasound injection</li>
-                                </ul>
-                                <a href="#" class="text-decoration-none">Read more</a>
+                            <div class="tab-pane fade" id="nav-opinions" role="tabpanel" aria-labelledby="nav-opinions-tab">
+                                <p><strong>This is some placeholder content the Profile tab's associated content.</strong>
+                                    Clicking another tab will toggle the visibility of this one for the next.
+                                    The tab JavaScript swaps classes to control the content visibility and styling. You can use it with
+                                    tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+                            </div>
+                            <div class="tab-pane fade" id="nav-experience" role="tabpanel" aria-labelledby="nav-experience-tab">
+                                <p><strong>This is some placeholder content the Contact tab's associated content.</strong>
+                                    Clicking another tab will toggle the visibility of this one for the next.
+                                    The tab JavaScript swaps classes to control the content visibility and styling. You can use it with
+                                    tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
                             </div>
                         </div>
                     </div>
-                </div>
+	            </div>
                 
                 <div class="card mb-4">
                     <div class="card-body">
@@ -78,29 +86,74 @@ include '../includes/head.php';
                         <div class="d-flex flex-wrap">
                             <div class="card me-2 mb-2">
                                 <div class="card-body p-2">
-                                    <small>Wed Jun 16</small>
-                                    <p class="mb-0">4:00 PM</p>
+                                    <small>Sep 19 | Thursday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="card me-2 mb-2">
                                 <div class="card-body p-2">
-                                    <small>Wed Jun 16</small>
-                                    <p class="mb-0">6:00 PM</p>
+                                    <small>Sep 20 | Friday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="card me-2 mb-2">
                                 <div class="card-body p-2">
-                                    <small>Thu Jun 17</small>
-                                    <p class="mb-0">8:00 AM</p>
+                                    <small>Sep 21 | Saturday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="card me-2 mb-2">
                                 <div class="card-body p-2">
-                                    <small>Thu Jun 17</small>
-                                    <p class="mb-0">10:30 AM</p>
+                                    <small>Sep 22 | <span class="text-primary">Sunday</span></small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">--:-- AM</p>
+                                        to
+                                        <p class="mb-0">--:-- PM</p>                                        
+                                    </div>
                                 </div>
                             </div>
-                            <!-- Additional availability cards can be added similarly -->
+                            <div class="card me-2 mb-2">
+                                <div class="card-body p-2">
+                                    <small>Sep 23| Monday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card me-2 mb-2">
+                                <div class="card-body p-2">
+                                    <small>Sep 25 | Tuesday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card me-2 mb-2">
+                                <div class="card-body p-2">
+                                    <small>Sep 26 | Wednesday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>  
