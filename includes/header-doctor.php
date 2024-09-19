@@ -1,6 +1,6 @@
-<header class="d-flex flex-wrap justify-content-between align-items-center p-3 border-bottom">
+<header class="fixed-top bg-white d-flex flex-wrap justify-content-between align-items-center p-3 border-bottom">
 	<button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <i class='bx bx-menu navbar-toggler-icon text-primary fs-4'></i>
+    <i class='bx bx-menu d-flex align-items-center justify-content-center navbar-toggler-icon text-primary fs-4'></i>
 	</button>
 	<a href="./index.php" class="d-flex align-items-center mb-0 me-md-auto text-dark text-decoration-none">
 		<i class='bx bx-plus-medical mx-2' height="32"></i>

@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block border-end sidebar collapse min-vh-100 p-0">
+<nav id="sidebarMenu" class="bg-white fixed-top col-md-3 col-lg-2 d-md-block border-end sidebar collapse min-vh-100 p-0">
     <div class="position-sticky pt-3">
         <div class="pt-1 mb-2 d-flex align-items-center flex-column">
             <img src="../assets/images/defualt_profile.png" alt="" height="100" width="100" class="rounded rounded-circle border border-2 border-primary mb-2">
