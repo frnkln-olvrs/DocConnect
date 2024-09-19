@@ -74,7 +74,7 @@ include '../includes/head.php';
                     <!-- Chart and Appointments -->
                     <div class="card chart_appointment border-0 mb-4">
                         <div class="row g-0">
-                            <div class="col-md-6 d-flex">
+                            <div class="col-lg-6 d-flex">
                                 <div class="card bg-transparent border-0 flex-fill">
                                     <div class="card-body">
                                         <h5 class="card-title">Patients Summary September 2024</h5>
@@ -83,23 +83,69 @@ include '../includes/head.php';
                                 </div>
                             </div>
 
-                            <div class="col-md-6 d-flex">
+                            <div class="col-lg-6 d-flex">
                                 <div class="card next_patient border-0 w-100 m-4">
                                     <div class="card-body">
-                                        <h5 class="card-title">Next Patient Details</h5>
-                                        <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start">
-                                            <div class="mb-2 mb-lg-0">
-                                                <img src="../assets/images/66e7db42336204.60963457.jpg" class="rounded-circle" width="80" height="80" alt="Patient Profile">
-                                            </div>
+                                        <div class="text-center mb-3">
+                                            <h5 class="text-primary">Next Patient Details</h5>
+                                        </div>
+                                        <div class="d-flex flex-column flex-md-row align-items-center">
+                                            <img src="../assets/images/profilenono.jpeg" class="rounded-circle" alt="Patient Image" style="width: 80px; height: 80px; object-fit: cover;">
                                             <div class="ms-3">
-                                                <h6>Bruce Willis - <span class="text-primary">Health Checkup</span></h6>
-                                                <p>Patient ID: 2021-00001</p>
-                                                <p>D.O.B: 15 January 1999 | Sex: Male | Weight: 59 kg</p>
-                                                <p>Last Appointment: Sep 29 2024</p>
-                                                <p>Height: 172 cm | Reg. Date: Sep 11 2024</p>
-                                                <button class="btn btn-outline-primary btn-sm">Document</button>
-                                                <button class="btn btn-outline-secondary btn-sm">Chat</button>
+                                                <h6 class="mb-0">Sanath Deo</h6>
+                                                <p class="text-muted mb-0">Health Checkup</p>
                                             </div>
+                                            <div class=" ms-3">
+                                                <strong>Patient ID</strong>
+                                                <p class="text-muted mb-0">0220092020005</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row row-cols-2 row-cols-md-3 mb-3">
+                                            <div class="col">
+                                                <strong>D.O.B</strong>
+                                                <p class="text-muted">15 January 1989</p>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Sex</strong>
+                                                <p class="text-muted">Male</p>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Weight</strong>
+                                                <p class="text-muted">59 Kg</p>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Hight</strong>
+                                                <p class="text-muted">172 cm</p>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Last Appointment</strong>
+                                                <p class="text-muted">15 Dec - 2021</p>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Reg. Date</strong>
+                                                <p class="text-muted">10 Dec 2021</p>
+                                            </div>
+                                        </div>
+
+                                        <hr>
+                                        
+                                        <h6>Patient History</h6>
+                                        <div class="d-flex mb-3">
+                                            <span class="badge bg-warning text-dark me-2">Asthma</span>
+                                            <span class="badge bg-primary text-light me-2">Hypertension</span>
+                                            <span class="badge bg-danger text-light">Fever</span>
+                                        </div>
+                                        <div class="d-flex justify-content-start">
+                                            <a href="#" class="btn btn-primary me-3 d-flex align-items-center text-light">
+                                                <i class="bx bx-phone me-2 text"></i>(308) 555-0102
+                                            </a>
+                                            <a href="#" class="btn btn-outline-primary me-3 d-flex align-items-center">
+                                                <i class="bx bx-file me-2"></i>Document
+                                            </a>
+                                            <a href="./chats" class="btn btn-outline-primary me-3 d-flex align-items-center">
+                                                <i class="bx bx-chat me-2"></i>Chat
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
