@@ -82,7 +82,10 @@ include '../includes/head.php';
                 
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h6 class="mb-2">Availability</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="mb-2">Availability</h6>
+                            <a href="./dashboard#calendar" class="mb-2">All terms</a>
+                        </div>
                         <div class="d-flex flex-wrap">
                             <div class="card me-2 mb-2">
                                 <div class="card-body p-2">
