@@ -173,7 +173,7 @@ include '../includes/head.php';
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="M.J. Mical"></td>
+                                                <td><img src="../assets/images/defualt_profile.png" class="rounded-circle" alt="M.J. Mical" height="40"></td>
                                                 <td>
                                                     <strong class="text-primary">M.J. Mical</strong><br>
                                                     <small>Health Checkup</small>
@@ -181,7 +181,7 @@ include '../includes/head.php';
                                                 <td><span class="badge bg-info">On Going</span></td>
                                             </tr>
                                             <tr>
-                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="Sanath Deo"></td>
+                                                <td><img src="../assets/images/profilenono.jpeg" class="rounded-circle" alt="Sanath Deo" height="40"></td>
                                                 <td>
                                                     <strong class="text-primary">Sanath Deo</strong><br>
                                                     <small>Health Checkup</small>
@@ -189,7 +189,7 @@ include '../includes/head.php';
                                                 <td>12:30 PM</td>
                                             </tr>
                                             <tr>
-                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="Loeara Phanj"></td>
+                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="Loeara Phanj" height="40"></td>
                                                 <td>
                                                     <strong class="text-primary">Loeara Phanj</strong><br>
                                                     <small>Report</small>
@@ -197,7 +197,7 @@ include '../includes/head.php';
                                                 <td>01:00 PM</td>
                                             </tr>
                                             <tr>
-                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="Komola Haris"></td>
+                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="Komola Haris" height="40"></td>
                                                 <td>
                                                     <strong class="text-primary">Komola Haris</strong><br>
                                                     <small>Common Cold</small>
@@ -222,7 +222,7 @@ include '../includes/head.php';
                                     <table class="table table-borderless">
                                         <tbody>
                                             <tr>
-                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="M.J. Mical"></td>
+                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="M.J. Mical" height="40"></td>
                                                 <td>
                                                     <strong class="text-primary">M.J. Mical</strong><br>
                                                     <small>Cold</small>
@@ -231,12 +231,14 @@ include '../includes/head.php';
                                                     <div class="d-flex justify-content-end">
                                                         <i class='bx bx-check text-light btn btn-success py-1 px-2 mx-1'></i>
                                                         <i class='bx bxs-x-circle text-light btn btn-primary py-1 px-2 mx-1'></i>
-                                                        <i class='bx bxs-message-dots text-light btn btn-info py-1 px-2 mx-1' ></i>
+                                                        <a href="./chats">
+                                                            <i class='bx bxs-message-dots text-light btn btn-info py-1 px-2 mx-1' ></i>
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="Sanath Deo"></td>
+                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="Sanath Deo" height="40"></td>
                                                 <td>
                                                     <strong class="text-primary">Sanath Deo</strong><br>
                                                     <small>Health Checkup</small>
@@ -245,7 +247,9 @@ include '../includes/head.php';
                                                     <div class="d-flex justify-content-end">
                                                         <i class='bx bx-check text-light btn btn-success py-1 px-2 mx-1'></i>
                                                         <i class='bx bxs-x-circle text-light btn btn-primary py-1 px-2 mx-1'></i>
-                                                        <i class='bx bxs-message-dots text-light btn btn-info py-1 px-2 mx-1' ></i>
+                                                        <a href="./chats">
+                                                            <i class='bx bxs-message-dots text-light btn btn-info py-1 px-2 mx-1' ></i>
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>
