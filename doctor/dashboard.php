@@ -156,43 +156,102 @@ include '../includes/head.php';
 
                     <!-- Next Patient and Prescriptions -->
                     <div class="row d-flex">
-                        <div class="col-md-6 mb-4 d-flex">
+                        <div class="col-lg-6 mb-4 d-flex">
                             <div class="card border-primary flex-fill">
                                 <div class="card-body">
-                                    <h5 class="card-title">Today Appointments</h5>
-                                    <ul class="list-group">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            M.J. Mical - Health Checkup <span>On Going</span>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            Sanath Deo - Health Checkup <span>12:30 PM</span>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            Loeara Phanj - Report <span>1:00 PM</span>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            Komola Haris - Common Cold <span>1:30 PM</span>
-                                        </li>
-                                        <a href="#" class="text-center mt-3">See All</a>
-                                    </ul>
+                                    <h5 class="card-title text-primary">Today Appointment</h5>
+                                    
+                                    <hr>
+
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th>Patient</th>
+                                                <th>Name/Diagnosis</th>
+                                                <th>Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="M.J. Mical"></td>
+                                                <td>
+                                                    <strong class="text-primary">M.J. Mical</strong><br>
+                                                    <small>Health Checkup</small>
+                                                </td>
+                                                <td><span class="badge bg-info">On Going</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="Sanath Deo"></td>
+                                                <td>
+                                                    <strong class="text-primary">Sanath Deo</strong><br>
+                                                    <small>Health Checkup</small>
+                                                </td>
+                                                <td>12:30 PM</td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="Loeara Phanj"></td>
+                                                <td>
+                                                    <strong class="text-primary">Loeara Phanj</strong><br>
+                                                    <small>Report</small>
+                                                </td>
+                                                <td>01:00 PM</td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="Komola Haris"></td>
+                                                <td>
+                                                    <strong class="text-primary">Komola Haris</strong><br>
+                                                    <small>Common Cold</small>
+                                                </td>
+                                                <td>01:30 PM</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href="#" class="text-primary">See All</a>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Appointment Request and Calendar -->
-                        <div class="col-md-6 mb-4 d-flex">
+                        <div class="col-lg-6 mb-4 d-flex">
                             <div class="card w-100 h-100 border-primary">
                                 <div class="card-body">
-                                    <h5 class="card-title">Appointment Requests</h5>
-                                    <ul class="list-group">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            Maria Sarafat - Cold <span class="badge bg-success">Approved</span>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            Jhon Deo - Over Swing <span class="badge bg-warning">Pending</span>
-                                        </li>
-                                        <a href="#" class="text-center mt-3">See All</a>
-                                    </ul>
+                                <h5 class="card-title text-primary">Appointmen request</h5>
+                                    
+                                    <hr>
+
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="M.J. Mical"></td>
+                                                <td>
+                                                    <strong class="text-primary">M.J. Mical</strong><br>
+                                                    <small>Cold</small>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end">
+                                                        <i class='bx bx-check text-light btn btn-success py-1 px-2 mx-1'></i>
+                                                        <i class='bx bxs-x-circle text-light btn btn-primary py-1 px-2 mx-1'></i>
+                                                        <i class='bx bxs-message-dots text-light btn btn-info py-1 px-2 mx-1' ></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="https://via.placeholder.com/40" class="rounded-circle" alt="Sanath Deo"></td>
+                                                <td>
+                                                    <strong class="text-primary">Sanath Deo</strong><br>
+                                                    <small>Health Checkup</small>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end">
+                                                        <i class='bx bx-check text-light btn btn-success py-1 px-2 mx-1'></i>
+                                                        <i class='bx bxs-x-circle text-light btn btn-primary py-1 px-2 mx-1'></i>
+                                                        <i class='bx bxs-message-dots text-light btn btn-info py-1 px-2 mx-1' ></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href="#" class="text-primary">See All</a>
                                 </div>
                             </div>
                         </div>
