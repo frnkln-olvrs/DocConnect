@@ -262,7 +262,7 @@ include '../includes/head.php';
                     </div>
 
                     <!-- CALENDAR -->
-                     <div class="row" id="calendar">
+                    <div class="row" id="calendar">
                         <div class="col-md-12 mb-4">
                             <div class="card">
                                 <div class="card-body">
@@ -271,7 +271,7 @@ include '../includes/head.php';
                                 </div>
                             </div>
                         </div>
-                     </div>
+                    </div>
                 </div>
             </main>
         </div>

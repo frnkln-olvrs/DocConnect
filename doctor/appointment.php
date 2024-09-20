@@ -5,10 +5,10 @@ $title = 'Appointment';
 $appointment = 'active';
 include '../includes/head.php';
 
-//PHP array for events
+// Temporary PHP array for events
 $events = [
   ['title' => 'Checkup with Dr. Smith', 'start' => '2024-09-25'],
-  ['title' => 'Consultation', 'start' => '2024-09-26'],
+  ['title' => 'Online Consultation', 'start' => '2024-09-26', 'url' => 'http://example.com/meeting-link'],
   ['title' => 'Follow-up Appointment', 'start' => '2024-09-27']
 ];
 ?>
@@ -50,6 +50,29 @@ $events = [
               <label for="eventDate" class="form-label">Event Date</label>
               <input type="date" class="form-control" id="eventDate" name="eventDate" required>
             </div>
+            <div class="mb-3">
+              <label for="startTime" class="form-label">Start Time</label>
+              <input type="time" class="form-control" id="startTime" name="startTime" required>
+            </div>
+            <div class="mb-3">
+              <label for="endTime" class="form-label">End Time</label>
+              <input type="time" class="form-control" id="endTime" name="endTime">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Meeting Type</label>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="meetingTypeSwitch" name="meetingType" value="online">
+                <label class="form-check-label" for="meetingTypeSwitch" id="meetingTypeLabel">Face-to-Face</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="eventUrl" class="form-label">Event URL (for Online Meetings)</label>
+              <input type="url" class="form-control" id="eventUrl" name="eventUrl" placeholder="http://example.com" disabled>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="isRepeating" name="isRepeating">
+              <label class="form-check-label" for="isRepeating">Is this a repeating event?</label>
+            </div>
             <button type="submit" class="btn btn-primary">Add Appointment</button>
           </form>
         </div>
@@ -62,26 +85,78 @@ $events = [
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
-        events: <?php echo json_encode($events); ?>, // load php array
+        events: <?php echo json_encode($events); ?>, // Load events from PHP array
+        eventClick: function(info) {
+          // Check if the event has a URL
+          if (info.event.url) {
+            window.open(info.event.url, "_blank"); // Open the URL in a new tab
+            info.jsEvent.preventDefault(); // Prevent default behavior (navigation)
+          } else {
+            // If no URL, event is not clickable (show a message or ignore)
+            alert("This is a Face-to-Face event and does not have an online link.");
+          }
+        }
       });
       calendar.render();
 
-      // form submission
+      // Handle form submission
       document.getElementById('addEventForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
         var eventTitle = document.getElementById('eventTitle').value;
         var eventDate = document.getElementById('eventDate').value;
+        var startTime = document.getElementById('startTime').value;
+        var endTime = document.getElementById('endTime').value;
+        var eventUrl = document.getElementById('eventUrl').value;
+        var isRepeating = document.getElementById('isRepeating').checked;
+        var meetingType = document.getElementById('meetingTypeSwitch').checked ? 'online' : 'face-to-face';
 
-        // Add event to FullCalendar dynamically
+        // Create event object
         var event = {
           title: eventTitle,
-          start: eventDate
+          start: eventDate + 'T' + startTime,
+          end: endTime ? eventDate + 'T' + endTime : null,
+          url: meetingType === 'online' ? eventUrl : null
         };
-        calendar.addEvent(event); // Add event to calendar
-        document.getElementById('addEventForm').reset(); // Reset form
-        var modal = bootstrap.Modal.getInstance(document.getElementById('addEventModal')); // Close modal
+
+        // Handle repeating events
+        if (isRepeating) {
+          var groupId = 'group' + Math.floor(Math.random() * 1000); // Random groupId for repeating events
+          event.groupId = groupId;
+
+          for (let i = 0; i < 3; i++) {
+            let repeatingEvent = Object.assign({}, event);
+            repeatingEvent.start = new Date(new Date(event.start).getTime() + i * 7 * 24 * 60 * 60 * 1000).toISOString(); // Add 7 days for each repeat
+            calendar.addEvent(repeatingEvent);
+          }
+        } 
+        
+        else {
+          calendar.addEvent(event);
+        }
+
+        document.getElementById('addEventForm').reset();
+        var modal = bootstrap.Modal.getInstance(document.getElementById('addEventModal'));
         modal.hide();
+      });
+
+      // Switch between Face-to-Face and Online Meeting
+      var meetingTypeSwitch = document.getElementById('meetingTypeSwitch');
+      var eventUrlField = document.getElementById('eventUrl');
+      var meetingTypeLabel = document.getElementById('meetingTypeLabel');
+
+      meetingTypeSwitch.addEventListener('change', function() {
+        if (meetingTypeSwitch.checked) {
+          eventUrlField.disabled = false;
+          eventUrlField.required = true;
+          meetingTypeLabel.innerHTML = 'Online';
+        } 
+        
+        else {
+          eventUrlField.disabled = true;
+          eventUrlField.required = false;
+          meetingTypeLabel.innerHTML = 'Face-to-Face';
+        }
       });
     });
   </script>
