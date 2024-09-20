@@ -64,17 +64,46 @@ include '../includes/head.php';
                                     </div>
                                 </div>
                             </div>
+
                             <div class="tab-pane fade" id="nav-opinions" role="tabpanel" aria-labelledby="nav-opinions-tab">
-                                <p><strong>This is some placeholder content the Profile tab's associated content.</strong>
-                                    Clicking another tab will toggle the visibility of this one for the next.
-                                    The tab JavaScript swaps classes to control the content visibility and styling. You can use it with
-                                    tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+                                <h6>Patient Reviews</h6>
+                                <div class="review mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <h6 class="me-2">John Doe</h6>
+                                        <span class="badge bg-success">5.0 ★</span>
+                                    </div>
+                                    <p>"Dr. Smith is excellent! She takes the time to explain everything and ensures I understand my treatment plan. I feel well cared for."</p>
+                                </div>
+                                <div class="review mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <h6 class="me-2">Jane Roe</h6>
+                                        <span class="badge bg-warning">4.5 ★</span>
+                                    </div>
+                                    <p>"Great experience! The doctor was very professional and addressed all my concerns. Highly recommend."</p>
+                                </div>
+                                <a href="#" class="text-decoration-none">See all reviews</a>
                             </div>
+
                             <div class="tab-pane fade" id="nav-experience" role="tabpanel" aria-labelledby="nav-experience-tab">
-                                <p><strong>This is some placeholder content the Contact tab's associated content.</strong>
-                                    Clicking another tab will toggle the visibility of this one for the next.
-                                    The tab JavaScript swaps classes to control the content visibility and styling. You can use it with
-                                    tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+                                <h6>Professional Experience</h6>
+                                <ul class="list-unstyled">
+                                    <li><strong>Senior Consultant, Orthopedics</strong> - ABC Hospital (2015 - Present)</li>
+                                    <li><strong>Resident Doctor</strong> - XYZ Medical Center (2010 - 2015)</li>
+                                </ul>
+                                
+                                <h6>Education</h6>
+                                <ul class="list-unstyled">
+                                    <li><strong>MD, Orthopedics</strong> - Harvard Medical School</li>
+                                    <li><strong>BS, Biology</strong> - University of California</li>
+                                </ul>
+                            
+                                <h6>Certifications</h6>
+                                <ul class="list-unstyled">
+                                    <li>Board Certified Orthopedic Surgeon</li>
+                                    <li>Advanced Trauma Life Support (ATLS) Certified</li>
+                                </ul>
+                                
+                                <a href="#" class="text-decoration-none">Read more about professional background</a>
                             </div>
                         </div>
                     </div>
