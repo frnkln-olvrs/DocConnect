@@ -9,7 +9,7 @@ include '../includes/head.php';
 $events = [
   ['title' => 'Checkup with Dr. Smith', 'start' => '2024-09-25'],
   ['title' => 'Online Consultation', 'start' => '2024-09-26', 'url' => 'http://example.com/meeting-link'],
-  ['title' => 'Follow-up Appointment', 'start' => '2024-09-27']
+  ['title' => 'Follow-up Appointment', 'start' => '2024-09-27T10:30:00', 'end' => '2024-09-27T12:30:00']
 ];
 ?>
 
@@ -23,38 +23,47 @@ $events = [
       require_once('../includes/sidepanel-doctor.php');
       ?>
       <main class="col-md-9 ms-sm-auto col-lg-10 bg-light">
-        <div class="container my-4">
-          <div class="card border flex-fill mb-3">
-            <div class="card-body">
-              <h2>Manage Appointments</h2>
-              
-              <div class="table-responsive">
-                <table class="table table-striped" id="eventsTable">
-                  <thead>
-                    <tr>
-                      <th>Event Title</th>
-                      <th>Event Date</th>
-                      <th>Start Time</th>
-                      <th>End Time</th>
-                      <th>Type</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Event rows will be dynamically added here -->
-                  </tbody>
-                </table>
-              </div>
+        <div class="card flex-fill my-4">
+          <div class="card-body">
+            <h2>Manage Appointments</h2>
+            
+            <div class="table-responsive">
+              <table class="table table-striped" id="eventsTable">
+                <thead>
+                  <tr>
+                    <th>Event Title</th>
+                    <th>Event Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($events as $event): ?>
+                  <tr>
+                    <td><?php echo $event['title']; ?></td>
+                    <td><?php echo $event['start']; ?></td>
+                    <td><?php echo isset($event['start']) ? explode('T', $event['start'])[0] : 'N/A'; ?></td>
+                    <td><?php echo isset($event['end']) ? explode('T', $event['end'])[0] : 'N/A'; ?></td>
+                    <td><?php echo isset($event['url']) ? 'Online' : 'Face-to-Face'; ?></td>
+                    <td>
+                      <button class="btn btn-warning btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
             </div>
           </div>
+        </div>
 
-          <div class="card appointment_calendar flex-fill">
-            <div class="card-body">
-              <div id="calendar"></div>
-              <button id="addAppointmentBtn" class="btn btn-primary mt-3 text-light" data-bs-toggle="modal" data-bs-target="#addEventModal">Add Appointment</button>
-            </div>
+        <div class="card flex-fill my-4">
+          <div class="card-body">
+            <div id="calendar"></div>
+            <button id="addAppointmentBtn" class="btn btn-primary mt-3 text-light" data-bs-toggle="modal" data-bs-target="#addEventModal">Add Appointment</button>
           </div>
-
         </div>
       </main>
     </div>
@@ -133,43 +142,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   calendar.render();
 
-  // Populate the table with events
-  function populateEventsTable(events) {
-    var tableBody = document.getElementById('eventsTable').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = ''; // Clear the table
-
-    events.forEach(function(event) {
-      var row = tableBody.insertRow();
-
-      var titleCell = row.insertCell(0);
-      var dateCell = row.insertCell(1);
-      var startTimeCell = row.insertCell(2);
-      var endTimeCell = row.insertCell(3);
-      var typeCell = row.insertCell(4);
-      var actionCell = row.insertCell(5);
-
-      titleCell.textContent = event.title;
-      dateCell.textContent = event.start ? event.start.split('T')[0] : 'N/A';
-      startTimeCell.textContent = event.start ? event.start.split('T')[1] : 'N/A';
-      endTimeCell.textContent = event.end ? event.end.split('T')[1] : 'N/A';
-      typeCell.textContent = event.url ? 'Online' : 'Face-to-Face';
-      
-      // Add action buttons (e.g., edit, delete)
-      var editButton = document.createElement('button');
-      editButton.textContent = 'Edit';
-      editButton.className = 'btn btn-warning btn-sm';
-      actionCell.appendChild(editButton);
-
-      var deleteButton = document.createElement('button');
-      deleteButton.textContent = 'Delete';
-      deleteButton.className = 'btn btn-danger btn-sm ms-2';
-      actionCell.appendChild(deleteButton);
-    });
-  }
-
-  // Load initial events into the table
-  populateEventsTable(calendar.getEvents());
-
   // Handle form submission
   document.getElementById('addEventForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -205,9 +177,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // Add the event to the calendar and table
+    // Add the event to the calendar
     calendar.addEvent(event);
-    populateEventsTable(calendar.getEvents());
 
     // Reset the form and close the modal
     document.getElementById('addEventForm').reset();
