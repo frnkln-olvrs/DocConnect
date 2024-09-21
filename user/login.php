@@ -141,9 +141,23 @@ include '../includes/head.php';
         <div class="form-input w-100 px-1">
           <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
           <?php
-          if (isset($_POST['email']) && !validate_field($_POST['email'])) {
+          $new_account = new Account();
+          if (isset($_POST['email'])) {
+            $new_account->email = htmlentities($_POST['email']);
+          } else {
+            $new_account->email = '';
+          }
+          if (isset($_POST['email']) && strcmp(validate_email($_POST['email']), 'success') != 0) {
           ?>
-            <p class="text-dark m-0 ps-2">Email is required.</p>
+            <p class="text-dark m-0 ps-2"><?= validate_email($_POST['email']) ?></p>
+          <?php
+          } else if (($new_account->is_email_exist() && $_POST['email']) && $success !== 'success') {
+          ?>
+            <p class="text-dark m-0 ps-2">Email you've entered already exist.</p>
+          <?php
+          } else if (isset($_POST['email']) && !validate_wmsu_email($_POST['email'])) {
+          ?>
+            <p class="text-dark m-0 ps-2">You must use wmsu email.</p>
           <?php
           }
           ?>
