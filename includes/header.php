@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 
 		<!-- dispaly none kapag hnd nakalogin -->
-		<a href="#" class="<?= isset($_SESSION['user_role']) ? "d-none" : "d-none acc d-block d-lg-none" ?> link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+		<a href="#" class="<?= isset($_SESSION['user_role']) ? "d-block" : "d-none d-lg-none" ?> acc link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 			<div class="d-flex align-items-center">
 				<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
 				<h6 class="m-0 text-dark d-none d-md-block"><?= $_SESSION['fullname'] ?></h6>
@@ -31,11 +31,11 @@
         <li class="nav-item"><a href="./doctors" class="nav-link text-primary">Our Doctors</a></li>
         <li class="nav-item"><a href="./appointment" class="nav-link text-primary">Appointment</a></li>
         <li class="nav-item"><a href="./contact" class="nav-link text-primary">Contact</a></li>
-        <li class="nav-item"><a href="../login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white" aria-current="page">Login</a></li>
+        <li class="nav-item"><a href="./login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white" aria-current="page">Login</a></li>
 
 				<!-- KAPAG NAKA LOGIN NA YUNG USER -->
 				<!-- <li class="nav-item dropdown d-none d-lg-flex align-items-center border-start ms-2"> -->
-				<li class="nav-item dropdown <?= isset($_SESSION['user_role']) ? "d-flex" : "d-none" ?> d-flex align-items-center border-start ms-2">
+				<li class="nav-item dropdown <?= isset($_SESSION['user_role']) ? "d-none d-lg-flex" : "d-none" ?> align-items-center border-start ms-2">
 					<a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 						<div class="d-flex align-items-center">
 							<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">

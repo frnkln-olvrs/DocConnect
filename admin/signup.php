@@ -27,7 +27,7 @@ if (isset($_POST['signup'])) {
     $account->middlename = '';
   }
   $account->lastname = ucfirst(strtolower(htmlentities($_POST['lastname'])));
-  $account->user_role = 0; // user_role (0 = admin, 1 = mod, 2 = user)
+  $account->user_role = 0; // user_role (0 = admin, 1 = doc, 2 = mod, 3 user)
 
   if (
     validate_field($account->email) &&

@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user_role'])) {
+if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 0) {
+  header('location: ../logout.php?from=0');
+} else if (isset($_SESSION['user_role'])) {
   header('location: ./index.php');
 }
 
