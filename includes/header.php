@@ -1,8 +1,8 @@
 <header class="navbar fixed-top p-3 navbar-expand-lg navbar-dark bg-white shadow-sm">
 	<div class="container-fluid">
 
-		<!-- dispaly none kapag hnd nakalogin -->
-		<a href="#" class="<?= isset($_SESSION['user_role']) ? "d-block" : "d-none d-lg-none" ?> acc link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+		<!-- Display profile dropdown for mobile if the user is logged in -->
+		<a href="#" class="<?= isset($_SESSION['user_role']) ? "d-sm-block" : "d-none" ?> d-lg-none acc link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 			<div class="d-flex align-items-center">
 				<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
 				<h6 class="m-0 text-dark d-none d-md-block"><?= $_SESSION['fullname'] ?></h6>
@@ -26,16 +26,14 @@
 
 		<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 			<ul class="navbar-nav mb-2 mb-lg-0 header nav nav-pills">
-        <li class="nav-item"><a href="./about_us" class="nav-link text-primary">About Us</a></li>
-        <li class="nav-item"><a href="./services" class="nav-link text-primary">Services</a></li>
-        <li class="nav-item"><a href="./doctors" class="nav-link text-primary">Our Doctors</a></li>
-        <li class="nav-item"><a href="./appointment" class="nav-link text-primary">Appointment</a></li>
-        <li class="nav-item"><a href="./contact" class="nav-link text-primary">Contact</a></li>
-        <li class="nav-item"><a href="./login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white" aria-current="page">Login</a></li>
+				<li class="nav-item"><a href="./about_us" class="nav-link text-primary">About Us</a></li>
+				<li class="nav-item"><a href="./services" class="nav-link text-primary">Services</a></li>
+				<li class="nav-item"><a href="./doctors" class="nav-link text-primary">Our Doctors</a></li>
+				<li class="nav-item"><a href="./appointment" class="nav-link text-primary">Appointment</a></li>
+				<li class="nav-item"><a href="./contact" class="nav-link text-primary">Contact</a></li>
+				<li class="nav-item"><a href="./login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white" aria-current="page">Login</a></li>
 
-				<!-- KAPAG NAKA LOGIN NA YUNG USER -->
-				<!-- <li class="nav-item dropdown d-none d-lg-flex align-items-center border-start ms-2"> -->
-				<li class="nav-item dropdown <?= isset($_SESSION['user_role']) ? "d-none d-lg-flex" : "d-none" ?> align-items-center border-start ms-2">
+				<li class="nav-item dropdown <?= isset($_SESSION['user_role']) ? "d-lg-flex" : 'd-none' ?> align-items-center border-start ms-2">
 					<a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 						<div class="d-flex align-items-center">
 							<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
