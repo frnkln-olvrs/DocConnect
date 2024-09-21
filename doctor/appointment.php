@@ -24,15 +24,43 @@ $events = [
       ?>
       <main class="col-md-9 ms-sm-auto col-lg-10 bg-light">
         <div class="container my-4">
-          <h2>Manage Appointments</h2>
-          <div id="calendar"></div>
-          <button id="addAppointmentBtn" class="btn btn-primary mt-3 text-light" data-bs-toggle="modal" data-bs-target="#addEventModal">Add Appointment</button>
+          <div class="card border flex-fill mb-3">
+            <div class="card-body">
+              <h2>Manage Appointments</h2>
+              
+              <div class="table-responsive">
+                <table class="table table-striped" id="eventsTable">
+                  <thead>
+                    <tr>
+                      <th>Event Title</th>
+                      <th>Event Date</th>
+                      <th>Start Time</th>
+                      <th>End Time</th>
+                      <th>Type</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Event rows will be dynamically added here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="card appointment_calendar flex-fill">
+            <div class="card-body">
+              <div id="calendar"></div>
+              <button id="addAppointmentBtn" class="btn btn-primary mt-3 text-light" data-bs-toggle="modal" data-bs-target="#addEventModal">Add Appointment</button>
+            </div>
+          </div>
+
         </div>
       </main>
     </div>
   </div>
 
-  <!-- Bootstrap Modal Adding Events -->
+  <!-- Bootstrap Modal for Adding Events -->
   <div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -83,86 +111,108 @@ $events = [
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        events: <?php echo json_encode($events); ?>, // Load events from PHP array
-        eventClick: function(info) {
-          // Check if the event has a URL
-          if (info.event.url) {
-            window.open(info.event.url, "_blank"); // Open the URL in a new tab
-            info.jsEvent.preventDefault(); // Prevent default behavior (navigation)
-          } else {
-            // If no URL, event is not clickable (show a message or ignore)
-            alert("This is a Face-to-Face event and does not have an online link.");
-          }
-        }
-      });
-      calendar.render();
-
-      // Handle form submission
-      document.getElementById('addEventForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        var eventTitle = document.getElementById('eventTitle').value;
-        var eventDate = document.getElementById('eventDate').value;
-        var startTime = document.getElementById('startTime').value;
-        var endTime = document.getElementById('endTime').value;
-        var eventUrl = document.getElementById('eventUrl').value;
-        var isRepeating = document.getElementById('isRepeating').checked;
-        var meetingType = document.getElementById('meetingTypeSwitch').checked ? 'online' : 'face-to-face';
-
-        // Create event object
-        var event = {
-          title: eventTitle,
-          start: eventDate + 'T' + startTime,
-          end: endTime ? eventDate + 'T' + endTime : null,
-          url: meetingType === 'online' ? eventUrl : null
-        };
-
-        // Handle repeating events
-        if (isRepeating) {
-          var groupId = 'group' + Math.floor(Math.random() * 1000); // Random groupId for repeating events
-          event.groupId = groupId;
-
-          for (let i = 0; i < 3; i++) {
-            let repeatingEvent = Object.assign({}, event);
-            repeatingEvent.start = new Date(new Date(event.start).getTime() + i * 7 * 24 * 60 * 60 * 1000).toISOString(); // Add 7 days for each repeat
-            calendar.addEvent(repeatingEvent);
-          }
-        } 
-        
-        else {
-          calendar.addEvent(event);
-        }
-
-        document.getElementById('addEventForm').reset();
-        var modal = bootstrap.Modal.getInstance(document.getElementById('addEventModal'));
-        modal.hide();
-      });
-
-      // Switch between Face-to-Face and Online Meeting
-      var meetingTypeSwitch = document.getElementById('meetingTypeSwitch');
-      var eventUrlField = document.getElementById('eventUrl');
-      var meetingTypeLabel = document.getElementById('meetingTypeLabel');
-
-      meetingTypeSwitch.addEventListener('change', function() {
-        if (meetingTypeSwitch.checked) {
-          eventUrlField.disabled = false;
-          eventUrlField.required = true;
-          meetingTypeLabel.innerHTML = 'Online';
-        } 
-        
-        else {
-          eventUrlField.disabled = true;
-          eventUrlField.required = false;
-          meetingTypeLabel.innerHTML = 'Face-to-Face';
-        }
-      });
-    });
-  </script>
+  <script src="../js/appointment_calendar.js"></script>
 </body>
 
 </html>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    events: <?php echo json_encode($events); ?>, // Load events from PHP array
+    eventClick: function(info) {
+      if (info.event.url) {
+        window.open(info.event.url, "_blank");
+        info.jsEvent.preventDefault();
+      } else {
+        alert("This is a Face-to-Face event and does not have an online link.");
+      }
+    }
+  });
+  calendar.render();
+
+  // Populate the table with events
+  function populateEventsTable(events) {
+    var tableBody = document.getElementById('eventsTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // Clear the table
+
+    events.forEach(function(event) {
+      var row = tableBody.insertRow();
+
+      var titleCell = row.insertCell(0);
+      var dateCell = row.insertCell(1);
+      var startTimeCell = row.insertCell(2);
+      var endTimeCell = row.insertCell(3);
+      var typeCell = row.insertCell(4);
+      var actionCell = row.insertCell(5);
+
+      titleCell.textContent = event.title;
+      dateCell.textContent = event.start ? event.start.split('T')[0] : 'N/A';
+      startTimeCell.textContent = event.start ? event.start.split('T')[1] : 'N/A';
+      endTimeCell.textContent = event.end ? event.end.split('T')[1] : 'N/A';
+      typeCell.textContent = event.url ? 'Online' : 'Face-to-Face';
+      
+      // Add action buttons (e.g., edit, delete)
+      var editButton = document.createElement('button');
+      editButton.textContent = 'Edit';
+      editButton.className = 'btn btn-warning btn-sm';
+      actionCell.appendChild(editButton);
+
+      var deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.className = 'btn btn-danger btn-sm ms-2';
+      actionCell.appendChild(deleteButton);
+    });
+  }
+
+  // Load initial events into the table
+  populateEventsTable(calendar.getEvents());
+
+  // Handle form submission
+  document.getElementById('addEventForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var eventTitle = document.getElementById('eventTitle').value;
+    var eventDate = document.getElementById('eventDate').value;
+    var startTime = document.getElementById('startTime').value;
+    var endTime = document.getElementById('endTime').value;
+    var eventUrl = document.getElementById('eventUrl').value;
+    var isRepeating = document.getElementById('isRepeating').checked;
+    var meetingType = document.getElementById('meetingTypeSwitch').checked ? 'online' : 'face-to-face';
+
+    var event = {
+      title: eventTitle,
+      start: eventDate + 'T' + startTime,
+      end: endTime ? eventDate + 'T' + endTime : null,
+      url: meetingType === 'online' ? eventUrl : null
+    };
+
+    // Handle repeating events (same day each month)
+    if (isRepeating) {
+      var groupId = 'group' + Math.floor(Math.random() * 1000);
+      event.groupId = groupId;
+
+      var date = new Date(eventDate);
+      for (let i = 1; i <= 3; i++) { // Repeat for the next 3 months
+        let newDate = new Date(date);
+        newDate.setMonth(date.getMonth() + i);
+        let repeatingEvent = Object.assign({}, event);
+        repeatingEvent.start = newDate.toISOString().split('T')[0] + 'T' + startTime;
+        repeatingEvent.end = endTime ? newDate.toISOString().split('T')[0] + 'T' + endTime : null;
+        calendar.addEvent(repeatingEvent);
+      }
+    }
+
+    // Add the event to the calendar and table
+    calendar.addEvent(event);
+    populateEventsTable(calendar.getEvents());
+
+    // Reset the form and close the modal
+    document.getElementById('addEventForm').reset();
+    var modal = bootstrap.Modal.getInstance(document.getElementById('addEventModal'));
+    modal.hide();
+  });
+});
+</script>

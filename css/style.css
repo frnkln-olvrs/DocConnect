@@ -372,6 +372,12 @@ main.col-md-9 {
 }
 /* ----------DASHBOARD------------- */
 
+/* ----------APPOINMENT------------- */
+.card.appointment_calendar {
+  background-color: #ad263416;
+}
+/* ----------APPOINMENT------------- */
+
 .doctors_nav .nav-link.active {
   color: var(--primary) !important;
   position: relative;
