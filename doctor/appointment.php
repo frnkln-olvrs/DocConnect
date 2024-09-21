@@ -42,14 +42,20 @@ $events = [
                 <tbody>
                   <?php foreach ($events as $event): ?>
                   <tr>
-                    <td><?php echo $event['title']; ?></td>
-                    <td><?php echo $event['start']; ?></td>
-                    <td><?php echo isset($event['start']) ? explode('T', $event['start'])[0] : 'N/A'; ?></td>
-                    <td><?php echo isset($event['end']) ? explode('T', $event['end'])[0] : 'N/A'; ?></td>
-                    <td><?php echo isset($event['url']) ? 'Online' : 'Face-to-Face'; ?></td>
                     <td>
-                      <button class="btn btn-warning btn-sm">Edit</button>
-                      <button class="btn btn-danger btn-sm">Delete</button>
+                      <?php if (isset($event['url'])): ?>
+                        <a href="<?php echo $event['url']; ?>" target="_blank"><?php echo $event['title']; ?></a>
+                      <?php else: ?>
+                        <?php echo $event['title']; ?>
+                      <?php endif; ?>
+                    </td>
+                    <td><?php echo explode('T', $event['start'])[0]; ?></td>
+                    <td><?php echo isset($event['start']) && strpos($event['start'], 'T') !== false ? explode('T', $event['start'])[1] : 'N/A'; ?></td>
+                    <td><?php echo isset($event['end']) && strpos($event['end'], 'T') !== false ? explode('T', $event['end'])[1] : 'N/A'; ?></td>
+                    <td><?php echo isset($event['url']) ? 'Online' : 'Face-to-Face'; ?></td>
+                    <td class="">
+                      <button class="btn btn-warning btn-sm"><i class='bx bxs-edit text-light'></i></button>
+                      <button class="btn btn-danger btn-sm ms-2"><i class='bx bxs-trash text-light'></i></button>
                     </td>
                   </tr>
                   <?php endforeach; ?>
@@ -142,6 +148,23 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   calendar.render();
 
+  // Switch between Face-to-Face and Online Meeting
+  var meetingTypeSwitch = document.getElementById('meetingTypeSwitch');
+  var eventUrlField = document.getElementById('eventUrl');
+  var meetingTypeLabel = document.getElementById('meetingTypeLabel');
+  
+  meetingTypeSwitch.addEventListener('change', function() {
+    if (meetingTypeSwitch.checked) {
+      eventUrlField.disabled = false;
+      eventUrlField.required = true;
+      meetingTypeLabel.innerHTML = 'Online';
+    } else {
+      eventUrlField.disabled = true;
+      eventUrlField.required = false;
+      meetingTypeLabel.innerHTML = 'Face-to-Face';
+    }
+  });
+
   // Handle form submission
   document.getElementById('addEventForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -177,7 +200,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // Add the event to the calendar
     calendar.addEvent(event);
 
     // Reset the form and close the modal
