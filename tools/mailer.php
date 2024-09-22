@@ -34,8 +34,8 @@ function send_code($email, $fullname, $code)
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Verify Your WMSU DocConnect Account';
-        $mail->Body    = '<p> Hi ' . ucwords($fullname) . ',<br><br>Welcome to Crimson Avenue! Please verify your email to complete your sign-up.<br><br>Verification Code: <strong>' . $code . '</strong><br><a href="http://crimsonavenue.se.local/user/verify.php">http://crimsonavenue.se.local/user/verify.php</a><br><br>If you have any questions, contact us at [your support email/phone]. </p>';
-        $mail->AltBody = '<p> Hi ' . ucwords($fullname) . ',<br><br>Welcome to Crimson Avenue! Please verify your email to complete your sign-up.<br><br>Verification Code: <strong>' . $code . '</strong><br><a href="http://crimsonavenue.se.local/user/verify.php">http://crimsonavenue.se.local/user/verify.php</a><br><br>If you have any questions, contact us at [your support email/phone]. </p>';
+        $mail->Body    = '<p> Hi ' . ucwords($fullname) . ',Verification Code: <strong>' . $code;
+        $mail->AltBody = '';
 
         if ($mail->send()) {
             //echo 'Message has been sent';
