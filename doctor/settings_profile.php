@@ -29,11 +29,18 @@ include '../includes/head.php';
 
         <div class="card bg-body-tertiary mb-4">
           <div class="card-body">
-            <form>
-              <!-- Profile Picture -->
+            <form id="profileForm">
               <div class="d-flex align-items-center mx-4 mb-4">
-                <img src="../assets/images/defualt_profile.png" class="rounded-circle me-5" alt="User Avatar" style="height: 150px;">
-                <button class="btn btn-primary btn-md d-block mx-2 text-light" type="button">Upload New</button>
+              <!-- Profile Picture -->
+                <div class="campus-pic align-items-end">
+                  <label class="label brand-border-color d-flex flex-column" for="file" style="border-width: 4px !important;">
+                    <i class="bx bxs-camera-plus text-light p-2 bg-primary"></i>
+                    <span>Change Image</span>
+                  </label>
+                  <img src="../assets/images/defualt_profile.png" id="output" class="rounded-circle" alt="User Avatar">
+                  <input id="file" type="file" name="campus_profile" accept=".jpg, .jpeg, .png" required onchange="validateFile(event)">
+                </div>
+                <button class="btn btn-primary btn-md d-block mx-2 text-light" id="upload_profile" type="button">Upload New</button>
                 <button class="btn btn-outline-secondary btn-md mx-2" type="button">Delete Avatar</button>
               </div>
 
@@ -45,7 +52,7 @@ include '../includes/head.php';
                 </div>
                 <div class="col mb-3">
                   <label for="middleName" class="form-label">Middle Name</label>
-                  <input type="text" class="form-control" id="firstName" placeholder="First name">
+                  <input type="text" class="form-control" id="middleName" placeholder="Middle name">
                 </div>
                 <div class="col mb-3">
                   <label for="lastName" class="form-label">Last Name</label>
@@ -75,9 +82,9 @@ include '../includes/head.php';
                   <label for="specialty" class="form-label">Specialties</label>
                   <select id="specialty" class="form-select" required>
                     <option value="" disabled selected>Select Specialties</option>
-                    <option value="male">Cardiologist</option>
-                    <option value="female">Pediatrician</option>
-                    <option value="other">Cardiologist</option>
+                    <option value="cardiologist">Cardiologist</option>
+                    <option value="pediatrician">Pediatrician</option>
+                    <!-- Add more specialties here -->
                   </select>
                 </div>
                 <!-- DAPAT TEXT INPUT WITH SUGGEWSTION -->
@@ -137,4 +144,7 @@ include '../includes/head.php';
       </main>
     </div>
   </div>
+
+  <script src="../js/imageChange.js"></script>
 </body>
+</html>
