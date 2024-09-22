@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+    header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 1) {
+    header('location: ../index.php');
+}
+
+require_once('../tools/functions.php');
+require_once('../classes/account.class.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -129,7 +143,7 @@ include '../includes/head.php';
                                         </div>
 
                                         <hr>
-                                        
+
                                         <h6>Patient History</h6>
                                         <div class="d-flex mb-3">
                                             <span class="badge bg-warning text-dark me-2">Asthma</span>
@@ -160,7 +174,7 @@ include '../includes/head.php';
                             <div class="card border-primary flex-fill">
                                 <div class="card-body">
                                     <h5 class="card-title text-primary">Today Appointment</h5>
-                                    
+
                                     <hr>
 
                                     <table class="table table-borderless">
@@ -215,8 +229,8 @@ include '../includes/head.php';
                         <div class="col-lg-6 mb-4 d-flex">
                             <div class="card w-100 h-100 border-primary">
                                 <div class="card-body">
-                                <h5 class="card-title text-primary">Appointmen request</h5>
-                                    
+                                    <h5 class="card-title text-primary">Appointmen request</h5>
+
                                     <hr>
 
                                     <table class="table table-borderless">
@@ -232,7 +246,7 @@ include '../includes/head.php';
                                                         <i class='bx bx-check text-light btn btn-success py-1 px-2 mx-1'></i>
                                                         <i class='bx bxs-x-circle text-light btn btn-primary py-1 px-2 mx-1'></i>
                                                         <a href="./chats">
-                                                            <i class='bx bxs-message-dots text-light btn btn-info py-1 px-2 mx-1' ></i>
+                                                            <i class='bx bxs-message-dots text-light btn btn-info py-1 px-2 mx-1'></i>
                                                         </a>
                                                     </div>
                                                 </td>
@@ -248,7 +262,7 @@ include '../includes/head.php';
                                                         <i class='bx bx-check text-light btn btn-success py-1 px-2 mx-1'></i>
                                                         <i class='bx bxs-x-circle text-light btn btn-primary py-1 px-2 mx-1'></i>
                                                         <a href="./chats">
-                                                            <i class='bx bxs-message-dots text-light btn btn-info py-1 px-2 mx-1' ></i>
+                                                            <i class='bx bxs-message-dots text-light btn btn-info py-1 px-2 mx-1'></i>
                                                         </a>
                                                     </div>
                                                 </td>

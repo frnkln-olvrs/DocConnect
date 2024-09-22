@@ -31,7 +31,7 @@
 				<li class="nav-item"><a href="./doctors" class="nav-link text-primary">Our Doctors</a></li>
 				<li class="nav-item"><a href="./appointment" class="nav-link text-primary">Appointment</a></li>
 				<li class="nav-item"><a href="./contact" class="nav-link text-primary">Contact</a></li>
-				<li class="nav-item"><a href="./login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white" aria-current="page">Login</a></li>
+				<li class="nav-item"><a href="./login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white <?= isset($_SESSION['user_role']) ? "d-none" : 'd-block' ?>" aria-current="page">Login</a></li>
 
 				<li class="nav-item dropdown <?= isset($_SESSION['user_role']) ? "d-lg-flex" : 'd-none' ?> align-items-center border-start ms-2">
 					<a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

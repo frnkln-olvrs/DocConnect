@@ -1,8 +1,16 @@
 <?php
 session_start();
 
-if ((isset($_SESSION['user_role']) &&  $_SESSION['user_role'] == 0) && $_SESSION['verification_status'] == "Verified") {
-  header('location: ../admin/index.php');
+if (isset($_SESSION['user_role']) && $_SESSION['verification_status'] == "Verified") {
+  if ($_SESSION['user_role'] == 0) {
+    header('location: ../admin/index.php');
+  } else if ($_SESSION['user_role'] == 1) {
+    header('location: ../doctor/index.php');
+  } else if ($_SESSION['user_role'] == 2) {
+    //header('location: ../moderator/index.php');
+  } else if ($_SESSION['user_role'] == 3) {
+    header('location: ../user/index.php');
+  }
 } else if (!isset($_SESSION['user_role'])) {
   header('location: ./login.php');
 }
@@ -102,8 +110,8 @@ function getCurrentPage()
       </div>
     </div>
   </div>
+  <script src="../js/main.js"></script>
 
-  
 </body>
 
 </html>

@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+  header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 3) {
+  header('location: ../index.php');
+}
+
+require_once('../tools/functions.php');
+require_once('../classes/account.class.php');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php 
