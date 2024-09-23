@@ -4,7 +4,7 @@ session_start();
 if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 3) {
   header('location: ../logout.php?from=3');
 } else if (isset($_SESSION['user_role'])) {
-  header('location: ../index.php');
+  header('location: ./index.php');
 }
 
 require_once("../classes/account.class.php");
@@ -223,7 +223,7 @@ include '../includes/head.php';
             }
             ?>
           </div>
-        </div>
+        </div>  
 
         <div class="row row-cols-2 w-100">
           <div class="form-input px-1">
