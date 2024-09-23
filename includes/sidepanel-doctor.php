@@ -1,6 +1,6 @@
 <nav id="sidebarMenu" class="bg-white fixed-top col-md-3 col-lg-2 d-md-block border-end sidebar collapse min-vh-100 p-0">
-    <div class="position-sticky pt-3">
-        <div class="pt-1 mb-2 d-flex align-items-center flex-column">
+    <div class="d-flex flex-column h-100">
+        <div class="pt-3 mb-2 d-flex align-items-center flex-column">
             <img src="../assets/images/defualt_profile.png" alt="" height="100" width="100" class="rounded rounded-circle border border-2 border-primary mb-2">
             <h5 class="text-primary fw-semibold mb-1">Dr. John Doe</h5>
             <p class="text-muted fw-light mb-0">Medical Practitioner</p>
@@ -8,7 +8,7 @@
 
         <hr class="m-0 mb-2 mx-3 border-primary">
 
-        <ul class="nav doctors_nav flex-column">
+        <ul class="nav doctors_nav flex-column mb-auto">
             <li class="nav-item">
                 <a class="nav-link text-dark <?= $dashboard ?>" href="../doctor/index">
                     <i class='bx bx-bar-chart-square me-2'></i>
@@ -52,5 +52,17 @@
                 </a>
             </li>
         </ul>
+
+        <div class="logout-section mt-auto">
+            <hr class="mx-3 my-1 border-primary">
+            <ul class="nav doctors_nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="../logout">
+                        <i class='bx bx-log-out me-2'></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
