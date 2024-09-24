@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+    header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 1) {
+    header('location: ../index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -49,7 +60,7 @@ include '../includes/head.php';
                             <div class="tab-pane fade active show" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab">
                                 <div class="mb-3">
                                     <h6>Bio</h6>
-                                    <p>As a medical practitioner, I provide compassionate healthcare with expertise in diagnosing, treating, and preventing illnesses and injuries. My patient-centered approach emphasizes trust, communication, and personalized treatment plans. I am dedicated to staying updated on medical advancements to ensure the highest standard of care. I'm passionate about health education and disease prevention, aiming to empower patients for long-term wellness.  </p>
+                                    <p>As a medical practitioner, I provide compassionate healthcare with expertise in diagnosing, treating, and preventing illnesses and injuries. My patient-centered approach emphasizes trust, communication, and personalized treatment plans. I am dedicated to staying updated on medical advancements to ensure the highest standard of care. I'm passionate about health education and disease prevention, aiming to empower patients for long-term wellness. </p>
                                     <!-- <a href="#" class="text-decoration-none">Read more</a> -->
                                 </div>
                                 <!-- <div class="row mb-4">
@@ -90,25 +101,25 @@ include '../includes/head.php';
                                     <li><strong>Senior Consultant, Orthopedics</strong> - ABC Hospital (2015 - Present)</li>
                                     <li><strong>Resident Doctor</strong> - XYZ Medical Center (2010 - 2015)</li>
                                 </ul>
-                                
+
                                 <h6>Education</h6>
                                 <ul class="list-unstyled">
                                     <li><strong>MD, Orthopedics</strong> - Harvard Medical School</li>
                                     <li><strong>BS, Biology</strong> - University of California</li>
                                 </ul>
-                            
+
                                 <h6>Certifications</h6>
                                 <ul class="list-unstyled">
                                     <li>Board Certified Orthopedic Surgeon</li>
                                     <li>Advanced Trauma Life Support (ATLS) Certified</li>
                                 </ul>
-                                
+
                                 <a href="#" class="text-decoration-none">Read more about professional background</a>
                             </div>
                         </div>
                     </div>
-	            </div>
-                
+                </div>
+
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
@@ -122,7 +133,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +143,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +153,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +163,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">--:-- AM</p>
                                         to
-                                        <p class="mb-0">--:-- PM</p>                                        
+                                        <p class="mb-0">--:-- PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +173,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +183,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -182,13 +193,13 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>  
+                </div>
             </main>
         </div>
     </div>
