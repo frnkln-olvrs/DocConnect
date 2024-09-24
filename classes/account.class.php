@@ -125,9 +125,12 @@ class Account
     // fix laterr
     function add_doc()
     {
+        $connect = $this->db->connect();
+        $connect->beginTransaction();
+
         $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role, contact, birthdate, gender) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role, :contact, :birthdate, :gender);";
 
-        $query = $this->db->connect()->prepare($sql);
+        $query = $connect->prepare($sql);
         $query->bindParam(':email', $this->email);
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
         $query->bindParam(':password', $hashedPassword);
@@ -140,10 +143,25 @@ class Account
         $query->bindParam(':gender', $this->gender);
 
         if ($query->execute()) {
-            return true;
+            $last_product_id = $connect->lastInsertId();
+
+            $sec_sql = "INSERT INTO doctor_info (account_id) VALUES (:account_id)";
+
+            $sec_query = $connect->prepare($sec_sql);
+            $sec_query->bindParam(':account_id', $last_product_id);
+
+            if ($sec_query->execute()) {
+                $connect->commit();
+                return true;
+            } else {
+                $connect->rollBack();
+                return false;
+            }
         } else {
+            $connect->rollBack();
             return false;
         }
+
     }
 
 
@@ -161,7 +179,7 @@ class Account
 
     function sign_in_doctor()
     {
-        $sql = "SELECT a.*, d.* FROM account a INNER JOIN doctor_info d ON d.account_id = a.account_id WHERE email = :email LIMIT 1;";
+        $sql = "SELECT a.*, d.* FROM account a INNER JOIN doctor_info d ON a.account_id = d.account_id WHERE email = :email LIMIT 1;";
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':email', $this->email);
 

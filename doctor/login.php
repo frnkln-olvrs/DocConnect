@@ -34,7 +34,7 @@ if (isset($_POST['login'])) {
     $_SESSION['end_wt'] = $account->end_wt;
     $_SESSION['bio'] = $account->bio;
 
-    if ($_SESSION['user_role'] == 3) {
+    if ($_SESSION['user_role'] == 2) {
       header('location: ./index.php');
     }
   } else {
