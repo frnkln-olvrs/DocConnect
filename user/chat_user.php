@@ -18,7 +18,7 @@
           <i class='bx bx-edit fs-4'></i>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control bg-secondary border-0" placeholder="Search">
+          <input type="text" class="form-control border-2" placeholder="Search">
         </div>
         <ul class="list-unstyled mb-0">
           <li class="mb-3">
@@ -76,7 +76,7 @@
 
         <!-- Chat Input -->
         <div class="chat_input d-flex align-items-center p-3 border-top bg-light">
-          <input type="text" class="form-control bg-secondary text-light rounded-pill me-3" placeholder="Aa">
+          <input type="text" class="form-control border-2 text-dark rounded-pill me-3" placeholder="Aa">
           <button class="btn btn-light">
             <i class='bx bx-send text-datrk fs-4'></i>
           </button>
