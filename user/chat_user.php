@@ -31,6 +31,16 @@
               <small class="ms-auto text-muted">20m</small>
             </a>
           </li>
+          <li class="mb-3">
+            <a href="#" class="d-flex align-items-center text-dark text-decoration-none">
+              <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
+              <div>
+                <strong>Chat Bot</strong>
+                <small class="d-block"></small>
+              </div>
+              <small class="ms-auto text-muted">40m</small>
+            </a>
+          </li>
           <!-- Add more chat items similarly -->
         </ul>
       </div>
@@ -45,8 +55,6 @@
               <span>Dr. Fname Lname</span>
             </div>
             <div>
-              <i class='bx bx-video fs-4 me-3'></i>
-              <i class='bx bx-phone fs-4 me-3'></i>
               <i class='bx bx-dots-horizontal-rounded fs-4'></i>
             </div>
           </div>
@@ -77,7 +85,7 @@
         <!-- Chat Input -->
         <div class="chat_input d-flex align-items-center p-3 border-top bg-light">
           <input type="text" class="form-control border-2 text-dark rounded-pill me-3" placeholder="Aa">
-          <button class="btn btn-light">
+          <button class="btn btn-light d-flex justify-content-center">
             <i class='bx bx-send text-datrk fs-4'></i>
           </button>
         </div>
