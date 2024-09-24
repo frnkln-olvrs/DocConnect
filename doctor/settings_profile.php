@@ -40,8 +40,8 @@ include '../includes/head.php';
                   <img src="../assets/images/defualt_profile.png" id="output" class="rounded-circle" alt="User Avatar">
                   <input id="file" type="file" name="campus_profile" accept=".jpg, .jpeg, .png" required onchange="validateFile(event)">
                 </div>
-                <button class="btn btn-primary btn-md d-block mx-2 text-light" id="upload_profile" type="button">Upload New</button>
-                <button class="btn btn-outline-secondary btn-md mx-2" type="button">Delete Avatar</button>
+                <!-- <button class="btn btn-primary btn-md d-block mx-2 text-light" id="upload_profile" type="button">Upload New</button> -->
+                <button class="btn btn-primary btn-md d-block mx-2 text-light" type="button">Delete Avatar</button>
               </div>
 
               <!-- Personal Information -->
