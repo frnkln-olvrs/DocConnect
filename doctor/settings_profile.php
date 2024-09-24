@@ -133,28 +133,56 @@ include '../includes/head.php';
                 <!-- DROPDOWN WITH SESRCH -->
                 <div class="col-12 col-md-6 mb-3">
                   <div class="col mb-3">
-                    <label for="lastName" class="form-label">Medical Specialty</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Medical Specialty">
+                    <label for="specialty" class="form-label">Medical Specialty</label>
+                    <input type="text" class="form-control" id="specialty" name="specialty" placeholder="Medical Specialty" value="<?= (isset($_POST['specialty'])) ? $_POST['specialty'] : $_SESSION['specialty'] ?> ">
                   </div>
+                  <?php
+                  if (isset($_POST['specialty']) && !validate_field($_POST['specialty'])) {
+                  ?>
+                    <p class="text-dark m-0 ps-2">Specialty is required</p>
+                  <?php
+                  }
+                  ?>
                 </div>
                 <!-- DAPAT TEXT INPUT WITH SUGGEWSTION -->
                 <div class="col-12 col-md-6 mb-3">
                   <label for="contact" class="form-label">Contact</label>
-                  <input type="number" class="form-control" id="contact" placeholder="Contact" required>
+                  <input type="number" class="form-control" id="contact" name="contact" placeholder="Contact" required value="<?= (isset($_POST['contact'])) ? $_POST['contact'] : $_SESSION['contact'] ?> ">
+                  <?php
+                  if (isset($_POST['contact']) && !validate_field($_POST['contact'])) {
+                  ?>
+                    <p class="text-dark m-0 ps-2">Contact is required</p>
+                  <?php
+                  }
+                  ?>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-12 mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="example@wmsu.edu.ph">
+                  <input type="email" class="form-control" id="email" placeholder="example@wmsu.edu.ph" name="email" value="<?= (isset($_POST['email'])) ? $_POST['email'] : $_SESSION['email'] ?> ">
+                  <?php
+                  if (isset($_POST['email']) && !validate_field($_POST['email'])) {
+                  ?>
+                    <p class="text-dark m-0 ps-2">Email is required</p>
+                  <?php
+                  }
+                  ?>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-12 mb-3">
                   <label for="address" class="form-label">Address</label>
-                  <input type="address" class="form-control" id="address" placeholder="Address">
+                  <input type="address" class="form-control" id="address" placeholder="Address" name="address" value="<?= (isset($_POST['address'])) ? $_POST['address'] : $_SESSION['address'] ?> ">
+                  <?php
+                  if (isset($_POST['address']) && !validate_field($_POST['address'])) {
+                  ?>
+                    <p class="text-dark m-0 ps-2">Address is required</p>
+                  <?php
+                  }
+                  ?>
                 </div>
               </div>
               <!-- Gender -->
@@ -181,7 +209,14 @@ include '../includes/head.php';
                 <div class="col">
                   <div class="mb-3">
                     <label for="bio" class="form-label">Bio</label>
-                    <textarea class="form-control" id="bio" rows="3"></textarea>
+                    <textarea class="form-control" id="bio" rows="3" name="bio"><?= (isset($_POST['bio'])) ? $_POST['bio'] : $_SESSION['bio'] ?></textarea>
+                    <?php
+                    if (isset($_POST['bio']) && !validate_field($_POST['bio'])) {
+                    ?>
+                      <p class="text-dark m-0 ps-2">Bio is required</p>
+                    <?php
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -193,7 +228,7 @@ include '../includes/head.php';
               </div> -->
 
               <!-- Save Button -->
-              <button type="submit" class="btn btn-primary text-light">Save Changes</button>
+              <button type="submit" class="btn btn-primary text-light" name="save" >Save Changes</button>
             </form>
           </div>
         </div>
