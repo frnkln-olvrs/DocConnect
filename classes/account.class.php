@@ -17,6 +17,12 @@ class Account
     public $user_role;
     public $verification_status;
     public $campus_id;
+    public $bio;
+    public $specialty;
+    public $start_wt;
+    public $end_wt;
+    public $appointment_limits;
+
 
     protected $db;
 
@@ -143,13 +149,42 @@ class Account
 
     function show_doc()
     {
-        $sql = "SELECT * FROM account  WHERE user_role = 1 AND is_deleted != 1 ORDER BY account_id ASC;";
+        $sql = "SELECT a.*, d.* FROM account a INNER JOIN doctor_info d ON d.account_id = a.account_id WHERE a.user_role = 1 AND a.is_deleted != 1 ORDER BY a.account_id ASC;";
         $query = $this->db->connect()->prepare($sql);
         $data = null;
         if ($query->execute()) {
             $data = $query->fetchAll();
         }
         return $data;
+    }
+
+
+    function sign_in_doctor()
+    {
+        $sql = "SELECT a.*, d.* FROM account a INNER JOIN doctor_info d ON d.account_id = a.account_id WHERE email = :email LIMIT 1;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':email', $this->email);
+
+        if ($query->execute()) {
+            $accountData = $query->fetch(PDO::FETCH_ASSOC);
+
+            if ($accountData && password_verify($this->password, $accountData['password'])) {
+                $this->account_id = $accountData['account_id'];
+                $this->user_role = $accountData['user_role'];
+                $this->firstname = $accountData['firstname'];
+                $this->middlename = $accountData['middlename'];
+                $this->lastname = $accountData['lastname'];
+                $this->email = $accountData['email'];
+                $this->verification_status = $accountData['verification_status'];
+                $this->account_image = $accountData['account_image'];
+                $this->start_wt = $accountData['start_wt'];
+                $this->end_wt = $accountData['end_wt'];
+                $this->specialty = $accountData['specialty'];
+                $this->bio = $accountData['bio'];
+
+                return true;
+            }
+        }
     }
 
     // doctor functions end

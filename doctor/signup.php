@@ -201,7 +201,7 @@ include '../includes/head.php';
     </div>
   </div>
   <?php
-  if (isset($_POST['add']) && $success == 'success') {
+  if (isset($_POST['signup']) && $success == 'success') {
   ?>
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">

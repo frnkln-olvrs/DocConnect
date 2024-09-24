@@ -2,7 +2,7 @@
     <div class="d-flex flex-column h-100">
         <div class="pt-3 mb-2 d-flex align-items-center flex-column">
             <img src="../assets/images/defualt_profile.png" alt="" height="100" width="100" class="rounded rounded-circle border border-2 border-primary mb-2">
-            <h5 class="text-primary fw-semibold mb-1">Dr. John Doe</h5>
+            <h5 class="text-primary fw-semibold mb-1">Name Name</h5>
             <p class="text-muted fw-light mb-0">Medical Practitioner</p>
         </div>
 

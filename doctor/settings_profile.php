@@ -8,30 +8,30 @@ include '../includes/head.php';
 
 <body>
   <?php
-    require_once('../includes/header-doctor.php');
+  require_once('../includes/header-doctor.php');
   ?>
 
   <div class="container-fluid">
     <div class="row">
-      <?php 
-        require_once('../includes/sidepanel-doctor.php');
+      <?php
+      require_once('../includes/sidepanel-doctor.php');
       ?>
-      
+
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">Account Settings</h1>
         </div>
 
-        <?php 
-          require_once('../includes/doctorSetting_Nav.php')
+        <?php
+        require_once('../includes/doctorSetting_Nav.php')
         ?>
 
         <div class="card bg-body-tertiary mb-4">
           <div class="card-body">
             <form id="profileForm">
               <div class="d-flex align-items-center mx-4 mb-4">
-              <!-- Profile Picture -->
+                <!-- Profile Picture -->
                 <div class="campus-pic align-items-end">
                   <label class="label brand-border-color d-flex flex-column" for="file" style="border-width: 4px !important;">
                     <i class="bx bxs-camera-plus text-light p-2 bg-primary"></i>
@@ -79,28 +79,31 @@ include '../includes/head.php';
               <div class="row row-cols-1 row-cols-md-2">
                 <!-- DROPDOWN WITH SESRCH -->
                 <div class="col-12 col-md-6 mb-3">
-                  <label for="specialty" class="form-label">Specialties</label>
-                  <select id="specialty" class="form-select" required>
-                    <option value="" disabled selected>Select Specialties</option>
-                    <option value="cardiologist">Cardiologist</option>
-                    <option value="pediatrician">Pediatrician</option>
-                    <!-- Add more specialties here -->
-                  </select>
+                  <div class="col mb-3">
+                    <label for="lastName" class="form-label">Medical Specialty</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Medical Specialty">
+                  </div>
                 </div>
                 <!-- DAPAT TEXT INPUT WITH SUGGEWSTION -->
                 <div class="col-12 col-md-6 mb-3">
-                  <label for="qualification" class="form-label">Qualifications</label>
-                  <input type="text" class="form-control" id="qualification" placeholder="qualification" required>
+                  <label for="contact" class="form-label">Contact</label>
+                  <input type="number" class="form-control" id="contact" placeholder="Contact" required>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-12 mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="example@email.com">
+                  <input type="email" class="form-control" id="email" placeholder="example@wmsu.edu.ph">
                 </div>
               </div>
 
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <label for="address" class="form-label">Address</label>
+                  <input type="address" class="form-control" id="address" placeholder="Address">
+                </div>
+              </div>
               <!-- Gender -->
               <!-- <div class="row mb-3">
                 <label class="form-label">Gender</label>
@@ -147,4 +150,5 @@ include '../includes/head.php';
 
   <script src="../js/imageChange.js"></script>
 </body>
+
 </html>

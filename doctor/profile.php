@@ -40,7 +40,7 @@ include '../includes/head.php';
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-overview-tab" data-bs-toggle="tab" data-bs-target="#nav-overview" type="button" role="tab" aria-controls="nav-overview" aria-selected="true">Overview</button>
-                            <button class="nav-link" id="nav-opinions-tab" data-bs-toggle="tab" data-bs-target="#nav-opinions" type="button" role="tab" aria-controls="nav-opinions" aria-selected="false">Opinions</button>
+                            <!-- <button class="nav-link" id="nav-opinions-tab" data-bs-toggle="tab" data-bs-target="#nav-opinions" type="button" role="tab" aria-controls="nav-opinions" aria-selected="false">Opinions</button> -->
                             <button class="nav-link" id="nav-experience-tab" data-bs-toggle="tab" data-bs-target="#nav-experience" type="button" role="tab" aria-controls="nav-Experience" aria-selected="false">Experience</button>
                         </div>
                     </nav>
@@ -48,11 +48,11 @@ include '../includes/head.php';
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade active show" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab">
                                 <div class="mb-3">
-                                    <h6>About specialist</h6>
+                                    <h6>Bio</h6>
                                     <p>As a medical practitioner, I provide compassionate healthcare with expertise in diagnosing, treating, and preventing illnesses and injuries. My patient-centered approach emphasizes trust, communication, and personalized treatment plans. I am dedicated to staying updated on medical advancements to ensure the highest standard of care. I'm passionate about health education and disease prevention, aiming to empower patients for long-term wellness.  </p>
-                                    <a href="#" class="text-decoration-none">Read more</a>
+                                    <!-- <a href="#" class="text-decoration-none">Read more</a> -->
                                 </div>
-                                <div class="row mb-4">
+                                <!-- <div class="row mb-4">
                                     <div class="col-md-6">
                                         <h6>Diseases treated</h6>
                                         <ul class="list-unstyled">
@@ -62,10 +62,10 @@ include '../includes/head.php';
                                         </ul>
                                         <a href="#" class="text-decoration-none">Read more</a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
 
-                            <div class="tab-pane fade" id="nav-opinions" role="tabpanel" aria-labelledby="nav-opinions-tab">
+                            <!-- <div class="tab-pane fade" id="nav-opinions" role="tabpanel" aria-labelledby="nav-opinions-tab">
                                 <h6>Patient Reviews</h6>
                                 <div class="review mb-3">
                                     <div class="d-flex align-items-center">
@@ -82,7 +82,7 @@ include '../includes/head.php';
                                     <p>"Great experience! The doctor was very professional and addressed all my concerns. Highly recommend."</p>
                                 </div>
                                 <a href="#" class="text-decoration-none">See all reviews</a>
-                            </div>
+                            </div> -->
 
                             <div class="tab-pane fade" id="nav-experience" role="tabpanel" aria-labelledby="nav-experience-tab">
                                 <h6>Professional Experience</h6>
