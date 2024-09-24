@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+  header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 1) {
+  header('location: ../index.php');
+}
+
+require_once('../tools/functions.php');
+require_once('../classes/account.class.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -29,7 +43,7 @@ include '../includes/head.php';
 
         <div class="card bg-body-tertiary mb-4">
           <div class="card-body">
-            <form id="profileForm">
+            <form id="profileForm" method="post" action="">
               <div class="d-flex align-items-center mx-4 mb-4">
                 <!-- Profile Picture -->
                 <div class="campus-pic align-items-end">
@@ -48,31 +62,70 @@ include '../includes/head.php';
               <div class="row row-cols-1 row-cols-md-3">
                 <div class="col mb-3">
                   <label for="firstName" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="firstName" placeholder="First name">
+                  <input type="text" class="form-control" id="firstName" placeholder="First name" name="firstname" value="<?= (isset($_POST['firstname'])) ? $_POST['firstname'] : $_SESSION['firstname'] ?>">
+                  <?php
+                  if (isset($_POST['firstname']) && !validate_field($_POST['firstname'])) {
+                  ?>
+                    <p class="text-dark m-0 ps-2">First name is required.</p>
+                  <?php
+                  }
+                  ?>
                 </div>
                 <div class="col mb-3">
                   <label for="middleName" class="form-label">Middle Name</label>
-                  <input type="text" class="form-control" id="middleName" placeholder="Middle name">
+                  <input type="text" class="form-control" id="middleName" placeholder="Middle name" name="middlename" value="<?= (isset($_POST['middlename'])) ? $_POST['middlename'] : $_SESSION['middlename'] ?>">
                 </div>
                 <div class="col mb-3">
                   <label for="lastName" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="lastName" placeholder="Last name">
+                  <input type="text" class="form-control" id="lastName" placeholder="Last name" name="lastname" value="<?= (isset($_POST['lastname'])) ? $_POST['lastname'] : $_SESSION['lastname'] ?>">
+                  <?php
+                  if (isset($_POST['lastname']) && !validate_field($_POST['lastname'])) {
+                  ?>
+                    <p class="text-dark m-0 ps-2">Last name is required.</p>
+                  <?php
+                  }
+                  ?>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-12 col-md-6 mb-3">
                   <label for="gender" class="form-label">Gender</label>
-                  <select id="gender" class="form-select" required>
-                    <option value="" disabled selected>Select gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
+                  <select id="gender" class="form-select" name="gender" required>
+                    <option value="Male" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Male")) {
+                                            echo 'selected';
+                                          } else if ($_SESSION['gender'] == "Male") {
+                                            echo "selected";
+                                          } ?>>Male</option>
+                    <option value="Female" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Female")) {
+                                              echo 'selected';
+                                            } else if ($_SESSION['gender'] == "Female") {
+                                              echo "selected";
+                                            } ?>>Female</option>
+                    <option value="Other" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Other")) {
+                                            echo 'selected';
+                                          } else if ($_SESSION['gender'] == "Other") {
+                                            echo "selected";
+                                          } ?>>Other</option>
                   </select>
+                  <?php
+                  if (isset($_POST['gender']) && !validate_field($_POST['gender'])) {
+                  ?>
+                    <p class="text-dark m-0 ps-2">No gender selected</p>
+                  <?php
+                  }
+                  ?>
                 </div>
                 <div class="col-12 col-md-6 mb-3">
-                  <label for="birthday" class="form-label">Birthday</label>
-                  <input type="date" class="form-control" id="birthday" required>
+                  <label for="birthday" class="form-label">Birthdate</label>
+                  <input type="date" class="form-control" id="birthday" required name="birthdate" value="<?= (isset($_POST['birthdate'])) ? $_POST['birthdate'] : $_SESSION['birthdate'] ?> ">
+                  <?php
+                  if (isset($_POST['birthdate']) && !validate_field($_POST['birthdate'])) {
+                  ?>
+                    <p class="text-dark m-0 ps-2">Birth date is required</p>
+                  <?php
+                  }
+                  ?>
                 </div>
               </div>
 

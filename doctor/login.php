@@ -25,6 +25,9 @@ if (isset($_POST['login'])) {
     } else {
       $_SESSION['fullname'] = ucwords(strtolower($account->firstname . ' ' . $account->lastname));
     }
+    $_SESSION['firstname'] = $account->firstname;
+    $_SESSION['middlename'] = $account->middlename;
+    $_SESSION['lastname'] = $account->lastname;
     $_SESSION['gender'] = $account->gender;
     $_SESSION['birthdate'] = $account->birthdate;
     $_SESSION['campus_id'] = $account->campus_id;

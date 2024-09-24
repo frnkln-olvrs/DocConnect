@@ -192,6 +192,8 @@ class Account
                 $this->firstname = $accountData['firstname'];
                 $this->middlename = $accountData['middlename'];
                 $this->lastname = $accountData['lastname'];
+                $this->gender = $accountData['gender'];
+                $this->birthdate = $accountData['birthdate'];
                 $this->email = $accountData['email'];
                 $this->verification_status = $accountData['verification_status'];
                 $this->account_image = $accountData['account_image'];
