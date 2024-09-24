@@ -29,6 +29,7 @@ if (isset($_POST['login'])) {
     $_SESSION['middlename'] = $account->middlename;
     $_SESSION['lastname'] = $account->lastname;
     $_SESSION['gender'] = $account->gender;
+    $_SESSION['address'] = $account->address;
     $_SESSION['birthdate'] = $account->birthdate;
     $_SESSION['campus_id'] = $account->campus_id;
     $_SESSION['contact'] = $account->contact;
