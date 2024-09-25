@@ -118,7 +118,7 @@ include '../includes/head.php';
                 </div>
                 <div class="col-12 col-md-6 mb-3">
                   <label for="birthday" class="form-label">Birthdate</label>
-                  <input type="date" class="form-control" id="birthday" required name="birthdate" value="<?= (isset($_POST['birthdate'])) ? $_POST['birthdate'] : $_SESSION['birthdate'] ?> ">
+                  <input type="date" class="form-control" id="birthday" required name="birthdate" value="<?= (isset($_POST['birthdate'])) ? $_POST['birthdate'] : date('Y-m-d', strtotime($_SESSION['birthdate'])) ?>">
                   <?php
                   if (isset($_POST['birthdate']) && !validate_field($_POST['birthdate'])) {
                   ?>
@@ -228,7 +228,7 @@ include '../includes/head.php';
               </div> -->
 
               <!-- Save Button -->
-              <button type="submit" class="btn btn-primary text-light" name="save" >Save Changes</button>
+              <input type="submit" class="btn btn-primary text-light" name="save" value="Save Changes">
             </form>
           </div>
         </div>
