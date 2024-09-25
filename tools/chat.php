@@ -6,22 +6,22 @@ $db = new Database();
 $conn = $db->connect();
 
 if (isset($_POST['fetch_messages'])) {
-  $sender_id = $_SESSION['user_id'];
+  $sender_id = $_SESSION['account_id'];
   $receiver_id = $_POST['receiver_id'];
 
   $sql = "SELECT * FROM messages WHERE (sender_id = :sender_id AND receiver_id = :receiver_id) 
-    OR (sender_id = :receiver_id AND receiver_id = :sender_id) ORDER BY timestamp ASC";
+          OR (sender_id = :receiver_id AND receiver_id = :sender_id) ORDER BY timestamp ASC";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':sender_id', $sender_id, PDO::PARAM_INT);
   $stmt->bindParam(':receiver_id', $receiver_id, PDO::PARAM_INT);
   $stmt->execute();
-  
+
   $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
   echo json_encode($messages);
 }
 
 if (isset($_POST['send_message'])) {
-  $sender_id = $_SESSION['user_id'];
+  $sender_id = $_SESSION['account_id'];
   $receiver_id = $_POST['receiver_id'];
   $message = $_POST['message'];
 
@@ -37,8 +37,5 @@ if (isset($_POST['send_message'])) {
     $errorInfo = $stmt->errorInfo();
     echo "Failed to send message. Error: " . $errorInfo[2];
   }
-  $stmt->execute() or die(print_r($stmt->errorInfo(), true));
-
-
 }
 ?>
