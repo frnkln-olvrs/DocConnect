@@ -28,21 +28,11 @@ include '../includes/head.php';
                                         <div class="d-flex align-items-center">
                                             <img src="../assets/images/defualt_profile.png" class="rounded-circle me-2" alt="User" height="40" width="40">
                                             <div>
-                                                <h6 class="mb-0">Dr. Fname Lname</h6>
+                                                <h6 class="mb-0">Fname Lname</h6>
                                                 <small class="text-muted">Due to high blo...</small>
                                             </div>
                                         </div>
                                         <small class="text-muted">20m</small>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div class="d-flex align-items-center">
-                                            <img src="../assets/images/defualt_profile.png" class="rounded-circle me-2" alt="User" height="40" width="40">
-                                            <div>
-                                                <h6 class="mb-0">Chat Bot</h6>
-                                                <small class="text-muted">How can I assist?</small>
-                                            </div>
-                                        </div>
-                                        <small class="text-muted">40m</small>
                                     </li>
                                 </ul>
                             </div>
@@ -53,22 +43,22 @@ include '../includes/head.php';
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
                                         <img src="../assets/images/defualt_profile.png" class="rounded-circle me-2" alt="User" height="40" width="40">
-                                        <h6 class="mb-0">Dr. Fname Lname</h6>
+                                        <h6 class="mb-0">Fname Lname</h6>
                                     </div>
                                 </div>
                                 <div class="card-body" style="overflow-y: auto; height: calc(100% - 112px);">
-                                    <div class="d-flex align-items-end mb-3">
-                                        <img src="../assets/images/defualt_profile.png" class="rounded-circle me-2" alt="User" height="40" width="40">
+                                    <div class="d-flex align-items-end justify-content-end mb-3">
                                         <div>
                                             <span class="badge bg-danger text-white p-2">Due to high blood</span>
                                         </div>
+                                        <img src="../assets/images/defualt_profile.png" class="rounded-circle ms-2" alt="User" height="30" width="30">
                                     </div>
 
-                                    <div class="d-flex align-items-end justify-content-end mb-3">
+                                    <div class="d-flex align-items-end mb-3">
+                                        <img src="../assets/images/defualt_profile.png" class="rounded-circle me-2" alt="User" height="30" width="30">
                                         <div>
                                             <span class="badge bg-secondary text-white p-2">OK?</span>
                                         </div>
-                                        <img src="../assets/images/defualt_profile.png" class="rounded-circle ms-2" alt="User" height="40" width="40">
                                     </div>
                                 </div>
                                 <div class="card-footer">

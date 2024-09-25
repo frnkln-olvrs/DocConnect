@@ -65,14 +65,14 @@
           <!-- Sent message -->
           <div class="d-flex align-items-end justify-content-start mb-3">
             <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle me-3" height="30" width="30">
-            <div class="bg-primary text-light p-2 rounded-3">
+            <div class="bg-secondary text-light p-2 rounded-3">
               Due to high blood
             </div>
           </div>
 
           <!-- Received message -->
           <div class="d-flex align-items-end justify-content-end mb-3">
-            <div class="bg-secondary text-light p-2 rounded-3">
+            <div class="bg-primary text-light p-2 rounded-3">
               OK?
             </div>
             <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">
