@@ -58,6 +58,37 @@ if (isset($_POST['save'])) {
     $success = 'failed';
   }
 }
+if (isset($_POST['save_image'])) {
+
+  $account->account_id = $_SESSION['account_id'];
+
+  $uploaddir = '../assets/images/';
+  $uploadname = $_FILES[htmlentities('account_image')]['name'];
+  $uploadext = explode('.', $uploadname);
+  $uploadnewext = strtolower(end($uploadext));
+  $allowed = array('jpg', 'jpeg', 'png');
+
+  if (in_array($uploadnewext, $allowed)) {
+
+    $uploadenewname = uniqid('', true) . "." . $uploadnewext;
+    $uploadfile = $uploaddir . $uploadenewname;
+
+    if (move_uploaded_file($_FILES[htmlentities('account_image')]['tmp_name'], $uploadfile)) {
+      $account->account_image = $uploadenewname;
+
+      if ($account->save_image()) {
+        $_SESSION['account_image'] = $account->account_image;
+        $success = 'success';
+      } else {
+        echo 'An error occured while adding in the database.';
+      }
+    } else {
+      $success = 'failed';
+    }
+  } else {
+    $success = 'failed';
+  }
+}
 
 ?>
 
@@ -93,7 +124,7 @@ include '../includes/head.php';
         <div class="card bg-body-tertiary mb-4">
           <div class="card-body">
 
-            <form action="" method="post">
+            <form method="post" action="" enctype="multipart/form-data">
               <div class="d-flex align-items-center mx-4 mb-4">
                 <!-- Profile Picture -->
                 <div class="campus-pic align-items-end">
@@ -101,11 +132,17 @@ include '../includes/head.php';
                     <i class="bx bxs-camera-plus text-light p-2 bg-primary"></i>
                     <span>Change Image</span>
                   </label>
-                  <img src="../assets/images/defualt_profile.png" id="output" class="rounded-circle" alt="User Avatar">
-                  <input id="file" type="file" name="campus_profile" accept=".jpg, .jpeg, .png" required onchange="validateFile(event)">
+
+                  <img src="<?php if (isset($_SESSION['account_image'])) {
+                              echo "../assets/images/" . $_SESSION['account_image'];
+                            } else {
+                              echo "../assets/images/defualt_profile.png";
+                            } ?>" id="output" class="rounded-circle" alt="User Avatar">
+
+                  <input id="file" type="file" name="account_image" accept=".jpg, .jpeg, .png" required onchange="validateFile(event)">
                 </div>
                 <!-- <button class="btn btn-primary btn-md d-block mx-2 text-light" id="upload_profile" type="button">Upload New</button> -->
-                <button class="btn btn-primary btn-md d-block mx-2 text-light" type="button">Delete Avatar</button>
+                <input type="submit" class="btn btn-primary text-light ms-3" name="save_image" value="Save Image">
               </div>
             </form>
 
@@ -295,6 +332,28 @@ include '../includes/head.php';
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="myModalLabel">Doctor account is successfully updated!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row d-flex">
+              <div class="col-12 text-center">
+                <a href="./settings_profile.php" class="text-decoration-none text-dark">
+                  <p class="m-0 text-primary fw-bold">Click to Continue.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php
+  } else if (isset($_POST['save_image']) && $success == 'success') {
+  ?>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Account image is succesfully updated!</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">

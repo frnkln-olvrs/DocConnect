@@ -279,6 +279,21 @@ class Account
         }
     }
 
+    function save_image()
+    {
+        $sql = "UPDATE account SET account_image = :account_image WHERE account_id = :account_id";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':account_image', $this->account_image);
+        $query->bindParam(':account_id', $this->account_id);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // doctor functions end
 
     // moderator functions start

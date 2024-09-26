@@ -37,6 +37,7 @@ if (isset($_POST['login'])) {
     $_SESSION['start_wt'] = $account->start_wt;
     $_SESSION['end_wt'] = $account->end_wt;
     $_SESSION['bio'] = $account->bio;
+    $_SESSION['account_image'] = $account->account_image;
 
     if ($_SESSION['user_role'] == 2) {
       header('location: ./index.php');
