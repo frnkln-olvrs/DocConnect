@@ -161,7 +161,6 @@ class Account
             $connect->rollBack();
             return false;
         }
-
     }
 
 
@@ -206,6 +205,77 @@ class Account
 
                 return true;
             }
+        }
+    }
+
+    function update_doctor_info()
+    {
+        $sql = "UPDATE account a JOIN doctor_info d ON a.account_id = d.account_id
+        SET a.firstname = :firstname, a.middlename = :middlename, a.lastname = :lastname, a.gender = :gender,
+        a.birthdate = :birthdate, d.specialty = :specialty, a.contact = :contact, a.email = :email,
+        a.address = :address, d.bio = :bio 
+        WHERE a.account_id = :account_id";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':email', $this->email);
+        $query->bindParam(':firstname', $this->firstname);
+        $query->bindParam(':middlename', $this->middlename);
+        $query->bindParam(':lastname', $this->lastname);
+        $query->bindParam(':contact', $this->contact);
+        $query->bindParam(':birthdate', $this->birthdate);
+        $query->bindParam(':gender', $this->gender);
+        $query->bindParam(':specialty', $this->specialty);
+        $query->bindParam(':bio', $this->bio);
+        $query->bindParam(':address', $this->address);
+        $query->bindParam(':account_id', $this->account_id);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function test_update()
+    {
+        $connect = $this->db->connect();
+        $connect->beginTransaction();
+
+        $sql = "UPDATE account 
+        SET firstname = :firstname, middlename = :middlename, lastname = :lastname, gender = :gender, birthdate = :birthdate, contact = :contact, email = :email, address = :address
+        WHERE account_id = :account_id";
+
+        $query = $connect->prepare($sql);
+        $query->bindParam(':email', $this->email);
+        $query->bindParam(':firstname', $this->firstname);
+        $query->bindParam(':middlename', $this->middlename);
+        $query->bindParam(':lastname', $this->lastname);
+        $query->bindParam(':contact', $this->contact);
+        $query->bindParam(':birthdate', $this->birthdate);
+        $query->bindParam(':gender', $this->gender);
+        $query->bindParam(':address', $this->address);
+        $query->bindParam(':account_id', $this->account_id);
+
+        if ($query->execute()) {
+            $sec_sql = "UPDATE doctor_info 
+            SET specialty = :specialty, bio = :bio
+            WHERE account_id = :account_id";
+
+            $sec_query = $connect->prepare($sec_sql);
+            $sec_query->bindParam(':account_id', $this->account_id);
+            $sec_query->bindParam(':specialty', $this->specialty);
+            $sec_query->bindParam(':bio', $this->bio);
+
+            if ($sec_query->execute()) {
+                $connect->commit();
+                return true;
+            } else {
+                $connect->rollBack();
+                return false;
+            }
+        } else {
+            $connect->rollBack();
+            return false;
         }
     }
 

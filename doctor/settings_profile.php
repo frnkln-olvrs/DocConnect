@@ -10,6 +10,55 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
 require_once('../tools/functions.php');
 require_once('../classes/account.class.php');
 
+$account = new Account();
+if (isset($_POST['save'])) {
+  $account->firstname = htmlentities($_POST['firstname']);
+  $account->middlename = htmlentities($_POST['middlename']);
+  $account->lastname = htmlentities($_POST['lastname']);
+  $account->gender = htmlentities($_POST['gender']);
+  $account->birthdate = htmlentities($_POST['birthdate']);
+  $account->specialty = htmlentities($_POST['specialty']);
+  $account->contact = htmlentities($_POST['contact']);
+  $account->email = htmlentities($_POST['email']);
+  $account->address = htmlentities($_POST['address']);
+  $account->bio = htmlentities($_POST['bio']);
+  $account->account_id = $_SESSION['account_id'];
+
+  if (validate_field($account->firstname &&
+    $account->lastname &&
+    $account->gender  &&
+    $account->birthdate  &&
+    $account->specialty  &&
+    $account->contact  &&
+    $account->address  &&
+    $account->email  &&
+    $account->bio)) {
+    if ($account->test_update()) {
+      $success = 'success';
+
+      $_SESSION['email'] = $account->email;
+      if (isset($account->middlename)) {
+        $_SESSION['fullname'] = ucwords(strtolower($account->firstname . ' ' . $account->middlename . ' ' . $account->lastname));
+      } else {
+        $_SESSION['fullname'] = ucwords(strtolower($account->firstname . ' ' . $account->lastname));
+      }
+      $_SESSION['firstname'] = $account->firstname;
+      $_SESSION['middlename'] = $account->middlename;
+      $_SESSION['lastname'] = $account->lastname;
+      $_SESSION['gender'] = $account->gender;
+      $_SESSION['address'] = $account->address;
+      $_SESSION['birthdate'] = $account->birthdate;
+      $_SESSION['contact'] = $account->contact;
+      $_SESSION['specialty'] = $account->specialty;
+      $_SESSION['bio'] = $account->bio;
+    } else {
+      echo 'An error occured while adding in the database.';
+    }
+  } else {
+    $success = 'failed';
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +92,8 @@ include '../includes/head.php';
 
         <div class="card bg-body-tertiary mb-4">
           <div class="card-body">
-            <form id="profileForm" method="post" action="">
+
+            <form action="" method="post">
               <div class="d-flex align-items-center mx-4 mb-4">
                 <!-- Profile Picture -->
                 <div class="campus-pic align-items-end">
@@ -57,7 +107,9 @@ include '../includes/head.php';
                 <!-- <button class="btn btn-primary btn-md d-block mx-2 text-light" id="upload_profile" type="button">Upload New</button> -->
                 <button class="btn btn-primary btn-md d-block mx-2 text-light" type="button">Delete Avatar</button>
               </div>
+            </form>
 
+            <form id="profileForm" method="post" action="">
               <!-- Personal Information -->
               <div class="row row-cols-1 row-cols-md-3">
                 <div class="col mb-3">
@@ -147,7 +199,7 @@ include '../includes/head.php';
                 <!-- DAPAT TEXT INPUT WITH SUGGEWSTION -->
                 <div class="col-12 col-md-6 mb-3">
                   <label for="contact" class="form-label">Contact</label>
-                  <input type="number" class="form-control" id="contact" name="contact" placeholder="Contact" required value="<?= (isset($_POST['contact'])) ? $_POST['contact'] : $_SESSION['contact'] ?> ">
+                  <input type="tel" class="form-control" id="contact" name="contact" placeholder="Contact" required value="<?= (isset($_POST['contact'])) ? $_POST['contact'] : $_SESSION['contact'] ?> ">
                   <?php
                   if (isset($_POST['contact']) && !validate_field($_POST['contact'])) {
                   ?>
@@ -161,7 +213,7 @@ include '../includes/head.php';
               <div class="row">
                 <div class="col-md-12 mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="example@wmsu.edu.ph" name="email" value="<?= (isset($_POST['email'])) ? $_POST['email'] : $_SESSION['email'] ?> ">
+                  <input type="email" readonly class="form-control" id="email" placeholder="example@wmsu.edu.ph" name="email" value="<?= (isset($_POST['email'])) ? $_POST['email'] : $_SESSION['email'] ?> ">
                   <?php
                   if (isset($_POST['email']) && !validate_field($_POST['email'])) {
                   ?>
@@ -209,7 +261,7 @@ include '../includes/head.php';
                 <div class="col">
                   <div class="mb-3">
                     <label for="bio" class="form-label">Bio</label>
-                    <textarea class="form-control" id="bio" rows="3" name="bio"><?= (isset($_POST['bio'])) ? $_POST['bio'] : $_SESSION['bio'] ?></textarea>
+                    <textarea class="form-control" id="bio" rows="3" maxlength="255" name="bio"><?= (isset($_POST['bio'])) ? $_POST['bio'] : $_SESSION['bio'] ?></textarea>
                     <?php
                     if (isset($_POST['bio']) && !validate_field($_POST['bio'])) {
                     ?>
@@ -235,7 +287,32 @@ include '../includes/head.php';
       </main>
     </div>
   </div>
-
+  <?php
+  if (isset($_POST['save']) && $success == 'success') {
+  ?>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Doctor account is successfully updated!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row d-flex">
+              <div class="col-12 text-center">
+                <a href="./settings_profile.php" class="text-decoration-none text-dark">
+                  <p class="m-0 text-primary fw-bold">Click to Continue.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+  ?>
+  <script src="../js/main.js"></script>
   <script src="../js/imageChange.js"></script>
 </body>
 
