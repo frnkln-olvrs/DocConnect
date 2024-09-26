@@ -63,10 +63,10 @@ include '../includes/head.php';
                                 <div class="card-body" id="chat-messages" style="overflow-y: auto; height: calc(100% - 112px);">
                                     <!-- Messages will load here -->
                                 </div>
-                                <form id="sendMessage" class="card-footer">
+                                <form id="sendMessageForm" class="card-footer">
                                     <div class="input-group">
                                         <input type="text" id="message" name="message" class="form-control" placeholder="Aa">
-                                        <button class="btn btn-primary" id="sendMessage" type="submit">
+                                        <button class="btn btn-primary" id="sendButton" type="submit">
                                             <i class='bx bx-send text-white fs-5'></i>
                                         </button>
                                     </div>
@@ -88,9 +88,9 @@ include '../includes/head.php';
                 method: 'POST',
                 data: { fetch_messages: 1, receiver_id: receiverId },
                 dataType: 'json',
-                success: function(data) {
+                success: function (data) {
                     let chatBox = '';
-                    data.forEach(function(msg) {
+                    data.forEach(function (msg) {
                         if (msg.sender_id == receiverId) {
                             chatBox += `<div class="d-flex align-items-end justify-content-start mb-3">
                                             <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle me-3" height="30" width="30">
@@ -105,7 +105,7 @@ include '../includes/head.php';
                     });
                     $('#chat-messages').html(chatBox);
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.error("Failed to fetch messages:", error);
                 }
             });
@@ -117,30 +117,30 @@ include '../includes/head.php';
         // Function to send a message
         function sendMessage(event) {
             event.preventDefault();
-
+            
             let message = $('#message').val();
-            if (message !== '') {
+            if (message.trim() !== '') {
                 $.ajax({
                     url: '../tools/chat.php',
                     method: 'POST',
                     data: { send_message: 1, receiver_id: receiverId, message: message },
-                    success: function(response) {
+                    success: function (response) {
                         console.log("Message sent:", response);
                         $('#message').val('');
                         fetchMessages();
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         console.error("Failed to send message:", error);
                     }
                 });
             }
         }
 
-        $('#sendMessage').submit(function(event) {
+        $('#sendMessageForm').submit(function (event) {
             sendMessage(event);
         });
 
-        $('#message').keypress(function(event) {
+        $('#message').keypress(function (event) {
             if (event.keyCode === 13) {
                 event.preventDefault(); 
                 sendMessage(event);
