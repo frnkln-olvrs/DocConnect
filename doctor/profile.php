@@ -30,7 +30,11 @@ include '../includes/head.php';
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <img src="../assets/gallery/66dd9fea898031.89869755.png" alt="Doctor's profile image" class="rounded-circle me-3" height="80" width="80">
+                            <img src="<?php if (isset($_SESSION['account_image'])) {
+                                            echo "../assets/images/" . $_SESSION['account_image'];
+                                        } else {
+                                            echo "../assets/images/defualt_profile.png";
+                                        } ?>" alt="Doctor's profile image" class="rounded-circle me-3" height="80" width="80">
                             <div>
                                 <h5 class="card-title">Dr. John Doe</h5>
                                 <p class="text-muted mb-0">Medical Practitioner</p>
