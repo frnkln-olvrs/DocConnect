@@ -36,8 +36,8 @@ include '../includes/head.php';
                                             echo "../assets/images/defualt_profile.png";
                                         } ?>" alt="Doctor's profile image" class="rounded-circle me-3" height="80" width="80">
                             <div>
-                                <h5 class="card-title">Dr. John Doe</h5>
-                                <p class="text-muted mb-0">Medical Practitioner</p>
+                                <h5 class="card-title"><?= $_SESSION['fullname'] ?></h5>
+                                <p class="text-muted mb-0"><?= $_SESSION['specialty'] ?></p>
                                 <div class="d-flex align-items-center">
                                     <!-- <span class="text-primary me-2">★★★★★</span>
                                     <a href="#" class="text-decoration-none">More</a> -->
@@ -64,7 +64,7 @@ include '../includes/head.php';
                             <div class="tab-pane fade active show" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab">
                                 <div class="mb-3">
                                     <h6>Bio</h6>
-                                    <p>As a medical practitioner, I provide compassionate healthcare with expertise in diagnosing, treating, and preventing illnesses and injuries. My patient-centered approach emphasizes trust, communication, and personalized treatment plans. I am dedicated to staying updated on medical advancements to ensure the highest standard of care. I'm passionate about health education and disease prevention, aiming to empower patients for long-term wellness. </p>
+                                    <p><?= $_SESSION['bio'] ?></p>
                                     <!-- <a href="#" class="text-decoration-none">Read more</a> -->
                                 </div>
                                 <!-- <div class="row mb-4">
