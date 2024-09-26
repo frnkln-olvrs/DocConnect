@@ -1,3 +1,8 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -84,11 +89,12 @@
 
         <!-- Chat Input -->
         <div class="chat_input d-flex align-items-center p-3 border-top bg-light">
-          <input type="text" class="form-control border-2 text-dark rounded-pill me-3" placeholder="Aa">
-          <button class="btn btn-light d-flex justify-content-center">
-            <i class='bx bx-send text-datrk fs-4'></i>
-          </button>
+            <input type="text" id="messageInput" class="form-control border-2 text-dark rounded-pill me-3" placeholder="Aa">
+            <button id="sendMessage" class="btn btn-light d-flex justify-content-center">
+                <i class='bx bx-send text-dark fs-4'></i>
+            </button>
         </div>
+
       </div>
     </div>
   </section>
@@ -97,5 +103,53 @@
     require_once ('../includes/footer.php');
   ?> -->
 
+  <script>
+    $(document).ready(function () {
+    let user_id = 1; // Replace with the logged-in user ID
+    let doctor_id = 2; // Replace with the selected doctor ID
+
+    // Load messages
+    function loadMessages() {
+        $.ajax({
+            url: '../handlers/fetch_messages.php',
+            type: 'POST',
+            data: { user_id: user_id, doctor_id: doctor_id },
+            success: function (response) {
+                console.log("Messages loaded: ", response); // Debug log
+                $('.body').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error("Error loading messages: ", error);
+            }
+        });
+    }
+
+    // Send message
+    $('#sendMessage').on('click', function () {
+        let message = $('#messageInput').val();
+        if (message.trim() !== '') {
+            $.ajax({
+                url: '../handlers/send_message.php',
+                type: 'POST',
+                data: { sender_id: user_id, receiver_id: doctor_id, message: message },
+                success: function () {
+                    $('#messageInput').val('');
+                    loadMessages();
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error sending message: ", error);
+                }
+            });
+        }
+    });
+
+    // Initial load
+    loadMessages();
+
+    // Polling for new messages
+    setInterval(loadMessages, 5000);
+});
+
+  </script>
 </body>
 </html>
