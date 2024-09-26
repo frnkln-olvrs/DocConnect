@@ -1,9 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
-
-<?php
 require_once 'database.php';
 
 class Chat extends Database {
@@ -25,7 +20,6 @@ class Chat extends Database {
         $stmt->bindParam(':receiver_id', $receiver_id);
         $stmt->bindParam(':message', $message);
         $stmt->execute();
-        return $stmt->rowCount() > 0;
     }
 }
 ?>

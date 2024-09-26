@@ -105,18 +105,17 @@ ini_set('display_errors', 1);
 
   <script>
     $(document).ready(function () {
-    let user_id = 1; // Replace with the logged-in user ID
-    let doctor_id = 2; // Replace with the selected doctor ID
+    let user_id = 1;
+    let doctor_id = 2;
 
-    // Load messages
+    // Load chat messages
     function loadMessages() {
         $.ajax({
             url: '../handlers/fetch_messages.php',
             type: 'POST',
             data: { user_id: user_id, doctor_id: doctor_id },
             success: function (response) {
-                console.log("Messages loaded: ", response); // Debug log
-                $('.body').html(response);
+                $('.body').html(response); // Display the fetched messages in the chat body
             },
             error: function (xhr, status, error) {
                 console.error("Error loading messages: ", error);
@@ -124,17 +123,17 @@ ini_set('display_errors', 1);
         });
     }
 
-    // Send message
+    // Send message on button click
     $('#sendMessage').on('click', function () {
-        let message = $('#messageInput').val();
-        if (message.trim() !== '') {
+        let message = $('#messageInput').val().trim();
+        if (message !== '') {
             $.ajax({
                 url: '../handlers/send_message.php',
                 type: 'POST',
                 data: { sender_id: user_id, receiver_id: doctor_id, message: message },
-                success: function () {
-                    $('#messageInput').val('');
-                    loadMessages();
+                success: function (response) {
+                    $('#messageInput').val(''); // Clear input field
+                    loadMessages(); // Refresh the messages after sending
                 },
                 error: function (xhr, status, error) {
                     console.error("Error sending message: ", error);
@@ -143,12 +142,11 @@ ini_set('display_errors', 1);
         }
     });
 
-    // Initial load
+    // Initial load and polling for new messages
     loadMessages();
-
-    // Polling for new messages
-    setInterval(loadMessages, 5000);
+    setInterval(loadMessages, 5000); // Refresh every 5 seconds
 });
+
 
   </script>
 </body>
