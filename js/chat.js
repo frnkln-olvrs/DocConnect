@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Send message
   document.getElementById('sendMessage').addEventListener('click', () => {
     const messageInput = document.getElementById('messageInput').value;
-    const receiverId = window.currentChatUserId; // Assume this is set when a chat is selected
+    const receiverId = window.currentChatAccountId;
 
     fetch('../handlers/send_message.php', {
       method: 'POST',
@@ -44,21 +44,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Load selected chat
-function loadChat(userId) {
-  window.currentChatUserId = userId;
+function loadChat(accountId) {
+  window.currentChatAccountId = accountId;
   fetch('../handlers/fetch_messages.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: `chat_with=${userId}`,
+    body: `chat_with=${accountId}`,
   })
     .then(response => response.json())
     .then(messages => {
       const chatMessages = document.getElementById('chatMessages');
       chatMessages.innerHTML = '';
       messages.forEach(msg => {
-        const isSender = msg.sender_id === window.currentChatUserId;
+        const isSender = msg.sender_id === window.currentChatAccountId;
         const messageElement = document.createElement('div');
         messageElement.classList.add('d-flex', 'align-items-end', isSender ? 'justify-content-start' : 'justify-content-end', 'mb-3');
         messageElement.innerHTML = `

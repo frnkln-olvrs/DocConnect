@@ -1,7 +1,7 @@
 <?php
 require_once('../classes/database.php');
 
-$senderId = $_SESSION['user_id'];
+$senderId = $_SESSION['account_id'];
 $receiverId = $_POST['receiver_id'];
 $message = $_POST['message'];
 

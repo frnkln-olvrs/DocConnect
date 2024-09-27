@@ -1,7 +1,7 @@
 <?php
 require_once('../classes/database.php');
 
-$userId = $_SESSION['user_id'];
+$accountId = $_SESSION['account_id'];
 $chatWithId = $_POST['chat_with'];
 
 $query = "SELECT * FROM messages
@@ -9,7 +9,7 @@ $query = "SELECT * FROM messages
           OR (sender_id = ? AND receiver_id = ?)
           ORDER BY timestamp";
 $stmt = $pdo->prepare($query);
-$stmt->execute([$userId, $chatWithId, $chatWithId, $userId]);
+$stmt->execute([$accountId, $chatWithId, $chatWithId, $accountId]);
 $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo json_encode($messages);
