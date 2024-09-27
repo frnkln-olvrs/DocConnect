@@ -1,8 +1,3 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -102,52 +97,5 @@ ini_set('display_errors', 1);
   <!-- <?php
     require_once ('../includes/footer.php');
   ?> -->
-
-  <script>
-    $(document).ready(function () {
-    let user_id = 1;
-    let doctor_id = 2;
-
-    // Load chat messages
-    function loadMessages() {
-        $.ajax({
-            url: '../handlers/fetch_messages.php',
-            type: 'POST',
-            data: { user_id: user_id, doctor_id: doctor_id },
-            success: function (response) {
-                $('.body').html(response); // Display the fetched messages in the chat body
-            },
-            error: function (xhr, status, error) {
-                console.error("Error loading messages: ", error);
-            }
-        });
-    }
-
-    // Send message on button click
-    $('#sendMessage').on('click', function () {
-        let message = $('#messageInput').val().trim();
-        if (message !== '') {
-            $.ajax({
-                url: '../handlers/send_message.php',
-                type: 'POST',
-                data: { sender_id: user_id, receiver_id: doctor_id, message: message },
-                success: function (response) {
-                    $('#messageInput').val(''); // Clear input field
-                    loadMessages(); // Refresh the messages after sending
-                },
-                error: function (xhr, status, error) {
-                    console.error("Error sending message: ", error);
-                }
-            });
-        }
-    });
-
-    // Initial load and polling for new messages
-    loadMessages();
-    setInterval(loadMessages, 5000); // Refresh every 5 seconds
-});
-
-
-  </script>
 </body>
 </html>
