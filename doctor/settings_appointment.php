@@ -10,6 +10,25 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
 require_once('../tools/functions.php');
 require_once('../classes/account.class.php');
 
+$account = new Account();
+if (isset($_POST['save'])) {
+  $account->firstname = htmlentities($_POST['start_wt']);
+  $account->middlename = htmlentities($_POST['end_wt']);
+
+  if (validate_field($account->start_wt &&
+    $account->end_wt)) {
+    if ($account->update_working_time()) {
+      $success = 'success';
+
+      $_SESSION['start_wt'] = $account->start_wt;
+      $_SESSION['end_wt'] = $account->end_wt;
+    } else {
+      echo 'An error occured while adding in the database.';
+    }
+  } else {
+    $success = 'failed';
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

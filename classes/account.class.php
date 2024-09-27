@@ -266,7 +266,7 @@ class Account
         }
     }
 
-    function update_working()
+    function update_working_time()
     {
         $sql = "UPDATE doctor_info SET start_wt = :start_wt, end_wt = :end_wt WHERE account_id = :account_id";
 
