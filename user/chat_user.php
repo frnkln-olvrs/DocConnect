@@ -1,12 +1,26 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+  header('location: ../user/verification.php');
+}
+
+require_once('../tools/functions.php');
+require_once('../classes/account.class.php');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
-  $title = 'Massage';
+  $title = 'Message';
   include '../includes/head.php';
 ?>
 <body class="pt-5 bg-white">
   <?php
-    require_once ('../includes/header.php');
+    require_once('../includes/header.php');
+    $userId = $_SESSION['account_id'];
   ?>
 
   <section id="chat" class="padding-medium">
@@ -18,41 +32,21 @@
           <i class='bx bx-edit fs-4'></i>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control border-2" placeholder="Search">
+          <input type="text" class="form-control border-2" id="searchChat" placeholder="Search">
         </div>
-        <ul class="list-unstyled mb-0">
-          <li class="mb-3">
-            <a href="#" class="d-flex align-items-center text-dark text-decoration-none">
-              <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
-              <div>
-                <strong>Dr. Fname Lname</strong>
-                <small class="d-block">Due to high blo...</small>
-              </div>
-              <small class="ms-auto text-muted">20m</small>
-            </a>
-          </li>
-          <li class="mb-3">
-            <a href="#" class="d-flex align-items-center text-dark text-decoration-none">
-              <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
-              <div>
-                <strong>Chat Bot</strong>
-                <small class="d-block"></small>
-              </div>
-              <small class="ms-auto text-muted">40m</small>
-            </a>
-          </li>
-          <!-- Add more chat items similarly -->
+        <ul id="chatList" class="list-unstyled mb-0">
+          <!-- Dynamic chat list will be loaded here -->
         </ul>
       </div>
 
       <!-- Chat Box -->
       <div id="chat_box" class="flex-grow-1 d-flex flex-column">
         <!-- Chat Header -->
-        <div class="head border-bottom bg-light  py-3 px-3">
+        <div class="head border-bottom bg-light py-3 px-3">
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
               <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
-              <span>Dr. Fname Lname</span>
+              <span id="chatUser">Select a user to start chatting</span>
             </div>
             <div>
               <i class='bx bx-dots-horizontal-rounded fs-4'></i>
@@ -61,30 +55,13 @@
         </div>
 
         <!-- Chat Messages -->
-        <div class="body flex-grow-1 d-flex flex-column p-3 bg-light">
-          <!-- Sent message -->
-          <div class="d-flex align-items-end justify-content-start mb-3">
-            <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle me-3" height="30" width="30">
-            <div class="bg-secondary text-light p-2 rounded-3">
-              Due to high blood
-            </div>
-          </div>
-
-          <!-- Received message -->
-          <div class="d-flex align-items-end justify-content-end mb-3">
-            <div class="bg-primary text-light p-2 rounded-3">
-              OK?
-            </div>
-            <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">
-          </div>
-
-          <!-- Additional messages -->
-          <!-- Add more messages similarly -->
+        <div id="chatMessages" class="body flex-grow-1 d-flex flex-column p-3 bg-light">
+          <!-- Messages will be dynamically loaded here -->
         </div>
 
         <!-- Chat Input -->
         <div class="chat_input d-flex align-items-center p-3 border-top bg-light">
-            <input type="text" id="messageInput" class="form-control border-2 text-dark rounded-pill me-3" placeholder="Aa">
+            <input type="text" id="messageInput" class="form-control border-2 text-dark rounded-pill me-3" placeholder="Type your message">
             <button id="sendMessage" class="btn btn-light d-flex justify-content-center">
                 <i class='bx bx-send text-dark fs-4'></i>
             </button>
@@ -94,8 +71,6 @@
     </div>
   </section>
 
-  <!-- <?php
-    require_once ('../includes/footer.php');
-  ?> -->
+  <script src="../js/chat.js"></script>
 </body>
 </html>
