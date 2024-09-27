@@ -68,40 +68,82 @@ include '../includes/head.php';
                   <div class="form-group mb-2">
                     <label for="work-hours">Day</label>
                     <div class="d-flex align-items-center">
-                      <select id="gender" class="form-select" name="gender" required>
-                        <option value="Male" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Male")) {
-                                                echo 'selected';
-                                              } else if ($_SESSION['gender'] == "Male") {
-                                                echo "selected";
-                                              } ?>>Male</option>
-                        <option value="Female" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Female")) {
+                      <select id="start_day" class="form-select" name="start_day" required>
+                        <option value="">Select Day </option>
+                        <option value="Sunday" <?php if ((isset($_POST['start_day']) && $_POST['start_day'] == "Sunday")) {
                                                   echo 'selected';
-                                                } else if ($_SESSION['gender'] == "Female") {
+                                                } else if ($_SESSION['start_day'] == "Sunday") {
                                                   echo "selected";
-                                                } ?>>Female</option>
-                        <option value="Other" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Other")) {
-                                                echo 'selected';
-                                              } else if ($_SESSION['gender'] == "Other") {
-                                                echo "selected";
-                                              } ?>>Other</option>
+                                                } ?>>Sunday</option>
+                        <option value="Monday" <?php if ((isset($_POST['start_day']) && $_POST['start_day'] == "Monday")) {
+                                                  echo 'selected';
+                                                } else if ($_SESSION['start_day'] == "Monday") {
+                                                  echo "selected";
+                                                } ?>>Monday</option>
+                        <option value="Tuesday" <?php if ((isset($_POST['start_day']) && $_POST['start_day'] == "Tuesday")) {
+                                                  echo 'selected';
+                                                } else if ($_SESSION['start_day'] == "Tuesday") {
+                                                  echo "selected";
+                                                } ?>>Tuesday</option>
+                        <option value="Wednesday" <?php if ((isset($_POST['start_day']) && $_POST['start_day'] == "Wednesday")) {
+                                                    echo 'selected';
+                                                  } else if ($_SESSION['start_day'] == "Wednesday") {
+                                                    echo "selected";
+                                                  } ?>>Wednesday</option>
+                        <option value="Thursday" <?php if ((isset($_POST['start_day']) && $_POST['start_day'] == "Thursday")) {
+                                                    echo 'selected';
+                                                  } else if ($_SESSION['start_day'] == "Thursday") {
+                                                    echo "selected";
+                                                  } ?>>Thursday</option>
+                        <option value="Friday" <?php if ((isset($_POST['start_day']) && $_POST['start_day'] == "Friday")) {
+                                                  echo 'selected';
+                                                } else if ($_SESSION['start_day'] == "Monday") {
+                                                  echo "selected";
+                                                } ?>>Friday</option>
+                        <option value="Saturday" <?php if ((isset($_POST['start_day']) && $_POST['start_day'] == "Saturday")) {
+                                                    echo 'selected';
+                                                  } else if ($_SESSION['start_day'] == "Saturday") {
+                                                    echo "selected";
+                                                  } ?>>Saturday</option>
                       </select>
                       <p class="m-0 mx-3"> to </p>
-                      <select id="gender" class="form-select" name="gender" required>
-                        <option value="Male" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Male")) {
-                                                echo 'selected';
-                                              } else if ($_SESSION['gender'] == "Male") {
-                                                echo "selected";
-                                              } ?>>Male</option>
-                        <option value="Female" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Female")) {
+                      <select id="end_day" class="form-select" name="end_day" required>
+                        <option value="">Select Day </option>
+                        <option value="Sunday" <?php if ((isset($_POST['end_day']) && $_POST['end_day'] == "Sunday")) {
                                                   echo 'selected';
-                                                } else if ($_SESSION['gender'] == "Female") {
+                                                } else if ($_SESSION['end_day'] == "Sunday") {
                                                   echo "selected";
-                                                } ?>>Female</option>
-                        <option value="Other" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Other")) {
-                                                echo 'selected';
-                                              } else if ($_SESSION['gender'] == "Other") {
-                                                echo "selected";
-                                              } ?>>Other</option>
+                                                } ?>>Sunday</option>
+                        <option value="Monday" <?php if ((isset($_POST['end_day']) && $_POST['end_day'] == "Monday")) {
+                                                  echo 'selected';
+                                                } else if ($_SESSION['end_day'] == "Monday") {
+                                                  echo "selected";
+                                                } ?>>Monday</option>
+                        <option value="Tuesday" <?php if ((isset($_POST['end_day']) && $_POST['end_day'] == "Tuesday")) {
+                                                  echo 'selected';
+                                                } else if ($_SESSION['end_day'] == "Tuesday") {
+                                                  echo "selected";
+                                                } ?>>Tuesday</option>
+                        <option value="Wednesday" <?php if ((isset($_POST['end_day']) && $_POST['end_day'] == "Wednesday")) {
+                                                    echo 'selected';
+                                                  } else if ($_SESSION['end_day'] == "Wednesday") {
+                                                    echo "selected";
+                                                  } ?>>Wednesday</option>
+                        <option value="Thursday" <?php if ((isset($_POST['end_day']) && $_POST['end_day'] == "Thursday")) {
+                                                    echo 'selected';
+                                                  } else if ($_SESSION['end_day'] == "Thursday") {
+                                                    echo "selected";
+                                                  } ?>>Thursday</option>
+                        <option value="Friday" <?php if ((isset($_POST['end_day']) && $_POST['end_day'] == "Friday")) {
+                                                  echo 'selected';
+                                                } else if ($_SESSION['end_day'] == "Monday") {
+                                                  echo "selected";
+                                                } ?>>Friday</option>
+                        <option value="Saturday" <?php if ((isset($_POST['end_day']) && $_POST['end_day'] == "Saturday")) {
+                                                    echo 'selected';
+                                                  } else if ($_SESSION['end_day'] == "Saturday") {
+                                                    echo "selected";
+                                                  } ?>>Saturday</option>
                       </select>
                     </div>
                     <?php
