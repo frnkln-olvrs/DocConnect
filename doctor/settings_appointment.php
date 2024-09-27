@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+  header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 1) {
+  header('location: ../index.php');
+}
+
+require_once('../tools/functions.php');
+require_once('../classes/account.class.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -8,42 +21,63 @@ include '../includes/head.php';
 
 <body>
   <?php
-    require_once('../includes/header-doctor.php');
+  require_once('../includes/header-doctor.php');
   ?>
 
   <div class="container-fluid">
     <div class="row">
-      <?php 
-        require_once('../includes/sidepanel-doctor.php');
+      <?php
+      require_once('../includes/sidepanel-doctor.php');
       ?>
-      
+
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">Account Settings</h1>
         </div>
 
-        <?php 
-          require_once('../includes/doctorSetting_Nav.php')
+        <?php
+        require_once('../includes/doctorSetting_Nav.php')
         ?>
 
         <div class="card bg-body-tertiary mb-4">
           <div class="card-body">
-            <form>
+            <form method="post" action="">
               <div class="row">
                 <div class="col-12 mb-3">
                   <div class="form-group mb-2">
-                    <label for="work-hours">Workin Hours</label>
+                    <label for="work-hours">Working Hours</label>
                     <div class="d-flex align-items-center">
-                      <input type="time" class="form-control" id="work-hours" name="startwh" placeholder="">
+                      <input type="time" class="form-control" id="work-hours" name="start_wt" placeholder="" value="<?= (isset($_POST['start_wt'])) ? $_POST['start_wt'] : $_SESSION['start_wt'] ?>">
                       <p class="m-0 mx-3"> to </p>
-                      <input type="time" class="form-control" id="work-hours" name="endwh" placeholder="">
+                      <input type="time" class="form-control" id="work-hours" name="end_wt" placeholder="" value="<?= (isset($_POST['end_wt'])) ? $_POST['end_wt'] : $_SESSION['end_wt'] ?>">
                     </div>
+                    <?php
+                    if ((isset($_POST['start_wt']) && !validate_field($_POST['start_wt'])) && (isset($_POST['end_wt']) && !validate_field($_POST['end_wt']))) {
+                    ?>
+                      <p class="text-dark m-0 ps-2">Working time is required.</p>
+                    <?php
+                    } else  if (isset($_POST['start_wt']) && !validate_field($_POST['start_wt'])) {
+                    ?>
+                      <p class="text-dark m-0 ps-2">Start working time is required.</p>
+                    <?php
+                    } else  if (isset($_POST['end_wt']) && !validate_field($_POST['end_wt'])) {
+                    ?>
+                      <p class="text-dark m-0 ps-2">End working time is required.</p>
+                      <?php
+                    } else if (isset($_POST['start_wt']) && isset($_POST['end_wt'])) {
+                      if (!validate_time($_POST['start_wt'], $_POST['end_wt'])) {
+                      ?>
+                        <p class="text-dark m-0 ps-2">Start time must be earlier than end time.</p>
+                    <?php
+                      }
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-12 col-md-6 mb-3">
                   <div class="form-group mb-2">
                     <label for="appointment-type">Appointment Types</label>
@@ -84,10 +118,10 @@ include '../includes/head.php';
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <!-- Save Button -->
-              <button type="submit" class="btn btn-primary text-light">Save Changes</button>
+              <input type="submit" class="btn btn-primary text-light" name="save" value="Save Changes">
             </form>
           </div>
         </div>

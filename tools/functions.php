@@ -75,3 +75,15 @@ function generate_code()
     $code = random_int(100000, 999999);
     return $code;
 }
+
+function validate_time($start, $end)
+{
+    $startTime = DateTime::createFromFormat('H:i', $start);
+    $endTime = DateTime::createFromFormat('H:i', $end);
+
+    if ($startTime === false || $endTime === false) {
+        return false; 
+    }
+
+    return $startTime < $endTime;
+}
