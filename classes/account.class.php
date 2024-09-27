@@ -210,34 +210,6 @@ class Account
 
     function update_doctor_info()
     {
-        $sql = "UPDATE account a JOIN doctor_info d ON a.account_id = d.account_id
-        SET a.firstname = :firstname, a.middlename = :middlename, a.lastname = :lastname, a.gender = :gender,
-        a.birthdate = :birthdate, d.specialty = :specialty, a.contact = :contact, a.email = :email,
-        a.address = :address, d.bio = :bio 
-        WHERE a.account_id = :account_id";
-
-        $query = $this->db->connect()->prepare($sql);
-        $query->bindParam(':email', $this->email);
-        $query->bindParam(':firstname', $this->firstname);
-        $query->bindParam(':middlename', $this->middlename);
-        $query->bindParam(':lastname', $this->lastname);
-        $query->bindParam(':contact', $this->contact);
-        $query->bindParam(':birthdate', $this->birthdate);
-        $query->bindParam(':gender', $this->gender);
-        $query->bindParam(':specialty', $this->specialty);
-        $query->bindParam(':bio', $this->bio);
-        $query->bindParam(':address', $this->address);
-        $query->bindParam(':account_id', $this->account_id);
-
-        if ($query->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function test_update()
-    {
         $connect = $this->db->connect();
         $connect->beginTransaction();
 
@@ -334,7 +306,50 @@ class Account
     // moderator functions end
 
 
+    // user functions start
+
     function add_user()
+    {
+        $connect = $this->db->connect();
+        $connect->beginTransaction();
+
+        $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role, contact, gender, birthdate, campus_id) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role, :contact, :gender, :birthdate, :campus_id);";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':email', $this->email);
+        $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+        $query->bindParam(':password', $hashedPassword);
+        $query->bindParam(':firstname', $this->firstname);
+        $query->bindParam(':middlename', $this->middlename);
+        $query->bindParam(':lastname', $this->lastname);
+        $query->bindParam(':user_role', $this->user_role);
+        $query->bindParam(':contact', $this->contact);
+        $query->bindParam(':gender', $this->gender);
+        $query->bindParam(':birthdate', $this->birthdate);
+        $query->bindParam(':campus_id', $this->campus_id);
+
+        if ($query->execute()) {
+            $last_product_id = $connect->lastInsertId();
+
+            $sec_sql = "INSERT INTO patient_info (account_id) VALUES (:account_id)";
+
+            $sec_query = $connect->prepare($sec_sql);
+            $sec_query->bindParam(':account_id', $last_product_id);
+
+            if ($sec_query->execute()) {
+                $connect->commit();
+                return true;
+            } else {
+                $connect->rollBack();
+                return false;
+            }
+        } else {
+            $connect->rollBack();
+            return false;
+        }
+    }
+
+    function add_user_old()
     {
         $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role, contact, gender, birthdate, campus_id) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role, :contact, :gender, :birthdate, :campus_id);";
 

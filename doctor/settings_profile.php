@@ -33,7 +33,7 @@ if (isset($_POST['save'])) {
     $account->address  &&
     $account->email  &&
     $account->bio)) {
-    if ($account->test_update()) {
+    if ($account->update_doctor_info()) {
       $success = 'success';
 
       $_SESSION['email'] = $account->email;
