@@ -62,6 +62,73 @@ include '../includes/head.php';
         <div class="card bg-body-tertiary mb-4">
           <div class="card-body">
             <form method="post" action="">
+
+              <div class="row">
+                <div class="col-12 mb-3">
+                  <div class="form-group mb-2">
+                    <label for="work-hours">Day</label>
+                    <div class="d-flex align-items-center">
+                      <select id="gender" class="form-select" name="gender" required>
+                        <option value="Male" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Male")) {
+                                                echo 'selected';
+                                              } else if ($_SESSION['gender'] == "Male") {
+                                                echo "selected";
+                                              } ?>>Male</option>
+                        <option value="Female" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Female")) {
+                                                  echo 'selected';
+                                                } else if ($_SESSION['gender'] == "Female") {
+                                                  echo "selected";
+                                                } ?>>Female</option>
+                        <option value="Other" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Other")) {
+                                                echo 'selected';
+                                              } else if ($_SESSION['gender'] == "Other") {
+                                                echo "selected";
+                                              } ?>>Other</option>
+                      </select>
+                      <p class="m-0 mx-3"> to </p>
+                      <select id="gender" class="form-select" name="gender" required>
+                        <option value="Male" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Male")) {
+                                                echo 'selected';
+                                              } else if ($_SESSION['gender'] == "Male") {
+                                                echo "selected";
+                                              } ?>>Male</option>
+                        <option value="Female" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Female")) {
+                                                  echo 'selected';
+                                                } else if ($_SESSION['gender'] == "Female") {
+                                                  echo "selected";
+                                                } ?>>Female</option>
+                        <option value="Other" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Other")) {
+                                                echo 'selected';
+                                              } else if ($_SESSION['gender'] == "Other") {
+                                                echo "selected";
+                                              } ?>>Other</option>
+                      </select>
+                    </div>
+                    <?php
+                    if ((isset($_POST['start_day']) && !validate_field($_POST['start_day'])) && (isset($_POST['end_day']) && !validate_field($_POST['end_day']))) {
+                    ?>
+                      <p class="text-dark m-0 ps-2">Working day is required.</p>
+                    <?php
+                    } else  if (isset($_POST['start_day']) && !validate_field($_POST['start_day'])) {
+                    ?>
+                      <p class="text-dark m-0 ps-2">Start day is required.</p>
+                    <?php
+                    } else  if (isset($_POST['end_day']) && !validate_field($_POST['end_day'])) {
+                    ?>
+                      <p class="text-dark m-0 ps-2">End day is required.</p>
+                      <?php
+                    } else if (isset($_POST['start_day']) && isset($_POST['end_day'])) {
+                      if (!validate_time($_POST['start_day'], $_POST['end_day'])) {
+                      ?>
+                        <p class="text-dark m-0 ps-2">Start time must be earlier than end time.</p>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </div>
+                </div>
+              </div>
+
               <div class="row">
                 <div class="col-12 mb-3">
                   <div class="form-group mb-2">
