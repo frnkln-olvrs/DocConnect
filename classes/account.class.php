@@ -266,6 +266,22 @@ class Account
         }
     }
 
+    function update_working()
+    {
+        $sql = "UPDATE doctor_info SET start_wt = :start_wt, end_wt = :end_wt WHERE account_id = :account_id";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':start_wt', $this->start_wt);
+        $query->bindParam(':end_wt', $this->end_wt);
+        $query->bindParam(':account_id', $this->account_id);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // doctor functions end
 
     // moderator functions start
@@ -383,4 +399,6 @@ class Account
         }
         return $data;
     }
+
+    // user functions end
 }
