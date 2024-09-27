@@ -70,7 +70,31 @@ require_once('../classes/account.class.php');
       </div>
     </div>
   </section>
+<!-- 
+  <script src="../js/chat.js"></script> -->
 
-  <script src="../js/chat.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const chatList = document.getElementById('chatList');
+  const testData = [
+    { account_id: 1, firstname: 'John', lastname: 'Doe' },
+    { account_id: 2, firstname: 'Jane', lastname: 'Smith' }
+  ];
+
+  testData.forEach(chat => {
+    let listItem = document.createElement('li');
+    listItem.classList.add('mb-3');
+    listItem.innerHTML = `
+      <a href="#" class="d-flex align-items-center text-dark text-decoration-none" onclick="loadChat(${chat.account_id})">
+        <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
+        <div>
+          <strong>${chat.firstname} ${chat.lastname}</strong>
+        </div>
+      </a>`;
+    chatList.appendChild(listItem);
+  });
+});
+
+  </script>
 </body>
 </html>
