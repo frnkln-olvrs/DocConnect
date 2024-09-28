@@ -81,15 +81,16 @@ function loadChat(accountId) {
       const messageElement = document.createElement('div');
       messageElement.classList.add(
         'd-flex', 
+        isSender ? 'flex-row-reverse' : 'flex-row',
         'align-items-end', 
-        isSender ? 'justify-content-end' : 'justify-content-start',
+        'justify-content-end',
         'mb-3'
       );
       messageElement.innerHTML = `
-        <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'ms-3' : 'me-3'}" height="30" width="30">
-        <div class="${isSender ? 'bg-primary' : 'bg-secondary'} text-light p-2 rounded-3">
+        <div class="${isSender ? 'bg-secondary' : 'bg-primary'} text-light p-2 rounded-3">
           ${msg.message}
-        </div>`;
+        </div>
+        <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'me-3' : 'ms-3'}" height="30" width="30">`;
       chatMessages.appendChild(messageElement);
     });
   });
