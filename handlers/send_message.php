@@ -1,17 +1,43 @@
 <?php
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+ini_set('log_errors', 1);
+ini_set('error_log', '../errors.log');
+error_reporting(E_ALL);
+
 session_start();
 require_once('../classes/database.php');
 
+if (!isset($_SESSION['account_id'])) {
+  echo json_encode(['error' => 'User not authenticated']);
+  exit;
+}
+
 $senderId = $_SESSION['account_id'];
-$receiverId = $_POST['receiver_id'];
-$message = $_POST['message'];
+$receiverId = $_POST['receiver_id'] ?? null;
+$message = $_POST['message'] ?? null;
+
+if (!$receiverId || !$message) {
+  echo json_encode(['error' => 'Invalid input']);
+  exit;
+}
 
 $db = new Database();
 $pdo = $db->connect();
 
-$query = "INSERT INTO messages (sender_id, receiver_id, message, status) VALUES (?, ?, ?, 'sent')";
-$stmt = $pdo->prepare($query);
-$stmt->execute([$senderId, $receiverId, $message]);
+if (!$pdo) {
+  echo json_encode(['error' => 'Database connection failed']);
+  exit;
+}
 
-echo json_encode(['success' => true, 'message_id' => $pdo->lastInsertId()]);
+try {
+  $query = "INSERT INTO messages (sender_id, receiver_id, message, status) VALUES (?, ?, ?, 'sent')";
+  $stmt = $pdo->prepare($query);
+  $stmt->execute([$senderId, $receiverId, $message]);
+
+  echo json_encode(['success' => true, 'message_id' => $pdo->lastInsertId()]);
+} catch (Exception $e) {
+  error_log($e->getMessage());
+  echo json_encode(['error' => 'Failed to send message']);
+}
 ?>

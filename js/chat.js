@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Load the chat list
   fetch('../handlers/get_chats.php')
-    .then(response => response.json())
-    .then(data => {
+  .then(response => response.text())
+  .then(data => {
+    try {
+      const jsonData = JSON.parse(data);
       const chatList = document.getElementById('chatList');
-      data.forEach(chat => {
+      jsonData.forEach(chat => {
         let listItem = document.createElement('li');
         listItem.classList.add('mb-3');
         listItem.innerHTML = `
@@ -16,7 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
           </a>`;
         chatList.appendChild(listItem);
       });
-    });
+    } catch (error) {
+      console.error('Error parsing JSON:', error);
+      console.log('Raw response data:', data);
+    }
+  });
 
   // Send message
   document.getElementById('sendMessage').addEventListener('click', () => {
@@ -30,8 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       body: `message=${encodeURIComponent(messageInput)}&receiver_id=${receiverId}`,
     })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then(data => {
+      if (data.error) {
+        console.error('Error from server:', data.error);
+        return;
+      }
       const chatMessages = document.getElementById('chatMessages');
       const messageElement = document.createElement('div');
       messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
@@ -39,8 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="bg-primary text-light p-2 rounded-3">${messageInput}</div>
         <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
       chatMessages.appendChild(messageElement);
-      document.getElementById('messageInput').value = ''; // Clear the input
-    });
+      document.getElementById('messageInput').value = '';
+    })
+    .catch(error => {
+      console.error('Error sending message:', error);
+    });  
   });  
 });
 
@@ -54,26 +72,25 @@ function loadChat(accountId) {
     },
     body: `chat_with=${accountId}`,
   })
-    .then(response => response.json())
-    .then(messages => {
-      const chatMessages = document.getElementById('chatMessages');
-      chatMessages.innerHTML = ''; // Clear previous messages
-      messages.forEach(msg => {
-        const isSender = msg.sender_id === window.currentChatAccountId;
-        const messageElement = document.createElement('div');
-        messageElement.classList.add(
-          'd-flex', 
-          'align-items-end', 
-          isSender ? 'justify-content-end' : 'justify-content-start', // Fix direction of message
-          'mb-3'
-        );
-        messageElement.innerHTML = `
-          <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'ms-3' : 'me-3'}" height="30" width="30">
-          <div class="${isSender ? 'bg-primary' : 'bg-secondary'} text-light p-2 rounded-3">
-            ${msg.message}
-          </div>`;
-        chatMessages.appendChild(messageElement);
-      });
+  .then(response => response.json())
+  .then(messages => {
+    const chatMessages = document.getElementById('chatMessages');
+    chatMessages.innerHTML = '';
+    messages.forEach(msg => {
+      const isSender = msg.sender_id === window.currentChatAccountId;
+      const messageElement = document.createElement('div');
+      messageElement.classList.add(
+        'd-flex', 
+        'align-items-end', 
+        isSender ? 'justify-content-end' : 'justify-content-start',
+        'mb-3'
+      );
+      messageElement.innerHTML = `
+        <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'ms-3' : 'me-3'}" height="30" width="30">
+        <div class="${isSender ? 'bg-primary' : 'bg-secondary'} text-light p-2 rounded-3">
+          ${msg.message}
+        </div>`;
+      chatMessages.appendChild(messageElement);
     });
+  });
 }
-
