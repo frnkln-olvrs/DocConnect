@@ -22,25 +22,26 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('sendMessage').addEventListener('click', () => {
     const messageInput = document.getElementById('messageInput').value;
     const receiverId = window.currentChatAccountId;
-
+  
     fetch('../handlers/send_message.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: `message=${encodeURIComponent(messageInput)}&receiver_id=${receiverId}`,
-    }).then(response => response.json())
-      .then(data => {
-        // Update chat box with new message
-        const chatMessages = document.getElementById('chatMessages');
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
-        messageElement.innerHTML = `
-          <div class="bg-primary text-light p-2 rounded-3">${messageInput}</div>
-          <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
-        chatMessages.appendChild(messageElement);
-      });
-  });
+    })
+    .then(response => response.json())
+    .then(data => {
+      const chatMessages = document.getElementById('chatMessages');
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
+      messageElement.innerHTML = `
+        <div class="bg-primary text-light p-2 rounded-3">${messageInput}</div>
+        <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
+      chatMessages.appendChild(messageElement);
+      document.getElementById('messageInput').value = ''; // Clear the input
+    });
+  });  
 });
 
 // Load selected chat
@@ -56,17 +57,23 @@ function loadChat(accountId) {
     .then(response => response.json())
     .then(messages => {
       const chatMessages = document.getElementById('chatMessages');
-      chatMessages.innerHTML = '';
+      chatMessages.innerHTML = ''; // Clear previous messages
       messages.forEach(msg => {
         const isSender = msg.sender_id === window.currentChatAccountId;
         const messageElement = document.createElement('div');
-        messageElement.classList.add('d-flex', 'align-items-end', isSender ? 'justify-content-start' : 'justify-content-end', 'mb-3');
+        messageElement.classList.add(
+          'd-flex', 
+          'align-items-end', 
+          isSender ? 'justify-content-end' : 'justify-content-start', // Fix direction of message
+          'mb-3'
+        );
         messageElement.innerHTML = `
-          <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'me-3' : 'ms-3'}" height="30" width="30">
-          <div class="${isSender ? 'bg-secondary' : 'bg-primary'} text-light p-2 rounded-3">
+          <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'ms-3' : 'me-3'}" height="30" width="30">
+          <div class="${isSender ? 'bg-primary' : 'bg-secondary'} text-light p-2 rounded-3">
             ${msg.message}
           </div>`;
         chatMessages.appendChild(messageElement);
       });
     });
 }
+

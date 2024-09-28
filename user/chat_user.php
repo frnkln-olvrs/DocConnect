@@ -85,10 +85,10 @@ $pdo = $db->connect();
     </div>
   </section>
 
-  <!-- <script src="../js/chat.js"></script> -->
+  <script src="../js/chat.js"></script>
 
   <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       const chatList = document.getElementById('chatList');
       const testData = [
         { account_id: 1, firstname: 'John', lastname: 'Doe' },
