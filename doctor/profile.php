@@ -78,6 +78,12 @@ include '../includes/head.php';
                                         <a href="#" class="text-decoration-none">Read more</a>
                                     </div>
                                 </div> -->
+                                <div class="mb-3">
+                                    <h6>Working Time</h6>
+                                    <p class="mb-1">Start: <?= $_SESSION['start_day'] . ' - ' . date('h:i A', strtotime($_SESSION['start_wt'])) ?></p>
+                                    <p>End: <?= $_SESSION['end_day'] . ' - ' . date('h:i A', strtotime($_SESSION['end_wt'])) ?></p>
+                                    <!-- <a href="#" class="text-decoration-none">Read more</a> -->
+                                </div>
                             </div>
 
                             <!-- <div class="tab-pane fade" id="nav-opinions" role="tabpanel" aria-labelledby="nav-opinions-tab">
@@ -124,7 +130,7 @@ include '../includes/head.php';
                     </div>
                 </div>
 
-                <div class="card mb-4">
+                <!-- <div class="card mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <h6 class="mb-2">Availability</h6>
@@ -203,7 +209,7 @@ include '../includes/head.php';
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </main>
         </div>
     </div>

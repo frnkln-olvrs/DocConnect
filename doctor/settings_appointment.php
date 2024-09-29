@@ -12,8 +12,12 @@ require_once('../classes/account.class.php');
 
 $account = new Account();
 if (isset($_POST['save'])) {
-  $account->firstname = htmlentities($_POST['start_wt']);
-  $account->middlename = htmlentities($_POST['end_wt']);
+  $account->start_wt = htmlentities($_POST['start_wt']);
+  $account->end_wt = htmlentities($_POST['end_wt']);
+  $account->start_day = htmlentities($_POST['start_day']);
+  $account->end_day = htmlentities($_POST['end_day']);
+  $account->account_id = $_SESSION['account_id'];
+
 
   if (validate_field($account->start_wt &&
     $account->end_wt)) {
@@ -22,6 +26,8 @@ if (isset($_POST['save'])) {
 
       $_SESSION['start_wt'] = $account->start_wt;
       $_SESSION['end_wt'] = $account->end_wt;
+      $_SESSION['start_day'] = $account->start_day;
+      $_SESSION['end_day'] = $account->end_day;
     } else {
       echo 'An error occured while adding in the database.';
     }
@@ -70,6 +76,7 @@ include '../includes/head.php';
                     <div class="d-flex align-items-center">
                       <select id="start_day" class="form-select" name="start_day" required>
                         <option value="">Select Day </option>
+                        <?= $_SESSION['start_day'] ?>
                         <option value="Sunday" <?php if ((isset($_POST['start_day']) && $_POST['start_day'] == "Sunday")) {
                                                   echo 'selected';
                                                 } else if ($_SESSION['start_day'] == "Sunday") {
@@ -136,7 +143,7 @@ include '../includes/head.php';
                                                   } ?>>Thursday</option>
                         <option value="Friday" <?php if ((isset($_POST['end_day']) && $_POST['end_day'] == "Friday")) {
                                                   echo 'selected';
-                                                } else if ($_SESSION['end_day'] == "Monday") {
+                                                } else if ($_SESSION['end_day'] == "Friday") {
                                                   echo "selected";
                                                 } ?>>Friday</option>
                         <option value="Saturday" <?php if ((isset($_POST['end_day']) && $_POST['end_day'] == "Saturday")) {
@@ -158,13 +165,7 @@ include '../includes/head.php';
                     } else  if (isset($_POST['end_day']) && !validate_field($_POST['end_day'])) {
                     ?>
                       <p class="text-dark m-0 ps-2">End day is required.</p>
-                      <?php
-                    } else if (isset($_POST['start_day']) && isset($_POST['end_day'])) {
-                      if (!validate_time($_POST['start_day'], $_POST['end_day'])) {
-                      ?>
-                        <p class="text-dark m-0 ps-2">Start time must be earlier than end time.</p>
                     <?php
-                      }
                     }
                     ?>
                   </div>
@@ -256,4 +257,31 @@ include '../includes/head.php';
       </main>
     </div>
   </div>
+  <?php
+  if (isset($_POST['save']) && $success == 'success') {
+  ?>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Schedule date is successfully updated!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row d-flex">
+              <div class="col-12 text-center">
+                <a href="./settings_appointment" class="text-decoration-none text-dark">
+                  <p class="m-0 text-primary fw-bold">Click to Continue.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+  ?>
+
+  <script src="../js/main.js"></script>
 </body>

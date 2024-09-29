@@ -21,6 +21,8 @@ class Account
     public $specialty;
     public $start_wt;
     public $end_wt;
+    public $start_day;
+    public $end_day;
     public $appointment_limits;
 
 
@@ -200,6 +202,8 @@ class Account
                 $this->account_image = $accountData['account_image'];
                 $this->start_wt = $accountData['start_wt'];
                 $this->end_wt = $accountData['end_wt'];
+                $this->start_day = $accountData['start_day'];
+                $this->end_day = $accountData['end_day'];
                 $this->specialty = $accountData['specialty'];
                 $this->bio = $accountData['bio'];
 
@@ -268,11 +272,13 @@ class Account
 
     function update_working_time()
     {
-        $sql = "UPDATE doctor_info SET start_wt = :start_wt, end_wt = :end_wt WHERE account_id = :account_id";
+        $sql = "UPDATE doctor_info SET start_wt = :start_wt, end_wt = :end_wt, start_day = :start_day, end_day = :end_day WHERE account_id = :account_id";
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':start_wt', $this->start_wt);
         $query->bindParam(':end_wt', $this->end_wt);
+        $query->bindParam(':start_day', $this->start_day);
+        $query->bindParam(':end_day', $this->end_day);
         $query->bindParam(':account_id', $this->account_id);
 
         if ($query->execute()) {

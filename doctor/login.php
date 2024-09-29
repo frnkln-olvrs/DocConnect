@@ -36,6 +36,8 @@ if (isset($_POST['login'])) {
     $_SESSION['specialty'] = $account->specialty;
     $_SESSION['start_wt'] = $account->start_wt;
     $_SESSION['end_wt'] = $account->end_wt;
+    $_SESSION['start_day'] = $account->start_day;
+    $_SESSION['end_day'] = $account->end_day;
     $_SESSION['bio'] = $account->bio;
     $_SESSION['account_image'] = $account->account_image;
 
