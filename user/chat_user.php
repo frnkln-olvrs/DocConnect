@@ -3,6 +3,9 @@ session_start();
 
 if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
   header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 3) {
+  header('location: ../index.php');
+  exit();
 }
 
 require_once('../tools/functions.php');
@@ -20,10 +23,7 @@ $pdo = $db->connect();
   include '../includes/head.php';
 ?>
 <body class="pt-5 bg-white">
-  <?php
-    require_once('../includes/header.php');
-    $userId = $_SESSION['account_id'];
-  ?>
+  <?php require_once('../includes/header.php'); ?>
 
   <section id="chat" class="padding-medium">
     <div class="d-flex h-100">
