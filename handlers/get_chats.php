@@ -29,13 +29,10 @@ if (!$pdo) {
 }
 
 try {
-  // Add a search condition based on the search input
   $query = "SELECT DISTINCT a.account_id, a.firstname, a.lastname, a.account_image
             FROM account a
-            JOIN messages m ON (a.account_id = m.sender_id OR a.account_id = m.receiver_id)
-            WHERE (m.sender_id = :account_id OR m.receiver_id = :account_id)
-            AND a.account_id != :account_id
-            AND a.user_role = :opposite_role";  // Filter users based on role
+            WHERE a.user_role = :opposite_role
+            AND a.account_id != :account_id";
   
   // If a search term is provided, add it to the query
   if (!empty($search)) {
@@ -58,4 +55,3 @@ try {
   error_log($e->getMessage());
   echo json_encode(['error' => 'Failed to retrieve chats']);
 }
-?>

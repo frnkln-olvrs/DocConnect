@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Search functionality
   document.getElementById('searchChat').addEventListener('input', (event) => {
     const searchTerm = event.target.value;
-    loadChats(searchTerm);
+    loadChats(searchTerm);  // Call loadChats with the current search term
   });
 
   // Load chats initially without any search term
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // chat header slected
+  // chat header selected
   window.loadChat = function(accountId, fullName, profileImage) {
     window.currentChatAccountId = accountId;
     fetch('../handlers/fetch_messages.php', {
