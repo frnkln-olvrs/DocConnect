@@ -21,8 +21,8 @@
               <nav aria-label="breadcrumb" class="bg-body-tertiary border-1 border rounded-3 p-3 mb-4">
                 <ol class="breadcrumb mb-0">
                   <li class="breadcrumb-item" aria-current="page"><a href="profile.php">General</a></li>
-                  <li class="breadcrumb-item active"><a href="user_appointment.php">Appointment</a></li>
-                  <li class="breadcrumb-item"><a href="user_setting.php" class="text-dark">Settings</a></li>
+                  <li class="breadcrumb-item active"><a href="user_appointment.php" class="text-dark">Appointment</a></li>
+                  <li class="breadcrumb-item"><a href="user_setting.php">Settings</a></li>
                 </ol>
               </nav>
             </div>
