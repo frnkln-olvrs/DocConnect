@@ -31,7 +31,7 @@ if (!$pdo) {
 }
 
 try {
-  $query = "INSERT INTO messages (sender_id, receiver_id, message, status) VALUES (?, ?, ?, 'sent')";
+  $query = "INSERT INTO messages (sender_id, receiver_id, message, status, is_read) VALUES (?, ?, ?, 'sent', 0)";
   $stmt = $pdo->prepare($query);
   $stmt->execute([$senderId, $receiverId, $message]);
 

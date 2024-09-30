@@ -29,11 +29,17 @@ if (!$pdo) {
 }
 
 try {
-  $query = "SELECT DISTINCT a.account_id, a.firstname, a.lastname, a.account_image
+  $query = "SELECT DISTINCT a.account_id, a.firstname, a.lastname, a.account_image,
+           (SELECT COUNT(*) FROM messages m 
+            WHERE m.receiver_id = :account_id 
+            AND m.sender_id = a.account_id 
+            AND m.is_read = 0) AS unread_count
             FROM account a
-            WHERE a.user_role = :opposite_role
-            AND a.account_id != :account_id";
-  
+            JOIN messages m ON (a.account_id = m.sender_id OR a.account_id = m.receiver_id)
+            WHERE (m.sender_id = :account_id OR m.receiver_id = :account_id)
+            AND a.account_id != :account_id
+            AND a.user_role IN (1, 3)";
+
   // If a search term is provided, add it to the query
   if (!empty($search)) {
     $query .= " AND (a.firstname LIKE :search OR a.lastname LIKE :search)";
@@ -55,3 +61,4 @@ try {
   error_log($e->getMessage());
   echo json_encode(['error' => 'Failed to retrieve chats']);
 }
+?>
