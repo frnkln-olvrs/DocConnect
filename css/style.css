@@ -292,6 +292,14 @@ section#chat #chat_text {
   max-width: 75%;
 }
 
+.chatList.active {
+  background-color: rgb(230, 230, 230);
+}
+
+.chatList:hover {
+  background-color: rgb(230, 230, 230);
+}
+
 /* ABOUT US SECTION */
 /* section.about-section {
   margin-top: 100px;

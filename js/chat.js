@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
           jsonData.forEach(chat => {
             let listItem = document.createElement('li');
-            listItem.classList.add('mb-3');
+            listItem.classList.add('chatList', 'my-1', 'rounded-1');
             listItem.innerHTML = `
-              <a href="#" class="d-flex align-items-center text-dark text-decoration-none" 
-                 onclick="loadChat(${chat.account_id}, '${chat.firstname} ${chat.lastname}', '${chat.account_image}')">
+              <a href="#" class="d-flex align-items-center text-dark text-decoration-none p-2" 
+                 onclick="loadChat(${chat.account_id}, '${chat.firstname} ${chat.lastname}', '${chat.account_image}', this)">
                 <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
                 <div>
                   <strong>${chat.firstname} ${chat.lastname}</strong>
@@ -33,13 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  // Search functionality
+  // Searrch function
   document.getElementById('searchChat').addEventListener('input', (event) => {
     const searchTerm = event.target.value;
-    loadChats(searchTerm);  // Call loadChats with the current search term
+    loadChats(searchTerm);
   });
 
-  // Load chats initially without any search term
   loadChats();
 
   function scrollChatToBottom() {
@@ -95,9 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // chat header selected
-  window.loadChat = function(accountId, fullName, profileImage) {
+  window.loadChat = function(accountId, fullName, profileImage, chatElement) {
     window.currentChatAccountId = accountId;
+
+    const activeChats = document.querySelectorAll('.chatList.active');
+    activeChats.forEach(chat => chat.classList.remove('active'));
+
+    chatElement.parentElement.classList.add('active');
+
     fetch('../handlers/fetch_messages.php', {
       method: 'POST',
       headers: {
