@@ -1,28 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Load the chat list
-  fetch('../handlers/get_chats.php')
-  .then(response => response.text())
-  .then(data => {
-    try {
-      const jsonData = JSON.parse(data);
-      const chatList = document.getElementById('chatList');
-      jsonData.forEach(chat => {
-        let listItem = document.createElement('li');
-        listItem.classList.add('mb-3');
-        listItem.innerHTML = `
-          <a href="#" class="d-flex align-items-center text-dark text-decoration-none" onclick="loadChat(${chat.account_id}, '${chat.firstname} ${chat.lastname}', '${chat.account_image}')">
-            <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
-            <div>
-              <strong>${chat.firstname} ${chat.lastname}</strong>
-            </div>
-          </a>`;
-        chatList.appendChild(listItem);
+  function loadChats(searchTerm = '') {
+    fetch(`../handlers/get_chats.php?search=${encodeURIComponent(searchTerm)}`)
+      .then(response => response.text())
+      .then(data => {
+        try {
+          const jsonData = JSON.parse(data);
+          const chatList = document.getElementById('chatList');
+          chatList.innerHTML = '';  // Clear previous chat list
+
+          if (jsonData.length === 0) {
+            chatList.innerHTML = '<li class="text-muted">No users found.</li>';
+          }
+
+          jsonData.forEach(chat => {
+            let listItem = document.createElement('li');
+            listItem.classList.add('mb-3');
+            listItem.innerHTML = `
+              <a href="#" class="d-flex align-items-center text-dark text-decoration-none" 
+                 onclick="loadChat(${chat.account_id}, '${chat.firstname} ${chat.lastname}', '${chat.account_image}')">
+                <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
+                <div>
+                  <strong>${chat.firstname} ${chat.lastname}</strong>
+                </div>
+              </a>`;
+            chatList.appendChild(listItem);
+          });
+        } catch (error) {
+          console.error('Error parsing JSON:', error);
+          console.log('Raw response data:', data);
+        }
       });
-    } catch (error) {
-      console.error('Error parsing JSON:', error);
-      console.log('Raw response data:', data);
-    }
+  }
+
+  // Search functionality
+  document.getElementById('searchChat').addEventListener('input', (event) => {
+    const searchTerm = event.target.value;
+    loadChats(searchTerm);
   });
+
+  // Load chats initially without any search term
+  loadChats();
 
   function scrollChatToBottom() {
     const chatMessages = document.getElementById('chatMessages');
