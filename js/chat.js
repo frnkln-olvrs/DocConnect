@@ -24,11 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Send message
+   // Send message
+  function scrollChatToBottom() {
+    const chatMessages = document.getElementById('chatMessages');
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
   document.getElementById('sendMessage').addEventListener('click', () => {
     const messageInput = document.getElementById('messageInput').value;
     const receiverId = window.currentChatAccountId;
-  
+
     fetch('../handlers/send_message.php', {
       method: 'POST',
       headers: {
@@ -51,47 +56,51 @@ document.addEventListener('DOMContentLoaded', () => {
       const messageElement = document.createElement('div');
       messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
       messageElement.innerHTML = `
-        <div class="bg-primary text-light p-2 rounded-3">${messageInput}</div>
+        <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${messageInput}</div>
         <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
       chatMessages.appendChild(messageElement);
+
       document.getElementById('messageInput').value = '';
+      scrollChatToBottom();
     })
     .catch(error => {
       console.error('Error sending message:', error);
-    });  
-  });  
-});
-
-// Load selected chat
-function loadChat(accountId) {
-  window.currentChatAccountId = accountId;
-  fetch('../handlers/fetch_messages.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: `chat_with=${accountId}`,
-  })
-  .then(response => response.json())
-  .then(messages => {
-    const chatMessages = document.getElementById('chatMessages');
-    chatMessages.innerHTML = '';
-    messages.forEach(msg => {
-      const isSender = msg.sender_id === window.currentChatAccountId;
-      const messageElement = document.createElement('div');
-      messageElement.classList.add(
-        'd-flex', 
-        isSender ? 'flex-row-reverse' : 'flex-row',
-        'align-items-end', 
-        'justify-content-end',
-        'mb-3'
-      );
-      messageElement.innerHTML = `
-        <div class="${isSender ? 'bg-secondary' : 'bg-primary'} text-light p-2 rounded-3">
-          ${msg.message}
-        </div>
-        <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'me-3' : 'ms-3'}" height="30" width="30">`;
-      chatMessages.appendChild(messageElement);
     });
   });
-}
+
+  // Load selected chat
+  window.loadChat = function(accountId) {
+    window.currentChatAccountId = accountId;
+    fetch('../handlers/fetch_messages.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `chat_with=${accountId}`,
+    })
+    .then(response => response.json())
+    .then(messages => {
+      const chatMessages = document.getElementById('chatMessages');
+      chatMessages.innerHTML = '';
+      messages.forEach(msg => {
+        const isSender = msg.sender_id === window.currentChatAccountId;
+        const messageElement = document.createElement('div');
+        messageElement.classList.add(
+          'd-flex', 
+          isSender ? 'flex-row-reverse' : 'flex-row',
+          'align-items-end', 
+          'justify-content-end',
+          'mb-3'
+        );
+        messageElement.innerHTML = `
+          <div class="${isSender ? 'bg-secondary' : 'bg-primary'} text-light p-2 rounded-3" style="max-width: 52%;">
+            ${msg.message}
+          </div>
+          <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'me-3' : 'ms-3'}" height="30" width="30">`;
+        chatMessages.appendChild(messageElement);
+      });
+
+      scrollChatToBottom();
+    });
+  };
+});

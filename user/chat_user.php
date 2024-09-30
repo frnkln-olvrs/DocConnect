@@ -28,7 +28,7 @@ $pdo = $db->connect();
   <section id="chat" class="padding-medium">
     <div class="d-flex h-100">
       <!-- Left Sidebar (Chats List) -->
-      <div id="chat_sidepanel" class="d-flex flex-column bg-light border-end p-3" style="width: 25%;">
+      <div id="chat_sidepanel" class="d-flex flex-column bg-light border-end p-3" style="min-width: 25%;">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <span class="fs-5 fw-bold">Chats</span>
           <i class='bx bx-edit fs-4'></i>
@@ -60,8 +60,6 @@ $pdo = $db->connect();
         <div id="chatMessages" class="body flex-grow-1 d-flex flex-column p-3 bg-light">
           <!-- Messages will be dynamically loaded here -->
            <?php 
-           require_once('../classes/database.php');
-
            if (!$pdo) {
              echo json_encode(['error' => 'Database connection failed']);
              exit;
