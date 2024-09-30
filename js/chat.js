@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let listItem = document.createElement('li');
         listItem.classList.add('mb-3');
         listItem.innerHTML = `
-          <a href="#" class="d-flex align-items-center text-dark text-decoration-none" onclick="loadChat(${chat.account_id})">
+          <a href="#" class="d-flex align-items-center text-dark text-decoration-none" onclick="loadChat(${chat.account_id}, '${chat.firstname} ${chat.lastname}', '${chat.account_image}')">
             <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
             <div>
               <strong>${chat.firstname} ${chat.lastname}</strong>
@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-   // Send message
   function scrollChatToBottom() {
     const chatMessages = document.getElementById('chatMessages');
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  document.getElementById('sendMessage').addEventListener('click', () => {
+  // SEnd message
+  function sendMessage() {
     const messageInput = document.getElementById('messageInput').value;
     const receiverId = window.currentChatAccountId;
 
@@ -66,10 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => {
       console.error('Error sending message:', error);
     });
+  }
+
+  document.getElementById('sendMessage').addEventListener('click', sendMessage);
+
+  document.getElementById('messageInput').addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      sendMessage();
+    }
   });
 
-  // Load selected chat
-  window.loadChat = function(accountId) {
+  // chat header slected
+  window.loadChat = function(accountId, fullName, profileImage) {
     window.currentChatAccountId = accountId;
     fetch('../handlers/fetch_messages.php', {
       method: 'POST',
@@ -82,6 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(messages => {
       const chatMessages = document.getElementById('chatMessages');
       chatMessages.innerHTML = '';
+
+      // Update chat header with user information
+      document.getElementById('chatUser').textContent = fullName;
+      document.querySelector('.head img').src = profileImage ? `../assets/images/${profileImage}` : '../assets/images/default_profile.png';
+
       messages.forEach(msg => {
         const isSender = msg.sender_id === window.currentChatAccountId;
         const messageElement = document.createElement('div');
