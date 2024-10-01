@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+  header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 3) {
+  header('location: ../index.php');
+  exit();
+}
+
+require_once('../tools/functions.php');
+require_once('../classes/account.class.php');
+require_once('../classes/database.php');
+
+$db = new Database();
+$pdo = $db->connect();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php 
@@ -25,6 +43,7 @@
                   <select id="doctorSelect" class="form-select fw-light" aria-label="Default select example">
                     <option selected>Select a doctor</option>
                     <!-- Doctors will be dynamically loaded here -->
+                     
                   </select>
                 </div>
               </div>
@@ -226,23 +245,25 @@
   ?>
 
   <script>
-    // Use AJAX to fetch doctor names from the server
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
+      const doctorSelect = document.getElementById("doctorSelect");
+    
       fetch('../handlers/get_doctors.php')
         .then(response => response.json())
         .then(data => {
-          const doctorSelect = document.getElementById('doctorSelect');
-        
-          data.forEach(doctor => {
-            const option = document.createElement('option');
-            option.value = doctor.id;
-            option.textContent = doctor.name;
-            doctorSelect.appendChild(option);
-          });
+          if (Array.isArray(data) && data.length > 0) {
+            data.forEach(doctor => {
+              let option = document.createElement("option");
+              option.value = doctor.account_id;
+              option.textContent = doctor.doctor_name;
+              doctorSelect.appendChild(option);
+            });
+          } else {
+            console.error('No doctors found or there was an error in the data.');
+          }
         })
         .catch(error => console.error('Error fetching doctors:', error));
     });
   </script>
-
 </body>
 </html>
