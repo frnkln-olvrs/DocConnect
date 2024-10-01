@@ -192,6 +192,22 @@ section#services .card {
 }
 
 /* APPPOINTMENT RADIO BUTTONS */
+#doctorDropdown {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.docDropDown .list-group-item {
+  cursor: pointer;
+}
+
+.docDropDown .list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* APPPOINTMENT RADIO BUTTONS */
 .radio-inputs {
   display: flex;
   justify-content: center;

@@ -40,11 +40,10 @@ $pdo = $db->connect();
               <div class="col-12 col-md-11">
                 <p class="fs-5 mb-2">Select Doctor *</p>
                 <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
-                  <select id="doctorSelect" class="form-select fw-light" aria-label="Default select example">
-                    <option selected>Select a doctor</option>
-                    <!-- Doctors will be dynamically loaded here -->
-                     
-                  </select>
+                  <input type="text" id="doctorSearch" class="form-control fw-light" placeholder="Type to search for a doctor..." aria-label="Doctor search">
+                  <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none" style="max-height: 200px; overflow-y: auto; z-index: 1000; width: 100%;">
+                    <!-- Dynamically populated doctor options will appear here -->
+                  </ul>
                 </div>
               </div>
             </div>
@@ -246,21 +245,48 @@ $pdo = $db->connect();
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const doctorSelect = document.getElementById("doctorSelect");
+      const doctorSearch = document.getElementById("doctorSearch");
+      const doctorDropdown = document.getElementById("doctorDropdown");
     
       fetch('../handlers/get_doctors.php')
         .then(response => response.json())
         .then(data => {
-          if (Array.isArray(data) && data.length > 0) {
-            data.forEach(doctor => {
-              let option = document.createElement("option");
-              option.value = doctor.account_id;
-              option.textContent = doctor.doctor_name;
-              doctorSelect.appendChild(option);
+          const doctors = data;
+        
+          doctorSearch.addEventListener("input", function() {
+            const searchTerm = doctorSearch.value.toLowerCase();
+            doctorDropdown.innerHTML = '';
+          
+            const filteredDoctors = doctors.filter(doctor => 
+              doctor.doctor_name.toLowerCase().includes(searchTerm)
+            );
+          
+            filteredDoctors.forEach(doctor => {
+              const li = document.createElement("li");
+              li.classList.add("list-group-item", "cursor-pointer");
+              li.textContent = doctor.doctor_name;
+              li.setAttribute("data-id", doctor.account_id);
+            
+              li.addEventListener("click", function() {
+                doctorSearch.value = doctor.doctor_name;
+                doctorDropdown.classList.add('d-none');
+              });
+            
+              doctorDropdown.appendChild(li);
             });
-          } else {
-            console.error('No doctors found or there was an error in the data.');
-          }
+          
+            if (filteredDoctors.length > 0) {
+              doctorDropdown.classList.remove('d-none');
+            } else {
+              doctorDropdown.classList.add('d-none');
+            }
+          });
+        
+          document.addEventListener("click", function(event) {
+            if (!doctorSearch.contains(event.target)) {
+              doctorDropdown.classList.add('d-none');
+            }
+          });
         })
         .catch(error => console.error('Error fetching doctors:', error));
     });
