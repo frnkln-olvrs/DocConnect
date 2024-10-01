@@ -8,16 +8,15 @@ error_reporting(E_ALL);
 session_start();
 require_once('../classes/database.php');
 
-if (!isset($_SESSION['account_id'])) {
+if (!isset($_SESSION['account_id']) || !isset($_SESSION['user_role'])) {
   echo json_encode(['error' => 'User not authenticated']);
   exit;
 }
 
 $accountId = $_SESSION['account_id'];
-$userRole = $_SESSION['user_role'];  // Get the logged-in user's role
-$search = $_GET['search'] ?? '';  // Get the search term if available
+$userRole = $_SESSION['user_role'];
+$search = $_GET['search'] ?? '';
 
-// Define the opposite role to search for
 $oppositeRole = ($userRole == 3) ? 1 : 3;
 
 $db = new Database();
@@ -30,15 +29,14 @@ if (!$pdo) {
 
 try {
   $query = "SELECT DISTINCT a.account_id, a.firstname, a.lastname, a.account_image,
-           (SELECT COUNT(*) FROM messages m 
-            WHERE m.receiver_id = :account_id 
-            AND m.sender_id = a.account_id 
-            AND m.is_read = 0) AS unread_count
-            FROM account a
-            JOIN messages m ON (a.account_id = m.sender_id OR a.account_id = m.receiver_id)
-            WHERE (m.sender_id = :account_id OR m.receiver_id = :account_id)
-            AND a.account_id != :account_id
-            AND a.user_role IN (1, 3)";
+            (SELECT COUNT(*) FROM messages m
+             WHERE m.receiver_id = :account_id 
+             AND m.sender_id = a.account_id 
+             AND m.is_read = 0) AS unread_count
+             FROM account a
+             LEFT JOIN messages m ON (a.account_id = m.sender_id OR a.account_id = m.receiver_id)
+             WHERE a.user_role = :opposite_role
+             AND a.account_id != :account_id";
 
   // If a search term is provided, add it to the query
   if (!empty($search)) {
