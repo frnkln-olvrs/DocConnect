@@ -179,7 +179,7 @@ input {
 }
 
 .overlay { 
-  background: linear-gradient(90deg, rgba(33, 191, 115, 0.649) 49.75%, rgba(220,53,69,0) 50.75%), url(../assets/images/bg-1.png);
+  background: linear-gradient(90deg, rgba(33, 191, 115, 0.649) 49.75%, rgba(220,53,69,0.649) 50.75%), url(../assets/images/bg-2.png);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
