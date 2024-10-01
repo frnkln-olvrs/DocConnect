@@ -337,7 +337,7 @@ class Account
 
         $sql = "INSERT INTO account (email, password, firstname, middlename, lastname, user_role, contact, gender, birthdate, campus_id) VALUES (:email, :password, :firstname, :middlename, :lastname, :user_role, :contact, :gender, :birthdate, :campus_id);";
 
-        $query = $this->db->connect()->prepare($sql);
+        $query = $connect->prepare($sql);
         $query->bindParam(':email', $this->email);
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
         $query->bindParam(':password', $hashedPassword);
