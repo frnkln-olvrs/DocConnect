@@ -39,10 +39,10 @@ $pdo = $db->connect();
               </div>
               <div class="col-12 col-md-11">
                 <p class="fs-5 mb-2">Select Doctor *</p>
-                <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
+                <div class="d-flex flex-row flex-wrap justify-content-start">
                   <input type="text" id="doctorSearch" class="form-control fw-light" placeholder="Type to search for a doctor..." aria-label="Doctor search">
-                  <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none" style="max-height: 200px; overflow-y: auto; z-index: 1000; width: 100%;">
-                    <!-- Dynamically populated doctor options will appear here -->
+                  <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none w-50" style="max-height: 200px; overflow-y: auto; z-index: 100; margin-top: 2.3rem;">
+                    <!-- docto list here -->
                   </ul>
                 </div>
               </div>
@@ -247,21 +247,33 @@ $pdo = $db->connect();
     document.addEventListener("DOMContentLoaded", function() {
       const doctorSearch = document.getElementById("doctorSearch");
       const doctorDropdown = document.getElementById("doctorDropdown");
-    
+      
       fetch('../handlers/get_doctors.php')
         .then(response => response.json())
         .then(data => {
-          const doctors = data;
+          console.log(data);
+        
+          doctorSearch.addEventListener("focus", function() {
+            if (doctorSearch.value === '' && data.length > 0) {
+              doctorDropdown.classList.remove('d-none');
+              populateDropdown(data);
+            }
+          });
         
           doctorSearch.addEventListener("input", function() {
             const searchTerm = doctorSearch.value.toLowerCase();
             doctorDropdown.innerHTML = '';
-          
-            const filteredDoctors = doctors.filter(doctor => 
+            
+            const filteredDoctors = data.filter(doctor => 
               doctor.doctor_name.toLowerCase().includes(searchTerm)
             );
           
-            filteredDoctors.forEach(doctor => {
+            populateDropdown(filteredDoctors);
+          });
+        
+          function populateDropdown(doctors) {
+            doctorDropdown.innerHTML = '';
+            doctors.forEach(doctor => {
               const li = document.createElement("li");
               li.classList.add("list-group-item", "cursor-pointer");
               li.textContent = doctor.doctor_name;
@@ -275,15 +287,15 @@ $pdo = $db->connect();
               doctorDropdown.appendChild(li);
             });
           
-            if (filteredDoctors.length > 0) {
+            if (doctors.length > 0) {
               doctorDropdown.classList.remove('d-none');
             } else {
               doctorDropdown.classList.add('d-none');
             }
-          });
-        
+          }
+
           document.addEventListener("click", function(event) {
-            if (!doctorSearch.contains(event.target)) {
+            if (!doctorSearch.contains(event.target) && !doctorDropdown.contains(event.target)) {
               doctorDropdown.classList.add('d-none');
             }
           });
