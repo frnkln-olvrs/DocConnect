@@ -22,25 +22,11 @@
               <div class="col-12 col-md-11">
                 <p class="fs-5 mb-2">Select Doctor *</p>
                 <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
-      
-                  <select class="form-select fw-light " aria-label="Default select example">
-                    <option selected>Select doctor specialty</option>
-                    <option value="1">Pediatrician</option>
-                    <option value="2">Family Medicine</option>
-                    <option value="3">Internal Medicine</option>
+                  <select id="doctorSelect" class="form-select fw-light" aria-label="Default select example">
+                    <option selected>Select a doctor</option>
+                    <!-- Doctors will be dynamically loaded here -->
                   </select>
                 </div>
-
-                <ul class="pt-3 ps-0 w-75">
-                  <li class="d-flex justify-content-between border-bottom border-dark mb-2">
-                    <b>Dr. Emily Parker</b>
-                    <p>Wed-Fri / Apr. 10-12</p>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <b>Dr. Sarah Johnson</b>
-                    <p>Thu-Sat / Apr. 11-13</p>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
@@ -238,6 +224,25 @@
   <?php 
     require_once ('../includes/footer.php');
   ?>
+
+  <script>
+    // Use AJAX to fetch doctor names from the server
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch('../handlers/get_doctors.php')
+        .then(response => response.json())
+        .then(data => {
+          const doctorSelect = document.getElementById('doctorSelect');
+        
+          data.forEach(doctor => {
+            const option = document.createElement('option');
+            option.value = doctor.id;
+            option.textContent = doctor.name;
+            doctorSelect.appendChild(option);
+          });
+        })
+        .catch(error => console.error('Error fetching doctors:', error));
+    });
+  </script>
 
 </body>
 </html>
