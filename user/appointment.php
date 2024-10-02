@@ -249,16 +249,17 @@ $pdo = $db->connect();
     document.addEventListener("DOMContentLoaded", function() {
       const doctorSearch = document.getElementById("doctorSearch");
       const doctorList = document.getElementById("doctorList");
-
+        
       fetch('../handlers/get_doctors.php')
         .then(response => response.json())
         .then(data => {
-          console.log(data);
           if (!Array.isArray(data)) {
             console.error('Expected an array of doctors');
             return;
           }
-
+        
+          populateDoctorList(data);
+        
           doctorSearch.addEventListener("input", function() {
             const searchTerm = doctorSearch.value.toLowerCase();
             const filteredDoctors = data.filter(doctor => 
@@ -266,29 +267,42 @@ $pdo = $db->connect();
             );
             populateDoctorList(filteredDoctors);
           });
-
+        
           function populateDoctorList(doctors) {
             doctorList.innerHTML = '';
+          
             if (doctors.length === 0) {
-              doctorList.innerHTML = '<li>No doctors found</li>';
+              doctorList.innerHTML = '<li class="list-group-item">No doctors found</li>';
               return;
             }
+          
             doctors.forEach(doctor => {
               console.log('Adding doctor:', doctor);
+            
+              const doctorName = doctor.doctor_name || 'Unknown Doctor';
+              const specialty = doctor.specialty || 'Specialty not provided';
+              const startWt = doctor.start_wt || 'Not provided';
+              const endWt = doctor.end_wt || 'Not provided';
+              const startDay = doctor.start_day || 'Not provided';
+              const endDay = doctor.end_day || 'Not provided';
+            
               const li = document.createElement('li');
               li.classList.add('list-group-item', 'd-flex', 'align-items-start', 'mb-2');
 
               li.innerHTML = `
                 <img src="../images/${doctor.account_image}" alt="Doctor's profile" class="me-3" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
                 <div>
-                  <p class="mb-1"><strong>${doctor.doctor_name}</strong> - ${doctor.specialty}</p>
-                  <p class="mb-0 text-muted">Working Hours: ${doctor.start_wt} - ${doctor.end_wt}</p>
-                  <p class="mb-0 text-muted">Days: ${doctor.start_day} - ${doctor.end_day}</p>
+                  <p class="mb-1"><strong>${doctorName}</strong> - ${specialty}</p>
+                  <p class="mb-0 text-muted">Working Hours: ${startWt} - ${endWt}</p>
+                  <p class="mb-0 text-muted">Days: ${startDay} - ${endDay}</p>
                 </div>
               `;
+            
               li.setAttribute("data-id", doctor.account_id);
+            
+              // Handle Doctoor srlection
               li.addEventListener("click", function() {
-                doctorSearch.value = doctor.doctor_name;
+                doctorSearch.value = doctorName;
                 document.getElementById('selectedDoctorId').value = doctor.account_id;
                 doctorList.innerHTML = '';
               });
