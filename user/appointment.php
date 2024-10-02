@@ -249,7 +249,7 @@ $pdo = $db->connect();
     document.addEventListener("DOMContentLoaded", function() {
       const doctorSearch = document.getElementById("doctorSearch");
       const doctorList = document.getElementById("doctorList");
-        
+  
       fetch('../handlers/get_doctors.php')
         .then(response => response.json())
         .then(data => {
@@ -257,28 +257,28 @@ $pdo = $db->connect();
             console.error('Expected an array of doctors');
             return;
           }
-        
+          
+          let selectedDoctorId = null;
+          
           populateDoctorList(data);
-        
+          
           doctorSearch.addEventListener("input", function() {
             const searchTerm = doctorSearch.value.toLowerCase();
             const filteredDoctors = data.filter(doctor => 
               doctor.doctor_name.toLowerCase().includes(searchTerm)
             );
-            populateDoctorList(filteredDoctors);
+            populateDoctorList(filteredDoctors, selectedDoctorId);
           });
-        
-          function populateDoctorList(doctors) {
+          
+          function populateDoctorList(doctors, selectedId = null) {
             doctorList.innerHTML = '';
-                  
+          
             if (doctors.length === 0) {
                 doctorList.innerHTML = '<li class="list-group-item">No doctors found</li>';
                 return;
             }
           
             doctors.forEach(doctor => {
-              console.log('Adding doctor:', doctor);
-              
               const accountImage = doctor.account_image || 'default_profile.png';
               const doctorName = doctor.doctor_name || 'Unknown Doctor';
               const specialty = doctor.specialty || 'Specialty not provided';
@@ -286,7 +286,7 @@ $pdo = $db->connect();
               const endWt = doctor.end_wt || 'Not provided';
               const startDay = doctor.start_day || 'Not provided';
               const endDay = doctor.end_day || 'Not provided';
-              
+          
               const li = document.createElement('li');
               li.classList.add('list-group-item', 'd-flex', 'align-items-center', 'mb-2');
           
@@ -298,15 +298,22 @@ $pdo = $db->connect();
                   <p class="mb-0 text-muted">Days: ${startDay} - ${endDay}</p>
                 </div>
               `;
-              
+          
               li.setAttribute("data-id", doctor.account_id);
-              
+          
+              if (selectedId === doctor.account_id) {
+                  li.classList.add('selected');
+              }
+            
               li.addEventListener("click", function() {
-                doctorSearch.value = doctorName;
-                document.getElementById('selectedDoctorId').value = doctor.account_id;
-                doctorList.innerHTML = '';
+                if (selectedId === doctor.account_id) return;
+            
+                selectedDoctorId = doctor.account_id;
+            
+                doctorSearch.value = '';
+                populateDoctorList([doctor], selectedDoctorId);
               });
-              
+            
               doctorList.appendChild(li);
             });
           }
