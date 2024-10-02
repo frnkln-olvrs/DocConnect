@@ -11,6 +11,7 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
 require_once('../tools/functions.php');
 require_once('../classes/account.class.php');
 require_once('../classes/database.php');
+require_once('../classes/appointment.class.php');
 
 $db = new Database();
 $pdo = $db->connect();
