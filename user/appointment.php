@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+  header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 3) {
+  header('location: ../index.php');
+  exit();
+}
+
+require_once('../tools/functions.php');
+require_once('../classes/account.class.php');
+require_once('../classes/database.php');
+
+$db = new Database();
+$pdo = $db->connect();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php 
@@ -21,26 +39,13 @@
               </div>
               <div class="col-12 col-md-11">
                 <p class="fs-5 mb-2">Select Doctor *</p>
-                <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
-      
-                  <select class="form-select fw-light " aria-label="Default select example">
-                    <option selected>Select doctor specialty</option>
-                    <option value="1">Pediatrician</option>
-                    <option value="2">Family Medicine</option>
-                    <option value="3">Internal Medicine</option>
-                  </select>
+                <div class="d-flex flex-row flex-wrap justify-content-start">
+                  <input type="text" id="doctorSearch" class="form-control fw-light" placeholder="Type to search for a doctor..." aria-label="Doctor search">
+                  <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none w-50" style="max-height: 200px; overflow-y: auto; z-index: 100; margin-top: 2.3rem;">
+                    <li>HAHA</li>
+                    <li>BEBE</li>
+                  </ul>
                 </div>
-
-                <ul class="pt-3 ps-0 w-75">
-                  <li class="d-flex justify-content-between border-bottom border-dark mb-2">
-                    <b>Dr. Emily Parker</b>
-                    <p>Wed-Fri / Apr. 10-12</p>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <b>Dr. Sarah Johnson</b>
-                    <p>Thu-Sat / Apr. 11-13</p>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
@@ -239,5 +244,65 @@
     require_once ('../includes/footer.php');
   ?>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const doctorSearch = document.getElementById("doctorSearch");
+      const doctorDropdown = document.getElementById("doctorDropdown");
+      
+      fetch('../handlers/get_doctors.php')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        
+          doctorSearch.addEventListener("focus", function() {
+            if (doctorSearch.value === '' && data.length > 0) {
+              doctorDropdown.classList.remove('d-none');
+              populateDropdown(data);
+            }
+          });
+        
+          doctorSearch.addEventListener("input", function() {
+            const searchTerm = doctorSearch.value.toLowerCase();
+            doctorDropdown.innerHTML = '';
+            
+            const filteredDoctors = data.filter(doctor => 
+              doctor.doctor_name.toLowerCase().includes(searchTerm)
+            );
+          
+            populateDropdown(filteredDoctors);
+          });
+        
+          function populateDropdown(doctors) {
+            doctorDropdown.innerHTML = '';
+            doctors.forEach(doctor => {
+              const li = document.createElement("li");
+              li.classList.add("list-group-item", "cursor-pointer");
+              li.textContent = doctor.doctor_name;
+              li.setAttribute("data-id", doctor.account_id);
+            
+              li.addEventListener("click", function() {
+                doctorSearch.value = doctor.doctor_name;
+                doctorDropdown.classList.add('d-none');
+              });
+            
+              doctorDropdown.appendChild(li);
+            });
+          
+            if (doctors.length > 0) {
+              doctorDropdown.classList.remove('d-none');
+            } else {
+              doctorDropdown.classList.add('d-none');
+            }
+          }
+
+          document.addEventListener("click", function(event) {
+            if (!doctorSearch.contains(event.target) && !doctorDropdown.contains(event.target)) {
+              doctorDropdown.classList.add('d-none');
+            }
+          });
+        })
+        .catch(error => console.error('Error fetching doctors:', error));
+    });
+  </script>
 </body>
 </html>
