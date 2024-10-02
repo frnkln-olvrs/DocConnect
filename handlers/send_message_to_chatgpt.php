@@ -24,10 +24,16 @@ function sendToChatGPT($message) {
 
   $response = curl_exec($ch);
   if (curl_errno($ch)) {
-    return 'Error: ' . curl_error($ch);
+    error_log('Curl error: ' . curl_error($ch));
+    return 'Error: Could not reach ChatGPT';
   }
   curl_close($ch);
 
   $result = json_decode($response, true);
-  return $result['choices'][0]['message']['content'];
+  if (isset($result['choices'][0]['message']['content'])) {
+    return $result['choices'][0]['message']['content'];
+  } else {
+    error_log('ChatGPT API error: ' . json_encode($result));
+    return 'Error: No response from ChatGPT';
+  }
 }

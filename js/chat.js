@@ -61,17 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       body: `message=${encodeURIComponent(messageInput)}&receiver_id=${receiverId}`,
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
       if (data.error) {
         console.error('Error from server:', data.error);
         return;
       }
+
       const chatMessages = document.getElementById('chatMessages');
       const messageElement = document.createElement('div');
       messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
@@ -79,6 +75,15 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${messageInput}</div>
         <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
       chatMessages.appendChild(messageElement);
+
+      if (data.message) {
+        const responseElement = document.createElement('div');
+        responseElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
+        responseElement.innerHTML = `
+          <img src="../assets/images/chatgpt_profile.png" alt="ChatGPT Profile" class="rounded-circle me-3" height="30" width="30">
+          <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${data.message}</div>`;
+        chatMessages.appendChild(responseElement);
+      }
 
       document.getElementById('messageInput').value = '';
       scrollChatToBottom();
