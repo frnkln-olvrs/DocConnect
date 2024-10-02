@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 
 session_start();
 require_once('../classes/database.php');
+require_once('../vendor/autoload.php');
 
 if (!isset($_SESSION['account_id'])) {
   echo json_encode(['error' => 'User not authenticated']);
@@ -30,6 +31,20 @@ if (!$pdo) {
   exit;
 }
 
+$chatgptAccountId = 4;
+
+if ($receiverId == $chatgptAccountId) { 
+  $chatgptResponse = sendToChatGPT($message);
+
+  // Save ChatGPT's response to the database
+  $query = "INSERT INTO messages (sender_id, receiver_id, message, status, is_read) VALUES (?, ?, ?, 'sent', 0)";
+  $stmt = $pdo->prepare($query);
+  $stmt->execute([$chatgptAccountId, $senderId, $chatgptResponse]);
+
+  echo json_encode(['success' => true, 'message' => $chatgptResponse]);
+  exit;
+}
+
 try {
   $query = "INSERT INTO messages (sender_id, receiver_id, message, status, is_read) VALUES (?, ?, ?, 'sent', 0)";
   $stmt = $pdo->prepare($query);
@@ -40,4 +55,3 @@ try {
   error_log($e->getMessage());
   echo json_encode(['error' => 'Failed to send message']);
 }
-?>
