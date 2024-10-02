@@ -270,42 +270,43 @@ $pdo = $db->connect();
         
           function populateDoctorList(doctors) {
             doctorList.innerHTML = '';
-          
+                  
             if (doctors.length === 0) {
-              doctorList.innerHTML = '<li class="list-group-item">No doctors found</li>';
-              return;
+                doctorList.innerHTML = '<li class="list-group-item">No doctors found</li>';
+                return;
             }
           
             doctors.forEach(doctor => {
               console.log('Adding doctor:', doctor);
-            
+              
+              const accountImage = doctor.account_image || 'default_profile.png';
               const doctorName = doctor.doctor_name || 'Unknown Doctor';
               const specialty = doctor.specialty || 'Specialty not provided';
               const startWt = doctor.start_wt || 'Not provided';
               const endWt = doctor.end_wt || 'Not provided';
               const startDay = doctor.start_day || 'Not provided';
               const endDay = doctor.end_day || 'Not provided';
-            
+              
               const li = document.createElement('li');
-              li.classList.add('list-group-item', 'd-flex', 'align-items-start', 'mb-2');
-
+              li.classList.add('list-group-item', 'd-flex', 'align-items-center', 'mb-2');
+          
               li.innerHTML = `
-                <img src="../images/${doctor.account_image}" alt="Doctor's profile" class="me-3" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                <img src="../assets/images/${accountImage}" alt="Doctor's profile" class="me-3" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
                 <div>
                   <p class="mb-1"><strong>${doctorName}</strong> - ${specialty}</p>
                   <p class="mb-0 text-muted">Working Hours: ${startWt} - ${endWt}</p>
                   <p class="mb-0 text-muted">Days: ${startDay} - ${endDay}</p>
                 </div>
               `;
-            
+              
               li.setAttribute("data-id", doctor.account_id);
-            
-              // Handle Doctoor srlection
+              
               li.addEventListener("click", function() {
                 doctorSearch.value = doctorName;
                 document.getElementById('selectedDoctorId').value = doctor.account_id;
                 doctorList.innerHTML = '';
               });
+              
               doctorList.appendChild(li);
             });
           }
