@@ -37,14 +37,28 @@ include '../includes/head.php';
             <div class="row">
               <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
                 <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i>
+
               </div>
               <div class="col-12 col-md-11">
                 <p class="fs-5 mb-2">Select Doctor *</p>
-                <div class="d-flex flex-row flex-wrap justify-content-start">
+                <div class="d-flex flex-row flex-wrap justify-content-start mb-3">
                   <input type="text" id="doctorSearch" class="form-control fw-light" placeholder="Type to search for a doctor..." aria-label="Doctor search">
                   <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none w-50" style="max-height: 200px; overflow-y: auto; z-index: 100; margin-top: 2.3rem;">
 
                   </ul>
+                  <input type="hidden" id="doctor_id" name="doctor_id" value="">
+                </div>
+                <div class="row">
+                  <div class="col-auto">
+                    <img id="account_image" src="../assets/images/default_profile.png" alt="" width="70" height="70" class="rounded rounded-3 border border-2 border-light">
+                  </div>
+                  <div class="col-auto me-auto">
+                    <p id="specialty" class="fs-6 mb-2">Specialty: </p>
+                    <p id="contact" class="fs-6 mb-2">Contact: </p>
+                    <p id="email" class="fs-6 mb-2">Email: </p>
+                    <p id="working_day" class="fs-6 mb-2">Working Days: </p>
+                    <p id="working_time" class="fs-6 mb-2">Working Time: </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -180,9 +194,9 @@ include '../includes/head.php';
                 <p class="fs-5 mb-0">Mobile Number</p>
                 <p class="fs-6 fw-light text-muted">Enter the number on which you wish to recieve checkup related information</p>
                 <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
-      
+
                   <input type="number" class="form-control border border-dark" placeholder="+63" aria-label="mobile_no" aria-describedby="mobile_no" value="+63">
-      
+
                 </div>
               </div>
             </div>
@@ -245,33 +259,49 @@ include '../includes/head.php';
   ?>
 
   <script>
+    function formatTime(time) {
+      let [hours, minutes] = time.split(':');
+      hours = parseInt(hours);
+      let suffix = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
+
+      return `${hours}:${minutes} ${suffix}`;
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
       const doctorSearch = document.getElementById("doctorSearch");
       const doctorDropdown = document.getElementById("doctorDropdown");
-      
+      const doctorIdInput = document.getElementById("doctor_id");
+      const specialty = document.getElementById("specialty");
+      const contact = document.getElementById("contact");
+      const email = document.getElementById("email");
+      const working_days = document.getElementById("working_day");
+      const working_hours = document.getElementById("working_time");
+      const account_image = document.getElementById("account_image");
+
       fetch('../handlers/get_doctors.php')
         .then(response => response.json())
         .then(data => {
           console.log(data);
-        
+
           doctorSearch.addEventListener("focus", function() {
             if (doctorSearch.value === '' && data.length > 0) {
               doctorDropdown.classList.remove('d-none');
               populateDropdown(data);
             }
           });
-        
+
           doctorSearch.addEventListener("input", function() {
             const searchTerm = doctorSearch.value.toLowerCase();
             doctorDropdown.innerHTML = '';
-            
-            const filteredDoctors = data.filter(doctor => 
+
+            const filteredDoctors = data.filter(doctor =>
               doctor.doctor_name.toLowerCase().includes(searchTerm)
             );
-          
+
             populateDropdown(filteredDoctors);
           });
-        
+
           function populateDropdown(doctors) {
             doctorDropdown.innerHTML = '';
             doctors.forEach(doctor => {
@@ -279,15 +309,22 @@ include '../includes/head.php';
               li.classList.add("list-group-item", "cursor-pointer");
               li.textContent = doctor.doctor_name;
               li.setAttribute("data-id", doctor.account_id);
-            
+
               li.addEventListener("click", function() {
                 doctorSearch.value = doctor.doctor_name;
+                doctorIdInput.value = doctor.doctor_id;
+                specialty.innerHTML = doctor.specialty;
+                contact.innerHTML = doctor.contact;
+                email.innerHTML = doctor.email;
+                working_days.innerHTML = doctor.start_day + " to " + doctor.end_day;
+                working_hours.innerHTML = formatTime(doctor.start_wt) + " to " + formatTime(doctor.end_wt);
+                account_image.src = "../assets/images/" + doctor.account_image;
                 doctorDropdown.classList.add('d-none');
               });
-            
+
               doctorDropdown.appendChild(li);
             });
-          
+
             if (doctors.length > 0) {
               doctorDropdown.classList.remove('d-none');
             } else {

@@ -4,23 +4,33 @@
 		<!-- Display profile dropdown for mobile if the user is logged in -->
 		<a href="#" class="<?= isset($_SESSION['user_role']) ? "d-sm-block" : "d-none" ?> d-lg-none acc link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 			<div class="d-flex align-items-center">
-				<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light">
+				<img src="<?php if (isset($_SESSION['account_image'])) {
+								echo "../assets/images/" . $_SESSION['account_image'];
+							} else {
+								echo "../assets/images/defualt_profile.png";
+							} ?>" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light">
 				<h6 class="m-0 text-dark d-none d-md-block"><?= $_SESSION['fullname'] ?></h6>
 			</div>
 		</a>
 
 		<ul class="dropdown-menu text-small" aria-labelledby="profileDropddown">
-			<li><h4 class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></h4></li>
-			<li><hr class="dropdown-divider d-block d-lg-none"></li>
+			<li>
+				<h4 class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></h4>
+			</li>
+			<li>
+				<hr class="dropdown-divider d-block d-lg-none">
+			</li>
 			<li><a class="dropdown-item" href="./profile.php">Profile</a></li>
 			<li><a class="dropdown-item" href="./chat_user.php">Chat</a></li>
-			<li><hr class="dropdown-divider m-0 mt-1"></li>
+			<li>
+				<hr class="dropdown-divider m-0 mt-1">
+			</li>
 			<li><a class="dropdown-item" href="../logout">Logout</a></li>
 		</ul>
 
 		<a class="navbar-brand d-flex align-items-center text-dark text-decoration-none" href="../index.php">
-      <img src="../assets/images/logo.png" alt="Logo" height="35">
-      <h1 class="fs-4 link-primary m-0 d-name">Doc<span class="link-dark">Connect</span></h1>
+			<img src="../assets/images/logo.png" alt="Logo" height="35">
+			<h1 class="fs-4 link-primary m-0 d-name">Doc<span class="link-dark">Connect</span></h1>
 		</a>
 
 		<button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,11 +54,17 @@
 						</div>
 					</a>
 					<ul class="dropdown-menu text-small" aria-labelledby="profileDropddown">
-						<li><h4 class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></h4></li>
-						<li><hr class="dropdown-divider d-block d-lg-none"></li>
+						<li>
+							<h4 class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></h4>
+						</li>
+						<li>
+							<hr class="dropdown-divider d-block d-lg-none">
+						</li>
 						<li><a class="dropdown-item" href="./profile.php">Profile</a></li>
 						<li><a class="dropdown-item" href="./chat_user.php">Chat</a></li>
-						<li><hr class="dropdown-divider m-0 mt-1"></li>
+						<li>
+							<hr class="dropdown-divider m-0 mt-1">
+						</li>
 						<li><a class="dropdown-item	" href="../logout">Logout</a></li>
 					</ul>
 				</li>
