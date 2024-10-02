@@ -49,14 +49,12 @@
 
     <section id="contact-us" class="contact-us mt-5">
       <div class="container">
-        <div class="section-header">
-          <h2>Contact Us</h2>
-          <p>We're here to help and answer any question you might have. We look forward to hearing from you!</p>
-        </div>
-
         <div class="row">
           <div class="col-lg-6 mb-4 mb-lg-0">
+          <h3>Contact Us</h3>
+          <p>We're here to help and answer any question you might have. We look forward to hearing from you!</p>
             <div class="card p-4 shadow bg-white border border-1">
+              
               <form action="#" method="post" class="contact-form">
                 <div class="form-group mb-3">
                   <label for="name">Full Name</label>
@@ -96,7 +94,7 @@
           </div>
         </div>
 
-        <div class="faq mt-5">
+        <div class="faq">
           <h3>Frequently Asked Questions</h3>
           <div class="faq-item">
             <h5>How can I make an appointment?</h5>
