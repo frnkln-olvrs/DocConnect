@@ -8,7 +8,7 @@ try {
   $query = "SELECT a.account_id, a.account_image, CONCAT(a.firstname, ' ', a.middlename, ' ', a.lastname) AS doctor_name, 
                    d.specialty, d.start_wt, d.end_wt, d.start_day, d.end_day
             FROM account a 
-            LEFT JOIN doctor_info d ON a.account_id = d.account_id
+            INNER JOIN doctor_info d ON a.account_id = d.account_id
             WHERE a.user_role = 1";
   
   $stmt = $connection->prepare($query);

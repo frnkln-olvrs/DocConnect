@@ -18,13 +18,14 @@ $pdo = $db->connect();
 
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-  $title = 'Appointment';
-	include '../includes/head.php';
+<?php
+$title = 'Appointment';
+include '../includes/head.php';
 ?>
+
 <body>
-  <?php 
-    require_once ('../includes/header.php');
+  <?php
+  require_once('../includes/header.php');
   ?>
 
   <section id="appointment" class="page-container padding-medium p-3">
@@ -35,7 +36,7 @@ $pdo = $db->connect();
           <div>
             <div class="row">
               <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
-                  <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i>
+                <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i>
               </div>
               <div class="col-12 col-md-11">
                 <p class="fs-5 mb-2">Select Doctor *</p>
@@ -58,7 +59,7 @@ $pdo = $db->connect();
           <div>
             <p class="fs-5">Select Date - <span class="text-muted fs-6">April 2024</span></p>
             <div class="d-flex flex-row flex-wrap justify-content-between justify-content-md-start">
-  
+
               <label>
                 <input class="radio-input shadow-none" type="radio" name="date">
                 <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
@@ -101,7 +102,7 @@ $pdo = $db->connect();
                   <span class="radio-label">15</span>
                 </div>
               </label>
-              
+
               <label>
                 <input class="radio-input shadow-none" type="radio" name="date">
                 <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2 w-100">
@@ -119,7 +120,7 @@ $pdo = $db->connect();
           <div>
             <p class="fs-5">Select Time</p>
             <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start">
-  
+
               <label>
                 <input class="radio-input shadow-none" type="radio" name="time">
                 <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
@@ -168,7 +169,7 @@ $pdo = $db->connect();
                   <span class="radio-label">04-05 PM</span>
                 </div>
               </label>
-  
+
             </div>
           </div>
 
@@ -194,15 +195,15 @@ $pdo = $db->connect();
           <div>
             <div class="row">
               <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
-                <i class='bx bx-mail-send xx-large-font text-green pt-md-2 ps-md-2' ></i>
+                <i class='bx bx-mail-send xx-large-font text-green pt-md-2 ps-md-2'></i>
               </div>
               <div class="col-12 col-md-11">
                 <p class="fs-5 mb-0">Email Address</p>
                 <p class="fs-6 fw-light text-muted">Enter the email address on which you wish to recieve checkup related information</p>
                 <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
-      
+
                   <input type="email" class="form-control border border-dark" placeholder="example@email.com" aria-label="mobile_no" aria-describedby="mobile_no">
-      
+
                 </div>
               </div>
             </div>
@@ -241,15 +242,15 @@ $pdo = $db->connect();
     </div>
   </section>
 
-  <?php 
-    require_once ('../includes/footer.php');
+  <?php
+  require_once('../includes/footer.php');
   ?>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const doctorSearch = document.getElementById("doctorSearch");
       const doctorList = document.getElementById("doctorList");
-  
+
       fetch('../handlers/get_doctors.php')
         .then(response => response.json())
         .then(data => {
@@ -257,27 +258,27 @@ $pdo = $db->connect();
             console.error('Expected an array of doctors');
             return;
           }
-          
+
           let selectedDoctorId = null;
-          
+
           populateDoctorList(data);
-          
+
           doctorSearch.addEventListener("input", function() {
             const searchTerm = doctorSearch.value.toLowerCase();
-            const filteredDoctors = data.filter(doctor => 
+            const filteredDoctors = data.filter(doctor =>
               doctor.doctor_name.toLowerCase().includes(searchTerm)
             );
             populateDoctorList(filteredDoctors, selectedDoctorId);
           });
-          
+
           function populateDoctorList(doctors, selectedId = null) {
             doctorList.innerHTML = '';
-          
+
             if (doctors.length === 0) {
-                doctorList.innerHTML = '<li class="list-group-item">No doctors found</li>';
-                return;
+              doctorList.innerHTML = '<li class="list-group-item">No doctors found</li>';
+              return;
             }
-          
+
             doctors.forEach(doctor => {
               const accountImage = doctor.account_image || 'default_profile.png';
               const doctorName = doctor.doctor_name || 'Unknown Doctor';
@@ -286,10 +287,10 @@ $pdo = $db->connect();
               const endWt = doctor.end_wt || 'Not provided';
               const startDay = doctor.start_day || 'Not provided';
               const endDay = doctor.end_day || 'Not provided';
-          
+
               const li = document.createElement('li');
               li.classList.add('list-group-item', 'd-flex', 'align-items-center', 'mb-2');
-          
+
               li.innerHTML = `
                 <img src="../assets/images/${accountImage}" alt="Doctor's profile" class="me-3" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
                 <div>
@@ -298,22 +299,22 @@ $pdo = $db->connect();
                   <p class="mb-0 text-muted">Days: ${startDay} - ${endDay}</p>
                 </div>
               `;
-          
+
               li.setAttribute("data-id", doctor.account_id);
-          
+
               if (selectedId === doctor.account_id) {
-                  li.classList.add('selected');
+                li.classList.add('selected');
               }
-            
+
               li.addEventListener("click", function() {
                 if (selectedId === doctor.account_id) return;
-            
+
                 selectedDoctorId = doctor.account_id;
-            
+
                 doctorSearch.value = '';
                 populateDoctorList([doctor], selectedDoctorId);
               });
-            
+
               doctorList.appendChild(li);
             });
           }
@@ -322,4 +323,5 @@ $pdo = $db->connect();
     });
   </script>
 </body>
+
 </html>
