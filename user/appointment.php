@@ -35,15 +35,15 @@ $pdo = $db->connect();
           <div>
             <div class="row">
               <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
-                <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i>
+                <!-- <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i> -->
+                 <img src="" alt="">
               </div>
               <div class="col-12 col-md-11">
                 <p class="fs-5 mb-2">Select Doctor *</p>
                 <div class="d-flex flex-row flex-wrap justify-content-start">
                   <input type="text" id="doctorSearch" class="form-control fw-light" placeholder="Type to search for a doctor..." aria-label="Doctor search">
                   <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none w-50" style="max-height: 200px; overflow-y: auto; z-index: 100; margin-top: 2.3rem;">
-                    <li>HAHA</li>
-                    <li>BEBE</li>
+
                   </ul>
                 </div>
               </div>
