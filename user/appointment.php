@@ -35,21 +35,22 @@ $pdo = $db->connect();
           <div>
             <div class="row">
               <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
-                <!-- <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i> -->
-                 <img src="" alt="">
+                  <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i>
               </div>
               <div class="col-12 col-md-11">
                 <p class="fs-5 mb-2">Select Doctor *</p>
                 <div class="d-flex flex-row flex-wrap justify-content-start">
-                  <!-- ilagay mo dito sa value yung doctor_id galing sa doctor_info table if na click yung name ng doctor -->
-                  <input type="hidden" name="" value=""> 
+                  <!-- Hidden input to hold selected doctor's ID -->
+                  <input type="hidden" id="selectedDoctorId" name="doctor_id" value="">
                   <input type="text" id="doctorSearch" class="form-control fw-light" placeholder="Type to search for a doctor..." aria-label="Doctor search">
-                  <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none w-50" style="max-height: 200px; overflow-y: auto; z-index: 100; margin-top: 2.3rem;">
-
-                  </ul>
                 </div>
               </div>
             </div>
+          </div>
+
+          <!-- Doctor list container -->
+          <div id="doctorListContainer" class="mt-4">
+            <ul id="doctorList" class="list-group"></ul>
           </div>
 
           <hr>
@@ -182,9 +183,7 @@ $pdo = $db->connect();
                 <p class="fs-5 mb-0">Mobile Number</p>
                 <p class="fs-6 fw-light text-muted">Enter the number on which you wish to recieve checkup related information</p>
                 <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
-      
-                  <input type="number" class="form-control border border-dark" placeholder="+63" aria-label="mobile_no" aria-describedby="mobile_no" value="+63">
-      
+                  <input type="text" class="form-control border border-dark" placeholder="+63" aria-label="mobile_no" aria-describedby="mobile_no" value="+63" pattern="\+63[0-9]{10}" title="Please enter a valid mobile number starting with +63 and 10 digits.">
                 </div>
               </div>
             </div>
@@ -249,59 +248,53 @@ $pdo = $db->connect();
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const doctorSearch = document.getElementById("doctorSearch");
-      const doctorDropdown = document.getElementById("doctorDropdown");
-      
+      const doctorList = document.getElementById("doctorList");
+
       fetch('../handlers/get_doctors.php')
         .then(response => response.json())
         .then(data => {
           console.log(data);
-        
-          doctorSearch.addEventListener("focus", function() {
-            if (doctorSearch.value === '' && data.length > 0) {
-              doctorDropdown.classList.remove('d-none');
-              populateDropdown(data);
-            }
-          });
-        
+          if (!Array.isArray(data)) {
+            console.error('Expected an array of doctors');
+            return;
+          }
+
           doctorSearch.addEventListener("input", function() {
             const searchTerm = doctorSearch.value.toLowerCase();
-            doctorDropdown.innerHTML = '';
-            
             const filteredDoctors = data.filter(doctor => 
               doctor.doctor_name.toLowerCase().includes(searchTerm)
             );
-          
-            populateDropdown(filteredDoctors);
+            populateDoctorList(filteredDoctors);
           });
-        
-          function populateDropdown(doctors) {
-            doctorDropdown.innerHTML = '';
+
+          function populateDoctorList(doctors) {
+            doctorList.innerHTML = '';
+            if (doctors.length === 0) {
+              doctorList.innerHTML = '<li>No doctors found</li>';
+              return;
+            }
             doctors.forEach(doctor => {
-              const li = document.createElement("li");
-              li.classList.add("list-group-item", "cursor-pointer");
-              li.textContent = doctor.doctor_name;
+              console.log('Adding doctor:', doctor);
+              const li = document.createElement('li');
+              li.classList.add('list-group-item', 'd-flex', 'align-items-start', 'mb-2');
+
+              li.innerHTML = `
+                <img src="../images/${doctor.account_image}" alt="Doctor's profile" class="me-3" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                <div>
+                  <p class="mb-1"><strong>${doctor.doctor_name}</strong> - ${doctor.specialty}</p>
+                  <p class="mb-0 text-muted">Working Hours: ${doctor.start_wt} - ${doctor.end_wt}</p>
+                  <p class="mb-0 text-muted">Days: ${doctor.start_day} - ${doctor.end_day}</p>
+                </div>
+              `;
               li.setAttribute("data-id", doctor.account_id);
-            
               li.addEventListener("click", function() {
                 doctorSearch.value = doctor.doctor_name;
-                doctorDropdown.classList.add('d-none');
+                document.getElementById('selectedDoctorId').value = doctor.account_id;
+                doctorList.innerHTML = '';
               });
-            
-              doctorDropdown.appendChild(li);
+              doctorList.appendChild(li);
             });
-          
-            if (doctors.length > 0) {
-              doctorDropdown.classList.remove('d-none');
-            } else {
-              doctorDropdown.classList.add('d-none');
-            }
           }
-
-          document.addEventListener("click", function(event) {
-            if (!doctorSearch.contains(event.target) && !doctorDropdown.contains(event.target)) {
-              doctorDropdown.classList.add('d-none');
-            }
-          });
         })
         .catch(error => console.error('Error fetching doctors:', error));
     });
