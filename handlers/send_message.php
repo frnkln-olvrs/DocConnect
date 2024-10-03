@@ -5,7 +5,10 @@ ini_set('log_errors', 1);
 ini_set('error_log', '../errors.log');
 error_reporting(E_ALL);
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once('../classes/database.php');
 require_once('../vendor/autoload.php'); 
 
@@ -34,11 +37,38 @@ if (!$pdo) {
 }
 
 // Check if the message is being sent to ChatGPT
-if ($receiverId == $chatgptAccountId) { 
-  $chatgptResponse = sendToChatGPT($message);
+if ($receiverId == $chatgptAccountId) {
+  // Send the message to the Python server (Flask API)
+  $api_url = 'http://localhost:5000/chat'; // Flask server URL
+  $curl = curl_init();
+
+  $data = json_encode(['message' => $message]);
+
+  curl_setopt_array($curl, [
+    CURLOPT_URL => $api_url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+      'Content-Type: application/json',
+    ],
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => $data,
+  ]);
+
+  $response = curl_exec($curl);
+  $error = curl_error($curl);
+
+  curl_close($curl);
+
+  if ($error) {
+    echo json_encode(['error' => 'Error connecting to AI server: ' . $error]);
+    exit;
+  }
+
+  $chatgptResponse = json_decode($response, true)['message'];
 
   error_log("ChatGPT Response: " . $chatgptResponse);
 
+  // Insert ChatGPT response into the database
   $query = "INSERT INTO messages (sender_id, receiver_id, message, status, is_read) VALUES (?, ?, ?, 'sent', 0)";
   $stmt = $pdo->prepare($query);
   if ($stmt->execute([$chatgptAccountId, $senderId, $chatgptResponse])) {
@@ -51,6 +81,7 @@ if ($receiverId == $chatgptAccountId) {
 }
 
 try {
+  // Insert user message into the database
   $query = "INSERT INTO messages (sender_id, receiver_id, message, status, is_read) VALUES (?, ?, ?, 'sent', 0)";
   $stmt = $pdo->prepare($query);
   $stmt->execute([$senderId, $receiverId, $message]);

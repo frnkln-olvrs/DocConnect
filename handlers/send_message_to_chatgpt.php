@@ -1,16 +1,17 @@
 <?php
 require_once('../vendor/autoload.php');
 
-function sendToChatGPT($message) {
-  $apiKey = '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';
-  $endpoint = 'https://api.openai.com/v1/completions';
+function sendToChatGPT($message, $history = []) {
+  $apiKey = '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';
+  $endpoint = 'https://api.openai.com/v1/chat/completions';
 
   $data = [
     'model' => 'gpt-3.5-turbo',
-    'messages' => [
-      ['role' => 'system', 'content' => 'You are a helpful assistant.'],
-      ['role' => 'user', 'content' => $message]
-    ]
+    'messages' => array_merge(
+      [['role' => 'system', 'content' => 'You are a helpful assistant.']],
+      $history,  // Add the conversation history
+      [['role' => 'user', 'content' => $message]]
+    )
   ];
 
   $ch = curl_init($endpoint);
@@ -37,3 +38,4 @@ function sendToChatGPT($message) {
     return 'Error: No response from ChatGPT';
   }
 }
+?>
