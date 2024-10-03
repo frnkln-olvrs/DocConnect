@@ -67,122 +67,31 @@ include '../includes/head.php';
 
           <hr>
 
-          <div>
-            <p class="fs-5">Select Date - <span class="text-muted fs-6">April 2024</span></p>
-            <div class="d-flex flex-row flex-wrap justify-content-between justify-content-md-start">
-
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="date">
-                <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label fw-bold">WED</span>
-                  <span class="radio-label">10</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="date">
-                <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label fw-bold">THU</span>
-                  <span class="radio-label">11</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="date">
-                <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label fw-bold">FRI</span>
-                  <span class="radio-label">12</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="date">
-                <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label fw-bold">SAT</span>
-                  <span class="radio-label">13</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="date">
-                <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label fw-bold">SUN</span>
-                  <span class="radio-label">14</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="date">
-                <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label fw-bold">MON</span>
-                  <span class="radio-label">15</span>
-                </div>
-              </label>
-
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="date">
-                <div class="radio-tile p-2 d-flex justify-content-around mb-2 me-md-3 me-2 w-100">
-                  <div class="d-flex flex-column">
-                    <span class="radio-label align-self-start fw-bold">Other date:</span>
-                    <input type="date" name="extra_date" class="fs-6 px-2 py-1 bg-white border border-primary rounded-1 text-black-50 w-100">
-                  </div>
-                </div>
-              </label>
+          <div class="d-flex flex-wrap justify-content-center justify-content-md-start">
+            <div class="mx-2 mb-3">
+              <p class="fs-5 mb-0">Select Date - <span class="text-muted fs-6">April 2024</span></p>
+              <small class="text-muted">Select a date between today and one month from now.</small>
+              <input type="date" id="appointment_date" name="appointment_date" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 month')); ?>" class="form-control fs-6 px-2 py-1 bg-white border border-primary rounded-1 text-black-50 w-100 mt-2 mt-lg-4">
             </div>
+
+            <div class="mx-2 mb-3">
+              <p class="fs-5 mb-0">Select Time</p>
+              <small class="text-muted">Select a date between today and one month from now.</small>
+              <div class="d-flex flex-row align-items-center flex-wrap justify-content-evenly justify-content-md-start">
+                <label class="mb-2 mx-md-2 mx-1">
+                  <span class="radio-label fw-bold">Start Time:</span>
+                  <input type="time" id="startTime" name="start_time" class="form-control border border-dark" required>
+                </label>
+                <p class="m-0 mx-3">to</p>
+                <label class="mb-2 mx-md-2 mx-1">
+                  <span class="radio-label fw-bold">End Time:</span>
+                  <input type="time" id="endTime" name="end_time" class="form-control border border-dark" required>
+                </label>
+              </div>
+            </div>
+
           </div>
 
-          <hr>
-
-          <div>
-            <p class="fs-5">Select Time</p>
-            <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start">
-
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="time">
-                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">07-08 AM</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="time">
-                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">08-09 AM</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="time">
-                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">09-10 AM</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="time">
-                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">10-11 AM</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="time">
-                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">01-02 PM</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="time">
-                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">02-03 PM</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="time">
-                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">03-04 PM</span>
-                </div>
-              </label>
-              <label>
-                <input class="radio-input shadow-none" type="radio" name="time">
-                <div class="radio-tile time p-2 d-flex justify-content-around mb-2 me-md-3 me-2">
-                  <span class="radio-label">04-05 PM</span>
-                </div>
-              </label>
-
-            </div>
-          </div>
 
           <hr>
 
@@ -342,6 +251,33 @@ include '../includes/head.php';
         .catch(error => console.error('Error fetching doctors:', error));
     });
   </script>
+
+  <!-- JS script for haandlng -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const startTimeInput = document.getElementById("startTime");
+      const endTimeInput = document.getElementById("endTime");
+
+      startTimeInput.addEventListener("change", function() {
+        const startTime = startTimeInput.value;
+        if (startTime) {
+          const [hours, minutes] = startTime.split(':').map(Number);
+          const startDate = new Date();
+          startDate.setHours(hours);
+          startDate.setMinutes(minutes);
+          
+          startDate.setHours(startDate.getHours() + 1);
+          
+          const endHours = String(startDate.getHours()).padStart(2, '0');
+          const endMinutes = String(startDate.getMinutes()).padStart(2, '0');
+          endTimeInput.value = `${endHours}:${endMinutes}`;
+        } else {
+          endTimeInput.value = "";
+        }
+      });
+    });
+  </script>
+
 </body>
 
 </html>
