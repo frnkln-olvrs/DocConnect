@@ -35,7 +35,7 @@ try {
              AND m.is_read = 0) AS unread_count
              FROM account a
              LEFT JOIN messages m ON (a.account_id = m.sender_id OR a.account_id = m.receiver_id)
-             WHERE (a.user_role = :opposite_role OR a.user_role = 4)
+             WHERE (a.user_role = :opposite_role)
              AND a.account_id != :account_id";
 
   // If a search term is provided, add it to the query

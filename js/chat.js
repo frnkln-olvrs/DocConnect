@@ -76,15 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
       chatMessages.appendChild(messageElement);
 
-      if (data.message) {
-        const responseElement = document.createElement('div');
-        responseElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
-        responseElement.innerHTML = `
-          <img src="../assets/images/chatgpt.png" alt="ChatGPT Profile" class="rounded-circle me-3" height="30" width="30">
-          <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${data.message}</div>`;
-        chatMessages.appendChild(responseElement);
-      }
-
       document.getElementById('messageInput').value = '';
       scrollChatToBottom();
     })
@@ -160,6 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   
       scrollChatToBottom();
+    })
+    .catch(error => {
+      console.error('Error fetching messages:', error);
     });
   };  
 });
