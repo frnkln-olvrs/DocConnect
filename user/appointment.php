@@ -98,7 +98,7 @@ include '../includes/head.php';
 
               <div class="col-6 px-2 mb-3">
                 <p class="fs-6 mb-0">Select Time</p>
-                <input type="time" id="appointment_time" name="appointment_time" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
+                <input type="time" id="appointment_time" name="appointment_time" step="1800" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
               </div>
             </div>
 
@@ -211,14 +211,14 @@ include '../includes/head.php';
   <script src="../js/main.js"></script>
 
   <script>
-    function formatTime(time) {
-      let [hours, minutes] = time.split(':');
-      hours = parseInt(hours);
-      let suffix = hours >= 12 ? 'PM' : 'AM';
-      hours = hours % 12 || 12;
+    // function formatTime(time) {
+    //   let [hours, minutes] = time.split(':');
+    //   hours = parseInt(hours);
+    //   let suffix = hours >= 12 ? 'PM' : 'AM';
+    //   hours = hours % 12 || 12;
 
-      return `${hours}:${minutes} ${suffix}`;
-    }
+    //   return `${hours}:${minutes} ${suffix}`;
+    // }
 
     document.addEventListener("DOMContentLoaded", function() {
       const doctorSearch = document.getElementById("doctorSearch");
@@ -297,7 +297,7 @@ include '../includes/head.php';
   </script>
 
   <!-- JS script for haandlng -->
-  <script>
+  <!-- <script>
     document.addEventListener("DOMContentLoaded", function() {
       const startTimeInput = document.getElementById("startTime");
       const endTimeInput = document.getElementById("endTime");
@@ -319,6 +319,30 @@ include '../includes/head.php';
           endTimeInput.value = "";
         }
       });
+    });
+  </script> -->
+
+  <script>
+    function roundTimeToNearestHalfHour(time) {
+      let [hours, minutes] = time.split(":");
+      minutes = parseInt(minutes);
+
+      if (minutes < 15) {
+        minutes = "00";
+      } else if (minutes < 45) {
+        minutes = "30";
+      } else {
+        minutes = "00";
+        hours = (parseInt(hours) + 1).toString().padStart(2, '0');
+      }
+
+      return `${hours.padStart(2, '0')}:${minutes}`;
+    }
+
+    document.getElementById("appointment_time").addEventListener("change", function() {
+      let inputTime = this.value; 
+      let roundedTime = roundTimeToNearestHalfHour(inputTime);
+      this.value = roundedTime;
     });
   </script>
 
