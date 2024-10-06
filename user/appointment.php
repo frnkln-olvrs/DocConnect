@@ -81,7 +81,6 @@ include '../includes/head.php';
                     <p id="email" class="fs-6 mb-2">Email: </p>
                     <p id="working_day" class="fs-6 mb-2">Working Days: </p>
                     <p id="working_time" class="fs-6 mb-2">Working Time: </p>
-                    <p id="doctorid" class="fs-6 mb-2"></p>
                   </div>
                 </div>
               </div>
@@ -230,7 +229,6 @@ include '../includes/head.php';
       const working_days = document.getElementById("working_day");
       const working_hours = document.getElementById("working_time");
       const account_image = document.getElementById("account_image");
-      const test_id = document.getElementById("doctorid");
 
       fetch('../handlers/get_doctors.php')
         .then(response => response.json())
@@ -266,7 +264,6 @@ include '../includes/head.php';
               li.addEventListener("click", function() {
                 doctorSearch.value = doctor.doctor_name;
                 doctorIdInput.value = doctor.doctor_id;
-                test_id.innerHTML = doctor.doctor_id;
                 specialty.innerHTML = doctor.specialty;
                 contact.innerHTML = doctor.contact;
                 email.innerHTML = doctor.email;
