@@ -24,6 +24,7 @@ class Account
     public $start_day;
     public $end_day;
     public $appointment_limits;
+    public $patient_id;
 
 
     protected $db;
@@ -169,6 +170,17 @@ class Account
     function show_doc()
     {
         $sql = "SELECT a.*, d.* FROM account a INNER JOIN doctor_info d ON d.account_id = a.account_id WHERE a.user_role = 1 AND a.is_deleted != 1 ORDER BY a.account_id ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function get_doctor()
+    {
+        $sql = "SELECT a.*, d.*, CONCAT(a.firstname, ' ', a.middlename, ' ', a.lastname) AS doctor_name FROM account a INNER JOIN doctor_info d ON a.account_id = d.account_id WHERE a.user_role = 1 AND d.is_deleted = 0";
         $query = $this->db->connect()->prepare($sql);
         $data = null;
         if ($query->execute()) {
@@ -404,6 +416,36 @@ class Account
             $data = $query->fetchAll();
         }
         return $data;
+    }
+
+    function sign_in_user()
+    {
+        $sql = "SELECT a.*, p.* FROM account a INNER JOIN patient_info p ON a.account_id = p.account_id WHERE email = :email LIMIT 1;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':email', $this->email);
+
+        if ($query->execute()) {
+            $accountData = $query->fetch(PDO::FETCH_ASSOC);
+
+            if ($accountData && password_verify($this->password, $accountData['password'])) {
+                $this->account_id = $accountData['account_id'];
+                $this->user_role = $accountData['user_role'];
+                $this->firstname = $accountData['firstname'];
+                $this->middlename = $accountData['middlename'];
+                $this->lastname = $accountData['lastname'];
+                $this->gender = $accountData['gender'];
+                $this->birthdate = $accountData['birthdate'];
+                $this->email = $accountData['email'];
+                $this->contact = $accountData['contact'];
+                $this->address = $accountData['address'];
+                $this->verification_status = $accountData['verification_status'];
+                $this->account_image = $accountData['account_image'];
+                $this->patient_id = $accountData['patient_id'];
+                //add more data if needed for users
+
+                return true;
+            }
+        }
     }
 
     // user functions end

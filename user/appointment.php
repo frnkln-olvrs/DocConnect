@@ -10,11 +10,32 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
 
 require_once('../tools/functions.php');
 require_once('../classes/account.class.php');
-require_once('../classes/database.php');
 require_once('../classes/appointment.class.php');
 
-$db = new Database();
-$pdo = $db->connect();
+$appointment = new Appointment();
+if (isset($_POST['request'])) {
+  $appointment->patient_id = $_SESSION['patient_id'];
+  $appointment->doctor_id = htmlentities($_POST['doctor_id']);
+  $appointment->appointment_date = htmlentities($_POST['appointment_date']);
+  $appointment->appointment_time = htmlentities($_POST['appointment_time']);
+  $appointment->appointment_status = "Pending";
+
+  if (
+    validate_field($appointment->patient_id) &&
+    validate_field($appointment->doctor_id) &&
+    validate_field($appointment->appointment_date) &&
+    validate_field($appointment->appointment_time) &&
+    validate_field($appointment->appointment_status)
+  ) {
+    if ($appointment->add_appointment()) {
+      $success = 'success';
+    } else {
+      echo 'An error occured while adding in the database.';
+    }
+  } else {
+    $success = 'failed';
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -67,29 +88,16 @@ include '../includes/head.php';
 
           <hr>
 
-          <div class="d-flex flex-wrap justify-content-center justify-content-md-start">
-            <div class="mx-2 mb-3">
-              <p class="fs-5 mb-0">Select Date - <span class="text-muted fs-6">April 2024</span></p>
-              <small class="text-muted">Select a date between today and one month from now.</small>
-              <input type="date" id="appointment_date" name="appointment_date" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 month')); ?>" class="form-control fs-6 px-2 py-1 bg-white border border-primary rounded-1 text-black-50 w-100 mt-2 mt-lg-4">
+          <div class="row d-flex flex-wrap justify-content-center justify-content-md-start">
+            <div class="col-6 px-2 mb-3">
+              <p class="fs-6 mb-0">Select Date</p>
+              <input type="date" id="appointment_date" name="appointment_date" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 month')); ?>" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100">
             </div>
 
-            <div class="mx-2 mb-3">
-              <p class="fs-5 mb-0">Select Time</p>
-              <small class="text-muted">Select a date between today and one month from now.</small>
-              <div class="d-flex flex-row align-items-center flex-wrap justify-content-evenly justify-content-md-start">
-                <label class="mb-2 mx-md-2 mx-1">
-                  <span class="radio-label fw-bold">Start Time:</span>
-                  <input type="time" id="startTime" name="start_time" class="form-control border border-dark" required>
-                </label>
-                <p class="m-0 mx-3">to</p>
-                <label class="mb-2 mx-md-2 mx-1">
-                  <span class="radio-label fw-bold">End Time:</span>
-                  <input type="time" id="endTime" name="end_time" class="form-control border border-dark" required>
-                </label>
-              </div>
+            <div class="col-6 px-2 mb-3">
+              <p class="fs-6 mb-0">Select Time</p>
+              <input type="time" id="appointment_time" name="appointment_time" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
             </div>
-
           </div>
 
 
@@ -134,7 +142,7 @@ include '../includes/head.php';
           <hr>
 
           <div class="w-100 d-flex justify-content-end ">
-            <button type="button" class="w-50 w-md-25 btn btn-outline-dark  mt-2">Set Appointment</button>
+            <button type="button" class="w-50 w-md-25 btn btn-outline-dark mt-2" name="request">Request Appointment</button>
           </div>
 
         </div>
@@ -265,9 +273,9 @@ include '../includes/head.php';
           const startDate = new Date();
           startDate.setHours(hours);
           startDate.setMinutes(minutes);
-          
+
           startDate.setHours(startDate.getHours() + 1);
-          
+
           const endHours = String(startDate.getHours()).padStart(2, '0');
           const endMinutes = String(startDate.getMinutes()).padStart(2, '0');
           endTimeInput.value = `${endHours}:${endMinutes}`;

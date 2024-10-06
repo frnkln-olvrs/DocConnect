@@ -8,6 +8,7 @@ class Appointment
     public $patient_id;
     public $appointment_date;
     public $appointment_time;
+    public $appointment_link;
     public $appointment_status;
 
     protected $db;
@@ -27,6 +28,21 @@ class Appointment
         $query->bindParam(':appointment_date', $this->appointment_date);
         $query->bindParam(':appointment_time', $this->appointment_time);
         $query->bindParam(':appointment_status', $this->appointment_status);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function add_link()
+    {
+        $sql = "UPDATE appointment SET appointment_link = :appointment_link WHERE appointment_id = :appointment_id";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':appointment_link', $this->appointment_link);
+        $query->bindParam(':appointment_id', $this->appointment_id);
 
         if ($query->execute()) {
             return true;
