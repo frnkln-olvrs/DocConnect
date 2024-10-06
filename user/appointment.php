@@ -52,10 +52,10 @@ include '../includes/head.php';
 
   <section id="appointment" class="page-container padding-medium p-3">
     <div class="row mb-3">
-      <div class="col-sm-12 col-md-8">
-        <div class="border border-dark-subtle shadow-sm rounded-2 p-3 mb-4 mb-md-0">
 
-          <div>
+      <div class="col-sm-12 col-md-8">
+        <form action="" method="post">
+          <div class="border border-dark-subtle shadow-sm rounded-2 p-3 mb-4 mb-md-0">
             <div class="row">
               <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
                 <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i>
@@ -75,78 +75,82 @@ include '../includes/head.php';
                     <img id="account_image" src="../assets/images/default_profile.png" alt="" width="70" height="70" class="rounded rounded-3 border border-2 border-light">
                   </div>
                   <div class="col-auto me-auto">
+                    <!-- padesign dito part -->
                     <p id="specialty" class="fs-6 mb-2">Specialty: </p>
                     <p id="contact" class="fs-6 mb-2">Contact: </p>
                     <p id="email" class="fs-6 mb-2">Email: </p>
                     <p id="working_day" class="fs-6 mb-2">Working Days: </p>
                     <p id="working_time" class="fs-6 mb-2">Working Time: </p>
+                    <p id="doctorid" class="fs-6 mb-2"></p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <hr>
-
-          <div class="row d-flex flex-wrap justify-content-center justify-content-md-start">
-            <div class="col-6 px-2 mb-3">
-              <p class="fs-6 mb-0">Select Date</p>
-              <input type="date" id="appointment_date" name="appointment_date" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 month')); ?>" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100">
-            </div>
-
-            <div class="col-6 px-2 mb-3">
-              <p class="fs-6 mb-0">Select Time</p>
-              <input type="time" id="appointment_time" name="appointment_time" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
-            </div>
-          </div>
 
 
-          <hr>
+            <hr>
 
-          <div>
-            <div class="row">
-              <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
-                <i class='bx bx-phone xx-large-font text-green pt-md-2 ps-md-2'></i>
+            <div class="row d-flex flex-wrap justify-content-center justify-content-md-start">
+              <div class="col-6 px-2 mb-3">
+                <p class="fs-6 mb-0">Select Date</p>
+                <input type="date" id="appointment_date" name="appointment_date" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 month')); ?>" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100">
               </div>
-              <div class="col-12 col-md-11">
-                <p class="fs-5 mb-0">Mobile Number</p>
-                <p class="fs-6 fw-light text-muted">Enter the number on which you wish to recieve checkup related information</p>
-                <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
 
-                  <input type="number" class="form-control border border-dark" placeholder="+63" aria-label="mobile_no" aria-describedby="mobile_no" value="+63">
+              <div class="col-6 px-2 mb-3">
+                <p class="fs-6 mb-0">Select Time</p>
+                <input type="time" id="appointment_time" name="appointment_time" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
+              </div>
+            </div>
 
+
+            <!-- <hr>
+
+            <div>
+              <div class="row">
+                <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
+                  <i class='bx bx-phone xx-large-font text-green pt-md-2 ps-md-2'></i>
+                </div>
+                <div class="col-12 col-md-11">
+                  <p class="fs-5 mb-0">Mobile Number</p>
+                  <p class="fs-6 fw-light text-muted">Enter the number on which you wish to recieve checkup related information</p>
+                  <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
+
+                    <input type="number" class="form-control border border-dark" placeholder="+63" aria-label="mobile_no" aria-describedby="mobile_no" value="+63">
+
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <hr>
+            <hr>
 
-          <div>
-            <div class="row">
-              <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
-                <i class='bx bx-mail-send xx-large-font text-green pt-md-2 ps-md-2'></i>
-              </div>
-              <div class="col-12 col-md-11">
-                <p class="fs-5 mb-0">Email Address</p>
-                <p class="fs-6 fw-light text-muted">Enter the email address on which you wish to recieve checkup related information</p>
-                <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
+            <div>
+              <div class="row">
+                <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
+                  <i class='bx bx-mail-send xx-large-font text-green pt-md-2 ps-md-2'></i>
+                </div>
+                <div class="col-12 col-md-11">
+                  <p class="fs-5 mb-0">Email Address</p>
+                  <p class="fs-6 fw-light text-muted">Enter the email address on which you wish to recieve checkup related information</p>
+                  <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
 
-                  <input type="email" class="form-control border border-dark" placeholder="example@email.com" aria-label="mobile_no" aria-describedby="mobile_no">
+                    <input type="email" class="form-control border border-dark" placeholder="example@email.com" aria-label="mobile_no" aria-describedby="mobile_no">
 
+                  </div>
                 </div>
               </div>
+            </div> -->
+
+            <hr>
+
+            <div class="w-100 d-flex justify-content-end ">
+              <button type="submit" class="w-50 w-md-25 btn btn-outline-dark mt-2" name="request">Request Appointment</button>
             </div>
+
           </div>
-
-          <hr>
-
-          <div class="w-100 d-flex justify-content-end ">
-            <button type="button" class="w-50 w-md-25 btn btn-outline-dark mt-2" name="request">Request Appointment</button>
-          </div>
-
-        </div>
+        </form>
       </div>
+
 
       <div class="col-sm-12 col-md-4 h-100">
         <div class="d-flex flex-column justify-content-between bg-green p-3 rounded-2 h-100 text-white">
@@ -172,9 +176,39 @@ include '../includes/head.php';
     </div>
   </section>
 
+
+
   <?php
   require_once('../includes/footer.php');
   ?>
+
+  <?php
+  if (isset($_POST['request']) && $success == 'success') {
+  ?>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">You have requested an appointment successfully!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row d-flex">
+              <div class="col-12 text-center">
+                <a href="./appointment" class="text-decoration-none text-dark">
+                  <p class="m-0 text-primary fw-bold">Click to Continue.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+  ?>
+  <script src="../js/login.js"></script>
+  <script src="../js/main.js"></script>
 
   <script>
     function formatTime(time) {
@@ -196,6 +230,7 @@ include '../includes/head.php';
       const working_days = document.getElementById("working_day");
       const working_hours = document.getElementById("working_time");
       const account_image = document.getElementById("account_image");
+      const test_id = document.getElementById("doctorid");
 
       fetch('../handlers/get_doctors.php')
         .then(response => response.json())
@@ -231,6 +266,7 @@ include '../includes/head.php';
               li.addEventListener("click", function() {
                 doctorSearch.value = doctor.doctor_name;
                 doctorIdInput.value = doctor.doctor_id;
+                test_id.innerHTML = doctor.doctor_id;
                 specialty.innerHTML = doctor.specialty;
                 contact.innerHTML = doctor.contact;
                 email.innerHTML = doctor.email;
