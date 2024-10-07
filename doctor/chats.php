@@ -3,11 +3,20 @@ session_start();
 
 if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
     header('location: ../user/verification.php');
+    exit();
 } else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 1) {
     header('location: ../index.php');
+    exit();
 }
 
+require_once('../tools/functions.php');
+require_once('../classes/account.class.php');
+require_once('../classes/database.php');
+
+$db = new Database();
+$pdo = $db->connect();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -17,49 +26,71 @@ include '../includes/head.php';
 ?>
 
 <body>
-    <?php
-    require_once('../includes/header-doctor.php');
-    ?>
+    <?php require_once('../includes/header-doctor.php'); ?>
+
     <div class="container-fluid">
-        <div class="row">
-            <?php
-            require_once('../includes/sidepanel-doctor.php');
-            ?>
-            <main class="col-md-9 ms-sm-auto col-lg-10">
-                <div class="col-md-10 mt-4">
-                    <div class="chat-container-wrapper">
-                        <div class="receiver-name mb-3" style="font-size: 20px; font-weight: bold;">
-                            Patients Full Name
+        <div class="row" style="height: 89vh;">
+            <?php require_once('../includes/sidepanel-doctor.php'); ?>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 p-0" style="height: 100%;">
+                <section id="chat" class="padding-medium mt-0">
+                    <div class="d-flex h-100">
+                        <!-- Left Sidebar (Chats List) -->
+                        <div id="chat_sidepanel" class="d-flex flex-column bg-light border-end p-3" style="min-width: 25%;">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <span class="fs-5 fw-bold">Chats</span>
+                                <i class='bx bx-edit fs-4'></i>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control border-2" id="searchChat" placeholder="Search">
+                            </div>
+                            <ul id="chatList" class="list-unstyled mb-0">
+                                <!-- Dynamic chat list will be loaded here -->
+                            </ul>
                         </div>
 
-                        <div class="chat-container border rounded p-3">
-                            <div class="chat-messages mb-3" style="height: 500px; overflow-y: auto;">
-                                <div class="message doctor mb-2" style="display: flex; align-items: flex-start; margin-bottom: 10px;">
-                                    <i class='bx bx-user-circle profile-icon' style="font-size: 30px; margin-right: 10px;"></i> 
-                                    <div class="message-content" style="max-width: 75%; background: #d1e7dd; padding: 10px; border-radius: 10px;">
-                                        <p style="border: none; margin: 0;">Hello, how can I assist you today?</p>
+                        <!-- Chat Box -->
+                        <div id="chat_box" class="flex-grow-1 d-flex flex-column">
+                            <!-- Chat Header -->
+                            <div class="head border-bottom bg-light py-3 px-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
+                                        <span id="chatUser">Select a user to start chatting</span>
                                     </div>
-                                </div>
-                                <div class="message patient mb-2" style="display: flex; align-items: flex-start; margin-bottom: 10px; justify-content: flex-end;">
-                                    <div class="message-content" style="max-width: 75%; background: #e9ecef; padding: 10px; border-radius: 10px; text-align: right;">
-                                        <p style="border: none; margin: 0;">I have a question about my medication.</p>
+                                    <div>
+                                        <i class='bx bx-dots-horizontal-rounded fs-4'></i>
                                     </div>
-                                    <i class='bx bx-user-circle profile-icon' style="font-size: 30px; margin-left: 10px;"></i>
                                 </div>
                             </div>
 
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Aa" aria-label="Message" style="color: black; border-radius: 20px; background: #D9D9D9;">
-                            <button class="btn-icon ms-2" type="button" style="background: none; border: none; cursor: pointer; color: #007bff;">
-                                <i class='bx bx-send' style="font-size: 30px; color: black;"></i> 
-                            </button>
+                            <!-- Chat Messages -->
+                            <div id="chatMessages" class="body flex-grow-1 d-flex flex-column p-3 bg-light">
+                                <!-- Messages will be dynamically loaded here -->
+                                <?php 
+                                if (!$pdo) {
+                                    echo json_encode(['error' => 'Database connection failed']);
+                                  exit;
+                                } else {
+                                    echo json_encode(['success' => 'Database connected successfully']);
+                                }
+                                ?>
+                            </div>
+                          
+                            <!-- Chat Input -->
+                            <div class="chat_input d-flex align-items-center p-3 border-top bg-light">
+                                <input type="text" id="messageInput" class="form-control border-2 text-dark rounded-pill me-3" placeholder="Type your message">
+                                <button id="sendMessage" class="btn btn-light d-flex justify-content-center">
+                                    <i class='bx bx-send text-dark fs-4'></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </main>
         </div>
     </div>
-    
-</body>
 
+    <script src="../js/chat.js"></script>
+</body>
 </html>
