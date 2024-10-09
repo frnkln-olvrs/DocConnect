@@ -26,12 +26,31 @@ if (!$message) {
   exit;
 }
 
+$db = new Database();
+$pdo = $db->connect();
+
+if (!$pdo) {
+  echo json_encode(['error' => 'Database connection failed']);
+  exit;
+}
+
 if ($receiverId === '9999') {
   try {
+    // Insert the user's message to the bot into the database
+    $query = "INSERT INTO messages (sender_id, receiver_id, message, status, is_read) VALUES (?, ?, ?, 'sent', 1)";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$senderId, $receiverId, $message]);
+
+    // Get the chatbot's response by executing the Python script
     $command = escapeshellcmd("python ../scripts/chatbot.py " . escapeshellarg($message));
     $output = shell_exec($command);
 
     if ($output) {
+      // Insert the bot's response into the database
+      $query = "INSERT INTO messages (sender_id, receiver_id, message, status, is_read) VALUES (?, ?, ?, 'received', 1)";
+      $stmt = $pdo->prepare($query);
+      $stmt->execute([9999, $senderId, $output]); // Save bot's response
+
       echo json_encode(['reply' => $output]);
     } else {
       echo json_encode(['error' => 'Chatbot response failed']);
@@ -44,14 +63,6 @@ if ($receiverId === '9999') {
   // Process human-to-human message
   if (!$receiverId) {
     echo json_encode(['error' => 'Invalid receiver']);
-    exit;
-  }
-
-  $db = new Database();
-  $pdo = $db->connect();
-
-  if (!$pdo) {
-    echo json_encode(['error' => 'Database connection failed']);
     exit;
   }
 
