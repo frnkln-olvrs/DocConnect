@@ -62,14 +62,28 @@ document.addEventListener('DOMContentLoaded', () => {
   function sendMessage() {
     const messageInput = document.getElementById('messageInput').value;
     const receiverId = window.currentChatAccountId;
-
+  
     if (!messageInput) {
       console.log('Message input is empty');
       return;
     }
-
+  
     console.log('Sending message, receiverId:', receiverId);
-
+  
+    // Create and display the message element immediately
+    const chatMessages = document.getElementById('chatMessages');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
+    messageElement.innerHTML = `
+      <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${messageInput}</div>
+      <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
+    chatMessages.appendChild(messageElement);
+    
+    // Reset input field
+    document.getElementById('messageInput').value = '';
+    scrollChatToBottom();
+  
+    // Send the message to the server
     fetch('../handlers/send_message.php', {
       method: 'POST',
       headers: {
@@ -83,24 +97,26 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error from server:', data.error);
         return;
       }
-
-      const chatMessages = document.getElementById('chatMessages');
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
-      messageElement.innerHTML = `
-        <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${messageInput}</div>
-        <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
-      chatMessages.appendChild(messageElement);
-
-      lastMessageId = data.id;
-
-      document.getElementById('messageInput').value = '';
+  
+      // Only update lastMessageId here based on server response
+      lastMessageId = data.message_id; // Assuming your server returns the ID of the sent message
+  
+      // If a bot message is needed, handle it here
+      if (receiverId === '9999' && data.reply) {
+        const botMessageElement = document.createElement('div');
+        botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
+        botMessageElement.innerHTML = `
+          <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${data.reply}</div>
+          <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
+        chatMessages.appendChild(botMessageElement);
+      }
+  
       scrollChatToBottom();
     })
     .catch(error => {
       console.error('Error sending message:', error);
     });
-  }
+  }  
 
   function fetchNewMessages() {
     const receiverId = window.currentChatAccountId;
