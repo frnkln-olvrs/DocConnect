@@ -36,6 +36,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Add function to handle chatbot conversation
+function loadChatBot() {
+  window.currentChatAccountId = 'chatbot';  // Unique identifier for the chatbot
+  
+  const chatMessages = document.getElementById('chatMessages');
+  chatMessages.innerHTML = ''; // Clear previous messages
+  document.getElementById('chatUser').textContent = 'Chatbot'; // Update header
+  
+  scrollChatToBottom();
+}
+
+function sendMessage() {
+  const messageInput = document.getElementById('messageInput').value;
+  const receiverId = window.currentChatAccountId;
+
+  if (receiverId === 'chatbot') {
+    // If chatting with the chatbot, call the chatbot backend API
+    fetch('../handlers/send_chatbot_message.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `message=${encodeURIComponent(messageInput)}`,
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        console.error('Error from server:', data.error);
+        return;
+      }
+
+      const chatMessages = document.getElementById('chatMessages');
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
+      messageElement.innerHTML = `
+        <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${messageInput}</div>
+        <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
+      chatMessages.appendChild(messageElement);
+
+      // Append chatbot's response
+      const botMessageElement = document.createElement('div');
+      botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
+      botMessageElement.innerHTML = `
+        <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${data.reply}</div>
+        <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
+      chatMessages.appendChild(botMessageElement);
+
+      document.getElementById('messageInput').value = '';
+      scrollChatToBottom();
+    })
+    .catch(error => {
+      console.error('Error sending message:', error);
+    });
+  } else {
+    // Original send message logic for user-to-user chat
+  }
+}
+
   // Searrch function
   document.getElementById('searchChat').addEventListener('input', (event) => {
     const searchTerm = event.target.value;
