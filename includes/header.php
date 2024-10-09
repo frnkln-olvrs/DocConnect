@@ -4,7 +4,7 @@
 		<!-- Display profile dropdown for mobile if the user is logged in -->
 		<a href="#" class="<?= isset($_SESSION['user_role']) ? "d-sm-block" : "d-none" ?> d-lg-none acc link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 			<div class="d-flex align-items-center">
-				<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
+				<img src="./../assets/images/default_profile.png" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
 				<h6 class="m-0 text-dark d-none d-md-block"><?= $_SESSION['fullname'] ?></h6>
 			</div>
 		</a>
@@ -33,10 +33,10 @@
 				<li class="nav-item"><a href="./contact" class="nav-link text-primary">Contact</a></li>
 				<li class="nav-item"><a href="./login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white <?= isset($_SESSION['user_role']) ? "d-none" : 'd-block' ?>" aria-current="page">Login</a></li>
 
-				<li class="nav-item dropdown <?= isset($_SESSION['user_role']) ? "d-lg-flex" : 'd-none' ?> align-items-center border-start ms-2">
+				<li class="nav-item dropdown <?= isset($_SESSION['user_role']) ? "d-lg-flex" : 'd-md-none' ?> align-items-center border-start ms-2">
 					<a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 						<div class="d-flex align-items-center">
-							<img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
+							<img src="./../assets/images/default_profile.png" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
 							<h6 class="m-0 text-dark d-none d-md-block"><?= $_SESSION['fullname'] ?></h6>
 						</div>
 					</a>

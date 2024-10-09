@@ -39,13 +39,13 @@ $pdo = $db->connect();
         <ul id="chatList" class="list-unstyled mb-0">
           <!-- Dynamic chat list will be loaded here -->
         </ul>
-          <li class="chatList my-1 rounded-1">
-            <a href="#" class="d-flex align-items-center text-dark text-decoration-none p-2"
-               onclick="loadChatBot()">
-              <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
-              <div><strong>Chatbot</strong></div>
-            </a>
-          </li>
+        <a href="#" class="d-flex align-items-center text-dark text-decoration-none p-2" 
+           onclick="loadChatBot()">
+            <img src="../assets/images/default_profile.png" alt="Chatbot" class="rounded-circle me-3" height="40" width="40">
+            <div>
+              <strong>Chatbot</strong>
+            </div>
+        </a>
       </div>
 
       <!-- Chat Box -->

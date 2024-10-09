@@ -38,13 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Add function to handle chatbot conversation
 function loadChatBot() {
-  window.currentChatAccountId = 'chatbot';  // Unique identifier for the chatbot
-  
   const chatMessages = document.getElementById('chatMessages');
-  chatMessages.innerHTML = ''; // Clear previous messages
-  document.getElementById('chatUser').textContent = 'Chatbot'; // Update header
-  
-  scrollChatToBottom();
+  const chatUser = document.getElementById('chatUser');
+
+  // Update chat header with bot information
+  chatUser.textContent = 'Chatbot';
+
+  // Clear chat messages area
+  chatMessages.innerHTML = '';
+
+  // Display a welcome message or a default chatbot message
+  const botMessage = document.createElement('div');
+  botMessage.classList.add('d-flex', 'align-items-start', 'mb-3');
+  botMessage.innerHTML = `
+      <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">
+          Hello! How can I assist you today?
+      </div>
+      <img src="../assets/images/default_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
+
+  chatMessages.appendChild(botMessage);
 }
 
 function sendMessage() {
