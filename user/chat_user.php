@@ -59,15 +59,6 @@ $pdo = $db->connect();
         <!-- Chat Messages -->
         <div id="chatMessages" class="body flex-grow-1 d-flex flex-column p-3 bg-light">
           <!-- Messages will be dynamically loaded here -->
-           <?php 
-           if (!$pdo) {
-             echo json_encode(['error' => 'Database connection failed']);
-             exit;
-           } else {
-             echo json_encode(['success' => 'Database connected successfully']);
-           }
-
-           ?>
         </div>
 
         <!-- Chat Input -->
