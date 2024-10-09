@@ -36,75 +36,99 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Add function to handle chatbot conversation
-function loadChatBot() {
-  const chatMessages = document.getElementById('chatMessages');
-  const chatUser = document.getElementById('chatUser');
-
-  // Update chat header with bot information
-  chatUser.textContent = 'Chatbot';
-
-  // Clear chat messages area
-  chatMessages.innerHTML = '';
-
-  // Display a welcome message or a default chatbot message
-  const botMessage = document.createElement('div');
-  botMessage.classList.add('d-flex', 'align-items-start', 'mb-3');
-  botMessage.innerHTML = `
-      <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">
-          Hello! How can I assist you today?
-      </div>
-      <img src="../assets/images/default_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
-
-  chatMessages.appendChild(botMessage);
-}
-
-function sendMessage() {
-  const messageInput = document.getElementById('messageInput').value;
-  const receiverId = window.currentChatAccountId;
-
-  if (receiverId === 'chatbot') {
-    // If chatting with the chatbot, call the chatbot backend API
-    fetch('../handlers/send_chatbot_message.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `message=${encodeURIComponent(messageInput)}`,
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        console.error('Error from server:', data.error);
-        return;
-      }
-
-      const chatMessages = document.getElementById('chatMessages');
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
-      messageElement.innerHTML = `
-        <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${messageInput}</div>
-        <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
-      chatMessages.appendChild(messageElement);
-
-      // Append chatbot's response
-      const botMessageElement = document.createElement('div');
-      botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
-      botMessageElement.innerHTML = `
-        <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${data.reply}</div>
-        <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
-      chatMessages.appendChild(botMessageElement);
-
-      document.getElementById('messageInput').value = '';
-      scrollChatToBottom();
-    })
-    .catch(error => {
-      console.error('Error sending message:', error);
-    });
-  } else {
-    // Original send message logic for user-to-user chat
+  function loadChatBot() {
+    const chatMessages = document.getElementById('chatMessages');
+    const chatUser = document.getElementById('chatUser');
+  
+    window.currentChatAccountId = 'chatbot';  // Assign chatbot ID to distinguish
+    chatUser.textContent = 'Chatbot';  // Update chat header
+  
+    chatMessages.innerHTML = '';  // Clear previous chat messages
+  
+    // Display a welcome message or a default chatbot message
+    const botMessage = document.createElement('div');
+    botMessage.classList.add('d-flex', 'align-items-start', 'mb-3');
+    botMessage.innerHTML = `
+        <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">
+            Hello! How can I assist you today?
+        </div>
+        <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
+  
+    chatMessages.appendChild(botMessage);
   }
-}
+
+  function sendMessage() {
+    const messageInput = document.getElementById('messageInput').value;
+    const receiverId = window.currentChatAccountId;
+  
+    if (receiverId === '9999') {
+      fetch('../handlers/send_chatbot_message.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `message=${encodeURIComponent(messageInput)}`,
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          console.error('Error from server:', data.error);
+          return;
+        }
+      
+        const chatMessages = document.getElementById('chatMessages');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
+        messageElement.innerHTML = `
+          <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${messageInput}</div>
+          <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
+        chatMessages.appendChild(messageElement);
+      
+        // Append chatbot's response
+        const botMessageElement = document.createElement('div');
+        botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
+        botMessageElement.innerHTML = `
+          <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${data.reply}</div>
+          <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
+        chatMessages.appendChild(botMessageElement);
+      
+        document.getElementById('messageInput').value = '';
+        scrollChatToBottom();
+      })
+      .catch(error => {
+        console.error('Error sending message:', error);
+      });
+    } else {
+      fetch('../handlers/send_message.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `message=${encodeURIComponent(messageInput)}&receiver_id=${receiverId}`,
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          console.error('Error from server:', data.error);
+          return;
+        }
+      
+        const chatMessages = document.getElementById('chatMessages');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
+        messageElement.innerHTML = `
+          <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${messageInput}</div>
+          <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
+        chatMessages.appendChild(messageElement);
+      
+        document.getElementById('messageInput').value = '';
+        scrollChatToBottom();
+      })
+      .catch(error => {
+        console.error('Error sending message:', error);
+      });
+    }
+  }
 
   // Searrch function
   document.getElementById('searchChat').addEventListener('input', (event) => {
@@ -119,40 +143,6 @@ function sendMessage() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  // SEnd message
-  function sendMessage() {
-    const messageInput = document.getElementById('messageInput').value;
-    const receiverId = window.currentChatAccountId;
-
-    fetch('../handlers/send_message.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `message=${encodeURIComponent(messageInput)}&receiver_id=${receiverId}`,
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        console.error('Error from server:', data.error);
-        return;
-      }
-
-      const chatMessages = document.getElementById('chatMessages');
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
-      messageElement.innerHTML = `
-        <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${messageInput}</div>
-        <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
-      chatMessages.appendChild(messageElement);
-
-      document.getElementById('messageInput').value = '';
-      scrollChatToBottom();
-    })
-    .catch(error => {
-      console.error('Error sending message:', error);
-    });
-  }
 
   document.getElementById('sendMessage').addEventListener('click', sendMessage);
 
