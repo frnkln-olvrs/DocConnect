@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+  let lastMessageId = 0; // Keep track of the last message ID
+
   // Load the chat list
   function loadChats(searchTerm = '') {
     fetch(`../handlers/get_chats.php?search=${encodeURIComponent(searchTerm)}`)
@@ -90,20 +92,55 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
       chatMessages.appendChild(messageElement);
 
-      if (receiverId === '9999' && data.reply) {
-        const botMessageElement = document.createElement('div');
-        botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
-        botMessageElement.innerHTML = `
-          <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${data.reply}</div>
-          <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
-        chatMessages.appendChild(botMessageElement);
-      }
+      lastMessageId = data.id;
 
       document.getElementById('messageInput').value = '';
       scrollChatToBottom();
     })
     .catch(error => {
       console.error('Error sending message:', error);
+    });
+  }
+
+  function fetchNewMessages() {
+    const receiverId = window.currentChatAccountId;
+
+    fetch('../handlers/fetch_messages.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `chat_with=${receiverId}&last_message_id=${lastMessageId}`,
+    })
+    .then(response => response.json())
+    .then(messages => {
+      const chatMessages = document.getElementById('chatMessages');
+
+      messages.forEach(msg => {
+        const isSender = msg.sender_id === window.currentChatAccountId;
+        const messageElement = document.createElement('div');
+        messageElement.classList.add(
+          'd-flex',           
+          isSender ? 'flex-row-reverse' : 'flex-row',
+          'align-items-end', 
+          'justify-content-end', 
+          'mb-3');
+        messageElement.innerHTML = `
+          <div class="${isSender ? 'bg-secondary' : 'bg-primary'} text-light p-2 rounded-3" style="max-width: 52%;">
+            ${msg.message}
+          </div>
+          <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'me-3' : 'ms-3'}" height="30" width="30">`;
+
+        chatMessages.appendChild(messageElement);
+
+        // Update the lastMessageId to the latest message
+        lastMessageId = msg.id;
+      });
+
+      scrollChatToBottom();
+    })
+    .catch(error => {
+      console.error('Error fetching new messages:', error);
     });
   }
 
@@ -182,9 +219,15 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'me-3' : 'ms-3'}" height="30" width="30">`;
         chatMessages.appendChild(messageElement);
+
+        // Track last message ID
+        lastMessageId = msg.id;
       });
 
       scrollChatToBottom();
+
+      // Start polling for new messages
+      setInterval(fetchNewMessages, 5000); // Check for new messages every 5 seconds
     })
     .catch(error => {
       console.error('Error fetching messages:', error);
