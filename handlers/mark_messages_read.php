@@ -21,6 +21,11 @@ if (!$chatWith) {
   exit;
 }
 
+if ($chatWith == '9999') {
+  echo json_encode(['success' => true]);
+  exit;
+}
+
 $db = new Database();
 $pdo = $db->connect();
 
