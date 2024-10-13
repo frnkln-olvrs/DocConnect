@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   let lastMessageId = 0; // Keep track of the last message ID
+  let lastBotMessage = ''; // Keep track of the last bot message
 
   // Load the chat list
   function loadChats(searchTerm = '') {
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Chatbot loaded, currentChatAccountId:', window.currentChatAccountId);
 
     chatUser.textContent = 'Chatbot';
-    chatMessages.innerHTML = ''; 
+    chatMessages.innerHTML = '';
 
     const botMessage = document.createElement('div');
     botMessage.classList.add('d-flex', 'align-items-start', 'mb-3');
@@ -57,19 +58,20 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
 
     chatMessages.appendChild(botMessage);
+    lastBotMessage = botMessage.innerHTML; // Store the last bot message content
   }
 
   function sendMessage() {
     const messageInput = document.getElementById('messageInput').value;
     const receiverId = window.currentChatAccountId;
-  
+
     if (!messageInput) {
       console.log('Message input is empty');
       return;
     }
-  
+
     console.log('Sending message, receiverId:', receiverId);
-  
+
     // Create and display the message element immediately
     const chatMessages = document.getElementById('chatMessages');
     const messageElement = document.createElement('div');
@@ -82,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset input field
     document.getElementById('messageInput').value = '';
     scrollChatToBottom();
-  
+
     // Send the message to the server
     fetch('../handlers/send_message.php', {
       method: 'POST',
@@ -97,20 +99,23 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error from server:', data.error);
         return;
       }
-  
+
       // Only update lastMessageId here based on server response
       lastMessageId = data.message_id; // Assuming your server returns the ID of the sent message
-  
+
       // If a bot message is needed, handle it here
       if (receiverId === '9999' && data.reply) {
-        const botMessageElement = document.createElement('div');
-        botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
-        botMessageElement.innerHTML = `
-          <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${data.reply}</div>
-          <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
-        chatMessages.appendChild(botMessageElement);
+        if (data.reply !== lastBotMessage) { // Check for duplicate bot message
+          const botMessageElement = document.createElement('div');
+          botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
+          botMessageElement.innerHTML = `
+            <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${data.reply}</div>
+            <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
+          chatMessages.appendChild(botMessageElement);
+          lastBotMessage = botMessageElement.innerHTML; // Update last bot message
+        }
       }
-  
+
       scrollChatToBottom();
     })
     .catch(error => {
