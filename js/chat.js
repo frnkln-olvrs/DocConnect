@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   let lastMessageId = 0; // Keep track of the last message ID
-  let pollingInterval; // To store the interval ID
 
   // Load the chat list
   function loadChats(searchTerm = '') {
@@ -134,21 +133,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const chatMessages = document.getElementById('chatMessages');
 
       messages.forEach(msg => {
-        // Avoid appending duplicate messages by checking their unique ID
-        if (document.querySelector(`[data-message-id="${msg.id}"]`)) {
-          return; // Skip this message, it's already displayed
-        }
-        
         const isSender = msg.sender_id === window.currentChatAccountId;
         const messageElement = document.createElement('div');
-        messageElement.dataset.messageId = msg.id; // Add unique ID to the message element
         messageElement.classList.add(
-          'd-flex',
+          'd-flex',           
           isSender ? 'flex-row-reverse' : 'flex-row',
-          'align-items-end',
-          'justify-content-end',
-          'mb-3'
-        );
+          'align-items-end', 
+          'justify-content-end', 
+          'mb-3');
         messageElement.innerHTML = `
           <div class="${isSender ? 'bg-secondary' : 'bg-primary'} text-light p-2 rounded-3" style="max-width: 52%;">
             ${msg.message}
@@ -180,26 +172,16 @@ document.addEventListener('DOMContentLoaded', () => {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  // Fix event listeners to prevent multiple triggerings
-  const sendMessageButton = document.getElementById('sendMessage');
-  if (!sendMessageButton.dataset.listenerAdded) {
-    sendMessageButton.addEventListener('click', sendMessage);
-    sendMessageButton.dataset.listenerAdded = true;  // Mark listener as added
-  }
+  document.getElementById('sendMessage').addEventListener('click', sendMessage);
 
-  const messageInput = document.getElementById('messageInput');
-  if (!messageInput.dataset.listenerAdded) {
-    messageInput.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        sendMessage();
-      }
-    });
-    messageInput.dataset.listenerAdded = true;  // Mark listener as added
-  }
+  document.getElementById('messageInput').addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      sendMessage();
+    }
+  });
 
   window.loadChat = function(accountId, fullName, profileImage, chatElement) {
-    clearInterval(pollingInterval);  // Clear any existing polling intervals
     window.currentChatAccountId = accountId;
 
     const activeChats = document.querySelectorAll('.chatList.active');
@@ -235,15 +217,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Update chat header with user information
       document.getElementById('chatUser').textContent = fullName;
-      document.querySelector('.user-profile img').src = profileImage;
+      document.querySelector('.head img').src = profileImage ? `../assets/images/${profileImage}` : '../assets/images/default_profile.png';
 
       messages.forEach(msg => {
         const isSender = msg.sender_id === window.currentChatAccountId;
         const messageElement = document.createElement('div');
         messageElement.classList.add(
-          'd-flex',
+          'd-flex', 
           isSender ? 'flex-row-reverse' : 'flex-row',
-          'align-items-end',
+          'align-items-end', 
           'justify-content-end',
           'mb-3'
         );
@@ -252,17 +234,19 @@ document.addEventListener('DOMContentLoaded', () => {
             ${msg.message}
           </div>
           <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'me-3' : 'ms-3'}" height="30" width="30">`;
-
         chatMessages.appendChild(messageElement);
+
+        // Track last message ID
         lastMessageId = msg.id;
       });
 
       scrollChatToBottom();
+
+      // Start polling for new messages
+      setInterval(fetchNewMessages, 5000); // Check for new messages every 5 seconds
+    })
+    .catch(error => {
+      console.error('Error fetching messages:', error);
     });
-
-    // Start polling for new messages once
-    pollingInterval = setInterval(fetchNewMessages, 5000); // Poll every 5 seconds
   };
-
-  window.loadChatBot = loadChatBot; // Attach the loadChatBot function to the global window object
 });
