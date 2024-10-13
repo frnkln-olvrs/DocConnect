@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+    header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 1) {
+    header('location: ../index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -19,10 +30,14 @@ include '../includes/head.php';
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <img src="../assets/gallery/66dd9fea898031.89869755.png" alt="Doctor's profile image" class="rounded-circle me-3" height="80" width="80">
+                            <img src="<?php if (isset($_SESSION['account_image'])) {
+                                            echo "../assets/images/" . $_SESSION['account_image'];
+                                        } else {
+                                            echo "../assets/images/defualt_profile.png";
+                                        } ?>" alt="Doctor's profile image" class="rounded-circle me-3" height="80" width="80">
                             <div>
-                                <h5 class="card-title">Dr. John Doe</h5>
-                                <p class="text-muted mb-0">Medical Practitioner</p>
+                                <h5 class="card-title"><?= $_SESSION['fullname'] ?></h5>
+                                <p class="text-muted mb-0"><?= $_SESSION['specialty'] ?></p>
                                 <div class="d-flex align-items-center">
                                     <!-- <span class="text-primary me-2">★★★★★</span>
                                     <a href="#" class="text-decoration-none">More</a> -->
@@ -40,7 +55,7 @@ include '../includes/head.php';
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-overview-tab" data-bs-toggle="tab" data-bs-target="#nav-overview" type="button" role="tab" aria-controls="nav-overview" aria-selected="true">Overview</button>
-                            <button class="nav-link" id="nav-opinions-tab" data-bs-toggle="tab" data-bs-target="#nav-opinions" type="button" role="tab" aria-controls="nav-opinions" aria-selected="false">Opinions</button>
+                            <!-- <button class="nav-link" id="nav-opinions-tab" data-bs-toggle="tab" data-bs-target="#nav-opinions" type="button" role="tab" aria-controls="nav-opinions" aria-selected="false">Opinions</button> -->
                             <button class="nav-link" id="nav-experience-tab" data-bs-toggle="tab" data-bs-target="#nav-experience" type="button" role="tab" aria-controls="nav-Experience" aria-selected="false">Experience</button>
                         </div>
                     </nav>
@@ -48,11 +63,11 @@ include '../includes/head.php';
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade active show" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab">
                                 <div class="mb-3">
-                                    <h6>About specialist</h6>
-                                    <p>As a medical practitioner, I provide compassionate healthcare with expertise in diagnosing, treating, and preventing illnesses and injuries. My patient-centered approach emphasizes trust, communication, and personalized treatment plans. I am dedicated to staying updated on medical advancements to ensure the highest standard of care. I'm passionate about health education and disease prevention, aiming to empower patients for long-term wellness.  </p>
-                                    <a href="#" class="text-decoration-none">Read more</a>
+                                    <h6>Bio</h6>
+                                    <p><?= $_SESSION['bio'] ?></p>
+                                    <!-- <a href="#" class="text-decoration-none">Read more</a> -->
                                 </div>
-                                <div class="row mb-4">
+                                <!-- <div class="row mb-4">
                                     <div class="col-md-6">
                                         <h6>Diseases treated</h6>
                                         <ul class="list-unstyled">
@@ -62,10 +77,16 @@ include '../includes/head.php';
                                         </ul>
                                         <a href="#" class="text-decoration-none">Read more</a>
                                     </div>
+                                </div> -->
+                                <div class="mb-3">
+                                    <h6>Working Time</h6>
+                                    <p class="mb-1">Start: <?= $_SESSION['start_day'] . ' - ' . date('h:i A', strtotime($_SESSION['start_wt'])) ?></p>
+                                    <p>End: <?= $_SESSION['end_day'] . ' - ' . date('h:i A', strtotime($_SESSION['end_wt'])) ?></p>
+                                    <!-- <a href="#" class="text-decoration-none">Read more</a> -->
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="nav-opinions" role="tabpanel" aria-labelledby="nav-opinions-tab">
+                            <!-- <div class="tab-pane fade" id="nav-opinions" role="tabpanel" aria-labelledby="nav-opinions-tab">
                                 <h6>Patient Reviews</h6>
                                 <div class="review mb-3">
                                     <div class="d-flex align-items-center">
@@ -82,7 +103,7 @@ include '../includes/head.php';
                                     <p>"Great experience! The doctor was very professional and addressed all my concerns. Highly recommend."</p>
                                 </div>
                                 <a href="#" class="text-decoration-none">See all reviews</a>
-                            </div>
+                            </div> -->
 
                             <div class="tab-pane fade" id="nav-experience" role="tabpanel" aria-labelledby="nav-experience-tab">
                                 <h6>Professional Experience</h6>
@@ -90,26 +111,26 @@ include '../includes/head.php';
                                     <li><strong>Senior Consultant, Orthopedics</strong> - ABC Hospital (2015 - Present)</li>
                                     <li><strong>Resident Doctor</strong> - XYZ Medical Center (2010 - 2015)</li>
                                 </ul>
-                                
+
                                 <h6>Education</h6>
                                 <ul class="list-unstyled">
                                     <li><strong>MD, Orthopedics</strong> - Harvard Medical School</li>
                                     <li><strong>BS, Biology</strong> - University of California</li>
                                 </ul>
-                            
+
                                 <h6>Certifications</h6>
                                 <ul class="list-unstyled">
                                     <li>Board Certified Orthopedic Surgeon</li>
                                     <li>Advanced Trauma Life Support (ATLS) Certified</li>
                                 </ul>
-                                
+
                                 <a href="#" class="text-decoration-none">Read more about professional background</a>
                             </div>
                         </div>
                     </div>
-	            </div>
-                
-                <div class="card mb-4">
+                </div>
+
+                <!-- <div class="card mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <h6 class="mb-2">Availability</h6>
@@ -122,7 +143,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +153,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +163,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +173,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">--:-- AM</p>
                                         to
-                                        <p class="mb-0">--:-- PM</p>                                        
+                                        <p class="mb-0">--:-- PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +183,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +193,7 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -182,13 +203,13 @@ include '../includes/head.php';
                                     <div class="d-flex flex-column align-items-center">
                                         <p class="mb-0">8:30 AM</p>
                                         to
-                                        <p class="mb-0">4:00 PM</p>                                        
+                                        <p class="mb-0">4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>  
+                </div> -->
             </main>
         </div>
     </div>

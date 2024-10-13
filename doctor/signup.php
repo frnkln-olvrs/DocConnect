@@ -105,9 +105,9 @@ include '../includes/head.php';
                   <label for="gender">Gender</label>
                   <select class="form-select" aria-label="gender" name="gender">
                     <option selected>Gender</option>
-                    <option value="male" <?= (isset($_POST['gender']) && $_POST['gender'] == "male") ? 'selected' : '' ?>>Male</option>
-                    <option value="female" <?= (isset($_POST['gender']) && $_POST['gender'] == "female") ? 'selected' : '' ?>>Female</option>
-                    <option value="other" <?= (isset($_POST['gender']) && $_POST['gender'] == "other") ? 'selected' : '' ?>>Other</option>
+                    <option value="Male" <?= (isset($_POST['gender']) && $_POST['gender'] == "Male") ? 'selected' : '' ?>>Male</option>
+                    <option value="Female" <?= (isset($_POST['gender']) && $_POST['gender'] == "Female") ? 'selected' : '' ?>>Female</option>
+                    <option value="Other" <?= (isset($_POST['gender']) && $_POST['gender'] == "Other") ? 'selected' : '' ?>>Other</option>
                   </select>
                   <?php
                   if (isset($_POST['gender']) && !validate_field($_POST['gender'])) {
@@ -201,7 +201,7 @@ include '../includes/head.php';
     </div>
   </div>
   <?php
-  if (isset($_POST['add']) && $success == 'success') {
+  if (isset($_POST['signup']) && $success == 'success') {
   ?>
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">

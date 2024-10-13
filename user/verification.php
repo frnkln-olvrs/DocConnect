@@ -110,6 +110,39 @@ function getCurrentPage()
       </div>
     </div>
   </div>
+  <?php
+  if (isset($_POST['verify']) && $success == 'success') {
+  ?>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Account is successfully verified!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row d-flex">
+              <div class="col-12 text-center">
+                <a href="<?php if ($_SESSION['user_role'] == 0) {
+                            echo "../admin/index.php";
+                          } else if ($_SESSION['user_role'] == 1) {
+                            echo "../doctor/index.php";
+                          } else if ($_SESSION['user_role'] == 2) {
+                            //header('location: ../moderator/index.php');
+                          } else if ($_SESSION['user_role'] == 3) {
+                            echo "../user/index.php";
+                          } ?>" class="text-decoration-none text-dark">
+                  <p class="m-0 text-primary fw-bold">Click to continue.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+  ?>
   <script src="../js/main.js"></script>
 
 </body>

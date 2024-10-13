@@ -1,24 +1,35 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+  header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 1) {
+  header('location: ../index.php');
+}
+
+?>
 <html lang="en">
 <?php
-  $title = 'Settings | Appointment';
-  $notification = 'active';
-  include '../includes/head.php';
+$title = 'Settings | Appointment';
+$notification = 'active';
+include '../includes/head.php';
 ?>
+
 <body>
-<?php
-    require_once('../includes/header-doctor.php');
+  <?php
+  require_once('../includes/header-doctor.php');
   ?>
 
   <div class="container-fluid">
     <div class="row">
-      <?php 
-        require_once('../includes/sidepanel-doctor.php');
+      <?php
+      require_once('../includes/sidepanel-doctor.php');
       ?>
-      
+
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <section id="notification" class="my-3">
-    
+
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-12 col-md-9 shadow-lg p-3 rounded-2">
@@ -100,4 +111,5 @@
     </div>
   </div>
 </body>
+
 </html>
