@@ -489,6 +489,11 @@ main.col-md-9 {
 }
 /* ----------DoCOTROS_SETTINGS------------- */
 
+/* ----------CHATBOT_links------------- */
+#chat .bot_link {
+  color: #21bf73 !important;
+}
+
 @media (max-width:450px) {
 	section.main .img {
 		display: none;

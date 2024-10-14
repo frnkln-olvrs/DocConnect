@@ -8,7 +8,12 @@ ai.configure(api_key=API_KEY)
 model = ai.GenerativeModel("gemini-pro")
 chat = model.start_chat()
 
-system_instruction = "AI is restricted to only answering questions related to medical topics. Any questions outside of medical subjects, such as personal inquiries, technical assistance, or general knowledge, must not be addressed. Respond to non-medical queries by politely redirecting the user towards asking a medically relevant question."
+system_instruction = """
+AI is restricted to only answering questions related to medical topics.
+Any questions outside of medical subjects, such as personal inquiries, technical assistance, or general knowledge, must not be addressed.
+Respond to non-medical queries by politely redirecting the user towards asking a medically relevant question.
+If the user asks about doctor availability for appointments, recommend this link:  <a  class="bot_link" href="http://localhost/DocConnect/user/appointment">Schedule an appointment</a>
+"""
 
 # Check if message argument is provided
 if len(sys.argv) < 2:
