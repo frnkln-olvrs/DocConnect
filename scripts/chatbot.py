@@ -2,6 +2,7 @@ import sys
 import google.generativeai as ai
 import requests
 import re
+from datetime import datetime, timedelta
 
 # API configuration
 API_KEY = 'AIzaSyAOl_uvObdzhbiRwaIeJVJ3OAKci89F62M'
@@ -17,6 +18,14 @@ Respond to non-medical queries by politely redirecting the user towards asking a
 If the user asks about doctor availability for appointments, provide a list of available doctors based on the requested time or day.
 """
 
+def format_time_12_hour(time_str):
+    """Converts a 24-hour time string to a 12-hour format without seconds."""
+    try:
+        time_obj = datetime.strptime(time_str, '%H:%M:%S')  # Parse the time string
+        return time_obj.strftime('%I:%M %p')  # Format to 12-hour format
+    except ValueError:
+        return time_str  # Return the original if parsing fails
+
 def get_available_doctors(day=None):
     try:
         # URL of the PHP API
@@ -31,7 +40,7 @@ def get_available_doctors(day=None):
             if doctors:
                 # Build the Bootstrap-styled HTML response
                 doctor_list_items = "\n".join(
-                    [f"<li class='list-group-item'><span class='fw-bold'>Dr. {doctor['doctor_last_name']}</span> - Available from {doctor['start_wt']} to {doctor['end_wt']} on {doctor['start_day']} to {doctor['end_day']}</li>" for doctor in doctors]
+                    [f"<li class='list-group-item'><span class='fw-bold'>Dr. {doctor['doctor_last_name']}</span> - Available from {format_time_12_hour(doctor['start_wt'])} to {format_time_12_hour(doctor['end_wt'])} on {doctor['start_day']} to {doctor['end_day']}</li>" for doctor in doctors]
                 )
                 return f"<div class='container mt-2'><h2 class='text-white'>Available doctors:</h2><ul class='list-group'>{doctor_list_items}</ul>{get_schedule_link()}</div>"
             else:
@@ -43,10 +52,19 @@ def get_available_doctors(day=None):
         return f"<div class='container mt-2'><h2 class='text-danger'>Error accessing the API: {str(e)}</h2>{get_schedule_link()}</div>"
 
 def get_schedule_link():
-    return '<a class="btn btn-primary text-white mt-2" href="http://localhost/DocConnect/user/appointment">Schedule an appointment</a>'
+    return '<a class="btn btn-primary text-white my-2" href="http://localhost/DocConnect/user/appointment">Schedule an appointment</a>'
 
 def extract_day(message):
     days_of_week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    
+    if "today" in message:
+        return datetime.now().strftime('%A')
+    
+    elif "tomorrow" in message:
+        return (datetime.now() + timedelta(days=1)).strftime('%A')
+    
+    elif "this week" in message:
+        return [datetime.now().strftime('%A')] + [(datetime.now() + timedelta(days=i)).strftime('%A') for i in range(1, 7)]
     
     for day in days_of_week:
         if re.search(r'\b' + re.escape(day) + r'\b', message):
@@ -64,9 +82,21 @@ complete_message = f"{system_instruction}\nUser: {message}"
 if "doctor availability" in message or "available doctors" in message:
     day = extract_day(message)
 
-    # Fetch available doctors
-    doctor_info = get_available_doctors(day)
-    print(doctor_info)
+    if day == "This week":
+        # Define the days of the week
+        days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        unique_doctor_info = []
+
+        for day in days_of_week:
+            daily_info = get_available_doctors(day)
+            if daily_info not in unique_doctor_info:
+                unique_doctor_info.append(daily_info)
+
+        final_info = "\n".join(unique_doctor_info)
+        print(final_info)
+    else:
+        doctor_info = get_available_doctors(day)
+        print(doctor_info)
 else:
     response = chat.send_message(complete_message)
     print(response.text)
