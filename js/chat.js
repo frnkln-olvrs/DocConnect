@@ -61,6 +61,22 @@ document.addEventListener('DOMContentLoaded', () => {
     lastBotMessage = botMessage.innerHTML; // Store the last bot message content
   }
 
+  function formatMessage(message) {
+    message = message.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    const lines = message.split('\n');
+    let formattedMessage = '';
+    lines.forEach(line => {
+      line = line.trim();
+      if (line.startsWith('* ')) {
+        formattedMessage += `<li>${line.substring(2)}</li>`;
+      } else {
+        formattedMessage += `<p>${line}</p>`;
+      }
+    });
+    formattedMessage = `<ul>${formattedMessage}</ul>`;
+    return formattedMessage;
+  }
+
   function sendMessage() {
     const messageInput = document.getElementById('messageInput').value;
     const receiverId = window.currentChatAccountId;
@@ -72,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('Sending message, receiverId:', receiverId);
 
-    // Create and display the message element immediately
     const chatMessages = document.getElementById('chatMessages');
     const messageElement = document.createElement('div');
     messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
@@ -80,12 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${messageInput}</div>
       <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
     chatMessages.appendChild(messageElement);
-    
-    // Reset input field
+
     document.getElementById('messageInput').value = '';
     scrollChatToBottom();
 
-    // Send the message to the server
     fetch('../handlers/send_message.php', {
       method: 'POST',
       headers: {
@@ -106,13 +119,17 @@ document.addEventListener('DOMContentLoaded', () => {
       // If a bot message is needed, handle it here
       if (receiverId === '9999' && data.reply) {
         if (data.reply !== lastBotMessage) { // Check for duplicate bot message
+          const formattedReply = formatMessage(data.reply); // Format the bot's reply
           const botMessageElement = document.createElement('div');
           botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
+          
+          // Use innerHTML correctly
           botMessageElement.innerHTML = `
-            <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${data.reply}</div>
+            <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${formattedReply}</div>
             <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
+
           chatMessages.appendChild(botMessageElement);
-          lastBotMessage = botMessageElement.innerHTML; // Update last bot message
+          lastBotMessage = data.reply; // Update last bot message for checking duplicates
         }
       }
 
