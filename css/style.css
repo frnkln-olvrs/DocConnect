@@ -492,6 +492,11 @@ main.col-md-9 {
 /* ----------CHATBOT_links------------- */
 #chat .bot_link {
   color: #21bf73 !important;
+  text-decoration: underline !important;
+}
+
+#chat .bot_link:hover {
+  color: white !important;
 }
 
 @media (max-width:450px) {
