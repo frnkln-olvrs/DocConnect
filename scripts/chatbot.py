@@ -1,6 +1,7 @@
 import sys
 import google.generativeai as ai
 import requests
+import re
 
 # API configuration
 API_KEY = 'AIzaSyAOl_uvObdzhbiRwaIeJVJ3OAKci89F62M'
@@ -18,8 +19,7 @@ If the user asks about doctor availability for appointments, provide a list of a
 
 def get_available_doctors(day=None):
     try:
-        # URL of the PHP API 
-        # modify if may server na
+        # URL of the PHP API
         url = 'http://localhost/DocConnect/classes/get_available_doctors.php'
         
         params = {'day': day} if day else {}
@@ -42,6 +42,16 @@ def get_available_doctors(day=None):
         return f"Error accessing the API: {str(e)}"
 
 
+def extract_day(message):
+    days_of_week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    
+    for day in days_of_week:
+        if re.search(r'\b' + re.escape(day) + r'\b', message):
+            return day.capitalize() 
+    
+    return None
+
+
 if len(sys.argv) < 2:
     print("Please provide a medical question as an argument.")
     sys.exit(1)
@@ -49,17 +59,8 @@ if len(sys.argv) < 2:
 message = sys.argv[1].lower()
 complete_message = f"{system_instruction}\nUser: {message}"
 
-# Check if the user is asking about doctor availability
 if "doctor availability" in message or "available doctors" in message:
-    # Extract day from message if available (you can improve extraction logic)
-    day = None
-    if "monday" in message:
-        day = "Monday"
-    elif "tuesday" in message:
-        day = "Tuesday"
-    elif "saturday" in message:
-        day = "Saturday"
-    # Add more days as needed
+    day = extract_day(message)
 
     # Fetch available doctors
     doctor_info = get_available_doctors(day)

@@ -21,7 +21,7 @@ try {
         $stmt->execute([$day, $day]);
     } else {
         $query = "
-            SELECT a.last_name AS doctor_last_name, d.start_wt, d.end_wt, d.start_day, d.end_day
+            SELECT a.lastname AS doctor_last_name, d.start_wt, d.end_wt, d.start_day, d.end_day
             FROM doctor_info d
             JOIN account a ON d.account_id = a.account_id
         ";
