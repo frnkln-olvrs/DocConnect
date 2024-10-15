@@ -29,18 +29,18 @@ def get_available_doctors(day=None):
         if response.status_code == 200:
             doctors = response.json()
             if doctors:
-                doctor_list = "\n".join(
-                    [f"Dr. {doctor['doctor_last_name']} - Available from {doctor['start_wt']} to {doctor['end_wt']} on {doctor['start_day']} to {doctor['end_day']}" for doctor in doctors]
+                # Build the Bootstrap-styled HTML response
+                doctor_list_items = "\n".join(
+                    [f"<li class='list-group-item'>Dr. {doctor['doctor_last_name']} - Available from {doctor['start_wt']} to {doctor['end_wt']} on {doctor['start_day']} to {doctor['end_day']}</li>" for doctor in doctors]
                 )
-                return f"Available doctors:\n{doctor_list}"
+                return f"<div class='container mt-2'><h2 class='text-white'>Available doctors:</h2><ul class='list-group'>{doctor_list_items}</ul></div>"
             else:
-                return "No doctors are available at the specified time or day."
+                return "<div class='container mt-2'><h2 class='text-warning'>No doctors are available at the specified time or day.</h2></div>"
         else:
-            return f"Error fetching data: {response.status_code}"
+            return f"<div class='container mt-2'><h2 class='text-danger'>Error fetching data: {response.status_code}</h2></div>"
 
     except Exception as e:
-        return f"Error accessing the API: {str(e)}"
-
+        return f"<div class='container mt-2'><h2 class='text-danger'>Error accessing the API: {str(e)}</h2></div>"
 
 def extract_day(message):
     days_of_week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
@@ -50,7 +50,6 @@ def extract_day(message):
             return day.capitalize() 
     
     return None
-
 
 if len(sys.argv) < 2:
     print("Please provide a medical question as an argument.")
