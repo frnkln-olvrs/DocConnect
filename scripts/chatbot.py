@@ -31,16 +31,19 @@ def get_available_doctors(day=None):
             if doctors:
                 # Build the Bootstrap-styled HTML response
                 doctor_list_items = "\n".join(
-                    [f"<li class='list-group-item'>Dr. {doctor['doctor_last_name']} - Available from {doctor['start_wt']} to {doctor['end_wt']} on {doctor['start_day']} to {doctor['end_day']}</li>" for doctor in doctors]
+                    [f"<li class='list-group-item'><span class='fw-bold'>Dr. {doctor['doctor_last_name']}</span> - Available from {doctor['start_wt']} to {doctor['end_wt']} on {doctor['start_day']} to {doctor['end_day']}</li>" for doctor in doctors]
                 )
-                return f"<div class='container mt-2'><h2 class='text-white'>Available doctors:</h2><ul class='list-group'>{doctor_list_items}</ul></div>"
+                return f"<div class='container mt-2'><h2 class='text-white'>Available doctors:</h2><ul class='list-group'>{doctor_list_items}</ul>{get_schedule_link()}</div>"
             else:
-                return "<div class='container mt-2'><h2 class='text-warning'>No doctors are available at the specified time or day.</h2></div>"
+                return f"<div class='container mt-2'><h2 class='text-warning'>No doctors are available at the specified time or day.</h2>{get_schedule_link()}</div>"
         else:
-            return f"<div class='container mt-2'><h2 class='text-danger'>Error fetching data: {response.status_code}</h2></div>"
+            return f"<div class='container mt-2'><h2 class='text-danger'>Error fetching data: {response.status_code}</h2>{get_schedule_link()}</div>"
 
     except Exception as e:
-        return f"<div class='container mt-2'><h2 class='text-danger'>Error accessing the API: {str(e)}</h2></div>"
+        return f"<div class='container mt-2'><h2 class='text-danger'>Error accessing the API: {str(e)}</h2>{get_schedule_link()}</div>"
+
+def get_schedule_link():
+    return '<a class="btn btn-primary text-white mt-2" href="http://localhost/DocConnect/user/appointment">Schedule an appointment</a>'
 
 def extract_day(message):
     days_of_week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
