@@ -77,6 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
     return formattedMessage;
   }
 
+  function escapeHtml(unsafe) {
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
   function sendMessage() {
     const messageInput = document.getElementById('messageInput').value;
     const receiverId = window.currentChatAccountId;
@@ -91,8 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatMessages = document.getElementById('chatMessages');
     const messageElement = document.createElement('div');
     messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
+    
+    // Escape the message input to ensure it's treated as plain text
+    const escapedMessage = escapeHtml(messageInput);
+    
     messageElement.innerHTML = `
-      <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${messageInput}</div>
+      <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%;">${escapedMessage}</div>
       <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
     chatMessages.appendChild(messageElement);
 
@@ -114,22 +127,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Only update lastMessageId here based on server response
-      lastMessageId = data.message_id; // Assuming your server returns the ID of the sent message
+      lastMessageId = data.message_id;
 
-      // If a bot message is needed, handle it here
       if (receiverId === '9999' && data.reply) {
-        if (data.reply !== lastBotMessage) { // Check for duplicate bot message
-          const formattedReply = formatMessage(data.reply); // Format the bot's reply
+        if (data.reply !== lastBotMessage) {
+          const formattedReply = escapeHtml(data.reply);
           const botMessageElement = document.createElement('div');
           botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
-          
-          // Use innerHTML correctly
           botMessageElement.innerHTML = `
             <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">${formattedReply}</div>
             <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
 
           chatMessages.appendChild(botMessageElement);
-          lastBotMessage = data.reply; // Update last bot message for checking duplicates
+          lastBotMessage = data.reply;
         }
       }
 
@@ -258,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
       body: `chat_with=${accountId}`,
     });
 
-    // Remove notification
+    // Remove notification badge
     const notificationBadge = chatElement.querySelector('.badge');
     if (notificationBadge) {
       notificationBadge.remove();
@@ -309,5 +319,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => {
       console.error('Error fetching messages:', error);
     });
+
+    document.getElementById('searchChat').value = '';
+    loadChats();
   };
 });
