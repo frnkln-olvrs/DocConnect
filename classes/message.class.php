@@ -36,9 +36,22 @@ class Message
         return $data;
     }
 
-    function add_link()
+    function get_chats()
     {
-        $sql = "UPDATE appointment SET appointment_link = :appointment_link WHERE appointment_id = :appointment_id";
+        $sql = "SELECT DISTINCT a.account_id, a.firstname, a.lastname, a.account_image,
+            (SELECT COUNT(*) FROM messages m
+             WHERE m.receiver_id = :account_id 
+             AND m.sender_id = a.account_id 
+             AND m.is_read = 0) AS unread_count
+             FROM account a
+             LEFT JOIN messages m ON (a.account_id = m.sender_id OR a.account_id = m.receiver_id)
+             WHERE (a.user_role = :opposite_role)
+             AND a.account_id != :account_id";
+
+        // If a search term is provided, add it to the query
+        if (!empty($search)) {
+            $sql .= " AND (a.firstname LIKE :search OR a.lastname LIKE :search)";
+        }
 
         $query = $this->db->connect()->prepare($sql);
 
