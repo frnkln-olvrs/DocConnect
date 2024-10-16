@@ -4,11 +4,12 @@ require_once("../classes/database.php");
 class Message
 {
     public $message_id;
-    public $account_id;
-    public $appointment_date;
-    public $appointment_time;
-    public $appointment_link;
-    public $appointment_status;
+    public $sender_id;
+    public $receiver_id;
+    public $message;
+    public $status;
+    public $is_read;
+    public $is_created;
 
     protected $db;
 
@@ -17,18 +18,22 @@ class Message
         $this->db = new Database();
     }
 
-    function add_appointment()
+    function fetch_messages($account_id, $with_account_id)
     {
-        $sql = "INSERT INTO appointment (doctor_id, patient_id, appointment_date, appointment_time, appointment_status) VALUES (:doctor_id, :patient_id, :appointment_date, :appointment_time, :appointment_status);";
+        $sql = "SELECT * FROM messages
+          WHERE (sender_id = :account_id AND receiver_id = :with_account_id)
+          OR (sender_id = :with_account_id AND receiver_id = :account_id)
+          ORDER BY is_created";
 
         $query = $this->db->connect()->prepare($sql);
-       
+        $query->bindParam(':account_id', $account_id);
+        $query->bindParam(':with_account_id', $with_account_id);
 
+        $data = null;
         if ($query->execute()) {
-            return true;
-        } else {
-            return false;
+            $data = $query->fetchAll();
         }
+        return $data;
     }
 
     function add_link()
