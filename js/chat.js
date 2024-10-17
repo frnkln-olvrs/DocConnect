@@ -269,6 +269,24 @@ document.addEventListener('DOMContentLoaded', () => {
     textarea.style.height = textarea.scrollHeight + 'px';
   });  
 
+  const messageInput = document.getElementById('messageInput');
+
+  messageInput.addEventListener('input', (event) => {
+    messageInput.style.height = '40px';
+    messageInput.style.height = messageInput.scrollHeight + 'px';
+  });
+  
+  // Listen for the "Enter" key and send the message
+  messageInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      
+      sendMessage();
+    
+      messageInput.style.height = '40px'; 
+    }
+  });
+
   window.loadChat = function(accountId, fullName, profileImage, chatElement) {
     window.currentChatAccountId = accountId;
   
@@ -317,6 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
           'justify-content-end',
           'mb-3'
         );
+        // ADD PRE WRAP HERE KAPSGA NEEDED
         messageElement.innerHTML = `
           <div class="${isSender ? 'bg-secondary' : 'bg-primary'} text-light p-2 rounded-3" style="max-width: 52%;">
             ${msg.message}
