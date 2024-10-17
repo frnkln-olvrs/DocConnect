@@ -240,9 +240,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadChats();
 
-  function scrollChatToBottom() {
+  function scrollChatToBottom(forceScroll = false) {
     const chatMessages = document.getElementById('chatMessages');
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    const isNearBottom = chatMessages.scrollHeight - chatMessages.scrollTop <= chatMessages.clientHeight + 100;
+  
+    if (isNearBottom || forceScroll) {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
   }
 
   document.getElementById('sendMessage').addEventListener('click', sendMessage);
@@ -256,12 +261,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.loadChat = function(accountId, fullName, profileImage, chatElement) {
     window.currentChatAccountId = accountId;
-
+  
     const activeChats = document.querySelectorAll('.chatList.active');
     activeChats.forEach(chat => chat.classList.remove('active'));
-
+  
     chatElement.parentElement.classList.add('active');
-
+  
     fetch('../handlers/mark_messages_read.php', {
       method: 'POST',
       headers: {
@@ -269,13 +274,13 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       body: `chat_with=${accountId}`,
     });
-
+  
     // Remove notification badge
     const notificationBadge = chatElement.querySelector('.badge');
     if (notificationBadge) {
       notificationBadge.remove();
     }
-
+  
     fetch('../handlers/fetch_messages.php', {
       method: 'POST',
       headers: {
@@ -287,11 +292,11 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(messages => {
       const chatMessages = document.getElementById('chatMessages');
       chatMessages.innerHTML = '';
-
+  
       // Update chat header with user information
       document.getElementById('chatUser').textContent = fullName;
       document.querySelector('.head img').src = profileImage ? `../assets/images/${profileImage}` : '../assets/images/default_profile.png';
-
+  
       messages.forEach(msg => {
         const isSender = msg.sender_id === window.currentChatAccountId;
         const messageElement = document.createElement('div');
@@ -308,20 +313,21 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'me-3' : 'ms-3'}" height="30" width="30">`;
         chatMessages.appendChild(messageElement);
-
+  
         // Track last message ID
         lastMessageId = msg.id;
       });
-
-      scrollChatToBottom();
-
+  
+      // Scroll to the bottom after messages are loaded initially
+      scrollChatToBottom(true);
+  
       // Start polling for new messages
       setInterval(fetchNewMessages, 5000); // Check for new messages every 5 seconds
     })
     .catch(error => {
       console.error('Error fetching messages:', error);
     });
-
+  
     document.getElementById('searchChat').value = '';
     loadChats();
   };
