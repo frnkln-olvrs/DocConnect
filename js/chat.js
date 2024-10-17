@@ -254,10 +254,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('messageInput').addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-      event.preventDefault();
-      sendMessage();
+      if (event.shiftKey) {
+        return;
+      } else {
+        event.preventDefault();
+        sendMessage();
+      }
     }
-  });
+  });  
+
+  document.getElementById('messageInput').addEventListener('input', (event) => {
+    const textarea = event.target;
+    textarea.style.height = '40px';
+    textarea.style.height = textarea.scrollHeight + 'px';
+  });  
 
   window.loadChat = function(accountId, fullName, profileImage, chatElement) {
     window.currentChatAccountId = accountId;

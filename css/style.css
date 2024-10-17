@@ -315,8 +315,16 @@ section#chat #chat_text {
   background-color: rgb(230, 230, 230);
 }
 
-#chat input:focus {
+#chat input:focus,
+#chat textarea:focus {
   box-shadow: none !important;
+}
+
+#chat textarea {
+  resize: none;
+  max-height: 150px;
+  overflow-y: auto;
+  height: 40px;
 }
 
 /* ABOUT US SECTION */
