@@ -315,6 +315,10 @@ section#chat #chat_text {
   background-color: rgb(230, 230, 230);
 }
 
+#chat input:focus {
+  box-shadow: none !important;
+}
+
 /* ABOUT US SECTION */
 /* section.about-section {
   margin-top: 100px;
@@ -490,6 +494,8 @@ main.col-md-9 {
 /* ----------DoCOTROS_SETTINGS------------- */
 
 /* ----------CHATBOT_links------------- */
+
+
 #chat .bot_link {
   color: #21bf73 !important;
   text-decoration: underline !important;
