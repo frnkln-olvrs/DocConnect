@@ -1,17 +1,32 @@
-<html lang="en">
-<?php 
-  $title = 'Admin | Doctors';
-	include './includes/admin_head.php';
-  function getCurrentPage() {
-    return basename($_SERVER['PHP_SELF']);
-  }
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+  header('location: ../user/verification.php');
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 0) {
+  header('location: ../index.php');
+}
+
+require_once '../classes/account.class.php';
+$account = new Account();
 ?>
+
+<html lang="en">
+<?php
+$title = 'Admin | Doctors';
+include './includes/admin_head.php';
+function getCurrentPage()
+{
+  return basename($_SERVER['PHP_SELF']);
+}
+?>
+
 <body>
-  <?php 
-    require_once ('./includes/admin_header.php');
+  <?php
+  require_once('./includes/admin_header.php');
   ?>
-  <?php 
-    require_once ('./includes/admin_sidepanel.php');
+  <?php
+  require_once('./includes/admin_sidepanel.php');
   ?>
 
   <section id="doc-acc" class="page-container">
@@ -27,7 +42,7 @@
             <option value="1">Account ID</option>
           </select>
         </div>
-        
+
         <div class="input-group w-auto d-flex align-items-center border border-1 rounded-1 me-0 me-md-4">
           <i class='bx bx-search-alt text-green ps-2'></i>
           <input type="text" name="keyword" id="keyword" placeholder="Search" class="form-control border-0">
@@ -41,120 +56,16 @@
       </div>
     </div>
 
-    <?php
-      $appointment_array = array(
-        array(
-          'name' => 'Franklin Oliveros',
-          'acc-id' => '0000-001',
-          'email' => 'frnki@email.com',
-          'gender' => 'Male',
-          'phone-no' => '0992 345 6789',
-          'DoB' => '02/29/2004',
-          'reg-date' => '08/04/2024',
-          'department' => 'CCS',
-          'no.ofAll' => '4',
-          'no.ofApp' => '01',
-        ),
-        array(
-          'name' => 'Hilal Abdulajid',
-          'acc-id' => '0000-002',
-          'email' => 'hiraru@email.com',
-          'gender' => 'Male',
-          'phone-no' => '0999 876 5432',
-          'DoB' => '09/10/1978',
-          'reg-date' => '08/01/2024',
-          'department' => 'CCS',
-          'no.ofAll' => '4',
-          'no.ofApp' => '03',
-        ),
-        array(
-          'name' => 'Maria Garcia',
-          'acc-id' => '0000-003',
-          'email' => 'maria.garcia@email.com',
-          'gender' => 'Female',
-          'phone-no' => '0998 765 4321',
-          'DoB' => '07/15/1995',
-          'reg-date' => '08/02/2024',
-          'department' => 'ENG',
-          'no.ofAll' => '2',
-          'no.ofApp' => '02',
-        ),
-        array(
-          'name' => 'John Reyes',
-          'acc-id' => '0000-004',
-          'email' => 'john.reyes@email.com',
-          'gender' => 'Male',
-          'phone-no' => '0912 345 6789',
-          'DoB' => '12/20/1985',
-          'reg-date' => '08/03/2024',
-          'department' => 'MATH',
-          'no.ofAll' => '3',
-          'no.ofApp' => '05',
-        ),
-        array(
-          'name' => 'Lucy Lee',
-          'acc-id' => '0000-005',
-          'email' => 'lucy.lee@email.com',
-          'gender' => 'Female',
-          'phone-no' => '0919 876 5432',
-          'DoB' => '03/25/2000',
-          'reg-date' => '08/05/2024',
-          'department' => 'CCS',
-          'no.ofAll' => '1',
-          'no.ofApp' => '04',
-        ),
-        array(
-          'name' => 'Michael Tan',
-          'acc-id' => '0000-006',
-          'email' => 'michael.tan@email.com',
-          'gender' => 'Male',
-          'phone-no' => '0923 456 7890',
-          'DoB' => '06/05/1990',
-          'reg-date' => '08/06/2024',
-          'department' => 'ENG',
-          'no.ofAll' => '5',
-          'no.ofApp' => '02',
-        ),
-        array(
-          'name' => 'Aisha Rahman',
-          'acc-id' => '0000-007',
-          'email' => 'aisha.rahman@email.com',
-          'gender' => 'Female',
-          'phone-no' => '0934 567 8901',
-          'DoB' => '11/30/1992',
-          'reg-date' => '08/07/2024',
-          'department' => 'MATH',
-          'no.ofAll' => '2',
-          'no.ofApp' => '06',
-        ),
-        array(
-          'name' => 'Samuel Delgado',
-          'acc-id' => '0000-008',
-          'email' => 'samuel.delgado@email.com',
-          'gender' => 'Male',
-          'phone-no' => '0945 678 9012',
-          'DoB' => '01/12/1997',
-          'reg-date' => '08/08/2024',
-          'department' => 'PHYS',
-          'no.ofAll' => '4',
-          'no.ofApp' => '01',
-        ),
-      );
-    ?>
-      
     <table id="usersAcc_table" class="table table-striped" style="width:100%">
       <thead>
         <tr>
           <th scope="col" width="3%">#</th>
-          <th scope="col">Account Id</th>
           <th scope="col">Name</th>
           <th scope="col">Email Address</th>
+          <th scope="col">Campus</th>
           <th scope="col">Gender</th>
           <th scope="col">Phone No.</th>
           <th scope="col">Date of Birth</th>
-          <th scope="col">Registration Date</th>
-          <th scope="col">Department</th>
-          <th scope="col">No. of Allergies</th>
           <th scope="col">No. of Appointment</th>
           <th scope="col" width="7%">Action</th>
         </tr>
@@ -162,26 +73,24 @@
       <tbody>
         <?php
         $counter = 1;
-        foreach ($appointment_array as $item) {
+        $accountArray = $account->show_user();
+        foreach ($accountArray as $item) {
         ?>
           <tr>
             <td><?= $counter ?></td>
-            <td><?= $item['acc-id'] ?></td>
-            <td><?= $item['name'] ?></td>
+            <td><?= (isset($item['middlename'])) ? ucwords(strtolower($item['firstname'] . ' ' . $item['middlename'] . ' ' . $item['lastname'])) : ucwords(strtolower($item['firstname'] . ' ' . $item['lastname'])) ?> </td>
             <td><?= $item['email'] ?></td>
+            <td><?= $item['campus_name'] ?></td>
             <td><?= $item['gender'] ?></td>
-            <td><?= $item['phone-no'] ?></td>
-            <td><?= $item['DoB'] ?></td>
-            <td><?= $item['reg-date'] ?></td>
-            <td><?= $item['department'] ?></td>
-            <td><?= $item['no.ofAll'] ?></td>
-            <td><?= $item['no.ofApp'] ?></td>
+            <td><?= $item['contact'] ?></td>
+            <td><?= $item['birthdate'] ?></td>
+            <td><?= "No Data" //$item['no.ofApp'] ?></td>
 
             <td class="d-flex justify-content-around align-items-center text-center">
               <a href="./viewuserAcc" title="View Details">
                 <i class='bx bx-show'></i>
               </a>
-              <button class="delete-btn bg-none" data-subject-id="<?= $item['acc-id'] ?>">
+              <button class="delete-btn bg-none" data-subject-id="<?= $item['account_id'] ?>">
                 <i class='bx bx-user-x bg-none text-primary fs-5'></i>
               </button>
             </td>
@@ -218,4 +127,5 @@
   <script src="./js/modal-delete_comfirmation.js"></script>
 
 </body>
+
 </html>

@@ -1,73 +1,156 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap');
-/* Variable Declarations */
-:root {
-  --theme-signup: #21bf73;
-  --theme-signup-darken: #1c9f60;
-  --theme-signup-background: #2C3034;
-  --theme-login: #dc3545;
-  --theme-login-darken: #9e2733;
-  --theme-login-background: #f9f9f9;
-  --theme-dark: #212121;
-  --theme-light: #e3e3e3;
-  --font-default: "Oswald", sans-serif;
-  --success: #5cb85c;
-  --error: #d9534f;
-}
 
-.link-primary {
-  color: var(--theme-login) !important;
-}
-
-.link-primary:hover {
-  color: var(--theme-login-darken) !important;
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 .form-control:focus,
 .form-check-input:focus,
 .btn:focus {
-  box-shadow: none;
-  outline: none;
+  box-shadow: none !important;
+  outline: #dc3545 !important;
 }
 
-/* Body Styles */
+* {
+	box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  height: 100%;
-  overflow: hidden;
-  width: 100% !important;
-  box-sizing: border-box;
-  font-family: var(--font-default);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
 }
 
-/* Background Styles */
-
-.backRight {
-  right: 0;
-  border-image: fill 0 linear-gradient(to right, #21bf73a4, #21bf73a4);
+h1 {
+	font-weight: bold;
+	margin: 0;
 }
 
-.backLeft {
-  left: 0;
-  background: var(--theme-login);
+h2 {
+	text-align: center;
 }
 
-.backRight,
-.backLeft {
-  position: absolute;  
-  width: 50%;
-  height: 100%;
-  background: url(../assets/images/bg-1.png) no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
 }
 
-#back {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -999;
+span {
+	font-size: 12px;
+}
+
+a {
+	color: #dc3545;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+button {
+	border-radius: 10px;
+	border: 1px solid;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+.sign-in-container button {
+	border: 1px solid #dc3545;
+	background-color: #dc3545;
+}
+
+.sign-up-container button {
+	border: 1px solid #21bf73;
+	background-color: #21bf73;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.container {
+	background-color: #fff;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+}
+
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+.container.right-panel-active .sign-in-container {
+	transform: translateX(100%);
+}
+
+.sign-up-container {
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+	animation: show 0.6s;
+}
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
 }
 
 .canvas-back {
@@ -77,258 +160,105 @@ body {
   width: 100%;
   height: 100%;
   z-index: 10;
+  background: transparent;
 }
 
-#slideBox {
-  width: 50%;
-  max-height: 100%;
-  height: 100%;
-  overflow: hidden;
-  margin-left: 50%;
-  position: absolute;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
 }
 
-.topLayer {
-  width: 200%;
-  height: 100%;
+.container.right-panel-active .overlay-container {
+	transform: translateX(-100%);
+}
+
+.overlay { 
+  background: linear-gradient(90deg, rgba(33, 191, 115, 0.649) 49.75%, rgba(220,53,69,0.649) 50.75%), url(../assets/images/bg-2.png);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #FFFFFF;
   position: relative;
-  left: 0;
   left: -100%;
-}
-
-/* Label and Input Styles */
-label {
-  font-size: 0.8em;
-  text-transform: uppercase;
-}
-
-input {
-  background-color: transparent;
-  border: 0;
-  outline: 0;
-  font-size: 1em;
-  padding: 8px 1px;
-  margin-top: 0.1em;
-}
-
-/* Left Panel Styles */
-.left {
-  width: 50%;
   height: 100%;
-  overflow: scroll;
-  background: var(--theme-signup-background);
-  left: 0;
-  position: absolute;
-  overflow: hidden;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+  z-index: 2;
 }
 
-.left label {
-  color: var(--theme-light);
+.container.right-panel-active .overlay {
+	transform: translateX(50%);
 }
 
-.left input {
-  border-bottom: 1px solid var(--theme-light);
-  color: var(--theme-light);
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
 }
 
-.left input:focus, .left input:active {
-  border-color: var(--theme-signup);
-  color: var(--theme-signup);
+.overlay-left {
+	transform: translateX(-20%);
 }
 
-.left input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px var(--theme-signup-background) inset;
-  -webkit-text-fill-color: var(--theme-light);
+.container.right-panel-active .overlay-left {
+	transform: translateX(0);
 }
 
-.left a {
-  color: var(--theme-signup);
+.overlay-right {
+	right: 0;
+	transform: translateX(0);
 }
 
-/* Right Panel Styles */
-.right {
-  width: 50%;
-  height: 100%;
-  overflow: scroll;
-  background: var(--theme-login-background);
-  right: 0;
-  position: absolute;
+.container.right-panel-active .overlay-right {
+	transform: translateX(20%);
 }
 
-.right label {
-  color: var(--theme-dark);
+@media (max-width:770px) {
+	form {
+		padding: 0 20px;
+	}
 }
 
-.right input {
-  border-bottom: 1px solid var(--theme-dark);
-}
+@media (max-width:450px) {
+	form {
+		padding: 0 15px;
+	}
 
-.right input:focus, .right input:active {
-  border-color: var(--theme-login);
-}
+	.sign-in-container {
+		left: 0;
+		width: 100%;
+		z-index: 999;
+	}
+	.container.right-panel-active .sign-up-container {
+		transform: translate(0%);
+	}
+	
+	.sign-up-container {
+		width: 100%;
+	}
 
-.right input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px var(--theme-login-background) inset;
-  -webkit-text-fill-color: var(--theme-dark);
-}
+	.container.right-panel-active .overlay {
+		display: none;
+	}
 
-/* Content Styles */
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100%;
-  width: 80%;
-  margin: 0 auto;
-  position: relative;
-}
-
-.content h2 {
-  font-weight: 300;
-  font-size: 2.6em;
-  margin: 0.2em 0 0.1em;
-}
-
-.left .content h2 {
-  color: var(--theme-signup);
-}
-
-.right .content h2 {
-  color: var(--theme-login);
-}
-
-/* Form Element Styles */
-.form-element {
-  margin: 1.6em 0;
-}
-
-.form-element.form-submit {
-  margin: 1.6em 0 0;
-}
-
-.form-stack {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Checkbox Styles */
-.checkbox {
-  outline: none;
-  background-color: var(--theme-light);
-  border: 1px solid var(--theme-light);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-  padding: 12px;
-  border-radius: 4px;
-  display: inline-block;
-  position: relative;
-}
-
-.checkbox:focus, .checkbox:checked:focus,
-.checkbox:active, .checkbox:checked:active {
-  border-color: var(--theme-signup);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
-}
-
-.checkbox:checked {
-  outline: none;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
-}
-
-.checkbox:checked:after {
-  outline: none;
-  content: '\2713';
-  color: var(--theme-signup);
-  font-size: 1.4em;
-  font-weight: 900;
-  position: absolute;
-  top: -4px;
-  left: 4px;
-}
-
-.form-checkbox {
-  display: flex;
-  align-items: center;
-}
-
-.form-checkbox label {
-  margin: 0 6px 0;
-  font-size: 0.72em;
-}
-
-/* Button Styles */
-button {
-  padding: 0.8em 1.2em;
-  margin: 0 10px 0 0;
-  width: auto;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 1em;
-  color: #fff;
-  line-height: 1em;
-  letter-spacing: 0.6px;
-  border-radius: 3px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
-  border: 0;
-  outline: 0;
-  transition: all 0.25s;
-}
-
-button.signup {
-  background: var(--theme-signup);
-}
-
-button.login {
-  background: var(--theme-login);
-}
-
-button.off {
-  background: none;
-  box-shadow: none;
-  margin: 0;
-}
-
-button.off.signup {
-  color: var(--theme-signup);
-}
-
-button.off.login {
-  color: var(--theme-login);
-}
-
-button:focus, button:active, button:hover {
-  box-shadow: 0 4px 7px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
-}
-
-button.signup:focus, button.signup:active, button.signup:hover {
-  background: var(--theme-signup-darken);
-}
-
-button.login:focus, button.login:active, button.login:hover {
-  background: var(--theme-login-darken);
-}
-
-button.off:focus, button.off:active, button.off:hover {
-  box-shadow: none;
-}
-
-button.off.signup {
-  color: var(--theme-signup);
-  background: var(--theme-dark);
-}
-
-button.off.login {
-  color: var(--theme-login-darken);
-  background: var(--theme-light);
-}
-
-/* Media Query for smaller screens */
-@media only screen and (max-width: 768px) {
-  #slideBox {
-    width: 80%;
-    margin-left: 20%;
-  }
-  .signup-info, .login-info {
-    display: none;
-  }
+	.overlay-container {
+		z-index: -999;
+	}
 }
