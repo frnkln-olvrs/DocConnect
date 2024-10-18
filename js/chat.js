@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
       messages.forEach(msg => {
         const isSender = msg.sender_id === window.currentChatAccountId;
     
-        if (isSender) {
+        if (!isSender) {
           return;
         }
     
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     
         const messageDiv = document.createElement('div');
-        messageDiv.classList.add(isSender ? 'bg-secondary' : 'bg-primary', 'text-dark', 'p-2', 'rounded-3');
+        messageDiv.classList.add(isSender ? 'bg-secondary' : 'bg-primary', 'text-light', 'p-2', 'rounded-3');
         messageDiv.style.maxWidth = '52%';
         messageDiv.style.whiteSpace = 'pre-wrap';
         messageDiv.style.wordBreak = 'break-word';
