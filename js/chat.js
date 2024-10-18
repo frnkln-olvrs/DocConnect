@@ -342,7 +342,8 @@ document.addEventListener('DOMContentLoaded', () => {
         messageDiv.style.whiteSpace = 'pre-wrap';
         messageDiv.style.wordBreak = 'break-word';
         
-        messageDiv.textContent = msg.message.trim();
+        // fetched message as plaon text
+        messageDiv.textContent = msg.message;
         
         const img = document.createElement('img');
         img.src = '../assets/images/default_profile.png';
