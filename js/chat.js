@@ -168,13 +168,18 @@ document.addEventListener('DOMContentLoaded', () => {
   
       messages.forEach(msg => {
         const isSender = msg.sender_id === window.currentChatAccountId;
+    
+        if (isSender) {
+          return;
+        }
+    
         const messageElement = document.createElement('div');
         messageElement.classList.add(
           'd-flex',           
           isSender ? 'flex-row-reverse' : 'flex-row',
           'align-items-end', 
           'justify-content-end', 
-          'mb-3'                             
+          'mb-3'
         );
     
         const messageDiv = document.createElement('div');
@@ -198,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.appendChild(messageElement);
     
         lastMessageId = msg.id;
-    });    
+      });    
   
       scrollChatToBottom();
     })
