@@ -152,6 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }  
 
+  function removeAsterisks(message) {
+    return message.replace(/\*\*(.*?)\*\*/g, '$1');
+  }
+
   function fetchNewMessages() {
     const receiverId = window.currentChatAccountId;
   
@@ -169,6 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
       messages.forEach(msg => {
         const isSender = msg.sender_id === window.currentChatAccountId;
     
+        let messageContent = msg.message;
+        if (receiverId === '9999') {
+          messageContent = removeAsterisks(messageContent);
+        }
+
         if (!isSender) {
           return;
         }
