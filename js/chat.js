@@ -335,12 +335,27 @@ document.addEventListener('DOMContentLoaded', () => {
           'justify-content-end',
           'mb-3'
         );
-        // ADD PRE WRAP HERE KAPSGA NEEDED
-        messageElement.innerHTML = `
-          <div class="${isSender ? 'bg-secondary' : 'bg-primary'} text-light p-2 rounded-3" style="max-width: 52%;">
-            ${msg.message}
-          </div>
-          <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ${isSender ? 'me-3' : 'ms-3'}" height="30" width="30">`;
+        // ADD PRE-WRAP HERE KAPSGA NEEDED
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add(isSender ? 'bg-secondary' : 'bg-primary', 'text-light', 'p-2', 'rounded-3');
+        messageDiv.style.maxWidth = '52%';
+        messageDiv.style.whiteSpace = 'pre-wrap';
+        messageDiv.style.wordBreak = 'break-word';
+        
+        messageDiv.textContent = msg.message.trim();
+        
+        const img = document.createElement('img');
+        img.src = '../assets/images/default_profile.png';
+        img.alt = 'Profile';
+        img.classList.add('rounded-circle', isSender ? 'me-3' : 'ms-3');
+        img.height = 30;
+        img.width = 30;
+        
+        messageElement.appendChild(messageDiv);
+        messageElement.appendChild(img);
+        
+        chatMessages.appendChild(messageElement);
+        
         chatMessages.appendChild(messageElement);
   
         // Track last message ID
