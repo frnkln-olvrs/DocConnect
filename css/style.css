@@ -513,6 +513,12 @@ main.col-md-9 {
   color: white !important;
 }
 
+@media (max-width:992px) {
+  ul.header.nav .nav-link::after {
+    top: 0;
+  }
+}
+
 @media (max-width:450px) {
 	section.main .img {
 		display: none;
