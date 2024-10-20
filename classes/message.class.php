@@ -88,7 +88,19 @@ class Message
         }
     }
 
-    function send_message.php(){
-        
+    function send_message(){
+        $sql = "INSERT INTO messages (sender_id, receiver_id, message, status, is_read) VALUES (?, ?, ?, 'sent', 0)";
+
+        $query = $this->db->connect()->prepare($sql);
+        // $query->bindParam(':sender_id', $this->sen);
+        // $query->bindParam(':receiver_id', $account_id);
+        // $query->bindParam(':receiver_id', $account_id);
+        // $query->bindParam(':receiver_id', $account_id);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
