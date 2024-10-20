@@ -36,8 +36,12 @@ class Message
         return $data;
     }
 
-    function get_chats()
+    function get_chats($account_id, $opposite_role, $search)
     {
+        if (isset($search) && $search != '') {
+            $search = trim(htmlentities($search));
+        }
+
         $sql = "SELECT DISTINCT a.account_id, a.firstname, a.lastname, a.account_image,
             (SELECT COUNT(*) FROM messages m
              WHERE m.receiver_id = :account_id 
@@ -54,7 +58,28 @@ class Message
         }
 
         $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':account_id', $account_id);
+        $query->bindParam(':opposite_role', $opposite_role);
 
+        if (!empty($search)) {
+            $query->bindParam(':search', '%' . $search . '%');
+        }
+
+
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function mark_messages_read($sender_id, $receiver_id)
+    {
+        $sql = "UPDATE messages SET is_read = 1 WHERE receiver_id = :account_id AND sender_id = :chat_with AND is_read = 0";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':sender_id', $sender_id);
+        $query->bindParam(':receiver_id', $receiver_id);
 
         if ($query->execute()) {
             return true;

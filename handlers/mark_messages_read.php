@@ -6,7 +6,9 @@ ini_set('error_log', '../errors.log');
 error_reporting(E_ALL);
 
 session_start();
-require_once('../classes/database.php');
+
+require_once('../classes/message.class.php');
+$message = new Message();
 
 if (!isset($_SESSION['account_id'])) {
   echo json_encode(['error' => 'User not authenticated']);
@@ -21,18 +23,12 @@ if (!$chatWith) {
   exit;
 }
 
-$db = new Database();
-$pdo = $db->connect();
-
-if (!$pdo) {
-  echo json_encode(['error' => 'Database connection failed']);
-  exit;
-}
 
 try {
-  $query = "UPDATE messages SET is_read = 1 WHERE receiver_id = :account_id AND sender_id = :chat_with AND is_read = 0";
-  $stmt = $pdo->prepare($query);
-  $stmt->execute(['account_id' => $accountId, 'chat_with' => $chatWith]);
+  
+  // $query = "UPDATE messages SET is_read = 1 WHERE receiver_id = :account_id AND sender_id = :chat_with AND is_read = 0";
+  // $stmt = $pdo->prepare($query);
+  // $stmt->execute(['account_id' => $accountId, 'chat_with' => $chatWith]);
 
   echo json_encode(['success' => true]);
 } catch (Exception $e) {
