@@ -73,18 +73,22 @@ class Message
         return $data;
     }
 
-    function mark_messages_read($sender_id, $receiver_id)
+    function mark_messages_read($chat_with_id, $account_id)
     {
-        $sql = "UPDATE messages SET is_read = 1 WHERE receiver_id = :account_id AND sender_id = :chat_with AND is_read = 0";
+        $sql = "UPDATE messages SET is_read = 1 WHERE receiver_id = :receiver_id AND sender_id = :sender_id AND is_read = 0";
 
         $query = $this->db->connect()->prepare($sql);
-        $query->bindParam(':sender_id', $sender_id);
-        $query->bindParam(':receiver_id', $receiver_id);
+        $query->bindParam(':sender_id', $chat_with_id);
+        $query->bindParam(':receiver_id', $account_id);
 
         if ($query->execute()) {
             return true;
         } else {
             return false;
         }
+    }
+
+    function send_message.php(){
+        
     }
 }

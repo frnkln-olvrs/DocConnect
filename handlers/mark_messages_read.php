@@ -15,24 +15,23 @@ if (!isset($_SESSION['account_id'])) {
   exit;
 }
 
-$accountId = $_SESSION['account_id'];
-$chatWith = $_POST['chat_with'] ?? null;
+$account_id = $_SESSION['account_id'];
+$chat_with_id = $_POST['chat_with'] ?? null;
 
 if (!$chatWith) {
   echo json_encode(['error' => 'Invalid input']);
   exit;
 }
 
-
 try {
-  
+
   // $query = "UPDATE messages SET is_read = 1 WHERE receiver_id = :account_id AND sender_id = :chat_with AND is_read = 0";
   // $stmt = $pdo->prepare($query);
   // $stmt->execute(['account_id' => $accountId, 'chat_with' => $chatWith]);
-
-  echo json_encode(['success' => true]);
+  if ($message->mark_messages_read($chat_with_id, $account_id)) {
+    echo json_encode(['success' => true]);
+  }
 } catch (Exception $e) {
   error_log($e->getMessage());
   echo json_encode(['error' => 'Failed to mark messages as read']);
 }
-?>

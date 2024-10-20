@@ -824,3 +824,89 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\DocConnect\handlers\get_chats.php on line 11
+[20-Oct-2024 08:55:06 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:07 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:07 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:08 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:08 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:08 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:09 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:09 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:09 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:10 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:10 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'd')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'do')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'doc')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:12 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'doc')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:12 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'doc f')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:12 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'doc fe')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:12 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'doc fei')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:12 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'doc fe')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:13 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'doc f')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:13 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'doc')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:13 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'doc')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:13 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'do')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:13 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\DocConnect\classes\message.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\DocConnect\handlers\get_chats.php(51): Message->get_chats('31', '1', 'd')
+#1 {main}
+  thrown in C:\xampp\htdocs\DocConnect\classes\message.class.php on line 65
+[20-Oct-2024 08:55:20 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:20 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:20 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:20 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:21 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:22 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:22 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:22 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:23 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:23 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
+[20-Oct-2024 08:55:23 Europe/Berlin] PHP Warning:  Undefined variable $chatWith in C:\xampp\htdocs\DocConnect\handlers\mark_messages_read.php on line 21
