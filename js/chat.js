@@ -314,156 +314,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  window.loadChat = function(accountId, fullName, profileImage, chatElement) {
-    window.currentChatAccountId = accountId;
+    const chatSidePanel = document.getElementById('chat_sidepanel');
+    const chatBox = document.getElementById('chat_box');
+    const chatList = document.getElementById('chatList');
   
-    const activeChats = document.querySelectorAll('.chatList.active');
-    activeChats.forEach(chat => chat.classList.remove('active'));
+    // Function to load chat box when a user selects a chat
+    window.loadChat = function(accountId, fullName, profileImage, chatElement) {
+      document.body.classList.add('show-chat-box'); // Add class to switch views on mobile
+      
+      // Fetch chat and populate the chat box (assuming existing logic handles this)
+      window.currentChatAccountId = accountId;
+      // Add your logic here to populate the chat box with selected chat's messages...
+      
+      const chatUser = document.getElementById('chatUser');
+      chatUser.textContent = fullName; // Set chat header
   
-    chatElement.parentElement.classList.add('active');
-  
-    fetch('../handlers/mark_messages_read.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `chat_with=${accountId}`,
-    });
-  
-    // Remove notification badge
-    const notificationBadge = chatElement.querySelector('.badge');
-    if (notificationBadge) {
-      notificationBadge.remove();
-    }
-  
-    fetch('../handlers/fetch_messages.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `chat_with=${accountId}`,
-    })
-    .then(response => response.json())
-    .then(messages => {
       const chatMessages = document.getElementById('chatMessages');
-      chatMessages.innerHTML = '';
+      chatMessages.innerHTML = ''; // Clear existing messages
   
-      // Update chat header with user information
-      document.getElementById('chatUser').textContent = fullName;
-      document.querySelector('.head img').src = profileImage ? `../assets/images/${profileImage}` : '../assets/images/default_profile.png';
+      // Fetch messages and update chat box (as per your existing logic)
+      fetch('../handlers/fetch_messages.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `chat_with=${accountId}`,
+      })
+      .then(response => response.json())
+      .then(messages => {
+        // Populate messages (add your logic here)
+        messages.forEach(msg => {
+          const isSender = msg.sender_id === window.currentChatAccountId;
+          const messageElement = document.createElement('div');
+          messageElement.classList.add(
+            'd-flex', 
+            isSender ? 'flex-row-reverse' : 'flex-row',
+            'align-items-end', 
+            'mb-3'
+          );
+          const messageDiv = document.createElement('div');
+          messageDiv.classList.add(isSender ? 'bg-secondary' : 'bg-primary', 'text-light', 'p-2', 'rounded-3');
+          messageDiv.style.maxWidth = '52%';
+          messageDiv.style.whiteSpace = 'pre-wrap';
+          messageDiv.textContent = msg.message;
   
-      messages.forEach(msg => {
-        const isSender = msg.sender_id === window.currentChatAccountId;
-        const messageElement = document.createElement('div');
-        messageElement.classList.add(
-          'd-flex', 
-          isSender ? 'flex-row-reverse' : 'flex-row',
-          'align-items-end', 
-          'justify-content-end',
-          'mb-3'
-        );
-        // ADD PRE-WRAP HERE KAPSGA NEEDED
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add(isSender ? 'bg-secondary' : 'bg-primary', 'text-light', 'p-2', 'rounded-3');
-        messageDiv.style.maxWidth = '52%';
-        messageDiv.style.whiteSpace = 'pre-wrap';
-        messageDiv.style.wordBreak = 'break-word';
-        
-        // fetched message as plaon text
-        messageDiv.textContent = msg.message;
-        
-        const img = document.createElement('img');
-        img.src = '../assets/images/default_profile.png';
-        img.alt = 'Profile';
-        img.classList.add('rounded-circle', isSender ? 'me-3' : 'ms-3');
-        img.height = 30;
-        img.width = 30;
-        
-        messageElement.appendChild(messageDiv);
-        messageElement.appendChild(img);
-        
-        chatMessages.appendChild(messageElement);
-        
-        chatMessages.appendChild(messageElement);
+          const img = document.createElement('img');
+          img.src = '../assets/images/default_profile.png';
+          img.alt = 'Profile';
+          img.classList.add('rounded-circle', isSender ? 'me-3' : 'ms-3');
+          img.height = 30;
+          img.width = 30;
   
-        // Track last message ID
-        lastMessageId = msg.id;
+          messageElement.appendChild(messageDiv);
+          messageElement.appendChild(img);
+          chatMessages.appendChild(messageElement);
+        });
       });
+    };
   
-      // Scroll to the bottom after messages are loaded initially
-      scrollChatToBottom(true);
-  
-      // Start polling for new messages
-      setInterval(fetchNewMessages, 5000); // Check for new messages every 5 seconds
-    })
-    .catch(error => {
-      console.error('Error fetching messages:', error);
-    });
-  
-    document.getElementById('searchChat').value = '';
-    loadChats();
-  };
-
-  const chatSidePanel = document.getElementById('chat_sidepanel');
-  const chatBox = document.getElementById('chat_box');
-  const chatList = document.getElementById('chatList');
-
-  // Function to load chat box when a user selects a chat
-  window.loadChat = function(accountId, fullName, profileImage, chatElement) {
-    document.body.classList.add('show-chat-box'); // Add class to switch views on mobile
-    
-    // Fetch chat and populate the chat box (assuming existing logic handles this)
-    window.currentChatAccountId = accountId;
-    // Add your logic here to populate the chat box with selected chat's messages...
-    
-    const chatUser = document.getElementById('chatUser');
-    chatUser.textContent = fullName; // Set chat header
-
-    const chatMessages = document.getElementById('chatMessages');
-    chatMessages.innerHTML = ''; // Clear existing messages
-
-    // Fetch messages and update chat box (as per your existing logic)
-    fetch('../handlers/fetch_messages.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `chat_with=${accountId}`,
-    })
-    .then(response => response.json())
-    .then(messages => {
-      // Populate messages (add your logic here)
-      messages.forEach(msg => {
-        const isSender = msg.sender_id === window.currentChatAccountId;
-        const messageElement = document.createElement('div');
-        messageElement.classList.add(
-          'd-flex', 
-          isSender ? 'flex-row-reverse' : 'flex-row',
-          'align-items-end', 
-          'mb-3'
-        );
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add(isSender ? 'bg-secondary' : 'bg-primary', 'text-light', 'p-2', 'rounded-3');
-        messageDiv.style.maxWidth = '52%';
-        messageDiv.style.whiteSpace = 'pre-wrap';
-        messageDiv.textContent = msg.message;
-
-        const img = document.createElement('img');
-        img.src = '../assets/images/default_profile.png';
-        img.alt = 'Profile';
-        img.classList.add('rounded-circle', isSender ? 'me-3' : 'ms-3');
-        img.height = 30;
-        img.width = 30;
-
-        messageElement.appendChild(messageDiv);
-        messageElement.appendChild(img);
-        chatMessages.appendChild(messageElement);
-      });
-    });
-  };
-
-  // On mobile, when user clicks back button, return to chat list
-  document.getElementById('backToChatList').addEventListener('click', () => {
-    document.body.classList.remove('show-chat-box'); // Show side panel again
-  });
+    // On mobile, when user clicks back button, return to chat list
+    document.getElementById('backToChatList').addEventListener('click', () => {
+      document.body.classList.remove('show-chat-box'); // Show side panel again
+    });  
 });

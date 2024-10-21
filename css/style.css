@@ -585,35 +585,34 @@ main.col-md-9 {
 
 /* Base styling for desktop view */
 #chat_sidepanel {
-  min-width: 25%;
-  max-width: 25%;
-  display: block;
+  min-width: 25% !important;
+  display: block !important;
 }
 
 #chat_box {
-  display: block;
-  width: 75%;
+  display: block !important;
+  width: 75% !important;
 }
 
 /* Styling for mobile view */
 @media (max-width: 768px) {
   #chat_sidepanel {
-    width: 100%;
-    display: block;
+    width: 100% !important;
+    display: block !important;
   }
 
   #chat_box {
-    display: none;
-    width: 100%;
+    display: none !important;
+    width: 100% !important;
   }
 }
 
 /* When chat is selected, show chat box and hide side panel */
 .show-chat-box #chat_sidepanel {
-  display: none;
+  display: none !important;
 }
 
 .show-chat-box #chat_box {
-  display: block;
-  width: 100%;
+  display: block !important;
+  width: 100% !important;
 }
