@@ -582,3 +582,38 @@ main.col-md-9 {
   }
   /* ----------DASHBOARD------------- */
 }
+
+/* Base styling for desktop view */
+#chat_sidepanel {
+  min-width: 25%;
+  max-width: 25%;
+  display: block;
+}
+
+#chat_box {
+  display: block;
+  width: 75%;
+}
+
+/* Styling for mobile view */
+@media (max-width: 768px) {
+  #chat_sidepanel {
+    width: 100%;
+    display: block;
+  }
+
+  #chat_box {
+    display: none;
+    width: 100%;
+  }
+}
+
+/* When chat is selected, show chat box and hide side panel */
+.show-chat-box #chat_sidepanel {
+  display: none;
+}
+
+.show-chat-box #chat_box {
+  display: block;
+  width: 100%;
+}
