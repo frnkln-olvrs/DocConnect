@@ -334,6 +334,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatMessages = document.getElementById('chatMessages');
     chatMessages.innerHTML = '';
   
+    fetch('../handlers/mark_messages_read.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `chat_with=${accountId}`,
+    });
+
+    const notificationBadge = chatElement.querySelector('.badge');
+    if (notificationBadge) {
+      notificationBadge.remove();
+    }
+  
     fetch('../handlers/fetch_messages.php', {
       method: 'POST',
       headers: {
@@ -343,6 +356,12 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(response => response.json())
     .then(messages => {
+      const chatMessages = document.getElementById('chatMessages');
+      chatMessages.innerHTML = '';
+
+      document.getElementById('chatUser').textContent = fullName;
+      document.querySelector('.head img').src = profileImage ? `../assets/images/${profileImage}` : '../assets/images/default_profile.png';
+
       messages.forEach(msg => {
         const isSender = msg.sender_id === window.currentChatAccountId;
         const messageElement = document.createElement('div');
@@ -350,13 +369,14 @@ document.addEventListener('DOMContentLoaded', () => {
           'd-flex', 
           isSender ? 'flex-row-reverse' : 'flex-row',
           'align-items-end', 
-
+          'justify-content-end', 
           'mb-3'
         );
         const messageDiv = document.createElement('div');
         messageDiv.classList.add(isSender ? 'bg-secondary' : 'bg-primary', 'text-light', 'p-2', 'rounded-3');
         messageDiv.style.maxWidth = '52%';
         messageDiv.style.whiteSpace = 'pre-wrap';
+        messageDiv.style.wordBreak = 'break-word';
         messageDiv.textContent = msg.message;
   
         const img = document.createElement('img');

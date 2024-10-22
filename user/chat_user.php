@@ -42,11 +42,13 @@ $pdo = $db->connect();
 
       <!-- Chat Box -->
       <div id="chat_box" class="flex-grow-1 d-flex flex-column">
-        <button id="backToChatList" class="btn btn-light d-block d-md-none mb-3">Back to Chats</button>
         <!-- Chat Header -->
         <div class="head border-bottom bg-light py-3 px-3">
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
+              <button id="backToChatList" class="btn p-0 pe-2 btn-light d-flex d-md-none">
+                <i class='bx bx-left-arrow-alt fs-3'></i>
+              </button>
               <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
               <span id="chatUser">Select a user to start chatting</span>
             </div>
