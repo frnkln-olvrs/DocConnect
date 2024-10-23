@@ -221,45 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }  
 
-  // function checkForUnreadMessages() {
-  //   const currentChatId = window.currentChatAccountId;
-
-  //   fetch(`../handlers/get_unread_count.php?chat_id=${currentChatId}`)
-  //     .then(response => response.text()) // Use text instead of json for logging
-  //     .then(data => {
-  //       console.log('Raw response data:', data); // Log the raw response
-  //       const jsonData = JSON.parse(data);
-  //       const chatList = document.getElementById('chatList');
-  //       const chatItems = chatList.querySelectorAll('.chatList');
-
-  //       chatItems.forEach(chatItem => {
-  //           const chatId = chatItem.querySelector('a').getAttribute('onclick').match(/\d+/)[0];
-  //           const badge = chatItem.querySelector('.badge');
-
-  //         if (chatId == currentChatId) {
-  //           if (jsonData[chatId] > 0) {
-  //             if (!badge) {
-  //               const notification = document.createElement('span');
-  //               notification.classList.add('badge', 'bg-danger', 'ms-auto');
-  //               notification.textContent = jsonData[chatId];
-  //               chatItem.querySelector('a').appendChild(notification);
-  //             } else {
-  //               badge.textContent = jsonData[chatId];
-  //             }
-  //           } else if (badge) {
-  //             badge.remove(); // Remove badge if no unread messages
-  //           }
-  //         }
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.error('Error checking for unread messages:', error);
-  //     });
-  // }
-
-  // // Poll for unread messages every 5 seconds
-  // setInterval(checkForUnreadMessages, 5000);
-
   document.getElementById('searchChat').addEventListener('input', (event) => {
     const searchTerm = event.target.value;
     loadChats(searchTerm);

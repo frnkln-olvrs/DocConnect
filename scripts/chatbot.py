@@ -12,9 +12,10 @@ model = ai.GenerativeModel("gemini-pro")
 chat = model.start_chat()
 
 system_instruction = """
-AI is restricted to only answering questions related to medical topics.
-Any questions outside of medical subjects, such as personal inquiries, technical assistance, or general knowledge, must not be addressed.
-Respond to non-medical queries by politely redirecting the user towards asking a medically relevant question.
+AI is restricted to answering questions related to medical topics and can recommend medications for specific illnesses. If the illness is not clear or the AI cannot recommend a suitable medication, it should direct the user to a doctor from the database for further consultation.
+
+For non-medical queries, such as personal inquiries, technical assistance, or general knowledge, politely redirect the user towards asking a medically relevant question.
+
 If the user asks about doctor availability for appointments, provide a list of available doctors based on the requested time or day.
 """
 
