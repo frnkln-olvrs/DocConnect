@@ -177,6 +177,24 @@ ul.header.nav .nav-link::after {
 	transition: all .3s;
 }
 
+ul.header.nav .nav-link.active {
+  background-color: transparent;
+}
+
+ul.header.nav .nav-link.active::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  content: '.';
+  color: transparent;
+  background: var(--primary);
+  height: 1px;
+  transition: all .3s;
+}
+
 ul.header.nav .nav-link:not(.active, .bg-green):hover::after {
 	width: 100%;
 }
@@ -546,34 +564,18 @@ main.col-md-9 {
 
 
 @media (max-width:992px) {
-  
   ul.header.nav .nav-link::after {
     top: 0;
   }
+  
   ul.header.nav .nav-link .text {
     background-color: var(--white);
     z-index: 100;
     padding: 0 1.5rem;
   }
 
-  ul.header.nav .nav-link.active {
-    background-color: rgba(0, 0, 0, 0) !important;
-  }
-
   ul.header.nav .nav-link.active::after {
-    position: absolute;
     top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 100%;
-    content: '.';
-    color: transparent;
-    background: var(--primary);
-    height: 1px;
-    transition: all .3s;
-  }
 }
 
 @media (max-width:450px) {
