@@ -567,15 +567,12 @@ main.col-md-9 {
   ul.header.nav .nav-link::after {
     top: 0;
   }
-  
+
   ul.header.nav .nav-link .text {
     background-color: var(--white);
     z-index: 100;
     padding: 0 1.5rem;
   }
-
-  ul.header.nav .nav-link.active::after {
-    top: 0;
 }
 
 @media (max-width:450px) {
