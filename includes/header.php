@@ -1,4 +1,4 @@
-<header class="navbar fixed-top p-3 navbar-expand-lg navbar-dark bg-white shadow-sm">
+<header class="navbar fixed-top p-2 p-lg-3 navbar-expand-lg navbar-dark bg-white shadow-sm">
 	<div class="container-fluid">
 
 		<!-- Display profile dropdown for mobile if the user is logged in -->
@@ -25,12 +25,12 @@
 		</button>
 
 		<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-			<ul class="navbar-nav mb-2 mb-lg-0 header nav nav-pills">
-				<li class="nav-item"><a href="./about_us" class="nav-link text-primary d-flex justify-content-center">About Us</a></li>
-				<li class="nav-item"><a href="./services" class="nav-link text-primary d-flex justify-content-center">Services</a></li>
-				<li class="nav-item"><a href="./doctors" class="nav-link text-primary d-flex justify-content-center">Our Doctors</a></li>
-				<li class="nav-item"><a href="./appointment" class="nav-link text-primary d-flex justify-content-center">Appointment</a></li>
-				<li class="nav-item"><a href="./contact" class="nav-link text-primary d-flex justify-content-center">Contact</a></li>
+			<ul class="navbar-nav users_nav mb-2 mb-lg-0 header nav nav-pills">
+				<li class="nav-item"><a href="./about_us" class="nav-link text-primary d-flex justify-content-center	<?= $about ?>"><span class="text">About Us</span></a></li>
+				<li class="nav-item"><a href="./services" class="nav-link text-primary d-flex justify-content-center	<?= $services ?>"><span class="text">Services</span></a></li>
+				<li class="nav-item"><a href="./doctors" class="nav-link text-primary d-flex justify-content-center	<?= $doctors ?>"><span class="text">Our Doctors</span></a></li>
+				<li class="nav-item"><a href="./appointment" class="nav-link text-primary d-flex justify-content-center	<?= $appointment ?>"><span class="text">Appointment</span></a></li>
+				<li class="nav-item"><a href="./contact" class="nav-link text-primary d-flex justify-content-center	<?= $contact ?>"><span class="text">Contact</span></a></li>
 				<li class="nav-item"><a href="./login" class="nav-link px-3 rounded-1 ms-0 ms-md-2 bg-green text-white <?= isset($_SESSION['user_role']) ? "d-none" : 'd-block' ?>" aria-current="page">Login</a></li>
 
 				<li class="nav-item dropdown <?= isset($_SESSION['user_role']) ? "d-lg-flex d-none" : '' ?> align-items-center border-start ms-2">

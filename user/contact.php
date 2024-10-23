@@ -2,6 +2,7 @@
 <html lang="en">
 <?php 
   $title = 'DocConnect | Contacts';
+  $contact = 'active';
 	include '../includes/head.php';
 ?>
 <body>

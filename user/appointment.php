@@ -20,6 +20,7 @@ $pdo = $db->connect();
 <html lang="en">
 <?php 
   $title = 'Appointment';
+  $appointment = 'active';
 	include '../includes/head.php';
 ?>
 <body>

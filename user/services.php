@@ -2,6 +2,7 @@
 <html lang="en">
 <?php 
   $title = 'Services';
+  $services = 'active';
 	include '../includes/head.php';
 ?>
 <body>

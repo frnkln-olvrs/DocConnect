@@ -396,6 +396,21 @@ main.col-md-9 {
   color: whitesmoke;
 }
 
+.doctors_nav .nav-link.active {
+  color: var(--primary) !important;
+  position: relative;
+  background-color: #ad263416;
+}
+
+.doctors_nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  background-color: var(--primary);
+  top: 0;
+  right: 0;
+  height: 40px;
+  width: 5px;
+}
 /* ----------DASHBOARD------------- */
 .card.overview,
 .card.next_patient {
@@ -412,22 +427,6 @@ main.col-md-9 {
   background-color: #ad263416;
 }
 /* ----------APPOINMENT------------- */
-
-.doctors_nav .nav-link.active {
-  color: var(--primary) !important;
-  position: relative;
-  background-color: #ad263416;
-}
-
-.doctors_nav .nav-link.active::after {
-  content: "";
-  position: absolute;
-  background-color: var(--primary);
-  top: 0;
-  right: 0;
-  height: 40px;
-  width: 5px;
-}
 
 .notification.dropdown-toggle.active {
   pointer-events: none;
@@ -502,8 +501,6 @@ main.col-md-9 {
 /* ----------DoCOTROS_SETTINGS------------- */
 
 /* ----------CHATBOT_links------------- */
-
-
 #chat .bot_link {
   color: #21bf73 !important;
   text-decoration: underline !important;
@@ -513,9 +510,69 @@ main.col-md-9 {
   color: white !important;
 }
 
+
+#chat_sidepanel {
+  min-width: 25% !important;
+  display: block !important;
+}
+
+#chat_box {
+  display: block !important;
+  width: 75% !important;
+}
+
+/* Styling for mobile view */
+@media (max-width: 768px) {
+  #chat_sidepanel {
+    width: 100% !important;
+    display: block !important;
+  }
+
+  #chat_box {
+    display: none !important;
+    width: 100% !important;
+  }
+}
+
+.show-chat-box #chat_sidepanel {
+  display: none !important;
+}
+
+.show-chat-box #chat_box {
+  display: block !important;
+  width: 100% !important;
+}
+/* ----------CHATBOT_links------------- */
+
+
 @media (max-width:992px) {
+  
   ul.header.nav .nav-link::after {
     top: 0;
+  }
+  ul.header.nav .nav-link .text {
+    background-color: var(--white);
+    z-index: 100;
+    padding: 0 1.5rem;
+  }
+
+  ul.header.nav .nav-link.active {
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
+
+  ul.header.nav .nav-link.active::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    content: '.';
+    color: transparent;
+    background: var(--primary);
+    height: 1px;
+    transition: all .3s;
   }
 }
 
@@ -581,38 +638,4 @@ main.col-md-9 {
     flex-wrap: wrap;
   }
   /* ----------DASHBOARD------------- */
-}
-
-/* Base styling for desktop view */
-#chat_sidepanel {
-  min-width: 25% !important;
-  display: block !important;
-}
-
-#chat_box {
-  display: block !important;
-  width: 75% !important;
-}
-
-/* Styling for mobile view */
-@media (max-width: 768px) {
-  #chat_sidepanel {
-    width: 100% !important;
-    display: block !important;
-  }
-
-  #chat_box {
-    display: none !important;
-    width: 100% !important;
-  }
-}
-
-/* When chat is selected, show chat box and hide side panel */
-.show-chat-box #chat_sidepanel {
-  display: none !important;
-}
-
-.show-chat-box #chat_box {
-  display: block !important;
-  width: 100% !important;
 }

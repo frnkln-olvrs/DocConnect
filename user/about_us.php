@@ -2,6 +2,7 @@
 <html lang="en">
 <?php 
   $title = 'About Us';
+  $about = 'active';
 	include '../includes/head.php';
 ?>
 <body>

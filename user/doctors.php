@@ -2,6 +2,7 @@
 <html lang="en">
 <?php 
   $title = 'Our Doctors';
+  $doctors = 'active';
 	include '../includes/head.php';
 ?>
 <body>
