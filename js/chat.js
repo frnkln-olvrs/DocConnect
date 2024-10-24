@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  let lastMessageId = 0; // Keep track of the last message ID
-  let lastBotMessage = ''; // Keep track of the last bot message
+  let lastMessageId = 0; 
+  let lastBotMessage = ''; 
 
   // Load the chat list
   function loadChats(searchTerm = '') {
@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
               </a>`;
             chatList.appendChild(listItem);
           });
+
+          // Add chatbot item after loading other chats
+          loadChatbot();
         } catch (error) {
           console.error('Error parsing JSON:', error);
           console.log('Raw response data:', data);
@@ -39,27 +42,29 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  function loadChatBot() {
-    const chatMessages = document.getElementById('chatMessages');
-    const chatUser = document.getElementById('chatUser');
+  function loadChatbot() {
+    const chatList = document.getElementById('chatList');
+    const chatbotItem = document.createElement('li');
+    chatbotItem.classList.add('chatList', 'my-1', 'rounded-1');
 
-    window.currentChatAccountId = '9999';
-    console.log('Chatbot loaded, currentChatAccountId:', window.currentChatAccountId);
-
-    chatUser.textContent = 'Chatbot';
-    chatMessages.innerHTML = '';
-
-    const botMessage = document.createElement('div');
-    botMessage.classList.add('d-flex', 'align-items-start', 'mb-3');
-    botMessage.innerHTML = `
-        <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%;">
-            Hello! How can I assist you today?
+    chatbotItem.innerHTML = `
+      <a href="#" class="d-flex align-items-center text-dark text-decoration-none p-2" 
+         onclick="openChatbotConversation()">
+        <img src="../assets/images/chatbot_profile.png" alt="Chatbot" class="rounded-circle me-3" height="40" width="40">
+        <div>
+          <strong>Chatbot</strong>
         </div>
-        <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
-
-    chatMessages.appendChild(botMessage);
-    lastBotMessage = botMessage.innerHTML; // Store the last bot message content
+      </a>`;
+    chatList.appendChild(chatbotItem);
   }
+
+  // Load chat list on page load
+  loadChats();
+  
+  document.getElementById('searchChat').addEventListener('input', (event) => {
+    const searchTerm = event.target.value;
+    loadChats(searchTerm);
+  });
 
   function formatMessage(message) {
     message = message.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
@@ -231,6 +236,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function scrollChatToBottom(forceScroll = false) {
     const chatMessages = document.getElementById('chatMessages');
     
+    if (!chatMessages) {
+      console.error('Chat messages container not found.');
+      return;
+    }
+
     const isNearBottom = chatMessages.scrollHeight - chatMessages.scrollTop <= chatMessages.clientHeight + 100;
   
     if (isNearBottom || forceScroll) {
@@ -380,3 +390,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });    
 });
+
+// Make the openChatbotConversation function globally accessible
+function openChatbotConversation() {
+  // Get the account ID element
+  const accountIdElement = document.getElementById('account_id');
+
+  // Ensure the account ID element exists and has a value
+  if (!accountIdElement || !accountIdElement.value) {
+    console.error('Account ID is missing.');
+    return;
+  }
+
+  const accountId = accountIdElement.value;
+
+  // Clear the chat messages properly
+  const chatMessages = document.getElementById('chatMessages');
+  chatMessages.innerHTML = '';
+
+  // Update the chat header for the chatbot
+  document.getElementById('chatUser').textContent = 'Chatbot';
+  document.querySelector('.head img').src = '../assets/images/chatbot_profile.png';
+
+  // Fetch and load messages between the user and the chatbot
+  fetch(`../handlers/fetch_chatbot_conversation.php?account_id=${accountId}`)
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(message => {
+        addMessageToChat(message.message, message.sender === 'user');
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching chatbot conversation:', error);
+    });
+}
+
+
+
+function addMessageToChat(text, isUserMessage) {
+  const messageBox = document.getElementById('chat_box');
+  const messageDiv = document.createElement('div');
+  messageDiv.className = isUserMessage ? 'user-message' : 'chatbot-message';
+  messageDiv.innerText = text;
+  messageBox.appendChild(messageDiv);
+}

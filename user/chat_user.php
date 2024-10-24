@@ -22,7 +22,8 @@ $pdo = $db->connect();
   $title = 'Message';
   include '../includes/head.php';
 ?>
-<body class="pt-5 bg-white">
+<body class="bg-white">
+<input type="hidden" id="account_id" value="19">
   <?php require_once('../includes/header.php'); ?>
 
   <section id="chat" class="padding-medium">

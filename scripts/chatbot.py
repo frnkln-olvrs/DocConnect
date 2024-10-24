@@ -20,26 +20,21 @@ If the user asks about doctor availability for appointments, provide a list of a
 """
 
 def format_time_12_hour(time_str):
-    """Converts a 24-hour time string to a 12-hour format without seconds."""
     try:
-        time_obj = datetime.strptime(time_str, '%H:%M:%S')  # Parse the time string
-        return time_obj.strftime('%I:%M %p')  # Format to 12-hour format
+        time_obj = datetime.strptime(time_str, '%H:%M:%S')
+        return time_obj.strftime('%I:%M %p')
     except ValueError:
-        return time_str  # Return the original if parsing fails
+        return time_str
 
 def get_available_doctors(day=None):
     try:
-        # URL of the PHP API
         url = 'http://localhost/DocConnect/classes/get_available_doctors.php'
-        
         params = {'day': day} if day else {}
-
         response = requests.get(url, params=params)
 
         if response.status_code == 200:
             doctors = response.json()
             if doctors:
-                # Build the Bootstrap-styled HTML response
                 doctor_list_items = "\n".join(
                     [f"<li class='list-group-item'><span class='fw-bold'>Dr. {doctor['doctor_last_name']}</span> - Available from {format_time_12_hour(doctor['start_wt'])} to {format_time_12_hour(doctor['end_wt'])} on {doctor['start_day']} to {doctor['end_day']}</li>" for doctor in doctors]
                 )
@@ -60,16 +55,12 @@ def extract_day(message):
     
     if "today" in message:
         return datetime.now().strftime('%A')
-    
     elif "tomorrow" in message:
         return (datetime.now() + timedelta(days=1)).strftime('%A')
     
-    elif "this week" in message:
-        return [datetime.now().strftime('%A')] + [(datetime.now() + timedelta(days=i)).strftime('%A') for i in range(1, 7)]
-    
     for day in days_of_week:
         if re.search(r'\b' + re.escape(day) + r'\b', message):
-            return day.capitalize() 
+            return day.capitalize()
     
     return None
 
@@ -82,22 +73,11 @@ complete_message = f"{system_instruction}\nUser: {message}"
 
 if "doctor availability" in message or "available doctors" in message:
     day = extract_day(message)
-
-    if day == "This week":
-        # Define the days of the week
-        days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-        unique_doctor_info = []
-
-        for day in days_of_week:
-            daily_info = get_available_doctors(day)
-            if daily_info not in unique_doctor_info:
-                unique_doctor_info.append(daily_info)
-
-        final_info = "\n".join(unique_doctor_info)
-        print(final_info)
-    else:
+    if day:
         doctor_info = get_available_doctors(day)
         print(doctor_info)
+    else:
+        print("Please specify a valid day for checking doctor availability.")
 else:
     response = chat.send_message(complete_message)
     print(response.text)
