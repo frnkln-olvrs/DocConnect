@@ -7,13 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (isset($data['account_id']) && isset($data['message'])) {
     $account_id = $data['account_id'];
     $user_message = $data['message'];
-
-    // Insert user's message into the database
     $stmt = $pdo->prepare("INSERT INTO chatbot_conversation (account_id, message, sender) VALUES (?, ?, 'user')");
     $stmt->execute([$account_id, $user_message]);
 
-    // Call the Python chatbot service to get a response
-    $chatbot_response = shell_exec("python3 ../scripts/chatbot.py \"$user_message\" 2>&1");
+    $chatbot_response = shell_exec("python ../scripts/chatbot.py \"$user_message\" 2>&1");
 
     // Clean up the response from the chatbot
     $chatbot_response = trim($chatbot_response); // Remove any trailing whitespace or newlines

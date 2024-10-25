@@ -3,6 +3,7 @@ session_start();
 
 if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
   header('location: ../user/verification.php');
+  exit();
 } else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 3) {
   header('location: ../index.php');
   exit();
@@ -14,6 +15,8 @@ require_once('../classes/database.php');
 
 $db = new Database();
 $pdo = $db->connect();
+
+$account_id = isset($_SESSION['account_id']) ? $_SESSION['account_id'] : 0;
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +26,7 @@ $pdo = $db->connect();
   include '../includes/head.php';
 ?>
 <body class="bg-white">
-<input type="hidden" id="account_id" value="19">
+<input type="hidden" id="account_id" value="<?php echo htmlspecialchars($account_id); ?>">
   <?php require_once('../includes/header.php'); ?>
 
   <section id="chat" class="padding-medium">

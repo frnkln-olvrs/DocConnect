@@ -100,31 +100,32 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
   
-    console.log('Sending message, receiverId:', receiverId);
-  
     const chatMessages = document.getElementById('chatMessages');
     const messageElement = document.createElement('div');
     messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
-    
-    // Escape the message input to ensure it's treated as plain text
-    const escapedMessage = escapeHtml(messageInput);
   
-    // Preserve whitespace with white-space CSS property
+    const escapedMessage = escapeHtml(messageInput);
     messageElement.innerHTML = `
       <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%; white-space: pre-wrap;">${escapedMessage}</div>
       <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
-    
+  
     chatMessages.appendChild(messageElement);
   
     document.getElementById('messageInput').value = '';
     scrollChatToBottom();
   
-    fetch('../handlers/send_message.php', {
+    // Determine which handler to use based on receiverId
+    const url = receiverId ? '../handlers/send_message.php' : '../handlers/send_message_to_chatbot.php';
+    const bodyData = receiverId 
+      ? `message=${encodeURIComponent(messageInput)}&receiver_id=${receiverId}`
+      : `message=${encodeURIComponent(messageInput)}`;
+  
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: `message=${encodeURIComponent(messageInput)}&receiver_id=${receiverId}`,
+      body: bodyData,
     })
     .then(response => response.json())
     .then(data => {
@@ -133,10 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
   
-      // Only update lastMessageId here based on server response
-      lastMessageId = data.message_id;
+      lastMessageId = data.message_id || lastMessageId;
   
-      if (receiverId === '9999' && data.reply) {
+      if (!receiverId && data.reply) {
         if (data.reply !== lastBotMessage) {
           const formattedReply = escapeHtml(data.reply);
           const botMessageElement = document.createElement('div');
@@ -428,9 +428,33 @@ function openChatbotConversation() {
 
 
 function addMessageToChat(text, isUserMessage) {
-  const messageBox = document.getElementById('chat_box');
+  const messageBox = document.getElementById('chatMessages');
+  const messageElement = document.createElement('div');
+
+  messageElement.classList.add(
+    'd-flex', 
+    isUserMessage ? 'flex-row-reverse' : 'flex-row',
+    'align-items-end', 
+    'justify-content-end', 
+    'mb-3'
+  );
+
   const messageDiv = document.createElement('div');
-  messageDiv.className = isUserMessage ? 'user-message' : 'chatbot-message';
+  messageDiv.classList.add(isUserMessage ? 'bg-secondary' : 'bg-primary', 'text-light', 'p-2', 'rounded-3');
+  messageDiv.style.maxWidth = '52%';
+  messageDiv.style.whiteSpace = 'pre-wrap';
+  messageDiv.style.wordBreak = 'break-word';
   messageDiv.innerText = text;
-  messageBox.appendChild(messageDiv);
+
+  const img = document.createElement('img');
+  img.src = '../assets/images/default_profile.png';
+  img.alt = 'Profile';
+  img.classList.add('rounded-circle', isUserMessage ? 'me-3' : 'ms-3');
+  img.height = 30;
+  img.width = 30;
+
+  messageElement.appendChild(messageDiv);
+  messageElement.appendChild(img);
+
+  messageBox.appendChild(messageElement);
 }
