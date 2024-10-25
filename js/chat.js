@@ -100,6 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
   
+    if (!receiverId) {
+      sendChatbotConversation(messageInput);
+      return;
+    }
+  
     const chatMessages = document.getElementById('chatMessages');
     const messageElement = document.createElement('div');
     messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
@@ -113,18 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('messageInput').value = '';
     scrollChatToBottom();
   
-    // Determine which handler to use based on receiverId
-    const url = receiverId ? '../handlers/send_message.php' : '../handlers/send_message_to_chatbot.php';
-    const bodyData = receiverId 
-    ? `message=${encodeURIComponent(messageInput)}&receiver_id=${receiverId}` 
-    : `account_id=${encodeURIComponent(window.accountId)}&messageInput=${encodeURIComponent(messageInput)}`;
-  
-    fetch(url, {
+    fetch('../handlers/send_message.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: bodyData,
+      body: `message=${encodeURIComponent(messageInput)}&receiver_id=${receiverId}`,
     })
     .then(response => response.json())
     .then(data => {
@@ -134,21 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   
       lastMessageId = data.message_id || lastMessageId;
-  
-      if (!receiverId && data.reply) {
-        if (data.reply !== lastBotMessage) {
-          const formattedReply = escapeHtml(data.reply);
-          const botMessageElement = document.createElement('div');
-          botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
-          botMessageElement.innerHTML = `
-            <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%; white-space: pre-wrap;">${formattedReply}</div>
-            <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
-  
-          chatMessages.appendChild(botMessageElement);
-          lastBotMessage = data.reply;
-        }
-      }
-  
       scrollChatToBottom();
     })
     .catch(error => {
@@ -387,71 +371,123 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isMobile) {
       document.body.classList.remove('show-chat-box');
     }
-  });    
-});
+  });  
 
-// Make the openChatbotConversation function globally accessible
-function openChatbotConversation() {
-  const accountIdElement = document.getElementById('account_id');
+  // ----------- //
+  // CHATBOT JS //
+  // ---------- //
 
-  if (!accountIdElement || !accountIdElement.value) {
-    console.error('Account ID is missing.');
-    return;
-  }
+  window.openChatbotConversation = function() {
+    const accountIdElement = document.getElementById('account_id');
 
-  const accountId = accountIdElement.value;
-  const chatMessages = document.getElementById('chatMessages');
-  chatMessages.innerHTML = '';
+    if (!accountIdElement || !accountIdElement.value) {
+      console.error('Account ID is missing.');
+      return;
+    }
 
-  document.getElementById('chatUser').textContent = 'Chatbot';
-  document.querySelector('.head img').src = '../assets/images/chatbot_profile.png';
+    const accountId = accountIdElement.value;
+    const chatMessages = document.getElementById('chatMessages');
+    chatMessages.innerHTML = '';
 
-  // Fetch messages between the user and the chatbot
-  fetch(`../handlers/fetch_chatbot_conversation.php?account_id=${accountId}`)
+    document.getElementById('chatUser').textContent = 'Chatbot';
+    document.querySelector('.head img').src = '../assets/images/chatbot_profile.png';
+
+    // Fetch messages between the user and the chatbot
+    fetch(`../handlers/fetch_chatbot_conversation.php?account_id=${accountId}`)
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(message => {
+          if (message.user_message) {
+            addMessageToChat(message.user_message, true);  // User message
+          }
+          if (message.bot_response) {
+            addMessageToChat(message.bot_response, false);  // Bot response
+          }
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching chatbot conversation:', error);
+      });
+  };
+
+  // Make sendChatbotConversation globally accessible by attaching to window
+  window.sendChatbotConversation = function(messageInput) {
+    const chatMessages = document.getElementById('chatMessages');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
+
+    const escapedMessage = escapeHtml(messageInput);
+    messageElement.innerHTML = `
+      <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%; white-space: pre-wrap;">${escapedMessage}</div>
+      <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
+
+    chatMessages.appendChild(messageElement);
+    document.getElementById('messageInput').value = '';
+    scrollChatToBottom();
+
+    fetch('../handlers/send_message_to_chatbot.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `account_id=${encodeURIComponent(window.accountId)}&messageInput=${encodeURIComponent(messageInput)}`,
+    })
     .then(response => response.json())
     .then(data => {
-      data.forEach(message => {
-        if (message.user_message) {
-          addMessageToChat(message.user_message, true);  // User message
-        }
-        if (message.bot_response) {
-          addMessageToChat(message.bot_response, false);  // Bot response
-        }
-      });
+      if (data.error) {
+        console.error('Error from server:', data.error);
+        return;
+      }
+
+      if (data.reply && data.reply !== lastBotMessage) {
+        const formattedReply = escapeHtml(data.reply);
+        const botMessageElement = document.createElement('div');
+        botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
+        botMessageElement.innerHTML = `
+          <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%; white-space: pre-wrap;">${formattedReply}</div>
+          <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
+
+        chatMessages.appendChild(botMessageElement);
+        lastBotMessage = data.reply;
+      }
+
+      scrollChatToBottom();
     })
     .catch(error => {
-      console.error('Error fetching chatbot conversation:', error);
+      console.error('Error sending chatbot message:', error);
     });
-}
+  };
 
-function addMessageToChat(text, isBotResponse) {
-  const messageBox = document.getElementById('chatMessages');
-  const messageElement = document.createElement('div');
+  // Make addMessageToChat globally accessible by attaching to window
+  window.addMessageToChat = function(text, isBotResponse) {
+    const messageBox = document.getElementById('chatMessages');
+    const messageElement = document.createElement('div');
 
-  messageElement.classList.add(
-    'd-flex', 
-    isBotResponse ? 'flex-row' : 'flex-row-reverse',
-    'align-items-end', 
-    'justify-content-end', 
-    'mb-3'
-  );
+    messageElement.classList.add(
+      'd-flex', 
+      isBotResponse ? 'flex-row' : 'flex-row-reverse',
+      'align-items-end', 
+      'justify-content-end', 
+      'mb-3'
+    );
 
-  const messageDiv = document.createElement('div');
-  messageDiv.classList.add(isBotResponse ? 'bg-primary' : 'bg-secondary', 'text-light', 'p-2', 'rounded-3');
-  messageDiv.style.maxWidth = '52%';
-  messageDiv.style.whiteSpace = 'pre-wrap';
-  messageDiv.style.wordBreak = 'break-word';
-  messageDiv.innerText = text;
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add(isBotResponse ? 'bg-primary' : 'bg-secondary', 'text-light', 'p-2', 'rounded-3');
+    messageDiv.style.maxWidth = '52%';
+    messageDiv.style.whiteSpace = 'pre-wrap';
+    messageDiv.style.wordBreak = 'break-word';
+    messageDiv.innerText = text;
 
-  const img = document.createElement('img');
-  img.src = isBotResponse ? '../assets/images/default_profile.png' : '../assets/images/chatbot_profile.png';
-  img.alt = isBotResponse ? 'User Profile' : 'Bot Profile';
-  img.classList.add('rounded-circle', isBotResponse ? 'ms-3' : 'me-3');
-  img.height = 30;
-  img.width = 30;
+    const img = document.createElement('img');
+    img.src = isBotResponse ? '../assets/images/default_profile.png' : '../assets/images/chatbot_profile.png';
+    img.alt = isBotResponse ? 'User Profile' : 'Bot Profile';
+    img.classList.add('rounded-circle', isBotResponse ? 'ms-3' : 'me-3');
+    img.height = 30;
+    img.width = 30;
 
-  messageElement.appendChild(messageDiv);
-  messageElement.appendChild(img);
+    messageElement.appendChild(messageDiv);
+    messageElement.appendChild(img);
 
-  messageBox.appendChild(messageElement);
-}
+    messageBox.appendChild(messageElement);
+  };
+});
