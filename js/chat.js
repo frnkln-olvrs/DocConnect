@@ -110,15 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
       <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
   
     chatMessages.appendChild(messageElement);
-  
     document.getElementById('messageInput').value = '';
     scrollChatToBottom();
   
     // Determine which handler to use based on receiverId
     const url = receiverId ? '../handlers/send_message.php' : '../handlers/send_message_to_chatbot.php';
     const bodyData = receiverId 
-      ? `message=${encodeURIComponent(messageInput)}&receiver_id=${receiverId}`
-      : `message=${encodeURIComponent(messageInput)}`;
+    ? `message=${encodeURIComponent(messageInput)}&receiver_id=${receiverId}` 
+    : `account_id=${encodeURIComponent(window.accountId)}&messageInput=${encodeURIComponent(messageInput)}`;
   
     fetch(url, {
       method: 'POST',
