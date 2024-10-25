@@ -13,7 +13,7 @@ if (isset($_GET['account_id'])) {
     $account_id = $_GET['account_id'];
 
     // Prepare and execute the query to fetch chatbot conversation
-    $stmt = $pdo->prepare("SELECT message, sender FROM chatbot_conversation WHERE account_id = ? ORDER BY timestamp ASC");
+    $stmt = $pdo->prepare("SELECT user_message, bot_response FROM chatbot_conversation WHERE account_id = ? ORDER BY timestamp ASC");
     $stmt->execute([$account_id]);
     $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

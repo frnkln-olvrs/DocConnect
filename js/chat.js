@@ -393,39 +393,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Make the openChatbotConversation function globally accessible
 function openChatbotConversation() {
-  // Get the account ID element
   const accountIdElement = document.getElementById('account_id');
 
-  // Ensure the account ID element exists and has a value
   if (!accountIdElement || !accountIdElement.value) {
     console.error('Account ID is missing.');
     return;
   }
 
   const accountId = accountIdElement.value;
-
-  // Clear the chat messages properly
   const chatMessages = document.getElementById('chatMessages');
   chatMessages.innerHTML = '';
 
-  // Update the chat header for the chatbot
   document.getElementById('chatUser').textContent = 'Chatbot';
   document.querySelector('.head img').src = '../assets/images/chatbot_profile.png';
 
-  // Fetch and load messages between the user and the chatbot
+  // Fetch messages between the user and the chatbot
   fetch(`../handlers/fetch_chatbot_conversation.php?account_id=${accountId}`)
     .then(response => response.json())
     .then(data => {
       data.forEach(message => {
-        addMessageToChat(message.message, message.sender === 'user');
+        if (message.user_message) {
+          addMessageToChat(message.user_message, true);  // User message
+        }
+        if (message.bot_response) {
+          addMessageToChat(message.bot_response, false);  // Bot response
+        }
       });
     })
     .catch(error => {
       console.error('Error fetching chatbot conversation:', error);
     });
 }
-
-
 
 function addMessageToChat(text, isUserMessage) {
   const messageBox = document.getElementById('chatMessages');
