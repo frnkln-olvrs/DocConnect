@@ -425,29 +425,29 @@ function openChatbotConversation() {
     });
 }
 
-function addMessageToChat(text, isUserMessage) {
+function addMessageToChat(text, isBotResponse) {
   const messageBox = document.getElementById('chatMessages');
   const messageElement = document.createElement('div');
 
   messageElement.classList.add(
     'd-flex', 
-    isUserMessage ? 'flex-row-reverse' : 'flex-row',
+    isBotResponse ? 'flex-row' : 'flex-row-reverse',
     'align-items-end', 
     'justify-content-end', 
     'mb-3'
   );
 
   const messageDiv = document.createElement('div');
-  messageDiv.classList.add(isUserMessage ? 'bg-secondary' : 'bg-primary', 'text-light', 'p-2', 'rounded-3');
+  messageDiv.classList.add(isBotResponse ? 'bg-primary' : 'bg-secondary', 'text-light', 'p-2', 'rounded-3');
   messageDiv.style.maxWidth = '52%';
   messageDiv.style.whiteSpace = 'pre-wrap';
   messageDiv.style.wordBreak = 'break-word';
   messageDiv.innerText = text;
 
   const img = document.createElement('img');
-  img.src = '../assets/images/default_profile.png';
-  img.alt = 'Profile';
-  img.classList.add('rounded-circle', isUserMessage ? 'me-3' : 'ms-3');
+  img.src = isBotResponse ? '../assets/images/default_profile.png' : '../assets/images/chatbot_profile.png';
+  img.alt = isBotResponse ? 'User Profile' : 'Bot Profile';
+  img.classList.add('rounded-circle', isBotResponse ? 'ms-3' : 'me-3');
   img.height = 30;
   img.width = 30;
 
