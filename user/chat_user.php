@@ -68,7 +68,7 @@ $account_id = isset($_SESSION['account_id']) ? $_SESSION['account_id'] : 0;
         </div>
 
         <!-- Chat Input -->
-        <div class="chat_input d-flex align-items-center p-3 border-top bg-light">
+        <div class="chat_input d-flex align-items-end p-3 border-top bg-light">
             <textarea type="text" id="messageInput" class="form-control border-2 text-dark me-3" placeholder="Type your message"></textarea>
             <button id="sendMessage" class="btn btn-light d-flex justify-content-center">
                 <i class='bx bx-send text-dark fs-4'></i>

@@ -311,14 +311,28 @@ section#services .card {
 }
 
 /* CHAT.PHP CHAT SECTION */
+#messageInput::-webkit-scrollbar {
+  width: .25rem;
+}
+
+#messageInput::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#messageInput::-webkit-scrollbar-thumb {
+  background: gray;
+}
+
+
 section#chat {
-  height: calc(100vh - 79px);
-  margin-top: 30px;
+  height: calc(100vh - 63px);
+  max-height: calc(100vh - 63px);
+  margin-top: 62px;
 }
 
 section#chat .body {
   overflow-y: scroll;
-  height: calc(100% - 133px);
+  height: calc(100% - 145px);
 }
 
 section#chat #chat_text {
