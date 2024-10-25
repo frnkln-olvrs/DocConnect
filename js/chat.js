@@ -379,20 +379,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.openChatbotConversation = function() {
     const accountIdElement = document.getElementById('account_id');
-
+    
     if (!accountIdElement || !accountIdElement.value) {
       console.error('Account ID is missing.');
       return;
     }
-
+    
     const accountId = accountIdElement.value;
+    window.accountId = accountId; // Set window.accountId
+    
     const chatMessages = document.getElementById('chatMessages');
     chatMessages.innerHTML = '';
-
+  
     document.getElementById('chatUser').textContent = 'Chatbot';
     document.querySelector('.head img').src = '../assets/images/chatbot_profile.png';
-
-    // Fetch messages between the user and the chatbot
+  
     fetch(`../handlers/fetch_chatbot_conversation.php?account_id=${accountId}`)
       .then(response => response.json())
       .then(data => {
@@ -404,27 +405,47 @@ document.addEventListener('DOMContentLoaded', () => {
             addMessageToChat(message.bot_response, false);  // Bot response
           }
         });
+  
+        setTimeout(scrollChatToBottom, 100); 
       })
       .catch(error => {
         console.error('Error fetching chatbot conversation:', error);
       });
-  };
+  };  
 
   // Make sendChatbotConversation globally accessible by attaching to window
   window.sendChatbotConversation = function(messageInput) {
     const chatMessages = document.getElementById('chatMessages');
+  
+    // Debugging logs to check values
+    console.log("Sending to chatbot...");
+    console.log("Message Input:", messageInput);
+    console.log("Account ID:", window.accountId);
+  
+    // Trim the message input to remove any extra whitespace
+    messageInput = messageInput.trim();
+  
+    if (!messageInput) {
+      console.log('Message input is empty');
+      return;
+    }
+  
+    if (!window.accountId) {
+      console.error('Account ID is missing for chatbot conversation.');
+      return;
+    }
+  
     const messageElement = document.createElement('div');
     messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
-
+  
     const escapedMessage = escapeHtml(messageInput);
     messageElement.innerHTML = `
       <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%; white-space: pre-wrap;">${escapedMessage}</div>
       <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
-
+  
     chatMessages.appendChild(messageElement);
     document.getElementById('messageInput').value = '';
-    scrollChatToBottom();
-
+  
     fetch('../handlers/send_message_to_chatbot.php', {
       method: 'POST',
       headers: {
@@ -438,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error from server:', data.error);
         return;
       }
-
+  
       if (data.reply && data.reply !== lastBotMessage) {
         const formattedReply = escapeHtml(data.reply);
         const botMessageElement = document.createElement('div');
@@ -446,17 +467,17 @@ document.addEventListener('DOMContentLoaded', () => {
         botMessageElement.innerHTML = `
           <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%; white-space: pre-wrap;">${formattedReply}</div>
           <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
-
+  
         chatMessages.appendChild(botMessageElement);
         lastBotMessage = data.reply;
       }
-
+  
       scrollChatToBottom();
     })
     .catch(error => {
       console.error('Error sending chatbot message:', error);
     });
-  };
+  };  
 
   // Make addMessageToChat globally accessible by attaching to window
   window.addMessageToChat = function(text, isBotResponse) {
