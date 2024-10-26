@@ -220,15 +220,13 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Chat messages container not found.');
       return;
     }
-
-    setTimeout(() => {
-      const isNearBottom = chatMessages.scrollHeight - chatMessages.scrollTop <= chatMessages.clientHeight + 100;
   
-      if (isNearBottom || forceScroll) {
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      }
-    }, 100);
-  }
+    const isNearBottom = chatMessages.scrollHeight - chatMessages.scrollTop <= chatMessages.clientHeight + 100;
+  
+    if (isNearBottom || forceScroll) {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  }  
 
   document.getElementById('sendMessage').addEventListener('click', sendMessage);
 
