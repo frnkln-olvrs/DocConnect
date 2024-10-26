@@ -65,7 +65,7 @@ if (isset($_POST['signup'])) {
 
   $account->email = htmlentities($_POST['login-email']);
   $account->password = htmlentities($_POST['login-password']);
-  if ($account->sign_in_account()) {
+  if ($account->sign_in_user()) {
     $_SESSION['user_role'] = $account->user_role;
     $_SESSION['account_id'] = $account->account_id;
     $_SESSION['verification_status'] = $account->verification_status;
@@ -75,10 +75,14 @@ if (isset($_POST['signup'])) {
     } else {
       $_SESSION['fullname'] = ucwords(strtolower($account->firstname . ' ' . $account->lastname));
     }
+    $_SESSION['firstname'] = $account->firstname;
+    $_SESSION['middlename'] = $account->middlename;
+    $_SESSION['lastname'] = $account->lastname;
     $_SESSION['gender'] = $account->gender;
     $_SESSION['birthdate'] = $account->birthdate;
     $_SESSION['campus_id'] = $account->campus_id;
     $_SESSION['contact'] = $account->contact;
+    $_SESSION['patient_id'] = $account->patient_id;
 
     if ($_SESSION['user_role'] == 3) {
       header('location: ./index.php');
