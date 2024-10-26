@@ -39,8 +39,9 @@ try {
   $response = shell_exec($command);
 
   if ($response) {
-    $stmt = $pdo->prepare("INSERT INTO chatbot_conversation (user_message, bot_response) VALUES (:user_message, :bot_response)");
+    $stmt = $pdo->prepare("INSERT INTO chatbot_conversation (account_id, user_message, bot_response) VALUES (:account_id, :user_message, :bot_response)");
     $stmt->execute([
+      ':account_id' => $senderId,
       ':user_message' => $message,
       ':bot_response' => $response
     ]);

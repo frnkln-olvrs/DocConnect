@@ -413,18 +413,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   };  
 
-  // Make sendChatbotConversation globally accessible by attaching to window
   window.sendChatbotConversation = function(messageInput) {
     const chatMessages = document.getElementById('chatMessages');
   
-    // Debugging logs to check values
-    console.log("Sending to chatbot...");
-    console.log("Message Input:", messageInput);
-    console.log("Account ID:", window.accountId);
-  
-    // Trim the message input to remove any extra whitespace
-    messageInput = messageInput.trim();
-  
+    messageInput = messageInput.trim(); // Ensure whitespace is removed
+
     if (!messageInput) {
       console.log('Message input is empty');
       return;
@@ -434,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Account ID is missing for chatbot conversation.');
       return;
     }
-  
+
     const messageElement = document.createElement('div');
     messageElement.classList.add('d-flex', 'align-items-end', 'justify-content-end', 'mb-3');
   
@@ -442,16 +435,16 @@ document.addEventListener('DOMContentLoaded', () => {
     messageElement.innerHTML = `
       <div class="bg-primary text-light p-2 rounded-3" style="max-width: 52%; white-space: pre-wrap;">${escapedMessage}</div>
       <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">`;
-  
+
     chatMessages.appendChild(messageElement);
     document.getElementById('messageInput').value = '';
-  
+
     fetch('../handlers/send_message_to_chatbot.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: `account_id=${encodeURIComponent(window.accountId)}&messageInput=${encodeURIComponent(messageInput)}`,
+      body: `account_id=${encodeURIComponent(window.accountId)}&message=${encodeURIComponent(messageInput)}`,
     })
     .then(response => response.json())
     .then(data => {
@@ -459,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error from server:', data.error);
         return;
       }
-  
+
       if (data.reply && data.reply !== lastBotMessage) {
         const formattedReply = escapeHtml(data.reply);
         const botMessageElement = document.createElement('div');
@@ -467,17 +460,17 @@ document.addEventListener('DOMContentLoaded', () => {
         botMessageElement.innerHTML = `
           <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%; white-space: pre-wrap;">${formattedReply}</div>
           <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
-  
+
         chatMessages.appendChild(botMessageElement);
         lastBotMessage = data.reply;
       }
-  
+
       scrollChatToBottom();
     })
     .catch(error => {
       console.error('Error sending chatbot message:', error);
     });
-  };  
+};
 
   // Make addMessageToChat globally accessible by attaching to window
   window.addMessageToChat = function(text, isBotResponse) {
