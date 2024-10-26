@@ -456,10 +456,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (data.reply && data.reply !== lastBotMessage) {
         const formattedReply = escapeHtml(data.reply);
         const botMessageElement = document.createElement('div');
-        botMessageElement.classList.add('d-flex', 'align-items-end', 'justify-content-start', 'mb-3');
+        botMessageElement.classList.add('d-flex', 'flex-row-reverse', 'align-items-end', 'justify-content-end', 'mb-3');
         botMessageElement.innerHTML = `
           <div class="bg-secondary text-light p-2 rounded-3" style="max-width: 52%; white-space: pre-wrap;">${formattedReply}</div>
-          <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle ms-3" height="30" width="30">`;
+          <img src="../assets/images/chatbot_profile.png" alt="Bot" class="rounded-circle me-3" height="30" width="30">`;
 
         chatMessages.appendChild(botMessageElement);
         lastBotMessage = data.reply;
