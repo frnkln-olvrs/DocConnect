@@ -207,18 +207,17 @@ include '../includes/head.php';
   <?php
   }
   ?>
-  <script src="../js/login.js"></script>
   <script src="../js/main.js"></script>
 
   <script>
-    // function formatTime(time) {
-    //   let [hours, minutes] = time.split(':');
-    //   hours = parseInt(hours);
-    //   let suffix = hours >= 12 ? 'PM' : 'AM';
-    //   hours = hours % 12 || 12;
+    function formatTime(time) {
+      let [hours, minutes] = time.split(':');
+      hours = parseInt(hours);
+      let suffix = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
 
-    //   return `${hours}:${minutes} ${suffix}`;
-    // }
+      return `${hours}:${minutes} ${suffix}`;
+    }
 
     document.addEventListener("DOMContentLoaded", function() {
       const doctorSearch = document.getElementById("doctorSearch");
@@ -338,7 +337,7 @@ include '../includes/head.php';
     }
 
     document.getElementById("appointment_time").addEventListener("change", function() {
-      let inputTime = this.value; 
+      let inputTime = this.value;
       let roundedTime = roundTimeToNearestHalfHour(inputTime);
       this.value = roundedTime;
     });
