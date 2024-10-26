@@ -162,9 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const isSender = msg.sender_id === window.currentChatAccountId;
     
         let messageContent = msg.message;
-        if (receiverId === '9999') {
-          messageContent = removeAsterisks(messageContent);
-        }
 
         if (!isSender) {
           return;
@@ -387,11 +384,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     
-    const accountId = accountIdElement.value;  
+    const accountId = accountIdElement.value;
+  
+    // Show chat box when in mobile view
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      document.body.classList.add('show-chat-box');
+    }
   
     window.currentChatAccountId = null;
     window.accountId = accountId;
-    
+  
     const chatMessages = document.getElementById('chatMessages');
     chatMessages.innerHTML = '';
   
