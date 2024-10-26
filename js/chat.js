@@ -224,11 +224,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const isNearBottom = chatMessages.scrollHeight - chatMessages.scrollTop <= chatMessages.clientHeight + 100;
+    setTimeout(() => {
+      const isNearBottom = chatMessages.scrollHeight - chatMessages.scrollTop <= chatMessages.clientHeight + 100;
   
-    if (isNearBottom || forceScroll) {
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
+      if (isNearBottom || forceScroll) {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+    }, 100);
   }
 
   document.getElementById('sendMessage').addEventListener('click', sendMessage);
@@ -407,8 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
             addMessageToChat(message.bot_response, false);  // Bot response
           }
         });
-  
-        setTimeout(scrollChatToBottom, 100); 
+        scrollChatToBottom(true); 
       })
       .catch(error => {
         console.error('Error fetching chatbot conversation:', error);
@@ -417,9 +418,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.sendChatbotConversation = function(messageInput) {
     const chatMessages = document.getElementById('chatMessages');
+    messageInput = messageInput.trim();
   
-    messageInput = messageInput.trim(); // Ensure whitespace is removed
-
     if (!messageInput) {
       console.log('Message input is empty');
       return;
@@ -465,9 +465,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         chatMessages.appendChild(botMessageElement);
         lastBotMessage = data.reply;
+  
+        scrollChatToBottom(true);
       }
-
-      scrollChatToBottom();
     })
     .catch(error => {
       console.error('Error sending chatbot message:', error);
