@@ -385,8 +385,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     
-    const accountId = accountIdElement.value;
-    window.accountId = accountId; // Set window.accountId
+    const accountId = accountIdElement.value;  
+  
+    window.currentChatAccountId = null;
+    window.accountId = accountId;
     
     const chatMessages = document.getElementById('chatMessages');
     chatMessages.innerHTML = '';
@@ -470,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => {
       console.error('Error sending chatbot message:', error);
     });
-};
+  };
 
   // Make addMessageToChat globally accessible by attaching to window
   window.addMessageToChat = function(text, isBotResponse) {
