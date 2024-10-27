@@ -50,4 +50,22 @@ class Appointment
             return false;
         }
     }
+
+    function user_appointments($patient_id)
+    {
+        $sql = "SELECT ap.*, CONCAT(a.firstname, IF(a.middlename IS NOT NULL AND a.middlename != '', CONCAT(' ', a.middlename), ''), ' ', a.lastname) AS doctor_name 
+        FROM appointment ap 
+        INNER JOIN doctor_info d ON ap.doctor_id = d.doctor_id 
+        INNER JOIN account a ON d.account_id = a.account_id
+        WHERE ap.patient_id = :patient_id ORDER BY appointment_date, appointment_time;";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':patient_id', $patient_id);
+
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
 }

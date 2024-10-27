@@ -12,22 +12,22 @@ require_once('../tools/functions.php');
 require_once('../classes/account.class.php');
 require_once('../classes/appointment.class.php');
 
-$appointment = new Appointment();
+$appointment_class = new Appointment();
 if (isset($_POST['request'])) {
-  $appointment->patient_id = $_SESSION['patient_id'];
-  $appointment->doctor_id = htmlentities($_POST['doctor_id']);
-  $appointment->appointment_date = htmlentities($_POST['appointment_date']);
-  $appointment->appointment_time = htmlentities($_POST['appointment_time']);
-  $appointment->appointment_status = "Pending";
+  $appointment_class->patient_id = $_SESSION['patient_id'];
+  $appointment_class->doctor_id = htmlentities($_POST['doctor_id']);
+  $appointment_class->appointment_date = htmlentities($_POST['appointment_date']);
+  $appointment_class->appointment_time = htmlentities($_POST['appointment_time']);
+  $appointment_class->appointment_status = "Pending";
 
   if (
-    validate_field($appointment->patient_id) &&
-    validate_field($appointment->doctor_id) &&
-    validate_field($appointment->appointment_date) &&
-    validate_field($appointment->appointment_time) &&
-    validate_field($appointment->appointment_status)
+    validate_field($appointment_class->patient_id) &&
+    validate_field($appointment_class->doctor_id) &&
+    validate_field($appointment_class->appointment_date) &&
+    validate_field($appointment_class->appointment_time) &&
+    validate_field($appointment_class->appointment_status)
   ) {
-    if ($appointment->add_appointment()) {
+    if ($appointment_class->add_appointment()) {
       $success = 'success';
     } else {
       echo 'An error occured while adding in the database.';
@@ -156,15 +156,29 @@ include '../includes/head.php';
       <div class="col-sm-12 col-md-4 h-100">
         <div class="d-flex flex-column justify-content-between bg-green p-3 rounded-2 h-100 text-white">
           <div>
-            <h4>Appointment Details</h4>
-            <p class="fs-6 text-white">Details:</p>
-            <div class="d-flex justify-content-between border-bottom mb-2">
-              <p class="mb-2">Saturday - 13th of April</p>
-              <p class="mb-2">09:00am - 10:00am</p>
-            </div>
-            <div class="d-flex flex-column justify-content-between border-bottom mb-2">
-              <p class="mb-2">Gmeet link:</p>
-              <a href="https://meet.google.com/por-udiy-etd" class="mb-2 link-light">https://meet.google.com/por-udiy-etd</a>
+            <h4>Appointment Schedule</h4>
+            <div class="overflow-y-scroll min-vh-100">
+              <?php
+              $appointmentArray = $appointment_class->user_appointments($_SESSION['patient_id']);
+              foreach ($appointmentArray as $item) {
+              ?>
+                <div class="col-12 border border-2 border-white rounded-2 p-2">
+                  <div class="m-0 mb-1">
+                    <p class="mb-2 fs-5"><?= $item['doctor_name'] ?></p>
+                  </div>
+                  <hr class="text-white my-1 mx-0">
+                  <div class="row d-flex justify-content-between mb-1">
+                    <p class="col mb-2"><?= date("M d, Y", strtotime($item['appointment_date'])) ?></p>
+                    <p class="col mb-2 text-end"><?= date("g:i A", strtotime($item['appointment_time']))  ?></p>
+                    <div class="col-12">
+                      <a href="" class="btn btn-sm btn-light">Chat Doctor</a>
+                      <a href="https://meet.google.com/por-udiy-etd" class="btn btn-sm btn-light">Join Meeting</a>
+                    </div>
+                  </div>
+                </div>
+              <?php
+              }
+              ?>
             </div>
           </div>
           <!-- <div>
