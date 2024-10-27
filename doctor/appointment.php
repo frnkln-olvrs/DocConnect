@@ -7,6 +7,11 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
   header('location: ../index.php');
 }
 
+require_once('../tools/functions.php');
+require_once('../classes/appointment.class.php');
+
+$appointment_class = new Appointment();
+
 ?>
 
 <!DOCTYPE html>
@@ -16,12 +21,6 @@ $title = 'Appointment';
 $appointment = 'active';
 include '../includes/head.php';
 
-// Temporary PHP array for events
-$events = [
-  ['title' => 'Checkup with Dr. Smith', 'start' => '2024-09-25'],
-  ['title' => 'Online Consultation', 'start' => '2024-09-26', 'url' => 'http://example.com/meeting-link'],
-  ['title' => 'Follow-up Appointment', 'start' => '2024-09-27T10:30:00', 'end' => '2024-09-27T12:30:00']
-];
 ?>
 
 <body>
@@ -36,40 +35,39 @@ $events = [
       <main class="col-md-9 ms-sm-auto col-lg-10 bg-light">
         <div class="card flex-fill my-4">
           <div class="card-body">
-            <h2>Manage Appointments</h2>
+            <h2>Appointments</h2>
 
             <div class="table-responsive">
               <table class="table table-striped" id="eventsTable">
                 <thead>
                   <tr>
-                    <th>Event Title</th>
-                    <th>Event Date</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Type</th>
-                    <th>Action</th>
+                    <th></th>
+                    <th>Date & Time</th>
+                    <th>Patient</th>
+                    <th>Status</th>
+                    <th class="text-center">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($events as $event): ?>
+                  <?php
+                  $appointmentArray = $appointment_class->doctor_appointments($_SESSION['doctor_id']);
+                  $counter = 1;
+                  foreach ($appointmentArray as $item) {
+                  ?>
                     <tr>
-                      <td>
-                        <?php if (isset($event['url'])): ?>
-                          <a href="<?php echo $event['url']; ?>" target="_blank"><?php echo $event['title']; ?></a>
-                        <?php else: ?>
-                          <?php echo $event['title']; ?>
-                        <?php endif; ?>
-                      </td>
-                      <td><?php echo explode('T', $event['start'])[0]; ?></td>
-                      <td><?php echo isset($event['start']) && strpos($event['start'], 'T') !== false ? explode('T', $event['start'])[1] : 'N/A'; ?></td>
-                      <td><?php echo isset($event['end']) && strpos($event['end'], 'T') !== false ? explode('T', $event['end'])[1] : 'N/A'; ?></td>
-                      <td><?php echo isset($event['url']) ? 'Online' : 'Face-to-Face'; ?></td>
-                      <td class="">
-                        <button class="btn btn-warning btn-sm"><i class='bx bxs-edit text-light'></i></button>
+                      <td><?= $counter ?></td>
+                      <td><?= date("l, M d, Y", strtotime($item['appointment_date'])) . " " . date("g:i A", strtotime($item['appointment_time'])) ?></td>
+                      <td><?= $item['patient_name'] ?></td>
+                      <td><?= $item['appointment_status'] ?></td>
+                      <td class="text-center">
+                        <a href="./update-appointment.php?appointment_id=<?= $item['appointment_id'] ?>" class="btn btn-warning btn-sm"><i class='bx bxs-edit text-light'></i></a>
                         <button class="btn btn-danger btn-sm ms-2"><i class='bx bxs-trash text-light'></i></button>
                       </td>
                     </tr>
-                  <?php endforeach; ?>
+                  <?php
+                    $counter++;
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>

@@ -9,7 +9,6 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
 }
 
 require_once('../tools/functions.php');
-require_once('../classes/account.class.php');
 require_once('../classes/appointment.class.php');
 
 $appointment_class = new Appointment();
@@ -92,12 +91,11 @@ include '../includes/head.php';
             <hr>
 
             <div class="row d-flex flex-wrap justify-content-center justify-content-md-start">
-              <div class="col-6 px-2 mb-3">
+              <div class="col-6 p-0 pe-4 mb-3">
                 <p class="fs-6 mb-0">Select Date</p>
                 <input type="date" id="appointment_date" name="appointment_date" data-startday="" data-endday="" min="<?php echo date('Y-m-d'); ?>" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
               </div>
-
-              <div class="col-6 px-2 mb-3">
+              <div class="col-6 p-0 mb-3">
                 <p class="fs-6 mb-0">Select Time</p>
                 <input type="time" id="appointment_time" name="appointment_time" step="1800" min="" max="" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
               </div>

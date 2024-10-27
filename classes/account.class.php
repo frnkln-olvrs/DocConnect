@@ -25,6 +25,7 @@ class Account
     public $end_day;
     public $appointment_limits;
     public $patient_id;
+    public $doctor_id;
 
 
     protected $db;
@@ -219,6 +220,7 @@ class Account
                 $this->end_day = $accountData['end_day'];
                 $this->specialty = $accountData['specialty'];
                 $this->bio = $accountData['bio'];
+                $this->doctor_id = $accountData['doctor_id'];
 
                 return true;
             }

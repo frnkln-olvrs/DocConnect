@@ -40,6 +40,7 @@ if (isset($_POST['login'])) {
     $_SESSION['end_day'] = $account->end_day;
     $_SESSION['bio'] = $account->bio;
     $_SESSION['account_image'] = $account->account_image;
+    $_SESSION['doctor_id'] = $account->doctor_id;
 
     if ($_SESSION['user_role'] == 2) {
       header('location: ./index.php');
