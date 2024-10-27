@@ -163,13 +163,13 @@ include '../includes/head.php';
               foreach ($appointmentArray as $item) {
               ?>
                 <div class="col-12 border border-2 border-white rounded-2 p-2 mb-1">
-                  <div class="m-0 mb-1">
+                  <div class="m-0 mb-1 p-0 px-2">
                     <p class="mb-2 fs-5"><?= $item['doctor_name'] ?></p>
                   </div>
                   <hr class="text-white my-1 mx-0">
                   <div class="row d-flex justify-content-between m-0 mb-1">
-                    <p class="col mb-2"><?= date("l, M d, Y", strtotime($item['appointment_date'])) ?></p>
-                    <p class="col mb-2 text-end"><?= date("g:i A", strtotime($item['appointment_time']))  ?></p>
+                    <p class="col-4 mb-2"><?= $item['appointment_status'] ?></p>
+                    <p class="col-8 mb-2 text-end"><?= date("l, M d, Y", strtotime($item['appointment_date'])) . " " . date("g:i A", strtotime($item['appointment_time']))  ?></p>
                     <div class="col-12">
                       <a href="" class="btn btn-sm btn-light">Chat Doctor</a>
                       <a href="https://meet.google.com/por-udiy-etd" class="btn btn-sm btn-light <?= date("M d, Y", strtotime($item['appointment_date'])) . " " . date("g:i A", strtotime($item['appointment_time'])) == date("l, M d, Y g:i A") ? '' : 'disabled' ?>">Join Meeting</a>
