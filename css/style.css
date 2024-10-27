@@ -325,9 +325,9 @@ section#services .card {
 
 
 section#chat {
-  height: calc(100vh - 63px);
+  height: calc(100vh - 78px);
   max-height: calc(100vh - 63px);
-  margin-top: 62px;
+  margin-top: 77px;
 }
 
 section#chat .body {
@@ -563,6 +563,12 @@ main.col-md-9 {
   #chat_box {
     display: none !important;
     width: 100% !important;
+  }
+
+  section#chat {
+    height: calc(100vh - 63px);
+    max-height: calc(100vh - 63px);
+    margin-top: 62px;
   }
 }
 
