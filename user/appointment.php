@@ -65,7 +65,7 @@ include '../includes/head.php';
               <div class="col-12 col-md-11">
                 <p class="fs-5 mb-2">Select Doctor *</p>
                 <div class="d-flex flex-row flex-wrap justify-content-start mb-3">
-                  <input type="text" id="doctorSearch" class="form-control fw-light" placeholder="Type to search for a doctor..." aria-label="Doctor search">
+                  <input type="text" id="doctorSearch" class="form-control fw-light" placeholder="Search" aria-label="Doctor search" value="">
                   <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none w-50" style="max-height: 200px; overflow-y: auto; z-index: 100; margin-top: 2.3rem;">
 
                   </ul>
@@ -77,6 +77,7 @@ include '../includes/head.php';
                   </div>
                   <div class="col-auto me-auto">
                     <!-- padesign dito part -->
+                    <p id="doctor_name" class="fs-6 mb-2">Doctor's Name: </p>
                     <p id="specialty" class="fs-6 mb-2">Specialty: </p>
                     <p id="contact" class="fs-6 mb-2">Contact: </p>
                     <p id="email" class="fs-6 mb-2">Email: </p>
@@ -93,12 +94,12 @@ include '../includes/head.php';
             <div class="row d-flex flex-wrap justify-content-center justify-content-md-start">
               <div class="col-6 px-2 mb-3">
                 <p class="fs-6 mb-0">Select Date</p>
-                <input type="date" id="appointment_date" name="appointment_date" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 month')); ?>" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100">
+                <input type="date" id="appointment_date" name="appointment_date" data-startday="" data-endday="" min="<?php echo date('Y-m-d'); ?>" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
               </div>
 
               <div class="col-6 px-2 mb-3">
                 <p class="fs-6 mb-0">Select Time</p>
-                <input type="time" id="appointment_time" name="appointment_time" step="1800" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
+                <input type="time" id="appointment_time" name="appointment_time" step="1800" min="" max="" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
               </div>
             </div>
 
@@ -219,6 +220,12 @@ include '../includes/head.php';
       return `${hours}:${minutes} ${suffix}`;
     }
 
+    function formatMySQLTimeTo24Hour(time) {
+      const [hours, minutes] = time.split(':');
+
+      return `${hours}:${minutes}`;
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
       const doctorSearch = document.getElementById("doctorSearch");
       const doctorDropdown = document.getElementById("doctorDropdown");
@@ -229,6 +236,12 @@ include '../includes/head.php';
       const working_days = document.getElementById("working_day");
       const working_hours = document.getElementById("working_time");
       const account_image = document.getElementById("account_image");
+      const appointment_time = document.getElementById("appointment_time");
+      const appointment_date = document.getElementById("appointment_date");
+      const doctor_name = document.getElementById("doctor_name");
+
+      var startDay;
+      var endDay;
 
       fetch('../handlers/get_doctors.php')
         .then(response => response.json())
@@ -262,7 +275,7 @@ include '../includes/head.php';
               li.setAttribute("data-id", doctor.account_id);
 
               li.addEventListener("click", function() {
-                doctorSearch.value = doctor.doctor_name;
+                doctor_name.innerHTML = doctor.doctor_name;
                 doctorIdInput.value = doctor.doctor_id;
                 specialty.innerHTML = doctor.specialty;
                 contact.innerHTML = doctor.contact;
@@ -270,7 +283,18 @@ include '../includes/head.php';
                 working_days.innerHTML = doctor.start_day + " to " + doctor.end_day;
                 working_hours.innerHTML = formatTime(doctor.start_wt) + " to " + formatTime(doctor.end_wt);
                 account_image.src = "../assets/images/" + doctor.account_image;
+                appointment_time.min = formatMySQLTimeTo24Hour(doctor.start_wt);
+                appointment_time.max = formatMySQLTimeTo24Hour(doctor.end_wt);
+                appointment_date.dataset.startday = doctor.start_day;
+                appointment_date.dataset.endday = doctor.end_day;
                 doctorDropdown.classList.add('d-none');
+
+
+                startDay = appointment_date.dataset.startday;
+                endDay = appointment_date.dataset.endday;
+
+                validate_date();
+
               });
 
               doctorDropdown.appendChild(li);
@@ -290,6 +314,69 @@ include '../includes/head.php';
           });
         })
         .catch(error => console.error('Error fetching doctors:', error));
+
+      // Check if the selected day is within the allowed range
+      function validate_date() {
+        const minDate = new Date();
+        const maxDate = new Date(minDate);
+        maxDate.setMonth(maxDate.getMonth() + 1);
+
+        appointment_date.min = formatDate(minDate);
+        appointment_date.max = formatDate(maxDate);
+
+        // Helper function to format date as YYYY-MM-DD
+        function formatDate(date) {
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, '0');
+          const day = String(date.getDate()).padStart(2, '0');
+          return `${year}-${month}-${day}`;
+        }
+
+        // Helper function to get all allowed days in a weekly cycle
+        function getAllowedDaysRange(startDay, endDay) {
+          const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          const startIdx = daysOfWeek.indexOf(startDay);
+          const endIdx = daysOfWeek.indexOf(endDay);
+
+          // Create allowed days array that cycles through the week
+          const allowedDays = [];
+          for (let i = startIdx; i !== endIdx + 1; i = (i + 1) % 7) {
+            allowedDays.push(daysOfWeek[i]);
+          }
+
+          return allowedDays;
+        }
+
+        // Get the allowed days for the specified range
+        const allowedDays = getAllowedDaysRange(startDay, endDay);
+
+        // Validate the selected date
+
+        const selectedDate = new Date(appointment_date.value);
+        const dayName = selectedDate.toLocaleDateString("en-US", {
+          weekday: 'long'
+        });
+
+
+        if (!allowedDays.includes(dayName)) {
+          // Set a custom validity message
+          appointment_date.setCustomValidity("Please select a valid day from " + startDay + " to " + endDay + ".");
+        } else {
+          // Clear any previous custom validity message
+          appointment_date.setCustomValidity("");
+        }
+      }
+
+      appointment_date.addEventListener("input", function(event) {
+        validate_date();
+      });
+
+      form.addEventListener("submit", function(event) {
+        if (!appointment_date.checkValidity()) {
+          event.preventDefault(); // Prevent submission if the input is invalid
+          appointment_date.reportValidity(); // Show tooltip if invalid
+        }
+      });
     });
   </script>
 

@@ -87,3 +87,7 @@ function validate_time($start, $end)
 
     return $startTime < $endTime;
 }
+
+function check_time_between($start, $end, $time){
+    
+}

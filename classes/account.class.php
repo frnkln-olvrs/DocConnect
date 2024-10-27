@@ -180,7 +180,8 @@ class Account
 
     function get_doctor()
     {
-        $sql = "SELECT a.*, d.*, CONCAT(a.firstname, ' ', a.middlename, ' ', a.lastname) AS doctor_name FROM account a INNER JOIN doctor_info d ON a.account_id = d.account_id WHERE a.user_role = 1 AND d.is_deleted = 0";
+        $sql = "SELECT a.*, d.*, CONCAT(a.firstname, IF(a.middlename IS NOT NULL AND a.middlename != '', CONCAT(' ', a.middlename), ''), 
+        ' ', a.lastname) AS doctor_name FROM account a INNER JOIN doctor_info d ON a.account_id = d.account_id WHERE a.user_role = 1 AND d.is_deleted = 0";
         $query = $this->db->connect()->prepare($sql);
         $data = null;
         if ($query->execute()) {
