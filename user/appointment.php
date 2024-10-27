@@ -145,7 +145,7 @@ include '../includes/head.php';
             <hr>
 
             <div class="w-100 d-flex justify-content-end ">
-              <button type="submit" class="w-50 w-md-25 btn btn-outline-dark mt-2" name="request">Request Appointment</button>
+              <button id="request" type="submit" class="w-50 w-md-25 btn btn-outline-dark mt-2" disabled name="request">Request Appointment</button>
             </div>
 
           </div>
@@ -162,17 +162,17 @@ include '../includes/head.php';
               $appointmentArray = $appointment_class->user_appointments($_SESSION['patient_id']);
               foreach ($appointmentArray as $item) {
               ?>
-                <div class="col-12 border border-2 border-white rounded-2 p-2">
+                <div class="col-12 border border-2 border-white rounded-2 p-2 mb-1">
                   <div class="m-0 mb-1">
                     <p class="mb-2 fs-5"><?= $item['doctor_name'] ?></p>
                   </div>
                   <hr class="text-white my-1 mx-0">
-                  <div class="row d-flex justify-content-between mb-1">
-                    <p class="col mb-2"><?= date("M d, Y", strtotime($item['appointment_date'])) ?></p>
+                  <div class="row d-flex justify-content-between m-0 mb-1">
+                    <p class="col mb-2"><?= date("l, M d, Y", strtotime($item['appointment_date'])) ?></p>
                     <p class="col mb-2 text-end"><?= date("g:i A", strtotime($item['appointment_time']))  ?></p>
                     <div class="col-12">
                       <a href="" class="btn btn-sm btn-light">Chat Doctor</a>
-                      <a href="https://meet.google.com/por-udiy-etd" class="btn btn-sm btn-light">Join Meeting</a>
+                      <a href="https://meet.google.com/por-udiy-etd" class="btn btn-sm btn-light <?= date("M d, Y", strtotime($item['appointment_date'])) . " " . date("g:i A", strtotime($item['appointment_time'])) == date("l, M d, Y g:i A") ? '' : 'disabled' ?>">Join Meeting</a>
                     </div>
                   </div>
                 </div>
@@ -253,6 +253,7 @@ include '../includes/head.php';
       const appointment_time = document.getElementById("appointment_time");
       const appointment_date = document.getElementById("appointment_date");
       const doctor_name = document.getElementById("doctor_name");
+      const request_button = document.getElementById("request");
 
       var startDay;
       var endDay;
@@ -301,6 +302,7 @@ include '../includes/head.php';
                 appointment_time.max = formatMySQLTimeTo24Hour(doctor.end_wt);
                 appointment_date.dataset.startday = doctor.start_day;
                 appointment_date.dataset.endday = doctor.end_day;
+                request_button.removeAttribute("disabled");
                 doctorDropdown.classList.add('d-none');
 
 
