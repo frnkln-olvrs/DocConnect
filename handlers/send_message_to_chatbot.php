@@ -34,7 +34,6 @@ if (!$pdo) {
 }
 
 try {
-  // Get the chatbot's response from the Python script
   $command = escapeshellcmd("python ../scripts/chatbot.py " . escapeshellarg($message));
   $response = shell_exec($command);
 
