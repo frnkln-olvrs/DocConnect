@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
     chatMessages.appendChild(messageElement);
     document.getElementById('messageInput').value = '';
 
-    fetch('../handlers/send_message_to_chatbot.php', {
+    fetch('../handlers/send_message.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
