@@ -38,7 +38,7 @@ if (!$pdo) {
 if (!$receiverId) {
   // Process the message for the chatbot
   try {
-    $command = escapeshellcmd("node ../scripts/chatbot.js" . escapeshellarg($message));
+    $command = escapeshellcmd("node ../scripts/chatbot.js " . escapeshellarg($message));
     $response = shell_exec($command);
 
     if ($response) {
