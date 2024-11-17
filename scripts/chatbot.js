@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
-
-const apiKey = 'AIzaSyAOl_uvObdzhbiRwaIeJVJ3OAKci89F62M';
+    
+const apiKey = 'AIzaSyCk7h2cyuhHPD2B9K4TdD2IBlq7KKRSgMA';
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
