@@ -347,6 +347,24 @@ section#chat #chat_text {
   background-color: rgb(230, 230, 230);
 }
 
+ul#chatList {
+  overflow-y: scroll;
+  height: 70%;
+}
+
+#chatList::-webkit-scrollbar {
+  width: .25rem;
+}
+
+#chatList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#chatList::-webkit-scrollbar-thumb {
+  background: rgb(194, 194, 194);
+  border-radius: 10px;
+}
+
 #chat input:focus,
 #chat textarea:focus {
   box-shadow: none !important;

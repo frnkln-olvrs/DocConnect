@@ -32,14 +32,14 @@ $account_id = isset($_SESSION['account_id']) ? $_SESSION['account_id'] : 0;
   <section id="chat" class="padding-medium">
     <div class="d-flex h-100">
       <!-- Left Sidebar (Chats List) -->
-      <div id="chat_sidepanel" class="d-flex flex-column bg-light border-end p-3" style="min-width: 25%;">
-        <div class="d-flex justify-content-between align-items-center mb-4">
+      <div id="chat_sidepanel" class="d-flex flex-column bg-light border-end" style="min-width: 25%;">
+        <div class="m-3 d-flex justify-content-between align-items-center mb-4">
           <span class="fs-5 fw-bold">Chats</span>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control border-2" id="searchChat" placeholder="Search">
+          <input type="text" class="mx-3 form-control border-2" id="searchChat" placeholder="Search">
         </div>
-        <ul id="chatList" class="list-unstyled mb-0">
+        <ul id="chatList" class="ms-3 list-unstyled mb-0">
           <!-- Dynamic chat list will be loaded here -->
         </ul>
       </div>
