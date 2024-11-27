@@ -2,7 +2,9 @@
     "require": {
         "phpmailer/phpmailer": "^6.9",
         "google/apiclient": "2.15.0",
-        "ralouphie/getallheaders": "^3.0"
+        "ralouphie/getallheaders": "^3.0",
+        "openai-php/client": "^0.10.3",
+        "orhanerday/open-ai": "^5.2"
     },
     "scripts": {
         "pre-autoload-dump": "Google\\Task\\Composer::cleanup"
@@ -12,5 +14,10 @@
             "Drive",
             "YouTube"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     }
 }
