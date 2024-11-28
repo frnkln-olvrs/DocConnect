@@ -101,13 +101,11 @@ require_once('../classes/account.class.php');
     </div>
   </section>
 
-  <!-- Specializations Offered -->
   <section class="specializations padding-medium py-3 text-center bg-light">
     <h2 class="text-green">Our Specializations</h2>
     <p class="fs-5 fw-light">Our team of expert doctors provides care in the following areas:</p>
     <div class="container py-2">
       <div class="row text-center">
-        <!-- General Medicine -->
         <div class="col-md-4 mb-4">
           <div class="card border-1 shadow-sm h-100">
             <div class="card-body">
@@ -119,7 +117,6 @@ require_once('../classes/account.class.php');
           </div>
         </div>
 
-        <!-- Mental Health -->
         <div class="col-md-4 mb-4">
           <div class="card border-1 shadow-sm h-100">
             <div class="card-body">
@@ -131,7 +128,6 @@ require_once('../classes/account.class.php');
           </div>
         </div>
 
-        <!-- Dentistry -->
         <div class="col-md-4 mb-4">
           <div class="card border-1 shadow-sm h-100">
             <div class="card-body">
@@ -143,6 +139,54 @@ require_once('../classes/account.class.php');
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="telehealth padding-medium py-5 text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img src="../assets/images/doctors_telehealth.png" alt="Telehealth Illustration" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <h2 class="text-green fw-bold mb-3">Our Telehealth Advantage</h2>
+          <p class="fs-5 fw-light mb-3">
+            Leveraging cutting-edge technology, we offer secure and accessible teleconsultations that bring quality care to the comfort of your home.
+          </p>
+          <blockquote class="blockquote bg-white p-3 rounded shadow">
+            <p class="mb-0">"The doctors were so attentive and helpful. Telehealth made it easy to consult from home."</p>
+            <footer class="blockquote-footer text-end">Satisfied User</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Community Impact -->
+  <section class="community-impact padding-medium py-5 text-center bg-light">
+    <div class="container">
+      <h2 class="text-green fw-bold mb-4">Making an Impact</h2>
+      <div class="row">
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+          <p class="fs-5 fw-light">
+            Our doctors are committed to giving back through outreach programs, health education seminars, and volunteer initiatives that promote wellness across Zamboanga Peninsula.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img src="../assets/images/doctors_community-impact.png" alt="Community Impact" class="img-fluid rounded shadow">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Accessibility Note -->
+  <section class="accessibility padding-medium py-5 text-center">
+    <div class="container">
+      <h2 class="text-green fw-bold mb-4">Accessible to All</h2>
+      <p class="fs-5 fw-light mb-4">
+        We strive to ensure that everyone can access our services, regardless of ability. Alternative formats and tools are available for users with disabilities.
+      </p>
+      <img src="../assets/images/doctors_accessibility.png" alt="Accessibility for All" class="img-fluid rounded shadow">
     </div>
   </section>
 

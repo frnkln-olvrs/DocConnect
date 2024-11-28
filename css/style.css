@@ -4,8 +4,8 @@
 :root {
 	--primary: #dc3545;
 	--white: whitesmoke;
-	--secondary: #b0eacd;
-	--dark_secondary: #21bf73;
+	--secondary: #21bf73;
+	--dark_secondary: #007f4f;
 }
 
 a:hover {
@@ -435,6 +435,11 @@ ul#chatList {
   margin-right: 10px;
 } */
 
+/* Blockquote Styling */
+.telehealth .blockquote {
+  border-left: 4px solid #007f4f;
+  font-style: italic;
+}
 /* OUR DOCTORS SECTION */
 
 
