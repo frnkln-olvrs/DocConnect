@@ -106,14 +106,14 @@
       <div class="dropdown text-end">
         <a href="#" class="acc d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
           <div class="d-flex align-items-center">
-            <img src="./../assets/images/profile_img.jpg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
-            <h6 class="m-0 text-light d-none d-md-block">Admin</h6>
+            <img src="./../assets/images/profilenono.jpeg" alt="mdo" width="32" height="32" class="rounded-circle border border-2 border-light me-2">
+            <h6 class="m-0 text-light d-none d-md-block"><?= $_SESSION['fullname'] ?></h6>
           </div>
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="profileDropddown">
-          <li><h4 class="m-0 text-dark d-block d-lg-none text-center">Admin</h4></li>
+          <li><h4 class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></h4></li>
           <li><hr class="dropdown-divider d-block d-lg-none"></li>
-          <li><a class="dropdown-item" href="../login">Sign out</a></li>
+          <li><a class="dropdown-item" href="../logout">Logout</a></li>
         </ul>
       </div>
     </div>
