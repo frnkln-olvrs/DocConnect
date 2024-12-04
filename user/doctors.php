@@ -35,7 +35,7 @@ require_once('../classes/account.class.php');
 
   <!-- Doctors Carousel -->
   <section id="carousel">
-    <div id="doctorsCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div id="doctorsCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-touch="true">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#doctorsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#doctorsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -43,7 +43,7 @@ require_once('../classes/account.class.php');
       </div>
       <div class="carousel-inner">
         <!-- Doctor 1 -->
-        <div class="carousel-item active" data-bs-interval="10000">
+        <div class="carousel-item active" data-bs-interval="5000">
           <div class="row mx-5 mb-4 align-items-stretch">
             <div class="col-12 col-lg-5 mb-3 mb-lg-0">
               <div class="profile-card h-100 me-4">
@@ -87,7 +87,96 @@ require_once('../classes/account.class.php');
             </div>
           </div>
         </div>
-        <!-- Add additional doctors as similar carousel items here -->
+        
+        <!-- Doctor 2 -->
+        <div class="carousel-item" data-bs-interval="5000">
+          <div class="row mx-5 mb-4 align-items-stretch">
+            <div class="col-12 col-lg-5 mb-3 mb-lg-0">
+              <div class="profile-card h-100 me-4">
+                <div class="profile-image">
+                  <img src="../assets/gallery/66dda1130b5b75.78313827.png" alt="Profile Image of Dr. John Smith">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-7">
+              <div class="details h-100">
+                <h4 class="text-green mb-3 fs-2 text-center text-lg-start">Dr. John Smith</h4>
+                <div class="d-flex flex-column">
+                  <div class="row mb-3 align-items-stretch">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0">
+                      <div class="card px-4 py-2 bg-light shadow-lg h-100">
+                        <h6 class="text-primary">Specialty:</h6>
+                        <p class="fw-light">Cardiology</p>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="card px-4 py-2 bg-light shadow-lg h-100">
+                        <h6 class="text-primary">Education:</h6>
+                        <p class="fw-light">Stanford University, Doctor of Medicine</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card px-4 py-2 bg-light shadow-lg mb-3">
+                    <h6 class="text-primary">About:</h6>
+                    <p class="fw-light fs-6">
+                      Dr. Smith specializes in heart health, focusing on advanced diagnostics and patient-centered care. 
+                      He enjoys cycling and participating in medical research conferences.
+                    </p>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <a href="./appointment.php" class="btn btn-primary text-light">Book an Appointment</a>
+                    <a href="../doctor-profile/dr-john-smith.php" class="btn btn-outline-secondary">Learn More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Doctor 3 -->
+        <div class="carousel-item" data-bs-interval="5000">
+          <div class="row mx-5 mb-4 align-items-stretch">
+            <div class="col-12 col-lg-5 mb-3 mb-lg-0">
+              <div class="profile-card h-100 me-4">
+                <div class="profile-image">
+                  <img src="../assets/gallery/66dd9f4f08e0e3.48649594.png" alt="Profile Image of Dr. Sophia Williams">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-7">
+              <div class="details h-100">
+                <h4 class="text-green mb-3 fs-2 text-center text-lg-start">Dr. Sophia Williams</h4>
+                <div class="d-flex flex-column">
+                  <div class="row mb-3 align-items-stretch">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0">
+                      <div class="card px-4 py-2 bg-light shadow-lg h-100">
+                        <h6 class="text-primary">Specialty:</h6>
+                        <p class="fw-light">Pediatrics</p>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="card px-4 py-2 bg-light shadow-lg h-100">
+                        <h6 class="text-primary">Education:</h6>
+                        <p class="fw-light">Johns Hopkins University, Doctor of Medicine</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card px-4 py-2 bg-light shadow-lg mb-3">
+                    <h6 class="text-primary">About:</h6>
+                    <p class="fw-light fs-6">
+                      Dr. Williams provides specialized care for children and adolescents. 
+                      She is passionate about developmental health and enjoys painting in her free time.
+                    </p>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <a href="./appointment.php" class="btn btn-primary text-light">Book an Appointment</a>
+                    <a href="../doctor-profile/dr-sophia-williams.php" class="btn btn-outline-secondary">Learn More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <button class="carousel-control-prev" type="button" data-bs-target="#doctorsCarousel" data-bs-slide="prev">
@@ -192,5 +281,24 @@ require_once('../classes/account.class.php');
 
   <?php require_once ('../includes/footer.php'); ?>
 
+  <script>
+  const carousel = document.querySelector('#doctorsCarousel');
+  let startX = 0;
+
+  carousel.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  carousel.addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX;
+    if (endX < startX - 50) {
+      const nextButton = carousel.querySelector('.carousel-control-next');
+      nextButton.click();
+    } else if (endX > startX + 50) {
+      const prevButton = carousel.querySelector('.carousel-control-prev');
+      prevButton.click();
+    }
+  });
+</script>
 </body>
 </html>

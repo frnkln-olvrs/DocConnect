@@ -441,8 +441,24 @@ ul#chatList {
   font-style: italic;
 }
 
-#carousel .carousel-indicators {
+#doctorsCarousel .carousel-indicators {
   margin-bottom: 0 !important;
+}
+
+#doctorsCarousel .carousel-inner {
+  display: flex;
+  align-items: center;
+  min-height: 100%;
+}
+ 
+.carousel-item {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+ 
+.carousel-item-next,
+.carousel-item-prev {
+  display: flex;
+  align-items: center;
 }
 /* OUR DOCTORS SECTION */
 
@@ -659,7 +675,7 @@ main.col-md-9 {
     margin-top: 62px;
   }
 
-  #carousel .profile-card {
+  #doctorsCarousel .profile-card {
     min-height: 200px;
   }
 }
