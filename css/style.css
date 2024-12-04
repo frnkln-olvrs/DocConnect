@@ -440,6 +440,10 @@ ul#chatList {
   border-left: 4px solid #007f4f;
   font-style: italic;
 }
+
+#carousel .carousel-indicators {
+  margin-bottom: 0 !important;
+}
 /* OUR DOCTORS SECTION */
 
 
@@ -653,6 +657,10 @@ main.col-md-9 {
     height: calc(100vh - 63px);
     max-height: calc(100vh - 63px);
     margin-top: 62px;
+  }
+
+  #carousel .profile-card {
+    min-height: 200px;
   }
 }
 

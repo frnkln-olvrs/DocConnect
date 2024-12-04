@@ -44,16 +44,16 @@ require_once('../classes/account.class.php');
       <div class="carousel-inner">
         <!-- Doctor 1 -->
         <div class="carousel-item active" data-bs-interval="10000">
-          <div class="row mx-5 mb-4">
+          <div class="row mx-5 mb-4 align-items-stretch">
             <div class="col-12 col-lg-5 mb-3 mb-lg-0">
-              <div class="profile-card me-4">
+              <div class="profile-card h-100 me-4">
                 <div class="profile-image">
                   <img src="../assets/gallery/66e7db42336204.60963457.jpg" alt="Profile Image of Dr. Emily Parker">
                 </div>
               </div>
             </div>
             <div class="col-12 col-lg-7">
-              <div class="details">
+              <div class="details h-100">
                 <h4 class="text-green mb-3 fs-2 text-center text-lg-start">Dr. Emily Parker</h4>
                 <div class="d-flex flex-column">
                   <div class="row mb-3 align-items-stretch">
@@ -154,7 +154,7 @@ require_once('../classes/account.class.php');
             Leveraging cutting-edge technology, we offer secure and accessible teleconsultations that bring quality care to the comfort of your home.
           </p>
           <blockquote class="blockquote bg-white p-3 rounded shadow">
-            <p class="mb-0">"The doctors were so attentive and helpful. Telehealth made it easy to consult from home."</p>
+            <p class="mb-3">"The doctors were so attentive and helpful. Telehealth made it easy to consult from home."</p>
             <footer class="blockquote-footer text-end">Satisfied User</footer>
           </blockquote>
         </div>
