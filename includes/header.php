@@ -10,14 +10,23 @@
 		</a>
 
 		<ul class="dropdown-menu text-small" aria-labelledby="profileDropddown">
-			<li><h4 class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></h4></li>
-			<li><hr class="dropdown-divider d-block d-lg-none"></li>
+			<li>
+				<h4 class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></h4>
+			</li>
+			<li>
+				<hr class="dropdown-divider d-block d-lg-none">
+			</li>
+			<li><a class="dropdown-item" href="./profile.php">Profile</a></li>
+			<li><a class="dropdown-item" href="./chat_user.php">Chat</a></li>
+			<li>
+				<hr class="dropdown-divider m-0 mt-1">
+			</li>
 			<li><a class="dropdown-item" href="../logout">Logout</a></li>
 		</ul>
 
 		<a class="navbar-brand d-flex align-items-center text-dark text-decoration-none" href="../index.php">
-      <img src="../assets/images/logo.png" alt="Logo" height="35">
-      <h1 class="fs-4 link-primary m-0 d-name">Doc<span class="link-dark">Connect</span></h1>
+			<img src="../assets/images/logo.png" alt="Logo" height="35">
+			<h1 class="fs-4 link-primary m-0 d-name">Doc<span class="link-dark">Connect</span></h1>
 		</a>
 
 		<button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,9 +50,18 @@
 						</div>
 					</a>
 					<ul class="dropdown-menu text-small" aria-labelledby="profileDropddown">
-						<li><h4 class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></h4></li>
-						<li><hr class="dropdown-divider d-block d-lg-none"></li>
-						<li><a class="dropdown-item" href="../logout">Logout</a></li>
+						<li>
+							<h4 class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></h4>
+						</li>
+						<li>
+							<hr class="dropdown-divider d-block d-lg-none">
+						</li>
+						<li><a class="dropdown-item" href="./profile.php">Profile</a></li>
+						<li><a class="dropdown-item" href="./chat_user.php">Chat</a></li>
+						<li>
+							<hr class="dropdown-divider m-0 mt-1">
+						</li>
+						<li><a class="dropdown-item	" href="../logout">Logout</a></li>
 					</ul>
 				</li>
 			</ul>

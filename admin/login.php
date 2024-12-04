@@ -25,6 +25,9 @@ if (isset($_POST['login'])) {
     } else {
       $_SESSION['fullname'] = ucwords(strtolower($account->firstname . ' ' . $account->lastname));
     }
+    $_SESSION['firstname'] = $account->firstname;
+    $_SESSION['middlename'] = $account->middlename;
+    $_SESSION['lastname'] = $account->lastname;
 
     if ($_SESSION['user_role'] == 0) {
       header('location: ./index.php');

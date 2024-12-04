@@ -1,14 +1,9 @@
 <?php
-require_once '../classes/database.php';
-
-$db = new Database();
-$connection = $db->connect();
+require_once('../classes/account.class.php');
+$account = new Account();
 
 try {
-  $query = "SELECT account_id, CONCAT(firstname, ' ', lastname) AS doctor_name FROM account WHERE user_role = 1 AND is_deleted = 0";
-  $stmt = $connection->prepare($query);
-  $stmt->execute();
-  $doctors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $doctors = $account->get_doctor();
 
   header('Content-Type: application/json');
   if ($doctors) {
@@ -19,4 +14,3 @@ try {
 } catch (PDOException $e) {
   echo json_encode(['error' => $e->getMessage()]);
 }
-?>

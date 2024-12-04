@@ -4,7 +4,7 @@ class Database
     private $host = 'localhost';
     private $username = 'root';
     private $password = '';
-    private $database = 'docconnect_db';
+    private $database = 'docconnect_db2';
     protected $connection;
 
     function connect()
