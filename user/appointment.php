@@ -64,13 +64,13 @@ include '../includes/head.php';
             <div class="col-12 col-md-11">
               <label for="doctorSearch" class="form-label text-black-50">Select Doctor</label>
               <div class="d-flex flex-row flex-wrap justify-content-start mb-3">
-                <input type="text" id="doctorSearch" class="form-control fw-light" placeholder="Search" aria-label="Doctor search" value="">
+                <input type="text" id="doctorSearch" class="form-control bg-light border border-dark" placeholder="Search" aria-label="Doctor search" value="">
                 <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none w-50" style="max-height: 200px; overflow-y: auto; z-index: 100; margin-top: 2.3rem;"></ul>
                 <input type="hidden" id="doctor_id" name="doctor_id" value="">
               </div>
               <div class="row">
                 <div class="col-auto">
-                  <img id="account_image" src="../assets/images/default_profile.png" alt="" width="70" height="70" class="rounded rounded-3 border border-2 border-light">
+                  <img id="account_image" src="../assets/images/default_profile.png" alt="" width="100" height="100" class="rounded rounded-3 border border-2 border-light">
                 </div>
                 <div class="col-auto me-auto">
                   <p id="doctor_name" class="fs-6 mb-2">Doctor's Name: </p>
@@ -120,7 +120,7 @@ include '../includes/head.php';
               <div class="col-md-4">
                 <select class="form-select bg-light border border-dark" name="dob_year" required>
                   <option value="" disabled selected>Year</option>
-                  <?php for ($i = date('Y') - 100; $i <= date('Y'); $i++) echo "<option value='$i'>$i</option>"; ?>
+                  <?php for ($i = date('Y') - 30; $i <= date('Y'); $i++) echo "<option value='$i'>$i</option>"; ?>
                 </select>
               </div>
             </div>
