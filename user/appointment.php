@@ -53,105 +53,156 @@ include '../includes/head.php';
   <section id="appointment" class="page-container padding-medium p-3">
     <div class="row mb-3">
 
+      <div class="col-2"></div>
+
       <div class="col-sm-12 col-md-8">
-        <form action="" method="post">
-          <div class="border border-dark-subtle shadow-sm rounded-2 p-3 mb-4 mb-md-0">
+        <form action="submit_appointment.php" method="post" class="border border-dark-subtle shadow-sm rounded-2 p-3 mb-4 mb-md-0">
+          <div class="row">
+            <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
+              <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i>
+            </div>
+            <div class="col-12 col-md-11">
+              <label for="doctorSearch" class="form-label text-black-50">Select Doctor</label>
+              <div class="d-flex flex-row flex-wrap justify-content-start mb-3">
+                <input type="text" id="doctorSearch" class="form-control fw-light" placeholder="Search" aria-label="Doctor search" value="">
+                <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none w-50" style="max-height: 200px; overflow-y: auto; z-index: 100; margin-top: 2.3rem;"></ul>
+                <input type="hidden" id="doctor_id" name="doctor_id" value="">
+              </div>
+              <div class="row">
+                <div class="col-auto">
+                  <img id="account_image" src="../assets/images/default_profile.png" alt="" width="70" height="70" class="rounded rounded-3 border border-2 border-light">
+                </div>
+                <div class="col-auto me-auto">
+                  <p id="doctor_name" class="fs-6 mb-2">Doctor's Name: </p>
+                  <p id="specialty" class="fs-6 mb-2">Specialty: </p>
+                  <p id="contact" class="fs-6 mb-2">Contact: </p>
+                  <p id="email" class="fs-6 mb-2">Email: </p>
+                  <p id="working_day" class="fs-6 mb-2">Working Days: </p>
+                  <p id="working_time" class="fs-6 mb-2">Working Time: </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- Name -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="firstName" class="form-label text-black-50">First Name</label>
+              <input type="text" class="form-control bg-light border border-dark" id="firstName" name="first_name" required>
+            </div>
+            <div class="col-md-6">
+              <label for="lastName" class="form-label text-black-50">Last Name</label>
+              <input type="text" class="form-control bg-light border border-dark" id="lastName" name="last_name" required>
+            </div>
+          </div>
+
+          <!-- Date of Birth -->
+          <div class="mb-3">
+            <label class="form-label text-black-50">Date of Birth</label>
             <div class="row">
-              <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
-                <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i>
-
+              <div class="col-md-4">
+                <select class="form-select bg-light border border-dark" name="dob_day" required>
+                  <option value="" disabled selected>Day</option>
+                  <?php for ($i = 1; $i <= 31; $i++) echo "<option value='$i'>$i</option>"; ?>
+                </select>
               </div>
-              <div class="col-12 col-md-11">
-                <p class="fs-5 mb-2">Select Doctor *</p>
-                <div class="d-flex flex-row flex-wrap justify-content-start mb-3">
-                  <input type="text" id="doctorSearch" class="form-control fw-light" placeholder="Search" aria-label="Doctor search" value="">
-                  <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none w-50" style="max-height: 200px; overflow-y: auto; z-index: 100; margin-top: 2.3rem;">
-
-                  </ul>
-                  <input type="hidden" id="doctor_id" name="doctor_id" value="">
-                </div>
-                <div class="row">
-                  <div class="col-auto">
-                    <img id="account_image" src="../assets/images/default_profile.png" alt="" width="70" height="70" class="rounded rounded-3 border border-2 border-light">
-                  </div>
-                  <div class="col-auto me-auto">
-                    <!-- padesign dito part -->
-                    <p id="doctor_name" class="fs-6 mb-2">Doctor's Name: </p>
-                    <p id="specialty" class="fs-6 mb-2">Specialty: </p>
-                    <p id="contact" class="fs-6 mb-2">Contact: </p>
-                    <p id="email" class="fs-6 mb-2">Email: </p>
-                    <p id="working_day" class="fs-6 mb-2">Working Days: </p>
-                    <p id="working_time" class="fs-6 mb-2">Working Time: </p>
-                  </div>
-                </div>
+              <div class="col-md-4">
+                <select class="form-select bg-light border border-dark" name="dob_month" required>
+                  <option value="" disabled selected>Month</option>
+                  <?php 
+                  $months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                  foreach ($months as $index => $month) echo "<option value='".($index+1)."'>$month</option>";
+                  ?>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <select class="form-select bg-light border border-dark" name="dob_year" required>
+                  <option value="" disabled selected>Year</option>
+                  <?php for ($i = date('Y') - 100; $i <= date('Y'); $i++) echo "<option value='$i'>$i</option>"; ?>
+                </select>
               </div>
             </div>
+          </div>
 
+          <!-- Gender -->
+          <div class="mb-3">
+            <label for="gender" class="form-label text-black-50">Gender</label>
+            <select class="form-select bg-light border border-dark" id="gender" name="gender" required>
+              <option value="" disabled selected>Please Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-            <hr>
+          <!-- Phone Number -->
+          <div class="mb-3">
+            <label for="phoneNumber" class="form-label text-black-50">Phone Number</label>
+            <input type="tel" class="form-control bg-light border border-dark" id="phoneNumber" name="phone_number" placeholder="(000) 000-0000" required>
+          </div>
 
-            <div class="row d-flex flex-wrap justify-content-center justify-content-md-start">
-              <div class="col-6 p-0 pe-4 mb-3">
-                <p class="fs-6 mb-0">Select Date</p>
-                <input type="date" id="appointment_date" name="appointment_date" data-startday="" data-endday="" min="<?php echo date('Y-m-d'); ?>" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
+          <!-- Address -->
+          <div class="mb-3">
+            <label for="address" class="form-label text-black-50">Address</label>
+            <input type="text" class="form-control bg-light border border-dark" id="address" name="address" placeholder="Street, City, State, Postal Code" required>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label text-black-50">Email</label>
+            <input type="email" class="form-control bg-light border border-dark" id="email" name="email" placeholder="example@example.com" required>
+          </div>
+
+          <div class="row">
+            <div class="col-6 mb-3">
+              <label class="form-label text-black-50">Have you ever applied to our facility before?</label>
+              <div class="form-check">
+                <input class="form-check-input border border-dark" type="radio" name="facility_applied" id="yes" value="Yes" required>
+                <label class="form-check-label" for="yes">Yes</label>
               </div>
-              <div class="col-6 p-0 mb-3">
-                <p class="fs-6 mb-0">Select Time</p>
-                <input type="time" id="appointment_time" name="appointment_time" step="1800" min="" max="" class="form-control fs-6 px-2 py-1 bg-white border border-dark rounded-1 text-black-50 w-100" required>
+              <div class="form-check">
+                <input class="form-check-input border border-dark" type="radio" name="facility_applied" id="no" value="No" required>
+                <label class="form-check-label" for="no">No</label>
               </div>
             </div>
-
-
-            <!-- <hr>
-
-            <div>
-              <div class="row">
-                <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
-                  <i class='bx bx-phone xx-large-font text-green pt-md-2 ps-md-2'></i>
-                </div>
-                <div class="col-12 col-md-11">
-                  <p class="fs-5 mb-0">Mobile Number</p>
-                  <p class="fs-6 fw-light text-muted">Enter the number on which you wish to recieve checkup related information</p>
-                  <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
-
-                    <input type="number" class="form-control border border-dark" placeholder="+63" aria-label="mobile_no" aria-describedby="mobile_no" value="+63">
-
-                  </div>
-                </div>
-              </div>
+  
+            <!-- Procedure -->
+            <div class="col-6 mb-3">
+              <label for="procedure" class="form-label text-black-50">Which procedure do you want to make an appointment for?</label>
+              <select class="form-select bg-light border border-dark" id="procedure" name="procedure" required>
+                <option value="" disabled selected>Please Select</option>
+                <option value="General Consultation">General Consultation</option>
+                <option value="Dental Check-up">Dental Check-up</option>
+              </select>
             </div>
+          </div>
+          <!-- Facility Question -->
 
-            <hr>
-
-            <div>
-              <div class="row">
-                <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
-                  <i class='bx bx-mail-send xx-large-font text-green pt-md-2 ps-md-2'></i>
-                </div>
-                <div class="col-12 col-md-11">
-                  <p class="fs-5 mb-0">Email Address</p>
-                  <p class="fs-6 fw-light text-muted">Enter the email address on which you wish to recieve checkup related information</p>
-                  <div class="d-flex flex-row flex-wrap justify-content-evenly justify-content-md-start me-md-5 pe-md-5">
-
-                    <input type="email" class="form-control border border-dark" placeholder="example@email.com" aria-label="mobile_no" aria-describedby="mobile_no">
-
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
-            <hr>
-
-            <div class="w-100 d-flex justify-content-end ">
-              <button id="request" type="submit" class="w-50 w-md-25 btn btn-outline-dark mt-2" disabled name="request">Request Appointment</button>
+          <!-- Preferred Appointment Date -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="appointment_date" class="form-label text-black-50">Select Date</label>
+              <input type="date" id="appointment_date" name="appointment_date" data-startday="" data-endday="" min="<?php echo date('Y-m-d'); ?>" class="form-control fs-6 px-2 py-1 bg-light border border-dark" required>
             </div>
+            <div class="col-md-6">
+              <label for="appointment_time" class="form-label text-black-50">Select Time</label>
+              <input  type="time" id="appointment_time" name="appointment_time" step="1800" min="" max="" class="form-control fs-6 px-2 py-1 bg-light border border-dark" required>
+            </div>
+          </div>
 
+          <hr>
+
+          <div class="w-100 d-flex justify-content-end">
+            <button id="request" type="submit" class="w-50 w-md-25 btn btn-outline-dark mt-2">Request Appointment</button>
           </div>
         </form>
       </div>
 
+      <div class="col-2"></div>
 
-      <div class="col-sm-12 col-md-4 h-100">
+      <!-- <div class="col-sm-12 col-md-4 h-100">
         <div class="d-flex flex-column justify-content-between bg-green p-3 rounded-2 h-100 text-white">
           <div>
             <h4>Appointment Schedule</h4>
