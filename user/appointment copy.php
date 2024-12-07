@@ -58,27 +58,24 @@ include '../includes/head.php';
       <div class="col-sm-12 col-md-8">
         <form action="submit_appointment.php" method="post" class="border border-dark-subtle shadow-sm rounded-2 p-3 mb-4 mb-md-0">
           <div class="row">
-            <div class="col-12 col-md-1 d-flex align-items-start justify-content-center p-0">
-              <i class='bx bx-shield-plus xx-large-font text-green pt-md-2 ps-md-2'></i>
-            </div>
-            <div class="col-12 col-md-11">
-              <label for="doctorSearch" class="form-label text-black-50">Select Doctor</label>
+            <div class="col-12">
+              <label for="doctorSearch" class="form-label text-black-50 fw-bold fs-5">Select Doctor</label>
               <div class="d-flex flex-row flex-wrap justify-content-start mb-3">
                 <input type="text" id="doctorSearch" class="form-control bg-light border border-dark" placeholder="Search" aria-label="Doctor search" value="">
                 <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none w-50" style="max-height: 200px; overflow-y: auto; z-index: 100; margin-top: 2.3rem;"></ul>
                 <input type="hidden" id="doctor_id" name="doctor_id" value="">
               </div>
-              <div class="row">
+              <div class="row align-items-center border p-3 rounded bg-light">
                 <div class="col-auto">
-                  <img id="account_image" src="../assets/images/default_profile.png" alt="" width="100" height="100" class="rounded rounded-3 border border-2 border-light">
+                  <img id="account_image" src="../assets/images/default_profile.png" alt="Doctor Profile" width="100" height="100" class="rounded-circle border border-2 shadow-sm">
                 </div>
-                <div class="col-auto me-auto">
-                  <p id="doctor_name" class="fs-6 mb-2">Doctor's Name: </p>
-                  <p id="specialty" class="fs-6 mb-2">Specialty: </p>
-                  <p id="contact" class="fs-6 mb-2">Contact: </p>
-                  <p id="email" class="fs-6 mb-2">Email: </p>
-                  <p id="working_day" class="fs-6 mb-2">Working Days: </p>
-                  <p id="working_time" class="fs-6 mb-2">Working Time: </p>
+                <div class="col">
+                  <p id="doctor_name" class="fs-6 fw-semibold text-dark mb-1"><span class="text-black-50">Name:</span> Not Selected</p>
+                  <p id="specialty" class="fs-6 text-muted mb-1"><span class="fw-semibold">Specialty:</span> N/A</p>
+                  <p id="contact" class="fs-6 text-muted mb-1"><span class="fw-semibold">Contact:</span> N/A</p>
+                  <p id="email" class="fs-6 text-muted mb-1"><span class="fw-semibold">Email:</span> N/A</p>
+                  <p id="working_day" class="fs-6 text-muted mb-1"><span class="fw-semibold">Working Days:</span> N/A</p>
+                  <p id="working_time" class="fs-6 text-muted mb-1"><span class="fw-semibold">Working Time:</span> N/A</p>
                 </div>
               </div>
             </div>
@@ -144,10 +141,10 @@ include '../includes/head.php';
           </div>
 
           <!-- Address -->
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="address" class="form-label text-black-50">Address</label>
             <input type="text" class="form-control bg-light border border-dark" id="address" name="address" placeholder="Street, City, State, Postal Code" required>
-          </div>
+          </div> -->
 
           <!-- Email -->
           <div class="mb-3">
@@ -155,8 +152,8 @@ include '../includes/head.php';
             <input type="email" class="form-control bg-light border border-dark" id="email" name="email" placeholder="example@example.com" required>
           </div>
 
-          <div class="row">
-            <div class="col-6 mb-3">
+          <div class="row mb-3">
+            <div class="col-md-6">
               <label class="form-label text-black-50">Have you ever applied to our facility before?</label>
               <div class="form-check">
                 <input class="form-check-input border border-dark" type="radio" name="facility_applied" id="yes" value="Yes" required>
@@ -169,7 +166,7 @@ include '../includes/head.php';
             </div>
   
             <!-- Procedure -->
-            <div class="col-6 mb-3">
+            <div class="col-md-6">
               <label for="procedure" class="form-label text-black-50">Which procedure do you want to make an appointment for?</label>
               <select class="form-select bg-light border border-dark" id="procedure" name="procedure" required>
                 <option value="" disabled selected>Please Select</option>
@@ -192,12 +189,18 @@ include '../includes/head.php';
             </div>
           </div>
 
+          <div class="mb-3">
+            <label for="reasonForAppointment" class="form-label text-black-50">Reason for appointment?</label>
+            <textarea id="reasonForAppointment" name="reason_for_appointment" class="form-control bg-light border border-dark" rows="3" placeholder="Describe the reason for your appointment (e.g., symptoms, check-up, follow-up)"></textarea>
+          </div>
+
           <hr>
 
           <div class="w-100 d-flex justify-content-end">
             <button id="request" type="submit" class="w-50 w-md-25 btn btn-outline-dark mt-2">Request Appointment</button>
           </div>
         </form>
+        
       </div>
 
       <div class="col-2"></div>
