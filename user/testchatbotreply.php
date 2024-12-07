@@ -9,11 +9,24 @@ use Orhanerday\OpenAi\OpenAi;
 $open_ai_key = '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';
 $open_ai = new OpenAi($open_ai_key);
 
-$prompt = $_POST['prompt'];
+$list_of_doctors = "No Data";
+$list_of_appointments = "No Data";
+$list_of_links = "No Data";
+$prompt = "";
+$user_message = $_POST['user_message'];
 
-$completion = $open_ai->completion([
+$chat = $open_ai->chat([
     'model' => 'gpt-4o-mini',
-    'prompt' => 'give 3 words about ' . $prompt,
+    'messages' => [
+       [
+           "role" => "system",
+           "content" => $prompt
+       ],
+       [
+           "role" => "user",
+           "content" => $user_message
+       ],
+   ],
     'temperature' => 0.9,
     'max_tokens' => 150,
     'frequency_penalty' => 0,
@@ -21,8 +34,8 @@ $completion = $open_ai->completion([
 ]);
 
 
- var_dump($completion);
-// echo "<br>";
+ var_dump($chat);
+// echo "<br>"; 
 // echo "<br>";
 // echo "<br>";
 // // decode response
@@ -30,8 +43,8 @@ $completion = $open_ai->completion([
 // // Get Content
 // echo ($d->choices[0]->message->content);
 
-$response_data = json_decode($completion, true);
-$response = $response_data["choices"][0]["text"];
+$response_data = json_decode($chat, true);
+$response = $response_data["choices"][0]["message"]["content"];
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +57,10 @@ $response = $response_data["choices"][0]["text"];
 </head>
 
 <body>
-    <?= htmlspecialchars($prompt); ?>
-    <?= htmlspecialchars($response); ?>
+    <hr>
+    <?= htmlspecialchars($user_message); ?>
+    <hr>
+    <?= htmlspecialchars($response); ?><hr>
 </body>
 
 </html>

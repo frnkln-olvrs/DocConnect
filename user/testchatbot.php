@@ -11,7 +11,7 @@ session_start();
 </head>
 <body>
     <form action="testchatbotreply.php" method="post">
-        <input type="text" name="prompt" id="">
+        <input type="text" name="user_message" id="">
         <input type="submit" name="test" value="Test">
     </form>
 </body>
