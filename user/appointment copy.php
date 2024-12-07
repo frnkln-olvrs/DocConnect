@@ -53,6 +53,8 @@ include '../includes/head.php';
   <section id="appointment" class="page-container padding-medium p-3">
     <div class="row mb-3">
 
+      <div class="col-2"></div>
+
       <div class="col-sm-12 col-md-8">
         <form action="submit_appointment.php" method="post" class="border border-dark-subtle shadow-sm rounded-2 p-3 mb-4 mb-md-0">
           <div class="row">
@@ -198,7 +200,9 @@ include '../includes/head.php';
         </form>
       </div>
 
-      <div class="col-sm-12 col-md-4 h-100">
+      <div class="col-2"></div>
+
+      <!-- <div class="col-sm-12 col-md-4 h-100">
         <div class="d-flex flex-column justify-content-between bg-green p-3 rounded-2 h-100 text-white">
           <div>
             <h4>Appointment Schedule</h4>
@@ -232,7 +236,7 @@ include '../includes/head.php';
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 
