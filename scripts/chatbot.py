@@ -28,7 +28,7 @@ def format_time_12_hour(time_str):
 
 def get_available_doctors(day=None):
     try:
-        url = 'http://localhost/DocConnect/classes/get_available_doctors.php'
+        url = 'http://localhost/DocConnect/handlers/get_available_doctors.php'
         params = {'day': day} if day else {}
         response = requests.get(url, params=params)
 

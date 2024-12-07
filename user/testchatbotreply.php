@@ -9,10 +9,26 @@ use Orhanerday\OpenAi\OpenAi;
 $open_ai_key = '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';
 $open_ai = new OpenAi($open_ai_key);
 
-$list_of_doctors = "No Data";
-$list_of_appointments = "No Data";
-$list_of_links = "No Data";
-$prompt = "";
+$list_of_doctors = [];
+$list_of_appointments = [];
+$list_of_links = [];
+
+if (empty($list_of_doctors)) {
+    $doctor_message = "Currently, there are no doctors available in the system.";
+} else {
+    $doctor_names = implode(", ", $list_of_doctors);
+    $doctor_message = "Here is the list of available doctors: $doctor_names. If you have specific symptoms, I can recommend a doctor for you.";
+}
+
+$prompt = "You are an assistant bot for a clinic website. Your responsibilities are as follows:
+
+1. Answer only simple medical questions related to the user's symptoms without giving any medical conclusions.
+2. Provide a list of available doctor names from the data provided in $list_of_doctors.
+3. Recommend a doctor from $list_of_doctors based on the symptoms provided by the user, provide the available date and time of the recommended doctor for the next 7 days based on the $list_of_appointments.
+4. Provide links to the appointment page or other related pages (if available), but no other pages.
+
+If the user asks anything outside of these responsibilities, politely inform them that you are unable to assist with that request. Additionally, if the answer to the user's query is not provided in the available data, politely inform them that there is no data available for their query.";
+
 $user_message = $_POST['user_message'];
 
 $chat = $open_ai->chat([
