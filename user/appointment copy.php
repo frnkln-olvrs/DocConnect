@@ -66,10 +66,10 @@ include '../includes/head.php';
                 <input type="hidden" id="doctor_id" name="doctor_id" value="">
               </div>
               <div class="row align-items-center border p-3 mx-2 rounded bg-light">
-                <div class="col-auto">
-                  <img id="account_image" src="../assets/images/default_profile.png" alt="Doctor Profile" width="100" height="100" class="rounded-circle border border-2 shadow-sm">
+                <div class="d-flex justify-content-center col-12 col-md-3 mb-3 mb-md-0">
+                  <img id="account_image" src="../assets/images/default_profile.png" alt="Doctor Profile" width="125" height="125" class="rounded-circle border border-2 shadow-sm">
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-7">
                   <p id="doctor_name" class="fs-6 fw-semibold text-dark mb-1"><span class="text-black-50">Name:</span> Not Selected</p>
                   <p id="specialty" class="fs-6 text-muted mb-1"><span class="fw-semibold">Specialty:</span> N/A</p>
                   <p id="contact" class="fs-6 text-muted mb-1"><span class="fw-semibold">Contact:</span> N/A</p>
@@ -85,7 +85,7 @@ include '../includes/head.php';
 
           <!-- Name -->
           <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3 mb-md-0">
               <label for="firstName" class="form-label text-black-50">First Name</label>
               <input type="text" class="form-control bg-light border border-dark" id="firstName" name="first_name" required>
             </div>
@@ -99,13 +99,13 @@ include '../includes/head.php';
           <div class="mb-3">
             <label class="form-label text-black-50">Date of Birth</label>
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-4 mb-3 mb-md-0">
                 <select class="form-select bg-light border border-dark" name="dob_day" required>
                   <option value="" disabled selected>Day</option>
                   <?php for ($i = 1; $i <= 31; $i++) echo "<option value='$i'>$i</option>"; ?>
                 </select>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 mb-3 mb-md-0">
                 <select class="form-select bg-light border border-dark" name="dob_month" required>
                   <option value="" disabled selected>Month</option>
                   <?php 
@@ -179,7 +179,7 @@ include '../includes/head.php';
 
           <!-- Preferred Appointment Date -->
           <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3 mb-md-0">
               <label for="appointment_date" class="form-label text-black-50">Select Date</label>
               <input type="date" id="appointment_date" name="appointment_date" data-startday="" data-endday="" min="<?php echo date('Y-m-d'); ?>" class="form-control fs-6 px-2 py-1 bg-light border border-dark" required>
             </div>
