@@ -65,7 +65,7 @@ include '../includes/head.php';
                 <ul id="doctorDropdown" class="docDropDown list-group position-absolute d-none w-50" style="max-height: 200px; overflow-y: auto; z-index: 100; margin-top: 2.3rem;"></ul>
                 <input type="hidden" id="doctor_id" name="doctor_id" value="">
               </div>
-              <div class="row align-items-center border p-3 rounded bg-light">
+              <div class="row align-items-center border p-3 mx-2 rounded bg-light">
                 <div class="col-auto">
                   <img id="account_image" src="../assets/images/default_profile.png" alt="Doctor Profile" width="100" height="100" class="rounded-circle border border-2 shadow-sm">
                 </div>
@@ -152,7 +152,8 @@ include '../includes/head.php';
             <input type="email" class="form-control bg-light border border-dark" id="email" name="email" placeholder="example@example.com" required>
           </div>
 
-          <div class="row mb-3">
+          <!-- <div class="row mb-3">
+            Facility Question
             <div class="col-md-6">
               <label class="form-label text-black-50">Have you ever applied to our facility before?</label>
               <div class="form-check">
@@ -165,7 +166,7 @@ include '../includes/head.php';
               </div>
             </div>
   
-            <!-- Procedure -->
+            Procedure
             <div class="col-md-6">
               <label for="procedure" class="form-label text-black-50">Which procedure do you want to make an appointment for?</label>
               <select class="form-select bg-light border border-dark" id="procedure" name="procedure" required>
@@ -174,8 +175,7 @@ include '../includes/head.php';
                 <option value="Dental Check-up">Dental Check-up</option>
               </select>
             </div>
-          </div>
-          <!-- Facility Question -->
+          </div> -->
 
           <!-- Preferred Appointment Date -->
           <div class="row mb-3">
@@ -277,224 +277,168 @@ include '../includes/head.php';
   <script src="../js/main.js"></script>
 
   <script>
-    function formatTime(time) {
-      let [hours, minutes] = time.split(':');
-      hours = parseInt(hours);
-      let suffix = hours >= 12 ? 'PM' : 'AM';
-      hours = hours % 12 || 12;
-
-      return `${hours}:${minutes} ${suffix}`;
-    }
-
-    function formatMySQLTimeTo24Hour(time) {
-      const [hours, minutes] = time.split(':');
-
-      return `${hours}:${minutes}`;
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const doctorSearch = document.getElementById("doctorSearch");
       const doctorDropdown = document.getElementById("doctorDropdown");
       const doctorIdInput = document.getElementById("doctor_id");
       const specialty = document.getElementById("specialty");
       const contact = document.getElementById("contact");
       const email = document.getElementById("email");
-      const working_days = document.getElementById("working_day");
-      const working_hours = document.getElementById("working_time");
-      const account_image = document.getElementById("account_image");
-      const appointment_time = document.getElementById("appointment_time");
-      const appointment_date = document.getElementById("appointment_date");
-      const doctor_name = document.getElementById("doctor_name");
-      const request_button = document.getElementById("request");
+      const workingDays = document.getElementById("working_day");
+      const workingHours = document.getElementById("working_time");
+      const accountImage = document.getElementById("account_image");
+      const appointmentTime = document.getElementById("appointment_time");
+      const appointmentDate = document.getElementById("appointment_date");
+      const doctorName = document.getElementById("doctor_name");
+      const requestButton = document.getElementById("request");
 
-      var startDay;
-      var endDay;
+      let startDay, endDay;
 
-      fetch('../handlers/get_doctors.php')
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
+      // Utility Functions
+      const formatTime = (time) => {
+        let [hours, minutes] = time.split(":");
+        hours = parseInt(hours);
+        const suffix = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12 || 12;
+        return `${hours}:${minutes} ${suffix}`;
+      };
 
-          doctorSearch.addEventListener("focus", function() {
-            if (doctorSearch.value === '' && data.length > 0) {
-              doctorDropdown.classList.remove('d-none');
-              populateDropdown(data);
-            }
-          });
+      const formatMySQLTimeTo24Hour = (time) => {
+        const [hours, minutes] = time.split(":");
+        return `${hours}:${minutes}`;
+      };
 
-          doctorSearch.addEventListener("input", function() {
-            const searchTerm = doctorSearch.value.toLowerCase();
-            doctorDropdown.innerHTML = '';
+      const formatDate = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      };
 
-            const filteredDoctors = data.filter(doctor =>
-              doctor.doctor_name.toLowerCase().includes(searchTerm)
-            );
+      const getAllowedDaysRange = (startDay, endDay) => {
+        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const startIdx = daysOfWeek.indexOf(startDay);
+        const endIdx = daysOfWeek.indexOf(endDay);
 
-            populateDropdown(filteredDoctors);
-          });
+        const allowedDays = [];
+        for (let i = startIdx; i !== (endIdx + 1) % 7; i = (i + 1) % 7) {
+          allowedDays.push(daysOfWeek[i]);
+        }
+        return allowedDays;
+      };
 
-          function populateDropdown(doctors) {
-            doctorDropdown.innerHTML = '';
-            doctors.forEach(doctor => {
-              const li = document.createElement("li");
-              li.classList.add("list-group-item", "cursor-pointer");
-              li.textContent = doctor.doctor_name;
-              li.setAttribute("data-id", doctor.account_id);
-
-              li.addEventListener("click", function() {
-                doctor_name.innerHTML = doctor.doctor_name;
-                doctorIdInput.value = doctor.doctor_id;
-                specialty.innerHTML = doctor.specialty;
-                contact.innerHTML = doctor.contact;
-                email.innerHTML = doctor.email;
-                working_days.innerHTML = doctor.start_day + " to " + doctor.end_day;
-                working_hours.innerHTML = formatTime(doctor.start_wt) + " to " + formatTime(doctor.end_wt);
-                account_image.src = "../assets/images/" + doctor.account_image;
-                appointment_time.min = formatMySQLTimeTo24Hour(doctor.start_wt);
-                appointment_time.max = formatMySQLTimeTo24Hour(doctor.end_wt);
-                appointment_date.dataset.startday = doctor.start_day;
-                appointment_date.dataset.endday = doctor.end_day;
-                request_button.removeAttribute("disabled");
-                doctorDropdown.classList.add('d-none');
-
-
-                startDay = appointment_date.dataset.startday;
-                endDay = appointment_date.dataset.endday;
-
-                validate_date();
-
-              });
-
-              doctorDropdown.appendChild(li);
-            });
-
-            if (doctors.length > 0) {
-              doctorDropdown.classList.remove('d-none');
-            } else {
-              doctorDropdown.classList.add('d-none');
-            }
-          }
-
-          document.addEventListener("click", function(event) {
-            if (!doctorSearch.contains(event.target) && !doctorDropdown.contains(event.target)) {
-              doctorDropdown.classList.add('d-none');
-            }
-          });
-        })
-        .catch(error => console.error('Error fetching doctors:', error));
-
-      // Check if the selected day is within the allowed range
-      function validate_date() {
+      const validateDate = () => {
         const minDate = new Date();
         const maxDate = new Date(minDate);
         maxDate.setMonth(maxDate.getMonth() + 1);
 
-        appointment_date.min = formatDate(minDate);
-        appointment_date.max = formatDate(maxDate);
+        appointmentDate.min = formatDate(minDate);
+        appointmentDate.max = formatDate(maxDate);
 
-        // Helper function to format date as YYYY-MM-DD
-        function formatDate(date) {
-          const year = date.getFullYear();
-          const month = String(date.getMonth() + 1).padStart(2, '0');
-          const day = String(date.getDate()).padStart(2, '0');
-          return `${year}-${month}-${day}`;
-        }
-
-        // Helper function to get all allowed days in a weekly cycle
-        function getAllowedDaysRange(startDay, endDay) {
-          const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-          const startIdx = daysOfWeek.indexOf(startDay);
-          const endIdx = daysOfWeek.indexOf(endDay);
-
-          // Create allowed days array that cycles through the week
-          const allowedDays = [];
-          for (let i = startIdx; i !== endIdx + 1; i = (i + 1) % 7) {
-            allowedDays.push(daysOfWeek[i]);
-          }
-
-          return allowedDays;
-        }
-
-        // Get the allowed days for the specified range
         const allowedDays = getAllowedDaysRange(startDay, endDay);
-
-        // Validate the selected date
-
-        const selectedDate = new Date(appointment_date.value);
-        const dayName = selectedDate.toLocaleDateString("en-US", {
-          weekday: 'long'
-        });
-
+        const selectedDate = new Date(appointmentDate.value);
+        const dayName = selectedDate.toLocaleDateString("en-US", { weekday: "long" });
 
         if (!allowedDays.includes(dayName)) {
-          // Set a custom validity message
-          appointment_date.setCustomValidity("Please select a valid day from " + startDay + " to " + endDay + ".");
+          appointmentDate.setCustomValidity(`Please select a valid day from ${startDay} to ${endDay}.`);
         } else {
-          // Clear any previous custom validity message
-          appointment_date.setCustomValidity("");
+          appointmentDate.setCustomValidity("");
         }
-      }
+      };
 
-      appointment_date.addEventListener("input", function(event) {
-        validate_date();
+      const populateDropdown = (doctors) => {
+        doctorDropdown.innerHTML = "";
+        doctors.forEach((doctor) => {
+          const li = document.createElement("li");
+          li.classList.add("list-group-item", "cursor-pointer");
+          li.textContent = doctor.doctor_name;
+          li.setAttribute("data-id", doctor.account_id);
+
+          li.addEventListener("click", () => {
+            doctorName.innerHTML = doctor.doctor_name;
+            doctorIdInput.value = doctor.doctor_id;
+            specialty.innerHTML = doctor.specialty;
+            contact.innerHTML = doctor.contact;
+            email.innerHTML = doctor.email;
+            workingDays.innerHTML = `${doctor.start_day} to ${doctor.end_day}`;
+            workingHours.innerHTML = `${formatTime(doctor.start_wt)} to ${formatTime(doctor.end_wt)}`;
+            accountImage.src = `../assets/images/${doctor.account_image}`;
+            appointmentTime.min = formatMySQLTimeTo24Hour(doctor.start_wt);
+            appointmentTime.max = formatMySQLTimeTo24Hour(doctor.end_wt);
+            appointmentDate.dataset.startday = doctor.start_day;
+            appointmentDate.dataset.endday = doctor.end_day;
+            requestButton.removeAttribute("disabled");
+            doctorDropdown.classList.add("d-none");
+
+            startDay = doctor.start_day;
+            endDay = doctor.end_day;
+
+            validateDate();
+          });
+
+          doctorDropdown.appendChild(li);
+        });
+
+        doctorDropdown.classList.toggle("d-none", doctors.length === 0);
+      };
+
+      // Fetch doctors and attach event listeners
+      fetch("../handlers/get_doctors.php")
+        .then((response) => response.json())
+        .then((data) => {
+          doctorSearch.addEventListener("focus", () => {
+            if (!doctorSearch.value && data.length > 0) {
+              populateDropdown(data);
+            }
+          });
+
+          doctorSearch.addEventListener("input", () => {
+            const searchTerm = doctorSearch.value.toLowerCase();
+            const filteredDoctors = data.filter((doctor) =>
+              doctor.doctor_name.toLowerCase().includes(searchTerm)
+            );
+            populateDropdown(filteredDoctors);
+          });
+
+          document.addEventListener("click", (event) => {
+            if (!doctorSearch.contains(event.target) && !doctorDropdown.contains(event.target)) {
+              doctorDropdown.classList.add("d-none");
+            }
+          });
+        })
+        .catch((error) => console.error("Error fetching doctors:", error));
+
+      // Round time to nearest half hour
+      document.getElementById("appointment_time").addEventListener("change", function () {
+        const roundTimeToNearestHalfHour = (time) => {
+          let [hours, minutes] = time.split(":").map(Number);
+
+          if (minutes < 15) {
+            minutes = "00";
+          } else if (minutes < 45) {
+            minutes = "30";
+          } else {
+            minutes = "00";
+            hours = (hours + 1) % 24;
+          }
+
+          return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+        };
+
+        this.value = roundTimeToNearestHalfHour(this.value);
       });
 
-      form.addEventListener("submit", function(event) {
-        if (!appointment_date.checkValidity()) {
-          event.preventDefault(); // Prevent submission if the input is invalid
-          appointment_date.reportValidity(); // Show tooltip if invalid
+      // Validate date input on change
+      appointmentDate.addEventListener("input", validateDate);
+
+      // Validate form on submit
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (event) => {
+        if (!appointmentDate.checkValidity()) {
+          event.preventDefault();
+          appointmentDate.reportValidity();
         }
       });
-    });
-  </script>
-
-  <!-- JS script for haandlng -->
-  <!-- <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const startTimeInput = document.getElementById("startTime");
-      const endTimeInput = document.getElementById("endTime");
-
-      startTimeInput.addEventListener("change", function() {
-        const startTime = startTimeInput.value;
-        if (startTime) {
-          const [hours, minutes] = startTime.split(':').map(Number);
-          const startDate = new Date();
-          startDate.setHours(hours);
-          startDate.setMinutes(minutes);
-
-          startDate.setHours(startDate.getHours() + 1);
-
-          const endHours = String(startDate.getHours()).padStart(2, '0');
-          const endMinutes = String(startDate.getMinutes()).padStart(2, '0');
-          endTimeInput.value = `${endHours}:${endMinutes}`;
-        } else {
-          endTimeInput.value = "";
-        }
-      });
-    });
-  </script> -->
-
-  <script>
-    function roundTimeToNearestHalfHour(time) {
-      let [hours, minutes] = time.split(":");
-      minutes = parseInt(minutes);
-
-      if (minutes < 15) {
-        minutes = "00";
-      } else if (minutes < 45) {
-        minutes = "30";
-      } else {
-        minutes = "00";
-        hours = (parseInt(hours) + 1).toString().padStart(2, '0');
-      }
-
-      return `${hours.padStart(2, '0')}:${minutes}`;
-    }
-
-    document.getElementById("appointment_time").addEventListener("change", function() {
-      let inputTime = this.value;
-      let roundedTime = roundTimeToNearestHalfHour(inputTime);
-      this.value = roundedTime;
     });
   </script>
 
