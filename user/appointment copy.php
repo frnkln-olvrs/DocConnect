@@ -355,13 +355,13 @@ include '../includes/head.php';
           li.setAttribute("data-id", doctor.account_id);
 
           li.addEventListener("click", () => {
-            doctorName.innerHTML = doctor.doctor_name;
+            doctorName.querySelector("span.text-black-50").nextSibling.textContent = ` ${doctor.doctor_name}`;
             doctorIdInput.value = doctor.doctor_id;
-            specialty.innerHTML = doctor.specialty;
-            contact.innerHTML = doctor.contact;
-            email.innerHTML = doctor.email;
-            workingDays.innerHTML = `${doctor.start_day} to ${doctor.end_day}`;
-            workingHours.innerHTML = `${formatTime(doctor.start_wt)} to ${formatTime(doctor.end_wt)}`;
+            specialty.querySelector("span.fw-semibold").nextSibling.textContent = ` ${doctor.specialty}`;
+            contact.querySelector("span.fw-semibold").nextSibling.textContent = ` ${doctor.contact}`;
+            email.querySelector("span.fw-semibold").nextSibling.textContent = ` ${doctor.email}`;
+            workingDays.querySelector("span.fw-semibold").nextSibling.textContent = ` ${doctor.start_day} to ${doctor.end_day}`;
+            workingHours.querySelector("span.fw-semibold").nextSibling.textContent = ` ${formatTime(doctor.start_wt)} to ${formatTime(doctor.end_wt)}`;
             accountImage.src = `../assets/images/${doctor.account_image}`;
             appointmentTime.min = formatMySQLTimeTo24Hour(doctor.start_wt);
             appointmentTime.max = formatMySQLTimeTo24Hour(doctor.end_wt);
