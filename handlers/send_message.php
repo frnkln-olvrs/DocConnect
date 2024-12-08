@@ -46,11 +46,10 @@ if (!$receiverId) {
     // error_log("Response: $response");
     // ------KAPAG NASA HOSTINGER------------
 
-    $command = escapeshellcmd("node ../scripts/chatbot.js " . escapeshellarg($message));
-    // $response = shell_exec($command);
-    $response = shell_exec($command . ' 2>&1');
-    error_log("Command: $command");
-    error_log("Response: $response");
+    $command = escapeshellcmd("node ../scripts/chatbot.py " . escapeshellarg($message)); //PALITAN MO LNG TO DTO
+    // $response = shell_exec($command . ' 2>&1');
+    // error_log("Command: $command");
+    // error_log("Response: $response");
 
     if ($response) {
       $stmt = $pdo->prepare("INSERT INTO chatbot_conversation (account_id, user_message, bot_response) VALUES (:account_id, :user_message, :bot_response)");
