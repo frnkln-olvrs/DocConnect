@@ -119,6 +119,10 @@ section#services {
   cursor: pointer;
 }
 
+.vh-50 {
+  min-height: 50vh !important;
+}
+
 * {
 	font-family: "Oswald", sans-serif;
 	margin: 0;
@@ -376,6 +380,31 @@ ul#chatList {
   overflow-y: auto;
   height: 40px;
 }
+
+/* SERVICES PAGE */
+section.services.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	border-image: fill 0 linear-gradient(to right, #ad2634, #00000000);
+  background: url(../assets/images/sevices_img2.jpeg) no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+}
+
+.service-card {
+  transition: transform 0.3s;
+}
+.service-card:hover {
+  transform: scale(1.05);
+}
+.service-img {
+  height: 200px;
+  object-fit: cover;
+}
+/* SERVICES PAGE */
 
 /* OUR DOCTORS SECTION */
 .carousel-control-prev, 
