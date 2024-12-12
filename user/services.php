@@ -77,7 +77,7 @@ require_once('../classes/account.class.php');
       <div class="row">
         <div class="col-md-4 mb-4">
           <div class="card service-card">
-            <img src="services_img1.jpeg" class="card-img-top service-img" alt="Easy Access">
+            <img src="../assets/images/services/easy_access.png" class="card-img-top service-img" alt="Easy Access">
             <div class="card-body">
               <h5 class="card-title text-green">Easy Access</h5>
               <p class="card-text">Talk to general practitioners and specialists without leaving your space.</p>
@@ -86,7 +86,7 @@ require_once('../classes/account.class.php');
         </div>
         <div class="col-md-4 mb-4">
           <div class="card service-card">
-            <img src="services_img1.jpeg" class="card-img-top service-img" alt="Wide Availability">
+            <img src="../assets/images/services/wide_availability.png" class="card-img-top service-img" alt="Wide Availability">
             <div class="card-body">
               <h5 class="card-title text-green">Wide Availability</h5>
               <p class="card-text">Choose the doctor that best fits your needs and preferences.</p>
@@ -95,7 +95,7 @@ require_once('../classes/account.class.php');
         </div>
         <div class="col-md-4 mb-4">
           <div class="card service-card">
-            <img src="services_img1.jpeg" class="card-img-top service-img" alt="Secure Video Calls">
+            <img src="../assets/images/services/secure_and_confidential.png" class="card-img-top service-img" alt="Secure Video Calls">
             <div class="card-body">
               <h5 class="card-title text-green">Secure and Confidential</h5>
               <p class="card-text">All consultations prioritize your privacy and confidentiality.</p>
@@ -112,7 +112,7 @@ require_once('../classes/account.class.php');
       <div class="row">
         <div class="col-md-4 mb-4">
           <div class="card service-card">
-            <img src="services_img1.jpeg" class="card-img-top service-img" alt="Health Metrics">
+            <img src="../assets/images/services/health_metrics_tracking.png" class="card-img-top service-img" alt="Health Metrics">
             <div class="card-body">
               <h5 class="card-title text-green">Health Metrics Tracking</h5>
               <p class="card-text">Monitor your vital signs in real-time with state-of-the-art devices.</p>
@@ -121,7 +121,7 @@ require_once('../classes/account.class.php');
         </div>
         <div class="col-md-4 mb-4">
           <div class="card service-card">
-            <img src="services_img1.jpeg" class="card-img-top service-img" alt="Instant Alerts">
+            <img src="../assets/images/services/instant_alerts.png" class="card-img-top service-img" alt="Instant Alerts">
             <div class="card-body">
               <h5 class="card-title text-green">Instant Alerts</h5>
               <p class="card-text">Receive notifications if any readings fall outside normal ranges.</p>
@@ -130,7 +130,7 @@ require_once('../classes/account.class.php');
         </div>
         <div class="col-md-4 mb-4">
           <div class="card service-card">
-            <img src="services_img1.jpeg" class="card-img-top service-img" alt="Data Sharing">
+            <img src="../assets/images/services/data-driven_care.png" class="card-img-top service-img" alt="Data Sharing">
             <div class="card-body">
               <h5 class="card-title text-green">Data-Driven Care</h5>
               <p class="card-text">Securely share health data with your doctor for accurate treatment plans.</p>
@@ -147,7 +147,7 @@ require_once('../classes/account.class.php');
       <div class="row">
         <div class="col-md-4 mb-4">
           <div class="card service-card">
-            <img src="services_img1.jpeg" class="card-img-top service-img" alt="Counseling Services">
+            <img src="../assets/images/services/counseling_services.png" class="card-img-top service-img" alt="Counseling Services">
             <div class="card-body">
               <h5 class="card-title text-green">Counseling Services</h5>
               <p class="card-text">Speak with professional counselors for support and guidance.</p>
@@ -156,7 +156,7 @@ require_once('../classes/account.class.php');
         </div>
         <div class="col-md-4 mb-4">
           <div class="card service-card">
-            <img src="services_img1.jpeg" class="card-img-top service-img" alt="Therapy Sessions">
+            <img src="../assets/images/services/therapy_sessions.png" class="card-img-top service-img" alt="Therapy Sessions">
             <div class="card-body">
               <h5 class="card-title text-green">Therapy Sessions</h5>
               <p class="card-text">Join individual or group sessions remotely to improve mental health.</p>
@@ -165,7 +165,7 @@ require_once('../classes/account.class.php');
         </div>
         <div class="col-md-4 mb-4">
           <div class="card service-card">
-            <img src="services_img1.jpeg" class="card-img-top service-img" alt="Crisis Support">
+            <img src="../assets/images/services/247_crisis_support.png" class="card-img-top service-img" alt="Crisis Support">
             <div class="card-body">
               <h5 class="card-title text-green">24/7 Crisis Support</h5>
               <p class="card-text">Immediate support during challenging times with trained professionals.</p>
@@ -175,122 +175,6 @@ require_once('../classes/account.class.php');
       </div>
     </div>
   </div>
-
-  <section id="services" class="padding-medium page-container">
-    <div class="container mb-4">
-      <div class="p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-6 fw-normal">Telecommunication Health Services</h1>
-        <p class="fs-5 text-muted mx-5">
-         Welcome to DocConnect's Telecommunication Health Services! Our goal is 
-         to provide you with seamless access to quality healthcare and wellness resources 
-         from the comfort of your home or office. Our comprehensive suite of 
-         telecommunication health services ensures that you receive the care you need when 
-         you need it, without the hassle of traveling to a clinic. Here's what we offer:
-       </p>
-      </div>
-
-      <div id="one" class="d-flex pb-4 mb-4 border-bottom border-primary">
-        <div class="img">
-          <img src="../assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
-        </div>
-        <div class="content ms-4">
-          <h3 class="card-title text-primary pricing-card-title mb-3">Virtual Consultations</h3>
-          <ul>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Expert Medical Advice: </span>
-              Connect with our network of experienced healthcare providers for personalized 
-              medical advice and treatment plans.
-            </p></li>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Convenient Appointments: </span>
-              Schedule consultations at a time that works best for you, and attend them 
-              from your preferred device.
-            </p></li>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Follow-Up Care:  </span>
-              Our providers offer follow-up appointments and ongoing support to help 
-              you manage your health effectively.
-            </p></li>
-          </ul>
-        </div>
-      </div>
-
-      <div id="two" class="d-flex flex-row-reverse pb-4 mb-4 border-bottom border-primary">
-        <div class="img">
-          <img src="../assets/images/sevices_img2.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
-        </div>
-        <div class="content me-4">
-          <h3 class="card-title text-primary pricing-card-title mb-3">Remote Monitoring</h3>
-          <ul>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Real-Time Tracking: </span>
-              Monitor your vital signs and health metrics using our state-of-the-art devices 
-              and apps.
-            </p></li>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Alerts and Notifications: </span>
-              Receive instant alerts if any readings fall outside of normal ranges, allowing 
-              for quick intervention.
-            </p></li>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Secure Data Sharing: </span>
-              Share your health data securely with your healthcare provider for accurate 
-              diagnosis and treatment.
-            </p></li>
-          </ul>
-        </div>
-      </div>
-
-      <div id="three" class="d-flex pb-4 mb-4 border-bottom border-primary">
-        <div class="img">
-          <img src="../assets/images/sevices_img3.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
-        </div>
-        <div class="content ms-4">
-          <h3 class="card-title text-primary pricing-card-title mb-3">Mental Health Support</h3>
-          <ul>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Counseling Services: </span>
-              Access mental health professionals for counseling and support from anywhere.
-            </p></li>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Therapy Sessions: </span>
-              Attend individual or group therapy sessions remotely to improve your mental 
-              well-being.
-            </p></li>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Crisis Management: </span>
-              Our team is available to provide support during times of crisis.
-            </p></li>
-          </ul>
-        </div>
-      </div>
-
-      <div id="four" class="d-flex flex-row-reverse pb-4 mb-4 border-bottom border-primary">
-        <div class="img">
-          <img src="../assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
-        </div>
-        <div class="content me-4">
-          <h3 class="card-title text-primary pricing-card-title mb-3">Health and Wellness Programs</h3>
-          <ul>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Nutritional Guidance: </span>
-              Work with our registered dietitians to develop a personalized nutrition plan.
-            </p></li>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Fitness Training: </span>
-              Join virtual fitness classes or receive one-on-one training to help you stay active.
-            </p></li>
-            <li><p class="fs-6 text-muted">
-              <span class="fw-bold">Preventive Care: </span>
-              Take part in wellness programs and screenings designed to prevent illnesses and promote 
-              long-term health.
-            </p></li>
-          </ul>
-        </div>
-      </div>
-  
-    </div>
-  </section>
 
   <?php 
     require_once ('../includes/footer.php');
