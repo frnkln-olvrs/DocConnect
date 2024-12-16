@@ -730,6 +730,12 @@ main.col-md-9 {
     z-index: 100;
     padding: 0 1.5rem;
   }
+
+  section#chat {
+    height: calc(100vh - 60px);
+    max-height: calc(100vh - 60px);
+    margin-top: 60px;
+  }
 }
 
 @media (max-width:450px) {
