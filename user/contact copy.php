@@ -29,11 +29,11 @@ require_once('../classes/account.class.php');
       text-align: center;
     }
     .contact-section {
-      margin-top: -100px;
+      margin-top: -50px;
       background-color: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      padding: 30px;
+      padding: 20px;
     }
     .contact-section h4 {
       font-weight: bold;
@@ -62,67 +62,86 @@ require_once('../classes/account.class.php');
 
 <!-- Contact Section -->
 <div class="container">
-  <div class="row contact-section">
+  <div class="row contact-section mb-5">
     <!-- Left: Contact Details -->
-    <div class="col-md-6">
-      <h4>Get in touch</h4>
-      <p>Sociis natoque penatibus et magnis dis parturient montes nascetur.</p>
-      <div class="mb-3">
-        <i class="fas fa-map-marker-alt text-primary"></i> <strong>Head Office</strong><br>
-        Jalan Cempaka Wangi No 22<br>
-        Jakarta - Indonesia
-      </div>
-      <div class="mb-3">
-        <i class="fas fa-envelope text-primary"></i> <strong>Email Us</strong><br>
-        support@yourdomain.tld<br>
-        hello@yourdomain.tld
-      </div>
-      <div class="mb-3">
-        <i class="fas fa-phone text-primary"></i> <strong>Call Us</strong><br>
-        Phone: +6221.2002.2012<br>
-        Fax: +6221.2002.2013
-      </div>
-      <div>
-        <strong>Follow our social media</strong><br>
-        <div class="social-icons mt-2">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
+    <div class="col-md-5 rounded-3" style="background-color: #eeeeee;">
+      <div class="m-4">
+        <h4>Get in touch</h4>
+        <p>Sociis natoque penatibus et magnis dis parturient montes nascetur.</p>
+        <div class="mb-3">
+          <div class="d-flex align-items-start">
+              <i class='bx bx-map-pin text-white bg-primary p-md-3 p-2 xx-large-font rounded-circle me-3' ></i>
+            <div>
+              <strong class="text-primary">Head Office</strong><br>
+              Jalan Cempaka Wangi No 22<br>
+              Jakarta - Indonesia
+            </div>
+          </div>
         </div>
+        <div class="mb-3">
+          <div class="d-flex align-items-start">
+            <i class='bx bx-envelope text-white bg-primary p-md-3 p-2 xx-large-font rounded-circle me-3' ></i>
+            <div>
+              <strong class="text-primary">Email Us</strong><br>
+              support@yourdomain.tld<br>
+              hello@yourdomain.tld
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="d-flex align-items-start">
+            <i class='bx bx-phone text-white bg-primary p-md-3 p-2 xx-large-font rounded-circle me-3'></i>
+            <div>
+              <strong class="text-primary">Call Us</strong><br>
+              Phone: +6221.2002.2012<br>
+              Fax: +6221.2002.2013
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div>
+          <strong>Follow our social media</strong><br>
+          <div class="social-icons mt-2">
+            <a href="#"><i class='bx bxl-facebook text-white bg-primary p-2 rounded-circle' ></i></a>
+            <a href="#"><i class='bx bxl-instagram text-white bg-primary p-2 rounded-circle' ></i></a>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <!-- Right: Contact Form -->
-    <div class="col-md-6">
-      <h4>Send us a message</h4>
-      <form>
-        <div class="row g-3">
-          <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Name">
+    <div class="col-md-7">
+      <div class="m-4">
+        <h4>Send us a message</h4>
+        <form>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Name">
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Company">
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Phone">
+            </div>
+            <div class="col-md-6">
+              <input type="email" class="form-control" placeholder="Email">
+            </div>
           </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Company">
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Phone">
-          </div>
-          <div class="col-md-6">
-            <input type="email" class="form-control" placeholder="Email">
-          </div>
-        </div>
-        <input type="text" class="form-control mt-3" placeholder="Subject">
-        <textarea class="form-control mt-3" rows="4" placeholder="Message"></textarea>
-        <button type="submit" class="btn btn-primary mt-3 w-100">Send</button>
-      </form>
+          <input type="text" class="form-control mt-3" placeholder="Subject">
+          <textarea class="form-control mt-3" rows="4" placeholder="Message"></textarea>
+          <button type="submit" class="btn btn-primary mt-3 w-100 text-light">Send</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Map Section -->
-<div class="container map-container">
+<div class="map-container">
   <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.05560961138!2d-74.24789558739484!3d40.697149414385116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c250b6e1c91803%3A0x7d3d08c55b0dff8d!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1628765432109!5m2!1sen!2sin"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7921.61518569353!2d122.05236037770997!3d6.913594200000012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325041dd7a24816f%3A0x51af215fb64cc81a!2sWestern%20Mindanao%20State%20University!5e0!3m2!1sen!2sph!4v1734515759093!5m2!1sen!2sph"
     width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
   </iframe>
 </div>
