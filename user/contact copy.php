@@ -38,16 +38,11 @@ require_once('../classes/account.class.php');
     .contact-section h4 {
       font-weight: bold;
     }
-    .social-icons a {
-      color: #007bff;
-      font-size: 20px;
-      margin-right: 15px;
-    }
     .form-control {
       border-radius: 0.3rem;
     }
     .map-container {
-      margin-top: 20px;
+      margin-top: 30px;
     }
   </style>
   <?php 
@@ -55,7 +50,7 @@ require_once('../classes/account.class.php');
   ?>
 
   <!-- Header Section -->
-<section class="contact-header">
+<section class="contact-header mt-5">
   <h1>Contact us</h1>
   <p>Kassapay is ready to provide the right solution according to your needs</p>
 </section>
@@ -64,7 +59,7 @@ require_once('../classes/account.class.php');
 <div class="container">
   <div class="row contact-section mb-5">
     <!-- Left: Contact Details -->
-    <div class="col-md-5 rounded-3" style="background-color: #eeeeee;">
+    <div class="col-md-5 rounded-3 mb-4 mb-md-0" style="background-color: #eeeeee;">
       <div class="m-4">
         <h4>Get in touch</h4>
         <p>Sociis natoque penatibus et magnis dis parturient montes nascetur.</p>
@@ -112,25 +107,25 @@ require_once('../classes/account.class.php');
 
     <!-- Right: Contact Form -->
     <div class="col-md-7">
-      <div class="m-4">
-        <h4>Send us a message</h4>
+      <div class="mx-4">
+        <h4 class="mb-4 text-primary">Send us a message</h4>
         <form>
-          <div class="row g-3">
+          <div class="row g-3 mb-3">
             <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Name">
+              <label for="fname" class="form-label text-black-50 mb-0">First Name</label>
+              <input type="text" class="form-control" id="fname" placeholder="First Name">
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Company">
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Phone">
-            </div>
-            <div class="col-md-6">
-              <input type="email" class="form-control" placeholder="Email">
+              <label for="lname" class="form-label text-black-50 mb-0">Last Name*</label>
+              <input type="text" class="form-control" id="lname" placeholder="First Name" required>
             </div>
           </div>
-          <input type="text" class="form-control mt-3" placeholder="Subject">
-          <textarea class="form-control mt-3" rows="4" placeholder="Message"></textarea>
+          <div class="mb-3">
+            <label for="email" class="form-label text-black-50 mb-0">Email</label>
+            <input type="email" class="form-control bg-light border" id="email" name="email" placeholder="example@example.com" required>
+          </div>
+          <label for="message" class="form-label text-black-50 mb-0">What can we help you with?*</label>
+          <textarea class="form-control" id="message" rows="4" placeholder="Message"></textarea>
           <button type="submit" class="btn btn-primary mt-3 w-100 text-light">Send</button>
         </form>
       </div>
