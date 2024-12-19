@@ -68,7 +68,7 @@ require_once('../classes/account.class.php');
               <i class='bx bx-map-pin text-white bg-primary p-md-3 p-2 xx-large-font rounded-circle me-3' ></i>
             <div>
               <strong class="text-primary">Head Office</strong><br>
-              Normal Road, Baliwasan, 7000 Zamboanga City
+              <p class="text-break">Normal Road, Baliwasan, 7000 Zamboanga City</p>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ require_once('../classes/account.class.php');
             <i class='bx bx-envelope text-white bg-primary p-md-3 p-2 xx-large-font rounded-circle me-3' ></i>
             <div>
               <strong class="text-primary">Email Us</strong><br>
-              wmsu.docconnect@gmail.com
+              <p class="text-break">wmsu.docconnect@gmail.com</p> 
             </div>
           </div>
         </div>
