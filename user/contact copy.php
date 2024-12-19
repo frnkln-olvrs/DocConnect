@@ -23,7 +23,7 @@ require_once('../classes/account.class.php');
       font-family: Arial, sans-serif;
     }
     .contact-header {
-      background: url('https://via.placeholder.com/1920x400') no-repeat center center/cover;
+      background: url('../assets/images/bg-1.png') no-repeat center center/cover;
       color: white;
       padding: 100px 0;
       text-align: center;
@@ -52,7 +52,7 @@ require_once('../classes/account.class.php');
   <!-- Header Section -->
 <section class="contact-header mt-5">
   <h1>Contact us</h1>
-  <p>Kassapay is ready to provide the right solution according to your needs</p>
+  <p>Connect with us, and we’re here to support your telehealth journey. Here’s how you can reach us</p>
 </section>
 
 <!-- Contact Section -->
@@ -62,14 +62,13 @@ require_once('../classes/account.class.php');
     <div class="col-md-5 rounded-3 mb-4 mb-md-0" style="background-color: #eeeeee;">
       <div class="m-4">
         <h4>Get in touch</h4>
-        <p>Sociis natoque penatibus et magnis dis parturient montes nascetur.</p>
+        <p>Want to get in touch? we’d love to hear from you. here’s how you can reach us</p>
         <div class="mb-3">
           <div class="d-flex align-items-start">
               <i class='bx bx-map-pin text-white bg-primary p-md-3 p-2 xx-large-font rounded-circle me-3' ></i>
             <div>
               <strong class="text-primary">Head Office</strong><br>
-              Jalan Cempaka Wangi No 22<br>
-              Jakarta - Indonesia
+              Normal Road, Baliwasan, 7000 Zamboanga City
             </div>
           </div>
         </div>
@@ -78,8 +77,7 @@ require_once('../classes/account.class.php');
             <i class='bx bx-envelope text-white bg-primary p-md-3 p-2 xx-large-font rounded-circle me-3' ></i>
             <div>
               <strong class="text-primary">Email Us</strong><br>
-              support@yourdomain.tld<br>
-              hello@yourdomain.tld
+              wmsu.docconnect@gmail.com
             </div>
           </div>
         </div>
@@ -88,8 +86,8 @@ require_once('../classes/account.class.php');
             <i class='bx bx-phone text-white bg-primary p-md-3 p-2 xx-large-font rounded-circle me-3'></i>
             <div>
               <strong class="text-primary">Call Us</strong><br>
-              Phone: +6221.2002.2012<br>
-              Fax: +6221.2002.2013
+              Phone: +639 919 309<br>
+              Fax: +63629 924 238
             </div>
           </div>
         </div>
@@ -97,8 +95,8 @@ require_once('../classes/account.class.php');
         <div>
           <strong>Follow our social media</strong><br>
           <div class="social-icons mt-2">
-            <a href="#"><i class='bx bxl-facebook text-white bg-primary p-2 rounded-circle' ></i></a>
-            <a href="#"><i class='bx bxl-instagram text-white bg-primary p-2 rounded-circle' ></i></a>
+            <a href="#"><i class='bx bxl-facebook text-white bg-primary p-2 me-1 rounded-circle' ></i></a>
+            <a href="#"><i class='bx bxl-instagram text-white bg-primary p-2 me-1 rounded-circle' ></i></a>
           </div>
         </div>
 
@@ -107,7 +105,7 @@ require_once('../classes/account.class.php');
 
     <!-- Right: Contact Form -->
     <div class="col-md-7">
-      <div class="mx-4">
+      <div class="mx-2 mx-md-4">
         <h4 class="mb-4 text-primary">Send us a message</h4>
         <form>
           <div class="row g-3 mb-3">
