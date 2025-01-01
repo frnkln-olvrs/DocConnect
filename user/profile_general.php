@@ -27,17 +27,13 @@ require_once('../classes/account.class.php');
         <?php include 'profile_left.php'; ?>
         
         <div class="col-lg-9">
-          <div class="row">
-            <div class="col">
-              <nav aria-label="breadcrumb" class="bg-body-tertiary border-1 border rounded-3 p-3 mb-4">
-                <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item active" aria-current="page"><a href="#" class="text-dark">General</a></li>
-                  <li class="breadcrumb-item"><a href="#">Appointment</a></li>
-                  <li class="breadcrumb-item"><a href="#">Settings</a></li>
-                </ol>
-              </nav>
-            </div>
-          </div>
+          <?php 
+            $general = 'active';
+            $aGeneral = 'page';
+            $cGeneral = 'text-dark';
+            
+            include 'profile_nav.php';
+          ?>
           
           <div class="card bg-body-tertiary mb-4">
             <div class="card-body">
