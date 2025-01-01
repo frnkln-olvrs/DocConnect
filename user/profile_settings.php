@@ -34,6 +34,19 @@ require_once('../classes/account.class.php');
             
             include 'profile_nav.php';
           ?>
+
+          <div class="card bg-body-tertiary mb-4">
+            <div class="card-body">
+              <div class="d-flex align-items-center">
+                <i class='bx bx-user text-primary display-6 me-2' ></i>
+                <h4 class="mb-0">Account</h4>
+              </div>
+              <hr class="my-2" style="height: 2.5px;">
+              <form action="#.php" method="post">
+                
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
