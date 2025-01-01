@@ -1,8 +1,8 @@
 <div class="col-lg-3">
   <div class="card bg-body-tertiary mb-4">
     <div class="card-body text-center">
-      <img src="../assets/images/defualt_profile.png" alt="avatar" class="rounded-3 shadow-lg img-fluid" style="width: 150px;">
-      <h4 class="my-3">Fname Lname</h4>
+      <img src="../assets/images/66f5b7cd6432c4.31527220.jpg" alt="avatar" class="rounded-3 shadow-lg img-fluid" style="width: 150px;">
+      <h4 class="my-3 text-green">Fname Lname</h4>
       <hr>
       <div class="details">
         <div class="d-flex mx-5 mx-md-4">

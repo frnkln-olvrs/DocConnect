@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+  header('location: ../user/verification.php');
+}
+
+require_once('../tools/functions.php');
+require_once('../classes/account.class.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php 
@@ -30,7 +41,7 @@
           
           <div class="card bg-body-tertiary mb-4">
             <div class="card-body">
-              <h4 class="text-muted mb-3">Personal Information</h4>
+              <h4 class="text-green mb-3">Personal Information</h4>
               <div class="row row-cols-2">
                 <div class="col">
                   <div class="row">
@@ -98,7 +109,7 @@
             <div class="col-md-12">
               <div class="card bg-body-tertiary mb-4 mb-md-0">
                 <div class="card-body">
-                  <h4 class="text-muted mb-3">Used Drus</h4>
+                  <h4 class="text-green mb-3">Used Drus</h4>
                   <hr>
                   <?php
                     $usedDrugs_array = array(
