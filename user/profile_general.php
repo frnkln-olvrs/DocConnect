@@ -24,7 +24,7 @@ require_once('../classes/account.class.php');
     <div class="container py-5">
 
       <div class="row">
-        <?php include 'left_profile.php'; ?>
+        <?php include 'profile_left.php'; ?>
         
         <div class="col-lg-9">
           <div class="row">
