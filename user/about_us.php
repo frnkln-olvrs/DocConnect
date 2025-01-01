@@ -20,156 +20,157 @@ require_once('../classes/account.class.php');
   <?php 
     require_once ('../includes/header.php');
   ?>
+
+  <style>
+    .about-header {
+      background: url('../assets/images/bg-1.png') no-repeat center center/cover;
+      color: white;
+      padding: 125px 0;
+      text-align: center;
+    }
+
+    .about-header h1 {
+      font-size: 75px;
+    }    
+
+    .icon-circle {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    }
+  </style>
+
+  <!-- Header Section -->
+  <section class="about-header mt-5">
+    <h1>About Us</h1>
+  </section>
   
-  <section  class="about-section page-container px-3 px-md-5">
-    <div class="row pt-4 mb-5">
-      <div class="col-8">
-        <div class="sec-title">
-          <span class="title">About Us:</span>
-          <h2>DocConnect: Telecommunication Health Services</h2>
-        </div>
-        <div class="d-flex align-items-start mb-4">
-          <i class='bx bxs-message-square-check text-green fs-2'></i>
-          <p class="ps-3 fs-5 fw-light m-0">
-            Welcome to Telecommunication Health Services, where innovation meets healthcare 
-            to provide accessible and convenient medical solutions. Our mission is to bridge 
-            the gap between technology and healthcare, making quality medical services readily 
-            available to individuals regardless of their location or circumstances.
-          </p>
-        </div>
-        <div class="d-flex align-items-start mb-4">
-          <div class="text-center">
-            <div class="d-flex justify-content-center align-items-center mb-2">
-              <i class='bx bxs-message-square-check text-green fs-2 me-2'></i>
-              <h3 class="mb-0">Who We Are:</h3>
-            </div>
-            <p class="fs-5 fw-light m-0">
-              Telecommunication Health Services is a leading provider of remote medical consultations, 
-              diagnostic assessments, and healthcare management solutions. We are a team of dedicated 
-              healthcare professionals, technologists, and innovators committed to revolutionizing 
-              the way healthcare is delivered.
-            </p>
+  <section  class="about-section px-3 px-md-5 mx-md-4">
+    <div class="row my-5">
+      <div class="col-12 col-md-8">
+        <h2 class="text-green">Your Health, Anytime, Anywhere</h2>
+        <hr class="my-3 c-red rounded-5" style="height: 5px;">
+        <p>Welcome to University Telecommunications Health Services! We are dedicated to enhancing student well-being through innovative, remote health solutions that ensure accessibility, privacy, and high-quality care</p>
+        <div class="row row-cols-1 row-cols-md-2">
+          <div class="col">
+            <h3>Our Vision:</h3>
+            <ul class="list-unstyled">
+              <li class="d-flex align-items-baseline mb-2">
+                <i class='bx bxs-check-circle text-green me-2'></i>
+                <p class="m-0">Revolutionize healthcare accessibility through telecommunication.</p>
+              </li>
+              <li class="d-flex align-items-baseline mb-2">
+                <i class='bx bxs-check-circle text-green me-2'></i>
+                Ensure every student receives quality healthcare, regardless of location.
+              </li>
+              <li class="d-flex  align-items-baseline mb-2">
+                <i class='bx bxs-check-circle text-green me-2'></i>
+                Promote a culture of proactive health and wellness among students.
+              </li>
+              <li class="d-flex  align-items-baseline mb-2">
+                <i class='bx bxs-check-circle text-green me-2'></i>
+                Integrate cutting-edge technology to provide seamless healthcare experiences.
+              </li>
+              <li class="d-flex  align-items-baseline mb-2">
+                <i class='bx bxs-check-circle text-green me-2'></i>
+                Create a healthier, more connected university community.
+              </li>
+            </ul>
           </div>
-        </div>
-        <div class="d-flex align-items-start mb-4">
-          <div class="text-center">
-            <div class="d-flex justify-content-center align-items-center mb-2">
-              <i class='bx bxs-message-square-check text-green fs-2 me-2'></i>
-              <h3 class="mb-0">What We Do:</h3>
-            </div>
-            <p class="fs-5 fw-light m-0">
-              At Telecommunication Health Services, we leverage cutting-edge telecommunications 
-              technology to connect patients with qualified healthcare providers in real-time, 
-              regardless of geographical barriers. Our platform enables seamless communication 
-              between patients and healthcare professionals, facilitating consultations, 
-              diagnoses, treatment planning, and follow-up care from the comfort of your own home.
-            </p>
+          <div class="col">
+            <h3>Our Mission:</h3>
+            <ul class="list-unstyled">
+              <li class="d-flex  align-items-baseline mb-2">
+                <i class='bx bxs-check-circle text-green me-2'></i>
+                Provide accessible telehealth services to university students worldwide.
+              </li>
+              <li class="d-flex  align-items-baseline mb-2">
+                <i class='bx bxs-check-circle text-green me-2'></i>
+                Empower students with tools and resources for better health management.
+              </li>
+              <li class="d-flex  align-items-baseline mb-2">
+                <i class='bx bxs-check-circle text-green me-2'></i>
+                Offer comprehensive mental and physical healthcare solutions.
+              </li>
+              <li class="d-flex  align-items-baseline mb-2">
+                <i class='bx bxs-check-circle text-green me-2'></i>
+                Foster innovation in telemedicine to improve healthcare delivery.
+              </li>
+              <li class="d-flex  align-items-baseline mb-2">
+                <i class='bx bxs-check-circle text-green me-2'></i>
+                Maintain the highest standards of privacy, security, and care quality.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <div class="col-4">
+      <div class="col-4 d-none d-md-block">
         <div class="h-100 rounded-2 d-flex align-items-center justify-content-center overflow-hidden">
           <img src="../assets/images/bg-1.png" alt="Image" class="img-fluid" style="height: 100%; width: 100%; object-fit: cover;">
         </div>
       </div>
     </div>
-    
-    <div class="bg-primary rounded-3 p-3 text-light">
-      <div class="sec-title">
-        <h2 class="text-center text-light">Our Services</h2>
-      </div>
-      <ul>
-        <div class="d-flex align-items-start mb-3">
-          <li class="ps-3 fs-5 fw-light m-0">
-            <span class="fw-bold">Remote Consultations: </span>
-            Access medical consultations with licensed healthcare professionals via video
-            conferencing or telephone, eliminating the need for in-person appointments.
-          </li>
-        </div>
-        <div class="d-flex align-items-start mb-3">
-          <li class="ps-3 fs-5 fw-light m-0">
-            <span class="fw-bold">Diagnostic Assessments: </span>
-            Receive comprehensive diagnostic evaluations remotely, including virtual 
-            examinations, symptom assessments, and medical history reviews.
-          </li>
-        </div>
-        <div class="d-flex align-items-start mb-3">
-          <li class="ps-3 fs-5 fw-light m-0">
-            <span class="fw-bold">Healthcare Management: </span>
-            Benefit from personalized healthcare management plans tailored to your unique 
-            needs, including medication management, lifestyle recommendations, and ongoing 
-            support.
-          </li>
-        </div>
-        <div class="d-flex align-items-start mb-3">
-          <li class="ps-3 fs-5 fw-light m-0">
-            <span class="fw-bold">Telemedicine Technologies: </span>
-            We utilize state-of-the-art telemedicine technologies to ensure secure, confidential, 
-            and efficient communication between patients and healthcare providers.
-          </li>
-        </div>
 
-      </ul>
-
+    <div class="mb-5">
+      <h2 class="text-green">Technology and Innovation</h2>
+      <hr class="my-3 c-red rounded-5" style="height: 5px;">
+      <p>Using cutting-edge telecommunication tools, we ensure secure, reliable, and seamless interactions between students and healthcare providers.</p>
     </div>
-  </section>
-
-  <section class="choose px-3 px-md-5 mt-4">
-    <div class="row mb-5">
-      <div class="col-4">
-        <div class="h-100 rounded-2 d-flex align-items-center justify-content-center overflow-hidden">
-          <img src="../assets/images/about_us_img.jpeg" alt="Image" class="img-fluid" style="height: 100%; width: 100%; object-fit: cover;">
+    
+    <div class="container mt-5">
+      <div class="row text-center">
+        <!-- Virtual Consultations -->
+        <div class="col-md-3 mb-4 d-flex align-items-stretch">
+          <div class="p-4 shadow-sm rounded-3 border bg-light w-100">
+            <div class="icon-circle bg-primary text-white mx-auto mb-3">
+              <i class='bx bx-video display-6'></i>
+            </div>
+            <h5 class="fw-bold text-green">Virtual Consultations</h5>
+            <p class="text-muted small">Skip the waiting room—consult with healthcare professionals online!</p>
+          </div>
+        </div>
+        <!-- Online Doctor Appointments -->
+        <div class="col-md-3 mb-4 d-flex align-items-stretch">
+          <div class="p-4 shadow-sm rounded-3 border bg-light w-100">
+            <div class="icon-circle bg-primary text-white mx-auto mb-3">
+              <i class='bx bx-calendar-check display-6'></i>
+            </div>
+            <h5 class="fw-bold text-green">Online Doctor Appointments</h5>
+            <p class="text-muted small">Connect directly with doctors via video calls.</p>
+          </div>
+        </div>
+        <!-- Remote Monitoring -->
+        <div class="col-md-3 mb-4 d-flex align-items-stretch">
+          <div class="p-4 shadow-sm rounded-3 border bg-light w-100">
+            <div class="icon-circle bg-primary text-white mx-auto mb-3">
+              <i class='bx bx-health display-6'></i>
+            </div>
+            <h5 class="fw-bold text-green">Remote Monitoring</h5>
+            <p class="text-muted small">Stay in control of your health with cutting-edge tools.</p>
+          </div>
+        </div>
+        <!-- Mental Health Support -->
+        <div class="col-md-3 mb-4 d-flex align-items-stretch">
+          <div class="p-4 shadow-sm rounded-3 border bg-light w-100">
+            <div class="icon-circle bg-primary text-white mx-auto mb-3">
+              <i class='bx bx-brain display-6'></i>
+            </div>
+            <h5 class="fw-bold text-green">Mental Health Support</h5>
+            <p class="text-muted small">Access mental health resources anytime, anywhere.</p>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="col-8">
-        <div class="sec-title">
-          <h2 class="text-center text-dark">Why Choose Us</h2>
-        </div>
-        <div class="d-flex align-items-start mb-3">
-          <ul>
-            <li class="ps-3 fs-5 fw-light m-0">
-              <span class="fw-bold">Convenience: </span>
-              Say goodbye to long wait times and travel hassles. With Telecommunication 
-              Health Services, you can access quality healthcare from anywhere with an 
-              internet connection or telephone service.
-            </li>
-          </ul>
-        </div>
-        <div class="d-flex align-items-start mb-3">
-          <ul>
-            <li class="ps-3 fs-5 fw-light m-0">
-              <span class="fw-bold">Convenience: </span>
-              Say goodbye to long wait times and travel hassles. With Telecommunication 
-              Health Services, you can access quality healthcare from anywhere with an 
-              internet connection or telephone service.
-            </li>
-          </ul>
-        </div>
-        <div class="d-flex align-items-start mb-3">
-          <ul>
-            <li class="ps-3 fs-5 fw-light m-0">
-              <span class="fw-bold">Convenience: </span>
-              Say goodbye to long wait times and travel hassles. With Telecommunication 
-              Health Services, you can access quality healthcare from anywhere with an 
-              internet connection or telephone service.
-            </li>
-          </ul>
-        </div>
-        <div class="d-flex align-items-start mb-3">
-          <ul>
-            <li class="ps-3 fs-5 fw-light m-0">
-              <span class="fw-bold">Convenience: </span>
-              Say goodbye to long wait times and travel hassles. With Telecommunication 
-              Health Services, you can access quality healthcare from anywhere with an 
-              internet connection or telephone service.
-            </li>
-          </ul>
-        </div>
-        
-        
-      </div>
+    <div class="mb-5 text-center">
+      <h2 class="text-green">Discover More</h2>
+      <hr class="my-3 c-red rounded-5" style="height: 5px;">
+      <p>Discover how we can support your health journey. Schedule a virtual consultation or learn more about our services today!</p>
+      <a href="./appointment.php" class="btn btn-primary text-light px-4 py-2 mt-3">Schedule a Consultation</a>
     </div>
   </section>
   <?php 
