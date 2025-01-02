@@ -136,8 +136,8 @@ include '../includes/head.php';
 
           <!-- Phone Number -->
           <div class="mb-3">
-            <label for="phoneNumber" class="form-label text-black-50">Phone Number</label>
-            <input type="tel" class="form-control bg-light border border-dark" id="phoneNumber" name="phone_number" placeholder="(000) 000-0000" required>
+          <label for="phoneNo" class="form-label text-black-50">Phone No.</label>
+          <input type="text" class="form-control bg-light border border-dark" id="phoneNo" name="Phone_No" value="+63 " pattern="\+63 \d{3} \d{3} \d{4}" required/>
           </div>
 
           <!-- Address -->
