@@ -24,6 +24,10 @@ a:hover {
   font-size: xxx-large !important;
 }
 
+.text-small {
+  font-size: 0.8em;
+}
+
 .d-name, .d-name span {
 	font-family: "Roboto Slab", sans-serif !important;
 }
