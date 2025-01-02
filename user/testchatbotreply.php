@@ -14,16 +14,30 @@ $open_ai = new OpenAi($open_ai_key);
 $list_of_appointments = [];
 $list_of_links = [];
 
+// Doctor's Data
 $account = new Account();
 $accountArray = $account->show_doc();
-if (empty($accountArray)) {
-    $list_of_doctors[] = "Currently, there are no doctors available in the system.";
+
+$doctorArray = array();
+foreach ($accountArray as $key => $item) {
+    $doctorArray[$key] = array(
+        "id" => $item['account_id'],
+        "name" => (isset($item['middlename'])) ? ucwords(strtolower($item['firstname'] . ' ' . $item['middlename'] . ' ' . $item['lastname'])) : ucwords(strtolower($item['firstname'] . ' ' . $item['lastname'])),
+        "specialty" => $item['specialty'],
+        "working_days" => $item['start_day'] . ' to ' . $item['end_day'],
+        "working_time" => date('h:i A', strtotime($item['start_wt'])) . ' - ' . date('h:i A', strtotime($item['end_wt'])),
+        "contact" => $item['contact'],
+        "email" => $item['email']
+    );
+}
+
+if (empty($doctorArray)) {
+    $list_of_doctor = "There are no doctors available in the system.";
 } else {
-    foreach ($accountArray as $item) {
-        $list_of_doctors[] = "{Name: " . (isset($item['middlename'])) ? ucwords(strtolower($item['firstname'] . ' ' . $item['middlename'] . ' ' . $item['lastname'])) : ucwords(strtolower($item['firstname'] . ' ' . $item['lastname'])) . " (Specialty: " . $item['specialty'] . ", Working Days: " . $item['start_day'] . ' - ' . $item['end_day'] . ", Working Time: " . date('h:i A', strtotime($item['start_wt'])) . ' - ' . date('h:i A', strtotime($item['end_wt'])) . ", Contact/Email: " . $item['contact'] . '/' . $item['email'] . "})";
+    $list_of_doctor = "";
+    foreach ($doctorArray as $doctorKey => $doctorItem) {
+        $list_of_doctor .= $doctorKey + 1 . ". " . $doctorItem['name'] . " - " . $doctorItem['specialty'] ."( " . $doctorItem['working_days'] ." ". $doctorItem["working_time"] ." )" . "\n";
     }
-    //$doctor_names = implode(", ", $list_of_doctors);
-    //$doctor_message = "Here is the list of available doctors: $doctor_names. If you have specific symptoms, I can recommend a doctor for you.";
 }
 
 if (empty($list_of_appointments)) {
@@ -41,7 +55,7 @@ if (empty($list_of_appointments)) {
 $prompt = "You are an assistant bot for a clinic website. Your responsibilities are as follows:
 
 1. Answer only simple medical questions related to the user's symptoms without giving any medical conclusions.
-2. Provide the list of doctor's names with specialty of the available doctors from the following list of doctors:" . implode("\n-", $list_of_doctors) . ", Format: Name (Specialty) Ex. Dr. John Doe (Physician).
+2. Provide this list of available doctors: \n" . $list_of_doctor . "
 3. Recommend a doctor from ///list_of_doctors based on the symptoms provided by the user, provide the available date and time of the recommended doctor for the next 7 days based on the ////list_of_appointments.
 4. Provide links to the appointment page or other related pages (if available), but no other pages.
 
