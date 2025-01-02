@@ -43,19 +43,42 @@ require_once('../classes/account.class.php');
               </div>
               <hr class="my-2" style="height: 2.5px;">
               <form action="#.php" method="post">
-                <!-- ---NAME--- -->
-                <div class="row mb-3">
-                  <div class="col-md-4 mb-3 mb-md-0">
-                    <label for="firstName" class="form-label text-black-50">First Name</label>
-                    <input type="text" class="form-control bg-light border border-dark" id="firstName" name="first_name" required>
-                  </div>
-                  <div class="col-md-4 mb-3 mb-md-0">
-                    <label for="middleName" class="form-label text-black-50">Middle Name</label>
-                    <input type="text" class="form-control bg-light border border-dark" id="middleName" name="middle_name">
-                  </div>
+                <div class="row">
                   <div class="col-md-4">
-                    <label for="lastName" class="form-label text-black-50">Last Name</label>
-                    <input type="text" class="form-control bg-light border border-dark" id="lastName" name="last_name" required>
+                    <!-- Image Upload Section -->
+                    <div class="d-flex flex-column align-items-center mx-4 mb-4">
+                      <!-- Profile Picture -->
+                      <div class="campus-pic align-items-end">
+                        <label class="label brand-border-color d-flex flex-column" for="file" style="border-width: 4px !important; border-radius: 5px !important;">
+                          <span>Change Image</span>
+                        </label>
+
+                        <img src="../assets/images/66f5b7cd6432c4.31527220.jpg" id="output" class="rounded-2" alt="User Avatar">
+
+                        <!-- Image Upload Input -->
+                        <input id="file" type="file" name="account_image" accept=".jpg, .jpeg, .png" onchange="previewImage(event)">
+                      </div>
+
+                      <!-- Upload Button -->
+                      <button class="btn btn-primary text-light" id="uploadProfileImage" type="button">Upload Image</button>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <!-- ---NAME--- -->
+                    <div class="row mb-3">
+                      <div class="col-12 mb-3 mb-md-0">
+                        <label for="firstName" class="form-label text-black-50">First Name</label>
+                        <input type="text" class="form-control bg-light border border-dark" id="firstName" name="first_name" required>
+                      </div>
+                      <div class="col-12 mb-3 mb-md-0">
+                        <label for="middleName" class="form-label text-black-50">Middle Name</label>
+                        <input type="text" class="form-control bg-light border border-dark" id="middleName" name="middle_name">
+                      </div>
+                      <div class="col-12">
+                        <label for="lastName" class="form-label text-black-50">Last Name</label>
+                        <input type="text" class="form-control bg-light border border-dark" id="lastName" name="last_name" required>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -120,6 +143,8 @@ require_once('../classes/account.class.php');
                     <input type="text" class="form-control bg-light border border-dark" id="address" name="address">
                   </div>
                 </div>
+
+                <input type="submit" class="btn btn-primary text-light" name="save" value="Save Changes">
               </form>
             </div>
           </div>
@@ -150,8 +175,48 @@ require_once('../classes/account.class.php');
 
       this.value =prefix + formatted;
     });
+
+    // -----image slect/change-----
+    // Preview selected image
+    const previewImage = (event) => {
+      const fileInput = event.target;
+      const filePath = fileInput.value;
+      const allowedExtensions = /(\.png|\.jpeg|\.jpg)$/i;
+
+      if (!allowedExtensions.exec(filePath)) {
+        alert('Invalid file type. Only PNG and JPEG files are allowed.');
+        fileInput.value = '';
+        return;
+      }
+
+      const image = document.getElementById("output");
+      image.src = URL.createObjectURL(fileInput.files[0]);
+    };
+
+    // Handle AJAX upload
+    document.getElementById("uploadProfileImage").addEventListener("click", function () {
+      const fileInput = document.getElementById("file");
+      const formData = new FormData();
+      formData.append("account_image", fileInput.files[0]);
+
+      fetch("/upload-image-endpoint", {
+        method: "POST",
+        body: formData,
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert("Image uploaded successfully!");
+          } else {
+            alert("Image upload failed: " + data.message);
+          }
+        })
+        .catch(error => {
+          console.error("Error uploading image:", error);
+          alert("Error occurred while uploading image.");
+        });
+    });
   </script>
-  
   <?php 
     require_once ('../includes/footer.php');
   ?>
