@@ -41,7 +41,7 @@ require_once('../classes/account.class.php');
                 <i class='bx bx-user text-primary display-6 me-2' ></i>
                 <h4 class="mb-0">Account</h4>
               </div>
-              <hr class="my-2" style="height: 2.5px;">
+              <hr class="mt-2 mb-3" style="height: 2.5px;">
               <form action="#.php" method="post">
                 <div class="row">
                   <div class="col-md-4">
@@ -143,9 +143,42 @@ require_once('../classes/account.class.php');
                     <input type="text" class="form-control bg-light border border-dark" id="address" name="address">
                   </div>
                 </div>
-
-                <input type="submit" class="btn btn-primary text-light" name="save" value="Save Changes">
+                
+                <div class="text-end">
+                  <input type="submit" class="btn btn-primary text-light" name="save" value="Save Changes">
+                </div>
               </form>
+            </div>
+          </div>
+
+          <div class="card bg-body-tertiary mb-4">
+            <div class="card-body">
+              <div class="d-flex align-items-center">
+                <i class='bx bxs-key text-primary display-6 me-2'></i>
+                <h4 class="mb-0">Password</h4>
+              </div>
+              <hr class="my-2" style="height: 2.5px;">
+              <form action="#.php" method="post">
+                <div class="row mb-3">
+                  <div class="col-md-8 mb-3 mb-md-0">
+                    <label for="oldPassword" class="form-label text-black-50">Old Password</label>
+                    <input type="text" class="form-control bg-light border border-dark" id="oldPassword" name="old_password" required>
+                  </div>
+                  <div class="col-md-8 mb-3 mb-md-0">
+                    <label for="newPassword" class="form-label text-black-50">New Password</label>
+                    <input type="text" class="form-control bg-light border border-dark" id="newPassword" name="new_password">
+                  </div>
+                  <div class="col-md-8">
+                    <label for="confirmNewPassword" class="form-label text-black-50">Confirm new Password</label>
+                    <input type="text" class="form-control bg-light border border-dark" id="confirmNewPassword" name="confirm_new_password" required>
+                  </div>
+                </div>
+
+                <div class="text-end">
+                  <input type="submit" class="btn btn-primary text-light" name="save" value="Save Changes">
+                </div>
+              </form>
+
             </div>
           </div>
         </div>
