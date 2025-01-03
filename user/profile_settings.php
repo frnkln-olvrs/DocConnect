@@ -162,16 +162,21 @@ require_once('../classes/account.class.php');
                 <div class="row mb-3">
                   <div class="col-md-8 mb-3 mb-md-0">
                     <label for="oldPassword" class="form-label text-black-50">Old Password</label>
-                    <input type="text" class="form-control bg-light border border-dark" id="oldPassword" name="old_password" required>
+                    <input type="password" class="form-control bg-light border border-dark" id="oldPassword" name="old_password" required>
                   </div>
                   <div class="col-md-8 mb-3 mb-md-0">
                     <label for="newPassword" class="form-label text-black-50">New Password</label>
-                    <input type="text" class="form-control bg-light border border-dark" id="newPassword" name="new_password">
+                    <input type="password" class="form-control bg-light border border-dark" id="newPassword" name="new_password">
                   </div>
                   <div class="col-md-8">
-                    <label for="confirmNewPassword" class="form-label text-black-50">Confirm new Password</label>
-                    <input type="text" class="form-control bg-light border border-dark" id="confirmNewPassword" name="confirm_new_password" required>
+                    <label for="confirmNewPassword" class="form-label text-black-50">Confirm New Password</label>
+                    <input type="password" class="form-control bg-light border border-dark" id="confirmNewPassword" name="confirm_new_password" required>
                   </div>
+                </div>
+
+                <div class="form-check mb-3">
+                  <input type="checkbox" class="form-check-input" id="togglePassword">
+                  <label for="togglePassword" class="form-check-label" id="togglePasswordLabel">Show Password</label>
                 </div>
 
                 <div class="text-end">
@@ -248,6 +253,19 @@ require_once('../classes/account.class.php');
           console.error("Error uploading image:", error);
           alert("Error occurred while uploading image.");
         });
+    });
+
+    // -----view|hide password-----
+    const togglePassword = document.getElementById('togglePassword');
+    const togglePasswordLabel = document.getElementById('togglePasswordLabel');
+
+    togglePassword.addEventListener('change', function() {
+      const passwordFields = ['oldPassword', 'newPassword', 'confirmNewPassword'];
+      passwordFields.forEach(id => {
+        const field = document.getElementById(id);
+        field.type = this.checked ? 'text' : 'password';
+      });
+      togglePasswordLabel.textContent = this.checked ? 'Hide Password' : 'Show Password';
     });
   </script>
   <?php 
