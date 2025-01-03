@@ -42,20 +42,31 @@ $list = "<table>
     <th>end_working_time</th>
     <th>contact</th>
     <th>email</th>
-  </tr>
+  </tr>";
+
+foreach ($accountArray as $key => $item) {
+    $list .= "
   <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-</table>";
+    <th> " . $item['account_id'] . "</th>
+    <th> " . (isset($item['middlename'])) ? ucwords(strtolower($item['firstname'] . ' ' . $item['middlename'] . ' ' . $item['lastname'])) : ucwords(strtolower($item['firstname'] . ' ' . $item['lastname'])) . "</th>
+    <th> " . $item['specialty'] . "</th>
+    <th> " . $item['start_day'] . "</th>
+    <th> " . $item['end_day'] . "</th>
+    <th> " . date('h:i A', strtotime($item['start_wt'])) . "</th>
+    <th> " . date('h:i A', strtotime($item['end_wt'])) . "</th>
+    <th> " . $item['contact'] . "</th>
+    <th> " . $item['email'] . "</th>
+  </tr>";
+}
+
+$list .= "</table>";
 
 if (empty($doctorArray)) {
     $list_of_doctor = "There are no doctors available in the system.";
 } else {
     $list_of_doctor = "";
     foreach ($doctorArray as $doctorKey => $doctorItem) {
-        $list_of_doctor .= $doctorKey + 1 . ". " . $doctorItem['name'] . " - " . $doctorItem['specialty'] ."( " . $doctorItem['working_days'] ." ". $doctorItem["working_time"] ." )" . "\n";
+        $list_of_doctor .= $doctorKey + 1 . ". " . $doctorItem['name'] . " - " . $doctorItem['specialty'] . "( " . $doctorItem['working_days'] . " " . $doctorItem["working_time"] . " )" . "\n";
     }
 }
 
