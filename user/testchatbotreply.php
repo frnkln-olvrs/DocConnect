@@ -31,6 +31,25 @@ foreach ($accountArray as $key => $item) {
     );
 }
 
+$list = "<table>
+  <tr>
+    <th>doctor_id</th>
+    <th>name</th>
+    <th>specialty</th>
+    <th>start_working_day</th>
+    <th>end_working_day</th>
+    <th>start_working_time</th>
+    <th>end_working_time</th>
+    <th>contact</th>
+    <th>email</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+</table>";
+
 if (empty($doctorArray)) {
     $list_of_doctor = "There are no doctors available in the system.";
 } else {
