@@ -190,7 +190,7 @@ require_once('../classes/account.class.php');
       </div>
     </div>
   </section>
-  <script src="../js/profie_settings.js"></script>
+  <script src="../js/user/profie_settings.js"></script>
 
   <?php 
     require_once ('../includes/footer.php');
