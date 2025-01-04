@@ -31,36 +31,6 @@ foreach ($accountArray as $key => $item) {
     );
 }
 
-$list = "<table>
-  <tr>
-    <th>doctor_id</th>
-    <th>name</th>
-    <th>specialty</th>
-    <th>start_working_day</th>
-    <th>end_working_day</th>
-    <th>start_working_time</th>
-    <th>end_working_time</th>
-    <th>contact</th>
-    <th>email</th>
-  </tr>";
-
-foreach ($accountArray as $key => $item) {
-    $list .= "
-  <tr>
-    <th> " . $item['account_id'] . "</th>
-    <th> " . (isset($item['middlename'])) ? ucwords(strtolower($item['firstname'] . ' ' . $item['middlename'] . ' ' . $item['lastname'])) : ucwords(strtolower($item['firstname'] . ' ' . $item['lastname'])) . "</th>
-    <th> " . $item['specialty'] . "</th>
-    <th> " . $item['start_day'] . "</th>
-    <th> " . $item['end_day'] . "</th>
-    <th> " . date('h:i A', strtotime($item['start_wt'])) . "</th>
-    <th> " . date('h:i A', strtotime($item['end_wt'])) . "</th>
-    <th> " . $item['contact'] . "</th>
-    <th> " . $item['email'] . "</th>
-  </tr>";
-}
-
-$list .= "</table>";
-
 if (empty($doctorArray)) {
     $list_of_doctor = "There are no doctors available in the system.";
 } else {
