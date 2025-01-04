@@ -1,6 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
 
+  // Initialize FullCalendar
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth',
     themeSystem: 'Lux',
@@ -9,65 +10,68 @@ document.addEventListener('DOMContentLoaded', function() {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
     },
     events: [
       {
-        title: 'All Day Event',
-        start: '2025-01-01'
+        title: 'General Consultation',
+        start: '2025-01-01T10:00:00',
+        backgroundColor: 'green',
+        extendedProps: {
+          status: 'Confirmed',
+          doctor: 'Dr. Smith',
+          department: 'Cardiology',
+        },
       },
       {
-        title: 'Long Event',
-        start: '2025-02-07',
-        end: '2025-02-10'
+        title: 'Pending Approval',
+        start: '2025-01-15T14:00:00',
+        backgroundColor: 'yellow',
+        extendedProps: {
+          status: 'Pending',
+          doctor: 'Dr. Johnson',
+          department: 'Pediatrics',
+        },
       },
       {
-        groupId: '999',
-        title: 'Repeating Event',
-        start: '2025-02-01T16:00:00'
+        title: 'Canceled Appointment',
+        start: '2025-01-20T09:00:00',
+        backgroundColor: 'red',
+        extendedProps: {
+          status: 'Canceled',
+          doctor: 'Dr. Smith',
+          department: 'Cardiology',
+        },
       },
-      {
-        groupId: '999',
-        title: 'Repeating Event',
-        start: '2025-02-16T16:00:00'
-      },
-      {
-        title: 'Conference',
-        start: '2025-01-11',
-        end: '2025-01-13'
-      },
-      {
-        title: 'Meeting',
-        start: '2025-02-12T10:30:00',
-        end: '2025-02-12T12:30:00'
-      },
-      {
-        title: 'Lunch',
-        start: '2025-02-12T12:00:00'
-      },
-      {
-        title: 'Meeting',
-        start: '2025-02-12T14:30:00'
-      },
-      {
-        title: 'Birthday Party',
-        start: '2025-02-13T07:00:00'
-      },
-      {
-        title: 'Click for Google',
-        url: 'http://google.com/',
-        start: '2025-01-18'
-      }
     ],
-    windowResize: function(view) {
-      if (window.innerWidth < 768) {
-        calendar.changeView('listWeek');
-
-      } else {
-        calendar.changeView('dayGridMonth');
-      }
-    }
+    eventMouseEnter: function (info) {
+      var tooltip = document.createElement('div');
+      tooltip.classList.add('fc-tooltip');
+      tooltip.style.position = 'absolute';
+      tooltip.style.backgroundColor = 'white';
+      tooltip.style.border = '1px solid #ccc';
+      tooltip.style.padding = '10px';
+      tooltip.style.zIndex = '1000';
+      tooltip.innerHTML = `
+        <strong class="text-green">${info.event.title}</strong><br>
+        Status: ${info.event.extendedProps.status}<br>
+        Doctor: ${info.event.extendedProps.doctor}<br>
+        Department: ${info.event.extendedProps.department}
+      `;
+      document.body.appendChild(tooltip);
+      info.el.addEventListener('mousemove', function (e) {
+        tooltip.style.left = e.pageX + 10 + 'px';
+        tooltip.style.top = e.pageY + 10 + 'px';
+      });
+      info.el.addEventListener('mouseleave', function () {
+        tooltip.remove();
+      });
+    },
+    windowResize: function (view) {
+      calendar.changeView(window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth');
+    },
   });
 
+  // Render Calendar
   calendar.render();
 });
