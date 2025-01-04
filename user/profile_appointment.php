@@ -51,19 +51,55 @@ require_once('../classes/account.class.php');
               <h5 class="card-title mb-2 text-green">January List</h5>
               <hr>
               <div class="table-responsive">
-              <table class="table table-striped" id="eventsTable">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Date & Time</th>
-                    <th>Doctor</th>
-                    <th>Department</th>
-                    <th>Link</th>
-                    <th>Status</th>
-                    <th class="text-center">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
+                <?php
+                  $user_appointment = array(
+                    array(
+                      'date_time' => '01-01-26 | 10:00am',
+                      'doctor' => 'Dr. Smith',
+                      'department' => 'Cardioogy',
+                      'meeting_type' => 'Online',
+                      'link' => '#',
+                      'status' => 'Confirmed',
+                    ),
+                  );
+                ?>
+                <table class="table table-striped" id="eventsTable">
+                  <thead>
+                    <tr>
+                      <th scope="col" width="3%">#</th>
+                      <th scope="col">Date & Time</th>
+                      <th scope="col">Doctor</th>
+                      <th scope="col">Department</th>
+                      <th scope="col">Meeting Type</th>
+                      <th scope="col">Link</th>
+                      <th scope="col">Status</th>
+                      <th class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $counter = 1;
+                    foreach ($user_appointment as $item) {
+                    ?>
+                      <tr>
+                        <td><?= $counter ?></td>
+                        <td><?= $item['date_time'] ?></td>
+                        <td><?= $item['doctor'] ?></td>
+                        <td><?= $item['department'] ?></td>
+                        <td><?= $item['meeting_type'] ?></td>
+                        <td><?= $item['link'] ?></td>
+                        <td><?= $item['status'] ?></td>
+                        <td class="text-center">
+                          <button id="addAppointmentBtn" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#addEventModal"><i class='bx bx-show text-light'></i></button>
+                          <button class="btn btn-danger btn-sm ms-2"><i class='bx bxs-trash text-light'></i></button>
+                        </td>
+                      </tr>
+                    <?php
+                      $counter++;
+                    }
+                    ?>
+                  </tbody>
+                  <tbody>
                     <tr>
                       <td>1</td>
                       <td>01-01-25 | 10:00am</td>
@@ -76,9 +112,9 @@ require_once('../classes/account.class.php');
                         <button class="btn btn-danger btn-sm ms-2"><i class='bx bxs-trash text-light'></i></button>
                       </td>
                     </tr>
-                </tbody>
-              </table>
-            </div>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -91,7 +127,7 @@ require_once('../classes/account.class.php');
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addEventModalLabel">Add Appointment</h5>
+          <h5 class="modal-title" id="addEventModalLabel">Details</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -130,7 +166,7 @@ require_once('../classes/account.class.php');
               <input class="form-check-input" type="checkbox" id="isRepeating" name="isRepeating">
               <label class="form-check-label" for="isRepeating">Is this a repeating event?</label>
             </div>
-            <button type="submit" class="btn btn-primary text-light">Add Appointment</button>
+            <button type="submit" class="btn btn-primary text-light">Cancel Appointment</button>
           </form>
         </div>
       </div>
