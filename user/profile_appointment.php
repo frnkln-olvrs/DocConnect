@@ -61,59 +61,59 @@ require_once('../classes/account.class.php');
                       'link' => '#',
                       'status' => 'Confirmed',
                     ),
+                    array(
+                      'date_time' => '01-01-26 | 10:00am',
+                      'doctor' => 'Dr. Johnson',
+                      'department' => 'Pediatrics',
+                      'meeting_type' => 'Face to Face',
+                      'link' => '##',
+                      'status' => 'Pending',
+                    ),
                   );
-                ?>
-                <table class="table table-striped" id="eventsTable">
-                  <thead>
-                    <tr>
-                      <th scope="col" width="3%">#</th>
-                      <th scope="col">Date & Time</th>
-                      <th scope="col">Doctor</th>
-                      <th scope="col">Department</th>
-                      <th scope="col">Meeting Type</th>
-                      <th scope="col">Link</th>
-                      <th scope="col">Status</th>
-                      <th class="text-center">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    $counter = 1;
-                    foreach ($user_appointment as $item) {
-                    ?>
+                  ?>
+                  <table class="table table-striped" id="eventsTable">
+                    <thead>
                       <tr>
-                        <td><?= $counter ?></td>
-                        <td><?= $item['date_time'] ?></td>
-                        <td><?= $item['doctor'] ?></td>
-                        <td><?= $item['department'] ?></td>
-                        <td><?= $item['meeting_type'] ?></td>
-                        <td><?= $item['link'] ?></td>
-                        <td><?= $item['status'] ?></td>
-                        <td class="text-center">
-                          <button id="addAppointmentBtn" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#addEventModal"><i class='bx bx-show text-light'></i></button>
-                          <button class="btn btn-danger btn-sm ms-2"><i class='bx bxs-trash text-light'></i></button>
-                        </td>
+                        <th scope="col" width="3%">#</th>
+                        <th scope="col">Date & Time</th>
+                        <th scope="col">Doctor</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Meeting Type</th>
+                        <th scope="col">Link</th>
+                        <th scope="col">Status</th>
+                        <th class="text-center">Action</th>
                       </tr>
-                    <?php
-                      $counter++;
-                    }
-                    ?>
-                  </tbody>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>01-01-25 | 10:00am</td>
-                      <td>Dr. Smith</td>
-                      <td>Cardiology</td>
-                      <td><a href="#" class="btn btn-success btn-sm"><i class='bx bx-video text-light'></i></td>
-                      <td>Confirmed</td>
-                      <td class="text-center">
-                        <button id="addAppointmentBtn" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#addEventModal"><i class='bx bx-show text-light'></i></button>
-                        <button class="btn btn-danger btn-sm ms-2"><i class='bx bxs-trash text-light'></i></button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $counter = 1;
+                      foreach ($user_appointment as $item) {
+                      ?>
+                        <tr>
+                          <td><?= $counter ?></td>
+                          <td><?= $item['date_time'] ?></td>
+                          <td><?= $item['doctor'] ?></td>
+                          <td><?= $item['department'] ?></td>
+                          <td><?= $item['meeting_type'] ?></td>
+                          <td>
+                            <?php if ($item['meeting_type'] === 'Online') { ?>
+                              <a href="<?= $item['link'] ?>" class="btn btn-success btn-sm"><i class='bx bx-video text-light'></i></a>
+                            <?php } else { ?>
+                              <a class="btn btn-secondary btn-sm text-light">N/A</a>
+                            <?php } ?>
+                          </td>
+                          <td><?= $item['status'] ?></td>
+                          <td class="text-center">
+                            <button id="addAppointmentBtn" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#addEventModal"><i class='bx bx-show text-light'></i></button>
+                            <button class="btn btn-danger btn-sm ms-2"><i class='bx bxs-trash text-light'></i></button>
+                          </td>
+                        </tr>
+                      <?php
+                        $counter++;
+                      }
+                      ?>
+                    </tbody>
+                  </table>
               </div>
             </div>
           </div>
