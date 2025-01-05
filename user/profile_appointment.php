@@ -20,7 +20,7 @@ require_once('../classes/account.class.php');
     require_once ('../includes/header.php');
   ?>
 
-<section id="profile" class="page-container">
+  <section id="profile" class="page-container">
     <div class="container py-5">
 
       <div class="row">
@@ -68,7 +68,7 @@ require_once('../classes/account.class.php');
                       'doctor' => 'Dr. Johnson',
                       'department' => 'Pediatrics',
                       'meeting_type' => 'Face to Face',
-                      'link' => 'N/A',
+                      'link' => '',
                       'status' => 'Pending',
                     ),
                   );
@@ -137,47 +137,46 @@ require_once('../classes/account.class.php');
     </div>
   </section>
 
-  <!-- Bootstrap Modal for Viewing table details -->
+  <!-- Bootstrap Modal for Viewing Table Details -->
   <div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <div class="text-center w-100">
-            <input type="text" class="text-center fw-bold w-50 bg-white display-6" id="status" name="status" readonly>
+        <div class="modal-header justify-content-center">
+          <div class="w-100 text-center">
+            <input type="text" class="text-center fw-bold bg-white border-0 fs-4" id="status" name="status" readonly>
           </div>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close position-absolute end-0 top-0 me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form id="addEventForm">
-            <div class="row">
-                <div class="col-6">
-                  <label for="eventDateTime" class="form-label">Date</label>
-                  <input type="text" class="form-control" id="eventDateime" name="eventDateTime" readonly>
-                </div>
-                <div class="col-6">
-                  <label for="eventDateTime" class="form-label">Time</label>
-                  <input type="text" class="form-control" id="eventDatTime" name="eventDateTime" readonly>
-                </div>
-            </div>
-            <div class="mb-3">
-              <label for="eventDateTime" class="form-label">Date & Time</label>
-              <input type="text" class="form-control" id="eventDateTime" name="eventDateTime" readonly>
-            </div>
-            <div class="mb-3">
-              <label for="doctorName" class="form-label">Doctor</label>
-              <input type="text" class="form-control" id="doctorName" name="doctorName" readonly>
-            </div>
-            <div class="mb-3">
-              <label for="departmentName" class="form-label">Department</label>
-              <input type="text" class="form-control" id="departmentName" name="departmentName" readonly>
+            <div class="row mb-3">
+              <div class="col-6">
+                <label for="eventDate" class="form-label">Date</label>
+                <input type="text" class="form-control" id="eventDate" name="eventDate" readonly>
+              </div>
+              <div class="col-6">
+                <label for="eventTime" class="form-label">Time</label>
+                <input type="text" class="form-control" id="eventTime" name="eventTime" readonly>
+              </div>
             </div>
             <div class="mb-3">
               <label for="meetingType" class="form-label">Meeting Type</label>
               <input type="text" class="form-control" id="meetingType" name="meetingType" readonly>
             </div>
-            <div class="mb-3">
+            <div class="row mb-3">
+              <div class="col-6">
+                <label for="doctorName" class="form-label">Doctor</label>
+                <input type="text" class="form-control" id="doctorName" name="doctorName" readonly>
+              </div>
+              <div class="col-6">
+                <label for="departmentName" class="form-label">Department</label>
+                <input type="text" class="form-control" id="departmentName" name="departmentName" readonly>
+              </div>
+            </div>
+            <!-- Link Section -->
+            <div class="mb-3" id="linkSection">
               <label for="link" class="form-label">Link</label>
-              <a href="#" id="eventLink" class="form-control text-primary" target="_blank">Open Link</a>
+              <a href="#" id="eventLink" class="form-control text-primary" target="_blank"></a>
             </div>
           </form>
         </div>
@@ -189,12 +188,27 @@ require_once('../classes/account.class.php');
     document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
       button.addEventListener('click', () => {
         const modal = document.getElementById('addEventModal');
-        modal.querySelector('#eventDateTime').value = button.getAttribute('data-date-time');
+        const dateTime = button.getAttribute('data-date-time').split(' | ');
+
+        // Populate modal fields
+        modal.querySelector('#eventDate').value = dateTime[0]; // Date
+        modal.querySelector('#eventTime').value = dateTime[1]; // Time
         modal.querySelector('#doctorName').value = button.getAttribute('data-doctor');
         modal.querySelector('#departmentName').value = button.getAttribute('data-department');
         modal.querySelector('#meetingType').value = button.getAttribute('data-meeting-type');
-        modal.querySelector('#eventLink').href = button.getAttribute('data-link');
-        modal.querySelector('#eventLink').textContent = button.getAttribute('data-link') === 'N/A' ? 'N/A' : 'Open Link';
+
+        const link = button.getAttribute('data-link');
+        const linkSection = modal.querySelector('#linkSection');
+        const linkElement = modal.querySelector('#eventLink');
+
+        if (link && link !== 'N/A') {
+          linkSection.style.display = ''; // Show the link section
+          linkElement.href = link;
+          linkElement.textContent = link;
+        } else {
+          linkSection.style.display = 'none'; // Hide the link section
+        }
+
         modal.querySelector('#status').value = button.getAttribute('data-status');
       });
     });
