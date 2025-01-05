@@ -11,7 +11,8 @@ if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] 
 
 require_once('../tools/functions.php');
 require_once('../classes/account.class.php');
-require_once('../classes/database.php');
+require_once('../classes/message.class.php');
+
 
 $db = new Database();
 $pdo = $db->connect();
@@ -22,11 +23,12 @@ $account_id = isset($_SESSION['account_id']) ? $_SESSION['account_id'] : 0;
 <!DOCTYPE html>
 <html lang="en">
 <?php
-  $title = 'Message';
-  include '../includes/head.php';
+$title = 'Message';
+include '../includes/head.php';
 ?>
+
 <body class="bg-white">
-<input type="hidden" id="account_id" value="<?php echo htmlspecialchars($account_id); ?>">
+  <input type="hidden" id="account_id" value="<?php echo htmlspecialchars($account_id); ?>">
   <?php require_once('../includes/header.php'); ?>
 
   <section id="chat" class="padding-medium">
@@ -40,10 +42,26 @@ $account_id = isset($_SESSION['account_id']) ? $_SESSION['account_id'] : 0;
           <input type="text" class="form-control border-2" id="searchChat" placeholder="Search">
         </div>
         <ul id="chatList" class="list-unstyled mb-0">
-          <!-- Dynamic chat list will be loaded here -->
+          <?php
+          $message = new Message();
+          $chatArray = $message->get_chats($_SESSION['account_id'], ($_SESSION['user_role'] == 3) ? 1 : 3, "");
+          foreach ($chatArray as $item) {
+          ?>
+            <!-- display chat list using php -->
+            <a href="#" class="d-flex align-items-center text-dark text-decoration-none p-2" onclick="loadChat(<?= $item['account_id'] ?>, 'Doc Fei', '', this)">
+              <img src="../assets/images/default_profile.png" alt="Profile" class="rounded-circle me-3" height="40" width="40">
+              <div>
+                <strong><?= (isset($item['middlename'])) ? ucwords(strtolower($item['firstname'] . ' ' . $item['middlename'] . ' ' . $item['lastname'])) : ucwords(strtolower($item['firstname'] . ' ' . $item['lastname'])) ?></strong>
+              </div>
+            </a>
+            <!-- display chat list using php -->
+          <?php
+          }
+          ?>
         </ul>
       </div>
 
+      <!--  transfer to ajax -->
       <!-- Chat Box -->
       <div id="chat_box" class="flex-grow-1 d-flex flex-column">
         <!-- Chat Header -->
@@ -69,16 +87,21 @@ $account_id = isset($_SESSION['account_id']) ? $_SESSION['account_id'] : 0;
 
         <!-- Chat Input -->
         <div class="chat_input d-flex align-items-end p-3 border-top bg-light">
-            <textarea type="text" id="messageInput" class="form-control border-2 text-dark me-3" placeholder="Type your message"></textarea>
-            <button id="sendMessage" type="button" class="btn btn-light d-flex justify-content-center">
-              <i class='bx bx-send text-dark fs-4'></i>
-            </button>
+          <textarea type="text" id="messageInput" class="form-control border-2 text-dark me-3" placeholder="Type your message"></textarea>
+          <button id="sendMessage" type="button" class="btn btn-light d-flex justify-content-center">
+            <i class='bx bx-send text-dark fs-4'></i>
+          </button>
         </div>
 
       </div>
+
+      <!--  transfer to ajax -->
+
+      
     </div>
   </section>
 
-  <script src="../js/chat.js"></script>
+  <!-- <script src="../js/chat.js"></script> -->
 </body>
+
 </html>

@@ -42,7 +42,7 @@ class Message
             $search = trim(htmlentities($search));
         }
 
-        $sql = "SELECT DISTINCT a.account_id, a.firstname, a.lastname, a.account_image,
+        $sql_first = "SELECT DISTINCT a.account_id, a.firstname, a.lastname, a.account_image,
             (SELECT COUNT(*) FROM messages m
              WHERE m.receiver_id = :account_id 
              AND m.sender_id = a.account_id 
@@ -51,6 +51,12 @@ class Message
              LEFT JOIN messages m ON (a.account_id = m.sender_id OR a.account_id = m.receiver_id)
              WHERE (a.user_role = :opposite_role)
              AND a.account_id != :account_id";
+
+        $sql = "SELECT DISTINCT a.*,
+            (SELECT COUNT(*) FROM messages m WHERE m.receiver_id = :account_id AND m.sender_id = a.account_id AND m.is_read = 0) AS unread_count
+            FROM messages m 
+            LEFT JOIN account a ON a.account_id = m.receiver_id
+            WHERE m.sender_id = :account_id AND m.receiver_id != :account_id";
 
         // If a search term is provided, add it to the query
         if (!empty($search)) {
@@ -88,7 +94,8 @@ class Message
         }
     }
 
-    function send_message(){
+    function send_message()
+    {
         $sql = "INSERT INTO messages (sender_id, receiver_id, message, status, is_read) VALUES (?, ?, ?, 'sent', 0)";
 
         $query = $this->db->connect()->prepare($sql);
