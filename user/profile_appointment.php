@@ -184,36 +184,6 @@ require_once('../classes/account.class.php');
     </div>
   </div>
 
-  <script>
-    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
-      button.addEventListener('click', () => {
-        const modal = document.getElementById('addEventModal');
-        const dateTime = button.getAttribute('data-date-time').split(' | ');
-
-        // Populate modal fields
-        modal.querySelector('#eventDate').value = dateTime[0]; // Date
-        modal.querySelector('#eventTime').value = dateTime[1]; // Time
-        modal.querySelector('#doctorName').value = button.getAttribute('data-doctor');
-        modal.querySelector('#departmentName').value = button.getAttribute('data-department');
-        modal.querySelector('#meetingType').value = button.getAttribute('data-meeting-type');
-
-        const link = button.getAttribute('data-link');
-        const linkSection = modal.querySelector('#linkSection');
-        const linkElement = modal.querySelector('#eventLink');
-
-        if (link && link !== 'N/A') {
-          linkSection.style.display = ''; // Show the link section
-          linkElement.href = link;
-          linkElement.textContent = link;
-        } else {
-          linkSection.style.display = 'none'; // Hide the link section
-        }
-
-        modal.querySelector('#status').value = button.getAttribute('data-status');
-      });
-    });
-  </script>
-
   <?php 
     require_once ('../includes/footer.php');
   ?>

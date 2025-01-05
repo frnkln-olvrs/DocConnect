@@ -75,3 +75,32 @@ document.addEventListener('DOMContentLoaded', function () {
   // Render Calendar
   calendar.render();
 });
+
+// ---Modal for Viewing Table Details---
+document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = document.getElementById('addEventModal');
+    const dateTime = button.getAttribute('data-date-time').split(' | ');
+
+    // Populate modal fields
+    modal.querySelector('#eventDate').value = dateTime[0];
+    modal.querySelector('#eventTime').value = dateTime[1];
+    modal.querySelector('#doctorName').value = button.getAttribute('data-doctor');
+    modal.querySelector('#departmentName').value = button.getAttribute('data-department');
+    modal.querySelector('#meetingType').value = button.getAttribute('data-meeting-type');
+
+    const link = button.getAttribute('data-link');
+    const linkSection = modal.querySelector('#linkSection');
+    const linkElement = modal.querySelector('#eventLink');
+
+    if (link && link !== 'N/A') {
+      linkSection.style.display = '';
+      linkElement.href = link;
+      linkElement.textContent = link;
+    } else {
+      linkSection.style.display = 'none';
+    }
+
+    modal.querySelector('#status').value = button.getAttribute('data-status');
+  });
+});
