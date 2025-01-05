@@ -59,7 +59,7 @@ require_once('../classes/account.class.php');
                       'doctor' => 'Dr. Smith',
                       'department' => 'Cardiology',
                       'meeting_type' => 'Online',
-                      'link' => '#',
+                      'link' => 'https://meet.google.com/uxx-ogep-nks',
                       'status' => 'Confirmed',
                     ),
                     array(
@@ -100,7 +100,7 @@ require_once('../classes/account.class.php');
                         <td><?= $item['meeting_type'] ?></td>
                         <td>
                           <?php if ($item['meeting_type'] === 'Online') { ?>
-                            <a href="<?= $item['link'] ?>" class="btn btn-success btn-sm"><i class='bx bx-video text-light'></i></a>
+                            <a href="<?= $item['link'] ?>" target="_blank" class="btn btn-success btn-sm"><i class='bx bx-video text-light'></i></a>
                           <?php } else { ?>
                             <a class="btn btn-secondary btn-sm text-light">N/A</a>
                           <?php } ?>
