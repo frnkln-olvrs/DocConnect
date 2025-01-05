@@ -54,19 +54,21 @@ require_once('../classes/account.class.php');
                 <?php
                   $user_appointment = array(
                     array(
-                      'date_time' => '01-01-26 | 10:00am',
+                      'date' => '01-01-25',
+                      'time' => '10:00am',
                       'doctor' => 'Dr. Smith',
-                      'department' => 'Cardioogy',
+                      'department' => 'Cardiology',
                       'meeting_type' => 'Online',
                       'link' => '#',
                       'status' => 'Confirmed',
                     ),
                     array(
-                      'date_time' => '01-01-26 | 10:00am',
+                      'date' => '01-15-25',
+                      'time' => '02:00pm',
                       'doctor' => 'Dr. Johnson',
                       'department' => 'Pediatrics',
                       'meeting_type' => 'Face to Face',
-                      'link' => '##',
+                      'link' => 'N/A',
                       'status' => 'Pending',
                     ),
                   );
@@ -88,10 +90,11 @@ require_once('../classes/account.class.php');
                     <?php
                     $counter = 1;
                     foreach ($user_appointment as $item) {
+                      $date_time = "{$item['date']} | {$item['time']}";
                     ?>
                       <tr>
                         <td><?= $counter ?></td>
-                        <td><?= $item['date_time'] ?></td>
+                        <td><?= $date_time ?></td>
                         <td><?= $item['doctor'] ?></td>
                         <td><?= $item['department'] ?></td>
                         <td><?= $item['meeting_type'] ?></td>
@@ -104,7 +107,19 @@ require_once('../classes/account.class.php');
                         </td>
                         <td><?= $item['status'] ?></td>
                         <td class="text-center">
-                          <button id="addAppointmentBtn" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#addEventModal"><i class='bx bx-show text-light'></i></button>
+                          <button 
+                            class="btn btn-warning btn-sm"
+                            data-bs-toggle="modal"
+                            data-bs-target="#addEventModal"
+                            data-date-time="<?= $date_time ?>"
+                            data-doctor="<?= $item['doctor'] ?>"
+                            data-department="<?= $item['department'] ?>"
+                            data-meeting-type="<?= $item['meeting_type'] ?>"
+                            data-link="<?= $item['link'] ?>"
+                            data-status="<?= $item['status'] ?>"
+                          >
+                            <i class='bx bx-show text-light'></i>
+                          </button>
                           <button class="btn btn-danger btn-sm ms-2"><i class='bx bxs-trash text-light'></i></button>
                         </td>
                       </tr>
@@ -122,56 +137,68 @@ require_once('../classes/account.class.php');
     </div>
   </section>
 
-  <!-- Bootstrap Modal for Adding Events -->
+  <!-- Bootstrap Modal for Viewing table details -->
   <div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addEventModalLabel">Details</h5>
+          <div class="text-center w-100">
+            <input type="text" class="text-center fw-bold w-50 bg-white display-6" id="status" name="status" readonly>
+          </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form id="addEventForm">
-            <div class="mb-3">
-              <label for="eventTitle" class="form-label">Event Title</label>
-              <input type="text" class="form-control" id="eventTitle" name="eventTitle" required>
+            <div class="row">
+                <div class="col-6">
+                  <label for="eventDateTime" class="form-label">Date</label>
+                  <input type="text" class="form-control" id="eventDateime" name="eventDateTime" readonly>
+                </div>
+                <div class="col-6">
+                  <label for="eventDateTime" class="form-label">Time</label>
+                  <input type="text" class="form-control" id="eventDatTime" name="eventDateTime" readonly>
+                </div>
             </div>
             <div class="mb-3">
-              <label for="eventDate" class="form-label">Event Date</label>
-              <input type="date" class="form-control" id="eventDate" name="eventDate" required>
-            </div>
-            <div class="d-flex align-items-center w-100">
-              <div class="mb-3 w-100">
-                <label for="startTime" class="form-label">Time Start</label>
-                <input type="time" class="form-control" id="startTime" name="startTime" required>
-              </div>
-              <p class="m-0 mx-3 mt-3"> to </p>
-              <div class="mb-3 w-100">
-                <label for="endTime" class="form-label">Time End</label>
-                <input type="time" class="form-control" id="endTime" name="endTime">
-              </div>
+              <label for="eventDateTime" class="form-label">Date & Time</label>
+              <input type="text" class="form-control" id="eventDateTime" name="eventDateTime" readonly>
             </div>
             <div class="mb-3">
-              <label class="form-label">Meeting Type</label>
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="meetingTypeSwitch" name="meetingType" value="online">
-                <label class="form-check-label" for="meetingTypeSwitch" id="meetingTypeLabel">Face-to-Face</label>
-              </div>
+              <label for="doctorName" class="form-label">Doctor</label>
+              <input type="text" class="form-control" id="doctorName" name="doctorName" readonly>
             </div>
             <div class="mb-3">
-              <label for="eventUrl" class="form-label">Event URL (for Online Meetings)</label>
-              <input type="url" class="form-control" id="eventUrl" name="eventUrl" placeholder="http://example.com" disabled>
+              <label for="departmentName" class="form-label">Department</label>
+              <input type="text" class="form-control" id="departmentName" name="departmentName" readonly>
             </div>
-            <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="isRepeating" name="isRepeating">
-              <label class="form-check-label" for="isRepeating">Is this a repeating event?</label>
+            <div class="mb-3">
+              <label for="meetingType" class="form-label">Meeting Type</label>
+              <input type="text" class="form-control" id="meetingType" name="meetingType" readonly>
             </div>
-            <button type="submit" class="btn btn-primary text-light">Cancel Appointment</button>
+            <div class="mb-3">
+              <label for="link" class="form-label">Link</label>
+              <a href="#" id="eventLink" class="form-control text-primary" target="_blank">Open Link</a>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
+      button.addEventListener('click', () => {
+        const modal = document.getElementById('addEventModal');
+        modal.querySelector('#eventDateTime').value = button.getAttribute('data-date-time');
+        modal.querySelector('#doctorName').value = button.getAttribute('data-doctor');
+        modal.querySelector('#departmentName').value = button.getAttribute('data-department');
+        modal.querySelector('#meetingType').value = button.getAttribute('data-meeting-type');
+        modal.querySelector('#eventLink').href = button.getAttribute('data-link');
+        modal.querySelector('#eventLink').textContent = button.getAttribute('data-link') === 'N/A' ? 'N/A' : 'Open Link';
+        modal.querySelector('#status').value = button.getAttribute('data-status');
+      });
+    });
+  </script>
 
   <?php 
     require_once ('../includes/footer.php');
