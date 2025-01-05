@@ -6,7 +6,7 @@ require_once('../classes/account.class.php');
 
 use Orhanerday\OpenAi\OpenAi;
 
-//$open_ai_key = getenv('openaikey');
+$open_ai_key = getenv('openaikey');
 $open_ai = new OpenAi($open_ai_key);
 
 
