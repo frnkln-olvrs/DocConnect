@@ -41,7 +41,7 @@
           <i class='bx bx-dots-horizontal-rounded fs-4' id="dotsDropdown" data-bs-toggle="dropdown" aria-expanded="false"></i>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dotsDropdown">
             <li><a class="dropdown-item" href="#">Add</a></li>
-            <li><a class="dropdown-item" href="#">Edit</a></li>
+            <li><a class="dropdown-item" href="profile_allergies">Edit</a></li>
           </ul>
         </div>
       </div>
