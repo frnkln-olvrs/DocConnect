@@ -36,7 +36,7 @@ require_once('../classes/account.class.php');
           </div>
         </div>
         <div class="img col-md-6 mt-5">
-          <img src="../assets/images/billboard-img.png" alt="img" class="img-fluid rounded-circle">
+          <img src="../assets/images/billboard-img2.png" alt="img" class="img-fluid rounded-circle">
         </div>
       </div>
     </div>
@@ -267,7 +267,7 @@ require_once('../classes/account.class.php');
           <a href="./about_us" class="btn bg-green px-5 py-3 mt-4 link-light">Learn more</a>
         </div>
         <div class="offset-md-1 col-md-4">
-          <img src="../assets/images/billboard-img.png" alt="img" class="img-fluid rounded-circle">
+          <img src="../assets/images/billboard-img2.png" alt="img" class="img-fluid rounded-circle">
         </div>
       </div>
     </div>
