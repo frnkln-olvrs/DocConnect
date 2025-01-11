@@ -87,7 +87,13 @@ require_once('../classes/account.class.php');
                           >
                             <i class='bx bx-edit-alt text-light'></i>
                           </button>
-                          <button class="btn btn-danger btn-sm ms-2"><i class='bx bxs-trash text-light'></i></button>
+                          <button 
+                            class="btn btn-danger btn-sm ms-2" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#deleteAllergy">
+                            <i class='bx bxs-trash text-light'></i>
+                          </button>
+
                         </td>
                       </tr>
                     <?php
@@ -164,6 +170,25 @@ require_once('../classes/account.class.php');
               <input type="submit" class="btn btn-primary text-light" name="save" value="Add">
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Modal for DELETING ALLERGIES Table -->
+  <div class="modal fade" id="deleteAllergy" tabindex="-1" aria-labelledby="delete_allergy" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteConfirmationLabel">Confirm Deletion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this allergy? This action cannot be undone.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
         </div>
       </div>
     </div>
