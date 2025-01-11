@@ -31,15 +31,11 @@ require_once('../classes/account.class.php');
 
           <div class="card bg-body-tertiary mb-4">
             <div class="card-body">
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center justify-content-between">
                 <h4 class="mb-0">Edit Allergies</h4>
-                <button 
-                            class="btn btn-warning btn-sm"
-                            data-bs-toggle="modal"
-                            data-bs-target="#editAllergy"
-                          >
-                            <i class='bx bx-edit-alt text-light'></i>
-                          </button>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addAllergy">
+                  <i class='bx bx-plus text-light'> add allergies</i>
+                </button>
               </div>
               <hr>
               <div class="table-responsive">
@@ -133,6 +129,39 @@ require_once('../classes/account.class.php');
             </div>
             <div class="text-end">
               <input type="submit" class="btn btn-primary text-light" name="save" value="Save Changes">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Modal for ADDING ALLERGIES Table -->
+  <div class="modal fade" id="addAllergy" tabindex="-1" aria-labelledby="add_allergy" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center">
+          <h3>Add Allergy</h3>
+          <button type="button" class="btn-close position-absolute end-0 top-0 me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addAllergy">
+            <div class="row mb-3">
+              <div class="col-6">
+                <label for="allergyType" class="form-label">Type</label>
+                <input type="text" class="form-control" id="allergyType" name="allergy_type">
+              </div>
+              <div class="col-6">
+                <label for="allergyLevel" class="form-label">Level</label>
+                <select class="form-control" id="allergyLevel" name="allergy_level">
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+            </div>
+            <div class="text-end">
+              <input type="submit" class="btn btn-primary text-light" name="save" value="Add">
             </div>
           </form>
         </div>
