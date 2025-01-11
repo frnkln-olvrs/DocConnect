@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // ---Modal for Viewing Table Details---
 document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
   button.addEventListener('click', () => {
-    const modal = document.getElementById('addEventModal');
+    const modal = document.getElementById('viewAppointment');
     const dateTime = button.getAttribute('data-date-time').split(' | ');
 
     // Populate modal fields

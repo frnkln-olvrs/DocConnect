@@ -110,7 +110,7 @@ require_once('../classes/account.class.php');
                           <button 
                             class="btn btn-warning btn-sm"
                             data-bs-toggle="modal"
-                            data-bs-target="#addEventModal"
+                            data-bs-target="#viewAppointment"
                             data-date-time="<?= $date_time ?>"
                             data-doctor="<?= $item['doctor'] ?>"
                             data-department="<?= $item['department'] ?>"
@@ -138,7 +138,7 @@ require_once('../classes/account.class.php');
   </section>
 
   <!-- Bootstrap Modal for Viewing Table Details -->
-  <div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true">
+  <div class="modal fade" id="viewAppointment" tabindex="-1" aria-labelledby="view_appointment" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header justify-content-center">
