@@ -33,6 +33,13 @@ require_once('../classes/account.class.php');
             <div class="card-body">
               <div class="d-flex align-items-center">
                 <h4 class="mb-0">Edit Allergies</h4>
+                <button 
+                            class="btn btn-warning btn-sm"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editAllergy"
+                          >
+                            <i class='bx bx-edit-alt text-light'></i>
+                          </button>
               </div>
               <hr>
               <div class="table-responsive">
@@ -78,11 +85,11 @@ require_once('../classes/account.class.php');
                           <button 
                             class="btn btn-warning btn-sm"
                             data-bs-toggle="modal"
-                            data-bs-target="#addEventModal"
-                            data-doctor="<?= $item['type'] ?>"
-                            data-department="<?= $item['level'] ?>"
+                            data-bs-target="#editAllergy"
+                            data-type="<?= $item['type'] ?>"
+                            data-level="<?= $item['level'] ?>"
                           >
-                            <i class='bx bx-show text-light'></i>
+                            <i class='bx bx-edit-alt text-light'></i>
                           </button>
                           <button class="btn btn-danger btn-sm ms-2"><i class='bx bxs-trash text-light'></i></button>
                         </td>
@@ -100,52 +107,51 @@ require_once('../classes/account.class.php');
     </div>
   </section>
 
-   <!-- Bootstrap Modal for Viewing Table Details -->
-   <div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true">
+  <!-- Bootstrap Modal for EDITING ALLERGIES Table -->
+  <div class="modal fade" id="editAllergy" tabindex="-1" aria-labelledby="edit_allergy" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header justify-content-center">
-          <div class="w-100 text-center">
-            <input type="text" class="text-center fw-bold bg-white border-0 fs-4" id="status" name="status" readonly>
-          </div>
+          <h3>Edit Allergy</h3>
           <button type="button" class="btn-close position-absolute end-0 top-0 me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="addEventForm">
+          <form id="editAllergyForm">
             <div class="row mb-3">
               <div class="col-6">
-                <label for="eventDate" class="form-label">Date</label>
-                <input type="text" class="form-control" id="eventDate" name="eventDate" readonly>
+                <label for="allergyType" class="form-label">Type</label>
+                <input type="text" class="form-control" id="allergyType" name="allergy_type">
               </div>
               <div class="col-6">
-                <label for="eventTime" class="form-label">Time</label>
-                <input type="text" class="form-control" id="eventTime" name="eventTime" readonly>
+                <label for="allergyLevel" class="form-label">Level</label>
+                <select class="form-control" id="allergyLevel" name="allergy_level">
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
               </div>
             </div>
-            <div class="mb-3">
-              <label for="meetingType" class="form-label">Meeting Type</label>
-              <input type="text" class="form-control" id="meetingType" name="meetingType" readonly>
-            </div>
-            <div class="row mb-3">
-              <div class="col-6">
-                <label for="doctorName" class="form-label">Doctor</label>
-                <input type="text" class="form-control" id="doctorName" name="doctorName" readonly>
-              </div>
-              <div class="col-6">
-                <label for="departmentName" class="form-label">Department</label>
-                <input type="text" class="form-control" id="departmentName" name="departmentName" readonly>
-              </div>
-            </div>
-            <!-- Link Section -->
-            <div class="mb-3" id="linkSection">
-              <label for="link" class="form-label">Link</label>
-              <a href="#" id="eventLink" class="form-control text-primary" target="_blank"></a>
+            <div class="text-end">
+              <input type="submit" class="btn btn-primary text-light" name="save" value="Save Changes">
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    // ---Modal for Viewing Table Details---
+    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
+      button.addEventListener('click', () => {
+        const modal = document.getElementById('editAllergy');
+
+        // Populate modal fields
+        modal.querySelector('#allergyType').value = button.getAttribute('data-type');
+        modal.querySelector('#allergyLevel').value = button.getAttribute('data-level');
+      });
+    });
+  </script>
 
   <?php 
     require_once ('../includes/footer.php');
