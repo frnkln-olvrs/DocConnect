@@ -187,8 +187,8 @@ require_once('../classes/account.class.php');
           Are you sure you want to delete this allergy? This action cannot be undone.
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+          <button type="button" class="btn btn-secondary text-light" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger text-light" id="confirmDeleteButton">Delete</button>
         </div>
       </div>
     </div>
