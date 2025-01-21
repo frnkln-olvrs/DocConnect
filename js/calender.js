@@ -2,13 +2,14 @@ document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
-    initialDate: '2024-04-17',
-    themeSystem: "bootstrap",
+    initialView: window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth',
+    themeSystem: 'Lux',
+    editable: true,
+    selectable: true,
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
     },
     events: [
       {
@@ -32,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       {
         title: 'Conference',
-        start: '2024-05-11',
-        end: '2024-05-13'
+        start: '2024-09-11',
+        end: '2024-09-13'
       },
       {
         title: 'Meeting',
@@ -55,9 +56,17 @@ document.addEventListener('DOMContentLoaded', function() {
       {
         title: 'Click for Google',
         url: 'http://google.com/',
-        start: '2024-04-18'
+        start: '2024-09-18'
       }
-    ]
+    ],
+    windowResize: function(view) {
+      if (window.innerWidth < 768) {
+        calendar.changeView('listWeek');
+
+      } else {
+        calendar.changeView('dayGridMonth');
+      }
+    }
   });
 
   calendar.render();

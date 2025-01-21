@@ -1,54 +1,151 @@
+<?php
+session_start();
+
+// Verify if the user is logged in, verified, and is a doctor
+if (isset($_SESSION['verification_status']) && $_SESSION['verification_status'] != 'Verified') {
+    header('location: ../user/verification.php');
+    exit();
+} else if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 1) {
+    header('location: ../index.php');
+    exit();
+}
+
+$doctor_id = $_SESSION['account_id'];
+$receiver_id = 1;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
 $title = 'Chats';
+$chat = 'active';
 include '../includes/head.php';
 ?>
 
 <body>
-    <?php
-    require_once('../includes/header-doctor.php');
-    ?>
+    <?php require_once('../includes/header-doctor.php'); ?>
+
     <div class="container-fluid">
-        <div class="row">
-            <?php
-            require_once('../includes/sidepanel-doctor.php');
-            ?>
-            <main class="col-md-9 ms-sm-auto col-lg-10">
-                <div class="col-md-10 mt-4">
-                    <div class="chat-container-wrapper">
-                        <div class="receiver-name mb-3" style="font-size: 20px; font-weight: bold;">
-                            Patients Full Name
+        <div class="row" style="height: 89vh;">
+            <?php require_once('../includes/sidepanel-doctor.php'); ?>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 p-0" style="height: 100%;">
+                <div class="container-fluid h-100">
+                    <div class="row h-100">
+                        <div class="col-3 p-0 h-100">
+                            <div class="card rounded-0 border-0 border-end h-100">
+                                <div class="card-header">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </div>
+                                <ul class="list-group list-group-flush" style="height: calc(100% - 56px); overflow-y: auto;">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <img src="../assets/images/defualt_profile.png" class="rounded-circle me-2" alt="User" height="40" width="40">
+                                            <div>
+                                                <h6 class="mb-0">Fname Lname</h6>
+                                                <small class="text-muted">Due to high blo...</small>
+                                            </div>
+                                        </div>
+                                        <small class="text-muted">20m</small>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
-                        <div class="chat-container border rounded p-3">
-                            <div class="chat-messages mb-3" style="height: 500px; overflow-y: auto;">
-                                <div class="message doctor mb-2" style="display: flex; align-items: flex-start; margin-bottom: 10px;">
-                                    <i class='bx bx-user-circle profile-icon' style="font-size: 30px; margin-right: 10px;"></i> 
-                                    <div class="message-content" style="max-width: 75%; background: #d1e7dd; padding: 10px; border-radius: 10px;">
-                                        <p style="border: none; margin: 0;">Hello, how can I assist you today?</p>
+                        <div class="col-9 p-0 h-100">
+                            <div class="card h-100 border-0 rounded-0">
+                                <div class="card-header">
+                                    <div class="d-flex align-items-center">
+                                        <img src="../assets/images/defualt_profile.png" class="rounded-circle me-2" alt="User" height="40" width="40">
+                                        <h6 class="mb-0">Fname Lname</h6>
                                     </div>
                                 </div>
-                                <div class="message patient mb-2" style="display: flex; align-items: flex-start; margin-bottom: 10px; justify-content: flex-end;">
-                                    <div class="message-content" style="max-width: 75%; background: #e9ecef; padding: 10px; border-radius: 10px; text-align: right;">
-                                        <p style="border: none; margin: 0;">I have a question about my medication.</p>
-                                    </div>
-                                    <i class='bx bx-user-circle profile-icon' style="font-size: 30px; margin-left: 10px;"></i>
+                                <div class="card-body" id="chat-messages" style="overflow-y: auto; height: calc(100% - 112px);">
+                                    <!-- Messages will load here -->
                                 </div>
+                                <form id="sendMessageForm" class="card-footer">
+                                    <div class="input-group">
+                                        <input type="text" id="message" name="message" class="form-control" placeholder="Aa">
+                                        <button class="btn btn-primary" id="sendButton" type="submit">
+                                            <i class='bx bx-send text-white fs-5'></i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Aa" aria-label="Message" style="color: black; border-radius: 20px; background: #D9D9D9;">
-                            <button class="btn-icon ms-2" type="button" style="background: none; border: none; cursor: pointer; color: #007bff;">
-                                <i class='bx bx-send' style="font-size: 30px; color: black;"></i> 
-                            </button>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
     </div>
-    
-</body>
 
+    <script>
+        let receiverId = <?php echo $receiver_id; ?>;
+
+        function fetchMessages() {
+            $.ajax({
+                url: '../tools/chat.php',
+                method: 'POST',
+                data: { fetch_messages: 1, receiver_id: receiverId },
+                dataType: 'json',
+                success: function (data) {
+                    let chatBox = '';
+                    data.forEach(function (msg) {
+                        if (msg.sender_id == receiverId) {
+                            chatBox += `<div class="d-flex align-items-end justify-content-start mb-3">
+                                            <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle me-3" height="30" width="30">
+                                            <div class="bg-secondary text-light p-2 rounded-3">${msg.message}</div>
+                                        </div>`;
+                        } else {
+                            chatBox += `<div class="d-flex align-items-end justify-content-end mb-3">
+                                            <div class="bg-primary text-light p-2 rounded-3">${msg.message}</div>
+                                            <img src="../assets/images/defualt_profile.png" alt="Profile" class="rounded-circle ms-3" height="30" width="30">
+                                        </div>`;
+                        }
+                    });
+                    $('#chat-messages').html(chatBox);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Failed to fetch messages:", error);
+                }
+            });
+        }
+
+        // Fetch messages every 2 seconds
+        setInterval(fetchMessages, 2000);
+
+        // Function to send a message
+        function sendMessage(event) {
+            event.preventDefault();
+            
+            let message = $('#message').val();
+            if (message.trim() !== '') {
+                $.ajax({
+                    url: '../tools/chat.php',
+                    method: 'POST',
+                    data: { send_message: 1, receiver_id: receiverId, message: message },
+                    success: function (response) {
+                        console.log("Message sent:", response);
+                        $('#message').val('');
+                        fetchMessages();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Failed to send message:", error);
+                    }
+                });
+            }
+        }
+
+        $('#sendMessageForm').submit(function (event) {
+            sendMessage(event);
+        });
+
+        $('#message').keypress(function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); 
+                sendMessage(event);
+            }
+        });
+    </script>
+</body>
 </html>

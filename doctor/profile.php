@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Profile';
+$profile = 'active';
 include '../includes/head.php';
 ?>
 
@@ -14,58 +15,180 @@ include '../includes/head.php';
             <?php
             require_once('../includes/sidepanel-doctor.php');
             ?>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="mt-4 mb-3">
-                    <p class="m-0 p-0 fs-5 text-dark fw-semibold">Dr. John Doe</p>
-                    <p class="m-0 p-0 hs-6 text-secondary mb-3">Medical Practitioner</p>
-                    <div class="pt-2 mb-3 border-top">
-                        <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">About</p>
-                        <p class="m-0 p-0 fs-6 text-dark">As a medical practitioner, I provide compassionate healthcare with expertise in diagnosing, treating, and preventing illnesses and injuries. My patient-centered approach emphasizes trust, communication, and personalized treatment plans. I am dedicated to staying updated on medical advancements to ensure the highest standard of care. I'm passionate about health education and disease prevention, aiming to empower patients for long-term wellness.</p>
-                    </div>
-                </div>
-                <div class="mt-4 mb-3">
-                    <div class="mb-2 d-flex flex-row justify-content-between">
-                        <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Availability for this Week</p>
-                        <a href="" class="m-0 p-0 fs-6 fw-normal text-primary text-decoration-underline mb-2">Update Schedule</a>
-                    </div>
-                    <div class="d-flex flex-nowrap justify-content-between">
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
-                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Monday</p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">01/04/2024 <br> 9:30AM - 12:00PM</p>
-                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
-                        </div>
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
-                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Tuesday</p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">02/04/2024 <br> 9:30AM - 12:00PM</p>
-                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
-                        </div>
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
-                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Wednesday</p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">03/04/2024 <br> 9:30AM - 12:00PM</p>
-                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
-                        </div>
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
-                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Thursday</p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">04/04/2024 <br> 9:30AM - 12:00PM</p>
-                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
-                        </div>
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
-                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Friday</p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">05/04/2024 <br> 9:30AM - 12:00PM</p>
-                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
-                        </div>
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
-                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Saturday</p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">06/04/2024 <br> Not Available</p>
-                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
-                        </div>
-                        <div class="p-2 border border-1 border-secondary-subtle mx-1 flex-grow-1 position-relative">
-                            <p class="m-0 p-0 fs-6 fw-semibold text-dark mb-2">Sunday</p>
-                            <p class="m-0 p-0 fs-6 fw-regular text-dark mb-2">07/04/2024 <br> Not Available</p>
-                            <i class='bx bx-edit position-absolute' style="top: 10px; right: 10px;"></i>
+            <main class="col-md-9 ms-sm-auto col-lg-10 p-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <img src="../assets/gallery/66dd9fea898031.89869755.png" alt="Doctor's profile image" class="rounded-circle me-3" height="80" width="80">
+                            <div>
+                                <h5 class="card-title">Dr. John Doe</h5>
+                                <p class="text-muted mb-0">Medical Practitioner</p>
+                                <div class="d-flex align-items-center">
+                                    <!-- <span class="text-primary me-2">★★★★★</span>
+                                    <a href="#" class="text-decoration-none">More</a> -->
+                                </div>
+                            </div>
+                            <div class="ms-auto">
+                                <button class="btn btn-primary text-light">Make appointment</button>
+                                <button class="btn btn-link text-muted"><i class='bx bx-dots-horizontal-rounded'></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="card mb-4 border-2 p-3">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-overview-tab" data-bs-toggle="tab" data-bs-target="#nav-overview" type="button" role="tab" aria-controls="nav-overview" aria-selected="true">Overview</button>
+                            <button class="nav-link" id="nav-opinions-tab" data-bs-toggle="tab" data-bs-target="#nav-opinions" type="button" role="tab" aria-controls="nav-opinions" aria-selected="false">Opinions</button>
+                            <button class="nav-link" id="nav-experience-tab" data-bs-toggle="tab" data-bs-target="#nav-experience" type="button" role="tab" aria-controls="nav-Experience" aria-selected="false">Experience</button>
+                        </div>
+                    </nav>
+                    <div class="card-body">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade active show" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab">
+                                <div class="mb-3">
+                                    <h6>About specialist</h6>
+                                    <p>As a medical practitioner, I provide compassionate healthcare with expertise in diagnosing, treating, and preventing illnesses and injuries. My patient-centered approach emphasizes trust, communication, and personalized treatment plans. I am dedicated to staying updated on medical advancements to ensure the highest standard of care. I'm passionate about health education and disease prevention, aiming to empower patients for long-term wellness.  </p>
+                                    <a href="#" class="text-decoration-none">Read more</a>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <h6>Diseases treated</h6>
+                                        <ul class="list-unstyled">
+                                            <li>Orthopedic consultation</li>
+                                            <li>Delivery blocks</li>
+                                            <li>Ultrasound injection</li>
+                                        </ul>
+                                        <a href="#" class="text-decoration-none">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-opinions" role="tabpanel" aria-labelledby="nav-opinions-tab">
+                                <h6>Patient Reviews</h6>
+                                <div class="review mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <h6 class="me-2">John Doe</h6>
+                                        <span class="badge bg-success">5.0 ★</span>
+                                    </div>
+                                    <p>"Dr. Smith is excellent! She takes the time to explain everything and ensures I understand my treatment plan. I feel well cared for."</p>
+                                </div>
+                                <div class="review mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <h6 class="me-2">Jane Roe</h6>
+                                        <span class="badge bg-warning">4.5 ★</span>
+                                    </div>
+                                    <p>"Great experience! The doctor was very professional and addressed all my concerns. Highly recommend."</p>
+                                </div>
+                                <a href="#" class="text-decoration-none">See all reviews</a>
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-experience" role="tabpanel" aria-labelledby="nav-experience-tab">
+                                <h6>Professional Experience</h6>
+                                <ul class="list-unstyled">
+                                    <li><strong>Senior Consultant, Orthopedics</strong> - ABC Hospital (2015 - Present)</li>
+                                    <li><strong>Resident Doctor</strong> - XYZ Medical Center (2010 - 2015)</li>
+                                </ul>
+                                
+                                <h6>Education</h6>
+                                <ul class="list-unstyled">
+                                    <li><strong>MD, Orthopedics</strong> - Harvard Medical School</li>
+                                    <li><strong>BS, Biology</strong> - University of California</li>
+                                </ul>
+                            
+                                <h6>Certifications</h6>
+                                <ul class="list-unstyled">
+                                    <li>Board Certified Orthopedic Surgeon</li>
+                                    <li>Advanced Trauma Life Support (ATLS) Certified</li>
+                                </ul>
+                                
+                                <a href="#" class="text-decoration-none">Read more about professional background</a>
+                            </div>
+                        </div>
+                    </div>
+	            </div>
+                
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="mb-2">Availability</h6>
+                            <a href="./dashboard#calendar" class="mb-2">All terms</a>
+                        </div>
+                        <div class="d-flex flex-wrap">
+                            <div class="card me-2 mb-2">
+                                <div class="card-body p-2">
+                                    <small>Sep 19 | Thursday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card me-2 mb-2">
+                                <div class="card-body p-2">
+                                    <small>Sep 20 | Friday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card me-2 mb-2">
+                                <div class="card-body p-2">
+                                    <small>Sep 21 | Saturday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card me-2 mb-2">
+                                <div class="card-body p-2">
+                                    <small>Sep 22 | <span class="text-primary">Sunday</span></small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">--:-- AM</p>
+                                        to
+                                        <p class="mb-0">--:-- PM</p>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card me-2 mb-2">
+                                <div class="card-body p-2">
+                                    <small>Sep 23| Monday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card me-2 mb-2">
+                                <div class="card-body p-2">
+                                    <small>Sep 25 | Tuesday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card me-2 mb-2">
+                                <div class="card-body p-2">
+                                    <small>Sep 26 | Wednesday</small>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <p class="mb-0">8:30 AM</p>
+                                        to
+                                        <p class="mb-0">4:00 PM</p>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
             </main>
         </div>
     </div>

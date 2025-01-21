@@ -1,36 +1,24 @@
-/* ====================== *
- *  Toggle Between        *
- *  Sign Up / Login       *
- * ====================== */
-$(document).ready(function(){
-  $('#goRight').on('click', function(){
-    $('#slideBox').animate({
-      'marginLeft' : '0'
-    });
-    $('.topLayer').animate({
-      'marginLeft' : '100%'
-    });
-  });
-  $('#goLeft').on('click', function(){
-    if (window.innerWidth > 769){
-      $('#slideBox').animate({
-        'marginLeft' : '50%'
-      });
-    }
-    else {
-      $('#slideBox').animate({
-        'marginLeft' : '20%'
-      });
-    }
-    $('.topLayer').animate({
-      'marginLeft': '0'
-    });
-  });
+const signUpButton = document.getElementById('signUp');
+const signUpButtonOverlay = document.getElementById('signUp-overlay');
+const signInButton = document.getElementById('signIn');
+const signInButtonOverlay = document.getElementById('signIn-overlay');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+signUpButtonOverlay.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
 });
 
-/* ====================== *
- *  Initiate Canvas       *
- * ====================== */
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+signInButtonOverlay.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+
+// Initialize Paper.js
 paper.install(window);
 paper.setup(document.getElementById("canvas"));
 
@@ -92,12 +80,8 @@ function getCanvasBounds() {
   };
 
   positionArray = [position3, position2, position5, position4, position1, position6, position7, position8];
-  };
+}
 
-
-/* ====================== *
- * Create Shapes          *
- * ====================== */
 function initializeShapes() {
   // Get Canvas Bounds
   getCanvasBounds();
@@ -111,29 +95,22 @@ function initializeShapes() {
     'M 700 350 L 500 350 L 700 500 L 400 400 L 200 450 L 250 350 L 100 300 L 150 50 L 350 100 L 250 150 L 450 150 L 400 50 L 550 150 L 350 250 L 650 150 L 650 50 L 700 150 L 600 250 L 750 250 L 650 300 L 700 350 '
   ];
 
-  for (var i = 0; i <= shapePathData.length; i++) {
-    // Create shape
+  for (var i = 0; i < shapePathData.length; i++) {
     var headerShape = new Path({
       strokeColor: 'rgba(255, 255, 255, 0.5)',
       strokeWidth: 2,
       parent: shapeGroup,
     });
-    // Set path data
     headerShape.pathData = shapePathData[i];
     headerShape.scale(2);
-    // Set path position
     headerShape.position = positionArray[i];
   }
-};
+}
 
 initializeShapes();
 
-/* ====================== *
- * Animation              *
- * ====================== */
 view.onFrame = function paperOnFrame(event) {
   if (event.count % 4 === 0) {
-    // Slows down frame rate
     for (var i = 0; i < shapeGroup.children.length; i++) {
       if (i % 2 === 0) {
         shapeGroup.children[i].rotate(-0.1);
@@ -153,11 +130,5 @@ view.onResize = function paperOnResize() {
 
   if (canvasWidth < 700) {
     shapeGroup.children[3].opacity = 0;
-    shapeGroup.children[2].opacity = 0;
-    shapeGroup.children[5].opacity = 0;
-  } else {
-    shapeGroup.children[3].opacity = 1;
-    shapeGroup.children[2].opacity = 1;
-    shapeGroup.children[5].opacity = 1;
   }
 };
