@@ -3,3 +3,7 @@
 /node_modules
 /node_modules/.bin
 /node_modules/.bin
+*.json
+*.json
+composer.json
+composer.lock
