@@ -38,31 +38,31 @@ require_once('../classes/account.class.php');
           <div class="card bg-body-tertiary mb-4">
             <div class="card-body">
               <h4 class="text-green mb-3">Personal Information</h4>
-              <div class="row row-cols-2">
+              <div class="row row-cols-2 d-flex align-items-stretch">
                 <div class="col">
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <p class="mb-0">Full Name</p>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                       <p class="text-muted mb-0">Fname Mname Lname</p>
                     </div>
                   </div>
                   <hr>
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <p class="mb-0">Email</p>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                       <p class="text-muted mb-0">example@example.com</p>
                     </div>
                   </div>
                   <hr>
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <p class="mb-0">Phone</p>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                       <p class="text-muted mb-0">+63 998 765 4321</p>
                     </div>
                   </div>
@@ -71,28 +71,28 @@ require_once('../classes/account.class.php');
 
                 <div class="col">
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <p class="mb-0">Occupation</p>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                       <p class="text-muted mb-0">Student</p>
                     </div>
                   </div>
                   <hr>
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <p class="mb-0">School Id</p>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                       <p class="text-muted mb-0">2021-00890</p>
                     </div>
                   </div>
                   <hr>
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <p class="mb-0">Address</p>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                       <p class="text-muted mb-0">Normal Rd, Zamboanga, 7000 Zamboanga del Sur</p>
                     </div>
                   </div>
