@@ -105,7 +105,7 @@ require_once('../classes/account.class.php');
             <div class="col-md-12">
               <div class="card bg-body-tertiary mb-4 mb-md-0">
                 <div class="card-body">
-                  <h4 class="text-green mb-3">Used Drus</h4>
+                  <h4 class="text-green mb-3">Used Drugs</h4>
                   <hr>
                   <?php
                     $usedDrugs_array = array(

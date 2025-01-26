@@ -1,6 +1,5 @@
 <header class="navbar fixed-top p-2 p-lg-3 navbar-expand-lg navbar-dark bg-white shadow-sm">
 	<div class="container-fluid">
-
 		<!-- Display profile dropdown for mobile if the user is logged in -->
 		<a href="#" class="<?= isset($_SESSION['user_role']) ? "d-sm-block" : "d-none" ?> d-lg-none acc link-dark text-decoration-none dropdown-toggle ms-2" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 			<div class="d-flex align-items-center">
@@ -60,3 +59,79 @@
 		</div>
 	</div>
 </header>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		// Function to hide all dropdowns
+		function hideDropdowns(except = null) {
+			const dropdowns = document.querySelectorAll(".dropdown-menu.show");
+			dropdowns.forEach((menu) => {
+				// Skip hiding the current dropdown
+				if (menu === except) return;
+
+				const dropdownToggle = menu.parentElement.querySelector(".dropdown-toggle");
+				if (dropdownToggle) {
+					bootstrap.Dropdown.getInstance(dropdownToggle)?.hide();
+				}
+			});
+		}
+
+		// Handle clicks outside dropdowns to close them
+		document.addEventListener("click", (event) => {
+			const dropdownMenu = event.target.closest(".dropdown-menu");
+			const dropdownToggle = event.target.closest(".dropdown-toggle");
+			const navbarCollapse = document.querySelector("#navbarSupportedContent");
+			const navbarToggler = document.querySelector(".navbar-toggler");
+
+			// Close all dropdowns if clicked outside
+			if (!dropdownMenu && !dropdownToggle) {
+				hideDropdowns();
+				
+				// Collapse the navbar if it's open
+				if (navbarCollapse.classList.contains("show")) {
+					navbarToggler.setAttribute("aria-expanded", "false");
+					navbarCollapse.classList.remove("show");
+				}
+			}
+		});
+
+		// Handle scroll to close all dropdowns
+		window.addEventListener("scroll", () => {
+			hideDropdowns();
+
+			const navbarCollapse = document.querySelector("#navbarSupportedContent");
+			const navbarToggler = document.querySelector(".navbar-toggler");
+
+			// Collapse the navbar if it's open on scroll
+			if (navbarCollapse.classList.contains("show")) {
+				navbarToggler.setAttribute("aria-expanded", "false");
+				navbarCollapse.classList.remove("show");
+			}
+		});
+
+		// Ensure dropdown works properly when clicked
+		document.querySelectorAll(".dropdown-toggle").forEach((dropdownToggle) => {
+			dropdownToggle.addEventListener("click", (event) => {
+				event.stopPropagation(); // Prevent conflicts
+				const dropdown = bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
+				const isShown = dropdownToggle.getAttribute("aria-expanded") === "true";
+
+				// Close other dropdowns, keeping this one open
+				hideDropdowns(isShown ? null : dropdownToggle.nextElementSibling);
+			});
+		});
+
+		// Collapse navbar when profile dropdown is clicked
+		const profileDropdown = document.querySelector("#dropdownUser1");
+		const navbarToggler = document.querySelector(".navbar-toggler");
+		const navbarCollapse = document.querySelector("#navbarSupportedContent");
+
+		profileDropdown?.addEventListener("click", () => {
+			if (navbarCollapse.classList.contains("show")) {
+				// Collapse the navbar
+				navbarToggler.setAttribute("aria-expanded", "false");
+				navbarCollapse.classList.remove("show");
+			}
+		});
+	});
+</script>
