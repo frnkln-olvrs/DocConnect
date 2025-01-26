@@ -7,7 +7,7 @@
 			</div>
 		</a>
 
-		<ul class="dropdown-menu text-small" aria-labelledby="profileDropddown">
+		<ul class="dropdown-menu ms-3 text-small" aria-labelledby="profileDropddown">
 			<li>
 				<p class="m-0 text-dark d-block d-lg-none text-center"><?= $_SESSION['fullname'] ?></p>
 			</li>

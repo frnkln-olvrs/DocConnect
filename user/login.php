@@ -169,7 +169,7 @@ include '../includes/head.php';
 
         <div class="row row-cols-1 row-cols-md-2 w-100">
           <div class="form-input px-1">
-            <input type="number" class="form-control" id="phoneNo" name="contact" placeholder="+63 9xx xxx xxxx" required value="<?= isset($_POST['contact']) ? $_POST['contact'] : '' ?>">
+            <input type="text" class="form-control" id="phoneNo" name="contact" pattern="\+63 \d{3} \d{3} \d{4}" required value="+63 <?= isset($_POST['contact']) ? $_POST['contact'] : '' ?>">
             <?php
             if (isset($_POST['contact']) && !validate_field($_POST['contact'])) {
             ?>
