@@ -170,6 +170,20 @@ section.main {
   margin-top: 77px;
 }
 
+/* DOCTOR OGIN/SIGNUP */
+/* password toggle */
+.toggle-password {
+	right: 15px; 
+	top: 50%; 
+	transform: translateY(-50%); 
+	cursor: pointer;
+	font-size: 21px;
+}
+
+.toggle-password:hover {
+	color: #dc3545 !important;
+}
+
 /* HEADER NAVLINKS */
 ul.header.nav .nav-link {
 	position: relative;
