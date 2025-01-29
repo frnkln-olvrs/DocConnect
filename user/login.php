@@ -1,6 +1,28 @@
 <?php
 session_start();
 
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
+  $email = $_POST['login-email'];
+  $password = $_POST['login-password'];
+
+  // palitan mo to sa actual authentication logic, hnd ko alam ano ilagay dto...
+  if ($email == "test@example.com" && $password == "password123") {
+    $_SESSION['user'] = $email;
+
+    // Check kapag 'Remember Me' is selected
+    if (isset($_POST['remember-me'])) {
+      setcookie("email", $email, time() + (86400 * 30), "/"); // 30 days expiration
+    } else {
+      setcookie("email", "", time() - 3600, "/"); // Delete cookie kapag unchecked
+    }
+
+    header("Location: dashboard.php");
+    exit();
+  } else {
+    $error = "Invalid email or password.";
+  }
+}
+
 if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 3) {
   header('location: ../logout.php?from=3');
 } else if (isset($_SESSION['user_role'])) {
@@ -277,11 +299,16 @@ include '../includes/head.php';
           <input type="email" class="form-control border-2" id="email-login" placeholder="Email" name="login-email" required value="<?= isset($_POST['login-email']) ? $_POST['login-email'] : '' ?>">
           <label for="email-login" class="mt-2">Email</label>
         </div>
-        <div class="form-floating mb-3 w-100">
-          <input type="password" class="form-control border-2" id="password-login" placeholder="Password" name="login-password" required value="<?= isset($_POST['login-password']) ? $_POST['login-password'] : '' ?>">
+        <div class="form-floating mb-3 w-100 position-relative">
+          <input type="password" class="form-control border-2 pe-5" id="password-login" placeholder="Password" name="login-password" required value="<?= isset($_POST['login-password']) ? $_POST['login-password'] : '' ?>">
+          <i class='bx bx-show text-dark position-absolute toggle-password' data-target="password-login"></i>
           <label for="password-login" class="mt-2">Password</label>
         </div>
-        <div class="d-flex justify-content-end w-100">
+        <div class="d-flex justify-content-between w-100">
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="remember-me" name="remember-me" <?= isset($_COOKIE['email']) ? 'checked' : '' ?>>
+            <label class="form-check-label" for="remember-me">Remember Me</label>
+          </div>
           <a href="#" class="text-end m-0 mb-3">Forgot your password?</a>
         </div>
         <?php
@@ -342,6 +369,23 @@ include '../includes/head.php';
   <?php
   }
   ?>
+
+  <script>
+    document.querySelectorAll('.toggle-password').forEach(icon => {
+      icon.addEventListener('click', function () {
+        let target = document.getElementById(this.dataset.target);
+
+        if (target.type === "password") {
+          target.type = "text";
+          this.classList.replace('bx-show', 'bx-hide'); // Switch to "hide" icon
+        } else {
+          target.type = "password";
+          this.classList.replace('bx-hide', 'bx-show'); // Switch to "show" icon
+        }
+      });
+    });
+  </script>
+
   <script src="../js/login.js"></script>
   <script src="../js/main.js"></script>
 </body>
