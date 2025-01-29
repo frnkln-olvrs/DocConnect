@@ -371,22 +371,6 @@ include '../includes/head.php';
   }
   ?>
 
-  <script>
-    document.querySelectorAll('.toggle-password').forEach(icon => {
-      icon.addEventListener('click', function () {
-        let target = document.getElementById(this.dataset.target);
-
-        if (target.type === "password") {
-          target.type = "text";
-          this.classList.replace('bx-show', 'bx-hide'); // Switch to "hide" icon
-        } else {
-          target.type = "password";
-          this.classList.replace('bx-hide', 'bx-show'); // Switch to "show" icon
-        }
-      });
-    });
-  </script>
-
   <script src="../js/login.js"></script>
   <script src="../js/main.js"></script>
 </body>
