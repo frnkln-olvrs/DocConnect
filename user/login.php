@@ -279,7 +279,7 @@ include '../includes/head.php';
           <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="yes" id="confirm-terms" name="terms" required <?= (isset($_POST['terms']) && $_POST['terms'] == 'Agreed') ? "checked" : "" ?>>
             <label class="form-check-label" for="confirm-terms">
-              I agree to the <a href="#" class="link-danger">Terms of Service</a> and <a href="#" class="link-danger">Privacy Policy</a>
+              I agree to the <a href="../public/terms-of-service" target="_blank" class="link-danger">Terms of Service</a> and <a href="../public/privacy-policy" target="_blank" class="link-danger">Privacy Policy</a>
             </label>
           </div>
         </div>
