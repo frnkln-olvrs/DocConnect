@@ -53,7 +53,7 @@ require_once('../classes/account.class.php');
         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
-              <i class='bx bx-plus-medical p-3 mb-3 border-green text-green rounded-circle shadow-sm fs-3'></i>
+              <i class='bx bxs-heart p-3 mb-3 border-green text-green rounded-circle shadow-sm fs-3' ></i>
               <h4 class="card-title pricing-card-title">Enhanced Patient Engagement and Satisfaction</h4>
               <p class="fs-6 text-muted">Empower patients to participate in their healthcare journey through telecommunication health services.</p>
             </div>  
@@ -64,7 +64,7 @@ require_once('../classes/account.class.php');
         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
-              <i class='bx bxs-capsule p-3 mb-3 border border-2 border-primary text-primary rounded-circle shadow-sm fs-3'></i>
+              <i class='bx bx-phone-call p-3 mb-3 border border-2 border-primary text-primary rounded-circle shadow-sm fs-3' ></i>
               <h4 class="card-title pricing-card-title">Remote Consultations</h4>
               <p class="fs-6 text-muted">Access healthcare professionals from anywhere, eliminating the need for in-person visits.</p>
             </div>  
@@ -75,7 +75,7 @@ require_once('../classes/account.class.php');
         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
-              <i class='bx bx-plus-medical p-3 mb-3 border-green text-green rounded-circle shadow-sm fs-3'></i>
+              <i class='bx bxs-user-voice p-3 mb-3 border-green text-green rounded-circle shadow-sm fs-3'></i>
               <h4 class="card-title pricing-card-title">Specialized Telehealth Services</h4>
               <p class="fs-6 text-muted">Collaborative care coordination between your primary care provider and specialists for comprehensive treatment plans.</p>
             </div>  
@@ -86,7 +86,7 @@ require_once('../classes/account.class.php');
         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
-              <i class='bx bx-plus-medical p-3 mb-3 border border-2 border-primary text-primary rounded-circle shadow-sm fs-3'></i>
+              <i class='bx bxs-buildings p-3 mb-3 border border-2 border-primary text-primary rounded-circle shadow-sm fs-3'></i>
               <h4 class="card-title pricing-card-title">Scalable Telehealth Solutions for Healthcare Providers</h4>
               <p class="fs-6 text-muted">Customizable telehealth platforms tailored to the needs of individual healthcare practices.</p>
             </div>  
@@ -99,50 +99,58 @@ require_once('../classes/account.class.php');
   <section id="services" class="padding-medium mt-xl-5 py-2">
     <div class="container mb-4 pt-2">
       <div class="p-3 pb-md-4 mx-auto text-center">
-        <p class="fs-5 text-muted text-uppercase mx-5">What we do</p>
-        <h1 class="display-6 fw-normal">Providing medical care for the <br> sickest in our University</h1>
+        <p class="fs-5 text-muted text-uppercase mx-5">Our Services</p>
+        <h1 class="display-6 fw-normal">Telecommunication Health Services <br> for Your Convenience</h1>
       </div>
-  
+
       <div class="row row-cols-1 row-cols-md-3">
         <div class="col mb-4">
-          <img src="../assets/images/sevices_img1.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
-          <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
-            <div class="card-body d-flex flex-column justify-content-between shadow-sm">
-              <div>
-                <h3 class="card-title pricing-card-title">Virtual Consultations</h3>
-                <p class="fs-6 text-muted">
-                  Connect with experienced healthcare providers for personalized medical advice, schedule convenient appointments, and receive follow-up care for effective health management.
-                </p>
+          <div class="d-flex flex-column h-100">
+            <img src="../assets/images/services/expert_medical_advice.png" alt="Virtual Consultations" class="rounded-2 shadow-lg w-100 object-fit-cover" style="height: 250px;">
+            <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm flex-grow-1">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <h3 class="card-title pricing-card-title">Virtual Consultations</h3>
+                  <p class="fs-6 text-muted">
+                    Skip the waiting room, consult with healthcare professionals online! Receive expert medical advice, book convenient appointments, and get follow-up care for effective health management.
+                  </p>
+                </div>
+                <a href="./services#one" class="w-100 btn btn-outline-primary">Read More</a>
               </div>
-              <a href="./services#one" type="button" class="w-100 btn btn-outline-primary">Read More</a>
             </div>
           </div>
         </div>
+
         <div class="col mb-4">
-          <img src="../assets/images/sevices_img2.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
-          <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
-            <div class="card-body d-flex flex-column justify-content-between shadow-sm">
-              <div>
-                <h3 class="card-title pricing-card-title">Remote Monitoring</h3>
-                <p class="fs-6 text-muted">  
-                  Monitor your health in real time with alerts for abnormal readings and secure data sharing for accurate diagnosis and treatment.
-                </p>
+          <div class="d-flex flex-column h-100">
+            <img src="../assets/images/services/health_metrics_tracking.png" alt="Remote Monitoring" class="rounded-2 shadow-lg w-100 object-fit-cover" style="height: 250px;">
+            <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm flex-grow-1">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <h3 class="card-title pricing-card-title">Remote Monitoring</h3>
+                  <p class="fs-6 text-muted">
+                    Stay in control of your health with cutting-edge tools. Track health metrics, receive instant alerts, and share data securely with your doctor for accurate treatment plans.
+                  </p>
+                </div>
+                <a href="./services#two" class="w-100 btn btn-outline-primary">Read More</a>
               </div>
-                <a href="./services#two" type="button" class="w-100 btn btn-outline-primary">Read More</a>
             </div>
           </div>
         </div>
+
         <div class="col mb-4">
-          <img src="../assets/images/sevices_img3.jpeg" alt="sevices_img1.jpeg" class="rounded-2 shadow-lg">
-          <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm">
-            <div class="card-body d-flex flex-column justify-content-between shadow-sm">
-              <div>
-                <h3 class="card-title pricing-card-title">Mental Health Support</h3>
-                <p class="fs-6 text-muted">
-                  Access counseling, therapy, and crisis support from mental health professionals remotely.
-                </p>
+          <div class="d-flex flex-column h-100">
+            <img src="../assets/images/services/counseling_services.png" alt="Mental Health Support" class="rounded-2 shadow-lg w-100 object-fit-cover" style="height: 250px;">
+            <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm flex-grow-1">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <h3 class="card-title pricing-card-title">Mental Health Support</h3>
+                  <p class="fs-6 text-muted">
+                    Access mental health resources anytime, anywhere. Speak with professional counselors, join therapy sessions, and get 24/7 crisis support.
+                  </p>
+                </div>
+                <a href="./services#three" class="w-100 btn btn-outline-primary">Read More</a>
               </div>
-              <a href="./services#three" type="button" class="w-100 btn btn-outline-primary">Read More</a>
             </div>
           </div>
         </div>
@@ -161,53 +169,56 @@ require_once('../classes/account.class.php');
       <div class="col-sm-12 col-md-8">
         <div class="row row-cols-1 row-cols-md-2">
           <div class="col mb-4">
-            <div class="border border-success shadow-sm rounded-2 p-3">
+            <div class="border border-success shadow-sm rounded-2 p-3 h-100 d-flex flex-column">
               <div class="row">
-                <div class="col-4 d-flex align-items-sm-start align-items-center justify-content-center">
-                  <i class='bx bx-plus-medical p-3 bg-green text-white rounded-1 fs-3'></i>
+                <div class="col-4 d-flex align-items-start justify-content-center">
+                  <i class='bx bxs-phone-call p-3 bg-green text-white rounded-1 fs-3'></i>
                 </div>
                 <div class="col-8">
                   <h3 class="fw-normal">Doctor on Call</h3>
-                  <p class="fs-6 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae nam commodi dolore vitae?</p>
+                  <p class="fs-6 text-muted">Get instant access to licensed doctors anytime, anywhere. Consult via phone or video calls for expert medical advice and treatment recommendations.</p>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="col mb-4">
-            <div class="border border-success shadow-sm rounded-2 p-3">
+            <div class="border border-success shadow-sm rounded-2 p-3 h-100 d-flex flex-column">
               <div class="row">
-                <div class="col-4 d-flex align-items-sm-start align-items-center justify-content-center">
-                  <i class='bx bxs-school p-3 border-green text-green rounded-1 shadow-sm fs-3'></i>
+                <div class="col-4 d-flex align-items-start justify-content-center">
+                  <i class='bx bxs-book-reader p-3 border-green text-green rounded-1 shadow-sm fs-3'></i>
                 </div>
                 <div class="col-8">
-                  <h3 class="fw-normal">Doctor on Call</h3>
-                  <p class="fs-6 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae nam commodi dolore vitae?</p>
+                  <h3 class="fw-normal">Health Education</h3>
+                  <p class="fs-6 text-muted">Access reliable health resources, wellness tips, and disease prevention guides to make informed decisions about your well-being.</p>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="col mb-4">
-            <div class="border border-success shadow-sm rounded-2 p-3">
+            <div class="border border-success shadow-sm rounded-2 p-3 h-100 d-flex flex-column">
               <div class="row">
-                <div class="col-4 d-flex align-items-sm-start align-items-center justify-content-center">
-                  <i class='bx bx-plus-medical p-3 border-green text-green rounded-1 shadow-sm fs-3'></i>
+                <div class="col-4 d-flex align-items-start justify-content-center">
+                  <i class='bx bxs-first-aid p-3 border-green text-green rounded-1 shadow-sm fs-3'></i>
                 </div>
                 <div class="col-8">
-                  <h3 class="fw-normal">Doctor on Call</h3>
-                  <p class="fs-6 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae nam commodi dolore vitae?</p>
+                  <h3 class="fw-normal">Emergency Assistance</h3>
+                  <p class="fs-6 text-muted">Quickly connect with medical professionals in urgent situations and receive immediate guidance on first-aid measures and next steps.</p>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="col mb-4">
-            <div class="border border-success shadow-sm rounded-2 p-3">
+            <div class="border border-success shadow-sm rounded-2 p-3 h-100 d-flex flex-column">
               <div class="row">
-                <div class="col-4 d-flex align-items-sm-start align-items-center justify-content-center">
-                  <i class='bx bxs-capsule p-3 bg-green text-white rounded-1 fs-3'></i>
+                <div class="col-4 d-flex align-items-start justify-content-center">
+                  <i class='bx bxs-file-plus p-3 bg-green text-white rounded-1 fs-3'></i>
                 </div>
                 <div class="col-8">
-                  <h3 class="fw-normal">Doctor on Call</h3>
-                  <p class="fs-6 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae nam commodi dolore vitae?</p>
+                  <h3 class="fw-normal">E-Prescriptions</h3>
+                  <p class="fs-6 text-muted">Receive digital prescriptions directly from doctors, ensuring safe and convenient access to medications without visiting a clinic.</p>
                 </div>
               </div>
             </div>
@@ -219,20 +230,18 @@ require_once('../classes/account.class.php');
         <div class="d-flex flex-column justify-content-between bg-primary p-3 rounded-2 h-100 text-white">
           <div>
             <h4>Opening Hours</h4>
-            <p class="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae nam commodi dolore vitae?</p>
+            <p class="fs-6 text-white">Our telemedicine services are available throughout the week to ensure you receive timely medical care.</p>
             <div class="d-flex justify-content-between border-bottom mb-2">
               <p class="mb-2">Mon - Fri</p>
-              <p class="mb-2">7:00am - 6:00pm</p>
+              <p class="mb-2">7:00 AM - 6:00 PM</p>
             </div>
             <div class="d-flex justify-content-between border-bottom mb-2">
               <p class="mb-2">Sat - Sun</p>
-              <p class="mb-2">7:00am - 4:00pm</p>
+              <p class="mb-2">7:00 AM - 4:00 PM</p>
             </div>
           </div>
           <div>
-            <div>
-              <a href="./appointment" type="button" class="w-100 btn btn-lg btn-outline-light mt-2">Book Appointment</a>
-            </div>
+            <a href="./appointment" type="button" class="w-100 btn btn-lg btn-outline-light mt-2">Book Appointment</a>
           </div>
         </div>
       </div>
@@ -244,25 +253,24 @@ require_once('../classes/account.class.php');
       <div class="row align-items-center justify-content-center mt-xl-5">
         <div class="col-md-6 mt-5 mt-md-0">
           <div class="mb-3">
-            <p class="text-secondary ">Learn more about us</p>
-            <h2 class="display-6 fw-semibold">About Us</h2>
+            <p class="text-secondary">Learn more about us</p>
+            <h2 class="display-6 fw-semibold">Your Health, Anytime, Anywhere</h2>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae nam commodi dolore vitae?
-            Numquam minima cum asperiores deleniti possimus provident, officia itaque esse eius, delectus incidunt
-            laudantium adipisci laboriosam!
+            Welcome to University Telecommunications Health Services! We are dedicated to enhancing student well-being 
+            through innovative, remote health solutions that ensure accessibility, privacy, and high-quality care.
           </p>
           <div class="d-flex align-items-center mb-4">
-            <i class='bx bxs-message-square-check c-red'></i>
-            <p class="ps-3 m-0">Engage with a worldwide community of inquisitive and imaginative individuals.</p>
+            <i class='bx bxs-check-circle c-red'></i>
+            <p class="ps-3 m-0">Revolutionizing healthcare accessibility through telecommunication.</p>
           </div>
           <div class="d-flex align-items-center mb-4">
-            <i class='bx bxs-message-square-check c-red'></i>
-            <p class="ps-3 m-0">Learn a skill of your choice from the experts around the world from various industries</p>
+            <i class='bx bxs-check-circle c-red'></i>
+            <p class="ps-3 m-0">Ensuring students receive quality healthcare, regardless of location.</p>
           </div>
           <div class="d-flex align-items-center mb-4">
-            <i class='bx bxs-message-square-check c-red'></i>
-            <p class="ps-3 m-0">Learn a skill of your choice from the experts around the world from various industries</p>
+            <i class='bx bxs-check-circle c-red'></i>
+            <p class="ps-3 m-0">Empowering students with tools and resources for better health management.</p>
           </div>
           <a href="./about_us" class="btn bg-green px-5 py-3 mt-4 link-light">Learn more</a>
         </div>
