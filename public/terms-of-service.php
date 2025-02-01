@@ -132,7 +132,7 @@ require_once('../classes/account.class.php');
 
     <div class="mt-4">
       <h3>Online Complaints and Feedback Portal</h3>
-      <p class="fw-light">For any issues or feedback, please click the "Contact Us" button on the product interface after logging in.</p></div>
+      <p class="fw-light">For any issues or feedback, please click the "Contact Us" button on the product interface after logging in.</p>
       <ul>
         <li><h5>Contact Email:</h5></li>
         <ul>
@@ -142,6 +142,6 @@ require_once('../classes/account.class.php');
         <li><h5>Contact Address:</h5></li>
         <p class="fw-light">Normal Road, Baliwasan, 7000 Zamboanga City</p>
       </ul>
-  </div>
+    </div>
 </body>
 </html>
