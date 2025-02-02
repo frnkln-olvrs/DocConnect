@@ -310,7 +310,7 @@ include '../includes/head.php';
             <input class="form-check-input" type="checkbox" id="remember-me" name="remember-me" <?= isset($_COOKIE['email']) ? 'checked' : '' ?>>
             <label class="form-check-label" for="remember-me">Remember Me</label>
           </div>
-          <a href="#" class="text-end m-0 mb-3">Forgot your password?</a>
+          <a href="../public/forgotpassword.php" class="text-end m-0 mb-3">Forgot your password?</a>
         </div>
         <?php
         if (isset($_POST['login']) && isset($error)) {
