@@ -12,13 +12,14 @@ require_once('../classes/account.class.php');
 
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-  $title = 'DocConnect';
-	include '../includes/head.php';
+<?php
+$title = 'DocConnect';
+include '../includes/head.php';
 ?>
+
 <body>
-  <?php 
-    require_once ('../includes/header.php');
+  <?php
+  require_once('../includes/header.php');
   ?>
   <section class="main">
     <div class="container">
@@ -36,7 +37,7 @@ require_once('../classes/account.class.php');
           </div>
         </div>
         <div class="img col-md-6 mt-5">
-          <img src="../assets/images/billboard-img2.png" alt="img" class="img-fluid rounded-circle">
+          <img src="" alt="img" class="img-fluid rounded-circle">
         </div>
       </div>
     </div>
@@ -53,10 +54,10 @@ require_once('../classes/account.class.php');
         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
-              <i class='bx bxs-heart p-3 mb-3 border-green text-green rounded-circle shadow-sm fs-3' ></i>
+              <i class='bx bxs-heart p-3 mb-3 border-green text-green rounded-circle shadow-sm fs-3'></i>
               <h4 class="card-title pricing-card-title">Enhanced Patient Engagement and Satisfaction</h4>
               <p class="fs-6 text-muted">Empower patients to participate in their healthcare journey through telecommunication health services.</p>
-            </div>  
+            </div>
           </div>
         </div>
       </div>
@@ -64,10 +65,10 @@ require_once('../classes/account.class.php');
         <div class="card mx-3 mb-sm-3 rounded-3 shadow-sm h-100">
           <div class="card-body d-flex flex-column justify-content-between shadow-sm">
             <div class="align-content-center text-center">
-              <i class='bx bx-phone-call p-3 mb-3 border border-2 border-primary text-primary rounded-circle shadow-sm fs-3' ></i>
+              <i class='bx bx-phone-call p-3 mb-3 border border-2 border-primary text-primary rounded-circle shadow-sm fs-3'></i>
               <h4 class="card-title pricing-card-title">Remote Consultations</h4>
               <p class="fs-6 text-muted">Access healthcare professionals from anywhere, eliminating the need for in-person visits.</p>
-            </div>  
+            </div>
           </div>
         </div>
       </div>
@@ -78,7 +79,7 @@ require_once('../classes/account.class.php');
               <i class='bx bxs-user-voice p-3 mb-3 border-green text-green rounded-circle shadow-sm fs-3'></i>
               <h4 class="card-title pricing-card-title">Specialized Telehealth Services</h4>
               <p class="fs-6 text-muted">Collaborative care coordination between your primary care provider and specialists for comprehensive treatment plans.</p>
-            </div>  
+            </div>
           </div>
         </div>
       </div>
@@ -89,7 +90,7 @@ require_once('../classes/account.class.php');
               <i class='bx bxs-buildings p-3 mb-3 border border-2 border-primary text-primary rounded-circle shadow-sm fs-3'></i>
               <h4 class="card-title pricing-card-title">Scalable Telehealth Solutions for Healthcare Providers</h4>
               <p class="fs-6 text-muted">Customizable telehealth platforms tailored to the needs of individual healthcare practices.</p>
-            </div>  
+            </div>
           </div>
         </div>
       </div>
@@ -257,7 +258,7 @@ require_once('../classes/account.class.php');
             <h2 class="display-6 fw-semibold">Your Health, Anytime, Anywhere</h2>
           </div>
           <p>
-            Welcome to University Telecommunications Health Services! We are dedicated to enhancing student well-being 
+            Welcome to University Telecommunications Health Services! We are dedicated to enhancing student well-being
             through innovative, remote health solutions that ensure accessibility, privacy, and high-quality care.
           </p>
           <div class="d-flex align-items-center mb-4">
@@ -281,9 +282,10 @@ require_once('../classes/account.class.php');
     </div>
   </section>
 
-  <?php 
-    require_once ('../includes/footer.php');
+  <?php
+  require_once('../includes/footer.php');
   ?>
 
 </body>
+
 </html>
