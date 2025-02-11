@@ -65,21 +65,21 @@ function getCurrentPage()
 
       <div class="col">
         <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Students</p>
             <label class="switch">
               <input type="checkbox" checked>
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Staff</p>
             <label class="switch">
               <input type="checkbox">
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Faculty</p>
             <label class="switch">
               <input type="checkbox">
@@ -99,21 +99,21 @@ function getCurrentPage()
 
       <div class="col">
         <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Students</p>
             <label class="switch">
               <input type="checkbox" checked>
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Staff</p>
             <label class="switch">
               <input type="checkbox">
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Faculty</p>
             <label class="switch">
               <input type="checkbox">
@@ -133,21 +133,21 @@ function getCurrentPage()
 
       <div class="col">
         <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Students</p>
             <label class="switch">
               <input type="checkbox" checked>
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Staff</p>
             <label class="switch">
               <input type="checkbox">
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Faculty</p>
             <label class="switch">
               <input type="checkbox">
@@ -167,21 +167,21 @@ function getCurrentPage()
 
       <div class="col">
         <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Students</p>
             <label class="switch">
               <input type="checkbox" checked>
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Staff</p>
             <label class="switch">
               <input type="checkbox">
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Faculty</p>
             <label class="switch">
               <input type="checkbox">
@@ -201,21 +201,21 @@ function getCurrentPage()
 
       <div class="col">
         <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Students</p>
             <label class="switch">
               <input type="checkbox" checked>
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Staff</p>
             <label class="switch">
               <input type="checkbox">
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Faculty</p>
             <label class="switch">
               <input type="checkbox">
@@ -235,21 +235,21 @@ function getCurrentPage()
 
       <div class="col">
         <div class="row flex-md-nowrap row-cols-1 row-cols-md-3">
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Students</p>
             <label class="switch">
               <input type="checkbox" checked>
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Staff</p>
             <label class="switch">
               <input type="checkbox">
               <span class="slider"></span>
             </label>
           </div>
-          <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
+          <div class="col d-flex align-items-center justify-content-between justify-content-md-center">
             <p class="m-0 text-muted d-block d-md-none me-2">Faculty</p>
             <label class="switch">
               <input type="checkbox">
