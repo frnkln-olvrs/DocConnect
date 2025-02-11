@@ -4,7 +4,7 @@
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item <?= $userManagement ?>" aria-current="<?= $aUserManagement ?>"><a href="./settings" class="<?= $cUserManagement ?>">User Management</a></li>
         <li class="breadcrumb-item <?= $privacyPolicy ?>" aria-current="<?= $aPrivacyPolicy ?>"><a href="./privacyPolicy" class="<?= $cPrivacyPolicy ?>">Privacy Policy</a></li>
-        <li class="breadcrumb-item <?= $setting ?>" aria-current="<?= $aSetting ?>"><a href="./profile_settings" class="<?= $cSetting ?>">Terms of Services</a></li>
+        <li class="breadcrumb-item <?= $termsOfServices ?>" aria-current="<?= $aTermsOfServices ?>"><a href="./termsOfServices" class="<?= $cTermsOfServices ?>">Terms of Services</a></li>
         <li class="breadcrumb-item <?= $setting ?>" aria-current="<?= $aSetting ?>"><a href="./profile_settings" class="<?= $cSetting ?>">About Us</a></li>
       </ol>
     </nav>
