@@ -31,8 +31,6 @@ function getCurrentPage()
   require_once('./includes/admin_sidepanel.php');
   ?>
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.js"></script>
   <section id="dashboard" class="page-container">
 
     <?php
@@ -45,14 +43,17 @@ function getCurrentPage()
 
     <h1 class="text-start">Privacy Policy</h1>
 
-    <textarea id="editor"></textarea>
-    <script>
-      $(document).ready(function() {
-        $('#editor').summernote();
-      });
-    </script>
+    <form method="POST" action="save_privacy_policy.php">
+      <textarea id="editor" name="privacy_policy"></textarea>
+
+      <div class="d-flex gap-2 mt-3">
+        <button type="submit" class="btn btn-primary text-light">Save</button>
+        <button type="button" class="btn btn-secondary text-light" onclick="location.reload();">Cancel</button>
+      </div>
+    </form>
   </section>
 
+  <script src="./js/summerNote.js"></script>
 </body>
 
 </html>
