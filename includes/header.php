@@ -18,7 +18,7 @@
 			<li><a class="dropdown-item" href="../logout">Logout</a></li>
 		</ul>
 
-		<a class="navbar-brand d-flex align-items-center text-dark text-decoration-none" href="../index.php">
+		<a class="navbar-brand d-flex align-items-center text-dark text-decoration-none" href="./index">
 			<img src="../assets/images/logo.png" alt="Logo" height="35">
 			<h1 class="fs-4 link-primary m-0 d-name">Doc<span class="link-dark">Connect</span></h1>
 		</a>
