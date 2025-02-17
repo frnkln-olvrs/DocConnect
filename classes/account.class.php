@@ -273,6 +273,48 @@ class Account
         }
     }
 
+    function update_user_info()
+    {
+        try {
+            $connect = $this->db->connect();
+            $connect->beginTransaction();
+    
+            $sql = "UPDATE account
+                    SET firstname = :firstname, 
+                        middlename = :middlename, 
+                        lastname = :lastname, 
+                        gender = :gender, 
+                        birthdate = :birthdate, 
+                        contact = :contact, 
+                        email = :email, 
+                        address = :address
+                    WHERE account_id = :account_id";
+    
+            $stmt = $connect->prepare($sql);
+            $stmt->bindParam(':firstname', $firstname);
+            $stmt->bindParam(':middlename', $middlename);
+            $stmt->bindParam(':lastname', $lastname);
+            $stmt->bindParam(':gender', $gender);
+            $stmt->bindParam(':birthdate', $birthdate);
+            $stmt->bindParam(':contact', $contact);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':address', $address);
+            $stmt->bindParam(':account_id', $account_id);
+    
+            if ($stmt->execute()) {
+                $connect->commit();
+                return true;
+            } else {
+                $connect->rollBack();
+                return false;
+            }
+        } catch (PDOException $e) {
+            $connect->rollBack();
+            error_log("Error updating user info: " . $e->getMessage());
+            return false;
+        }
+    }    
+
     function save_image()
     {
         $sql = "UPDATE account SET account_image = :account_image WHERE account_id = :account_id";

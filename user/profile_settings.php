@@ -13,6 +13,32 @@ require_once('../classes/account.class.php');
 $account_class = new Account();
 if (isset($_POST['saveAccount'])) {
   $account_class->account_id = $_SESSION['account_id'];
+
+  if (validate_field($account->firstname &&
+    $account->middlename &&
+    $account->lastname &&
+    $account->gender &&
+    $account->email &&
+    $account->contact &&
+    $account->birthdate &&
+    $account->address)) {
+    if ($account->update_user_info()) {
+      $success = 'success';
+
+      $_SESSION['firstname'] = $account->firstname;
+      $_SESSION['middlename'] = $account->middlename;
+      $_SESSION['lastname'] = $account->lastname;
+      $_SESSION['gender'] = $account->gender;
+      $_SESSION['email'] = $account->email;
+      $_SESSION['address'] = $account->address;
+      $_SESSION['birthdate'] = $account->birthdate;
+      $_SESSION['contact'] = $account->contact;
+    } else {
+      echo 'An error occured while adding in the database.';
+    }
+  } else {
+    $success = 'failed';
+  }
 }
 
 if (isset($_POST['save_image'])) {
@@ -114,6 +140,13 @@ include '../includes/head.php';
                       <div class="col-12 mb-3 mb-md-0">
                         <label for="firstName" class="form-label text-black-50">First Name</label>
                         <input type="text" class="form-control bg-light border border-dark" id="firstName" name="first_name" value="<?= isset($_SESSION['firstname']) ? $_SESSION['firstname'] : "" ?>" required>
+                        <?php
+                        if (isset($_POST['firstname']) && !validate_field($_POST['firstname'])) {
+                        ?>
+                          <p class="text-dark m-0 ps-2">First name is required.</p>
+                        <?php
+                        }
+                        ?>
                       </div>
                       <div class="col-12 mb-3 mb-md-0">
                         <label for="middleName" class="form-label text-black-50">Middle Name</label>
@@ -122,6 +155,13 @@ include '../includes/head.php';
                       <div class="col-12">
                         <label for="lastName" class="form-label text-black-50">Last Name</label>
                         <input type="text" class="form-control bg-light border border-dark" id="lastName" name="last_name" value="<?= isset($_SESSION['lastname']) ? $_SESSION['lastname'] : "" ?>" required>
+                        <?php
+                        if (isset($_POST['lastname']) && !validate_field($_POST['lastname'])) {
+                        ?>
+                          <p class="text-dark m-0 ps-2">Last name is required.</p>
+                        <?php
+                        }
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -131,7 +171,7 @@ include '../includes/head.php';
                 <div class="row mb-3">
                   <div class="col-md-4 mb-3 mb-md-0">
                     <label for="campus" class="form-label text-black-50">Campus</label>
-                    <!-- WALA TO SA DATABASE -->
+                    <!-- WALA PA TO SA DATABASE -->
                     <select class="form-select bg-light border border-dark" id="campus" name="campus" required>
                       <option value="chooseCampus" <?= (isset($_SESSION['campus']) && $_SESSION['campus'] == "campus") ? 'selected' : '' ?>>choose Campus</option>
                       <option value="wmsuMainCampus" <?= (isset($_SESSION['campus']) && $_SESSION['campus'] == "wmsuMainCampus") ? 'selected' : '' ?>>WMSU main campus</option>
@@ -145,9 +185,21 @@ include '../includes/head.php';
                   <div class="col-md-4 mb-3 mb-md-0">
                     <label for="gender" class="form-label text-black-50">Gender</label>
                     <select class="form-select bg-light border border-dark" id="gender" name="gender" required>
-                      <option value="Male" <?= (isset($_SESSION['gender']) && $_SESSION['gender'] == "Male") ? 'selected' : '' ?>>Male</option>
-                      <option value="Female" <?= (isset($_SESSION['gender']) && $_SESSION['gender'] == "Female") ? 'selected' : '' ?>>Female</option>
-                      <option value="Other" <?= (isset($_SESSION['gender']) && $_SESSION['gender'] == "Other") ? 'selected' : '' ?>>Other</option>
+                      <option value="Male" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Male")) {
+                                              echo 'selected';
+                                            } else if ($_SESSION['gender'] == "Male") {
+                                              echo "selected";
+                                            } ?>>Male</option>
+                      <option value="Female" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Female")) {
+                                                echo 'selected';
+                                              } else if ($_SESSION['gender'] == "Female") {
+                                                echo "selected";
+                                              } ?>>Female</option>
+                      <option value="Other" <?php if ((isset($_POST['gender']) && $_POST['gender'] == "Other")) {
+                                              echo 'selected';
+                                            } else if ($_SESSION['gender'] == "Other") {
+                                              echo "selected";
+                                            } ?>>Other</option>
                     </select>
                   </div>
                 </div>
@@ -161,6 +213,13 @@ include '../includes/head.php';
                   <div class="col-md-5 mb-3 mb-md-0">
                     <label for="phoneNo" class="form-label text-black-50">Phone No.</label>
                     <input type="text" class="form-control bg-light border border-dark" id="phoneNo" name="Phone_No" value="<?= isset($_SESSION['contact']) ? $_SESSION['contact'] : "" ?>" pattern="\+63 \d{3} \d{3} \d{4}" required />
+                    <?php
+                    if (isset($_POST['contact']) && !validate_field($_POST['contact'])) {
+                    ?>
+                      <p class="text-dark m-0 ps-2">Phone number is required</p>
+                    <?php
+                    }
+                    ?>
                   </div>
                 </div>
 
@@ -169,6 +228,13 @@ include '../includes/head.php';
                   <div class="col-md-4 mb-3 mb-md-0">
                     <label for="birthdate" class="form-label text-black-50">Birthdate</label>
                     <input type="date" class="form-control bg-light border border-dark" id="birthdate" name="birthdate" value="<?= $birthdate ?>" required>
+                    <?php
+                    if (isset($_POST['birthdate']) && !validate_field($_POST['birthdate'])) {
+                    ?>
+                      <p class="text-dark m-0 ps-2">Birth date is required</p>
+                    <?php
+                    }
+                    ?>
                   </div>
                   <div class="col-md-4 mb-3 mb-md-0">
                     <label for="height" class="form-label text-black-50">Height <span class="text-small">(cm)</span></label>
@@ -190,6 +256,13 @@ include '../includes/head.php';
                   <div class="col-md-12 mb-3 mb-md-0">
                     <label for="address" class="form-label text-black-50">Address</label>
                     <input type="text" class="form-control bg-light border border-dark" id="address" name="address" value="<?= isset($_SESSION['address']) ? $_SESSION['address'] : "" ?>">
+                    <?php
+                    if (isset($_POST['address']) && !validate_field($_POST['address'])) {
+                    ?>
+                      <p class="text-dark m-0 ps-2">Address is required</p>
+                    <?php
+                    }
+                    ?>
                   </div>
                 </div>
 
