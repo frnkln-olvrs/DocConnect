@@ -130,8 +130,13 @@ include '../includes/head.php';
                 <!-- ---2nd ROW--- -->
                 <div class="row mb-3">
                   <div class="col-md-4 mb-3 mb-md-0">
-                    <label for="occupation" class="form-label text-black-50">Occupation</label>
-                    <input type="text" class="form-control bg-light border border-dark" id="occupation" name="occupation" value="Student" disabled>
+                    <label for="campus" class="form-label text-black-50">Campus</label>
+                    <!-- WALA TO SA DATABASE -->
+                    <select class="form-select bg-light border border-dark" id="campus" name="campus" required>
+                      <option value="chooseCampus" <?= (isset($_SESSION['campus']) && $_SESSION['campus'] == "campus") ? 'selected' : '' ?>>choose Campus</option>
+                      <option value="wmsuMainCampus" <?= (isset($_SESSION['campus']) && $_SESSION['campus'] == "wmsuMainCampus") ? 'selected' : '' ?>>WMSU main campus</option>
+                      <option value="testCampus" <?= (isset($_SESSION['campus']) && $_SESSION['campus'] == "testCampus") ? 'selected' : '' ?>>test campus</option>
+                    </select>
                   </div>
                   <div class="col-md-4 mb-3 mb-md-0">
                     <label for="schoolID" class="form-label text-black-50">School ID</label>
